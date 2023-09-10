@@ -83,7 +83,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: events_production
+  url: <%= ENV['DATABASE_URL'] %>
+
 #  username: blog_app
 #  password: <%= ENV["TEST_APP_DATABASE_PASSWORD"] %>
