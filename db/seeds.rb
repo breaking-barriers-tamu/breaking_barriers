@@ -1,7 +1,42 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# Seed data for events
+events = [
+  {
+    name: 'Test Event',
+    date: Date.parse('2023-09-10'),
+    time: Time.parse('2000-01-01 16:11:00 UTC'),
+    location: 'Testing Center',
+    show: true
+  },
+  {
+    name: 'Test Event 2',
+    date: Date.parse('2023-09-13'),
+    time: Time.parse('2000-01-01 20:14:00 UTC'),
+    location: 'Location 2',
+    show: true
+  },
+  {
+    name: 'Test Event 3',
+    date: Date.parse('2023-11-06'),
+    time: Time.parse('2000-01-01 05:17:00 UTC'),
+    location: 'Zach',
+    show: true
+  },
+  {
+    name: 'Test Event 4',
+    date: Date.parse('2023-12-05'),
+    time: Time.parse('2000-01-01 04:14:00 UTC'),
+    location: 'The Moon',
+    show: true
+  },
+  {
+    name: 'Test Event 5',
+    date: Date.parse('2023-09-10'),
+    time: Time.parse('2000-01-01 16:13:00 UTC'),
+    location: 'TBD',
+    show: true
+  }
+]
+
+events.each do |event_data|
+  Event.create!(event_data)
+end

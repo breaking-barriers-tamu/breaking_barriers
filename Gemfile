@@ -78,3 +78,4 @@ group :test do
 end
 
 gem 'pg'
+gem 'seed_dump'
