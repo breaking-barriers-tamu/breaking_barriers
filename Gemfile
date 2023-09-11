@@ -80,5 +80,4 @@ end
 
 gem 'pg'
 gem 'brakeman'
-gem 'rubocop'
-gem 'rubocop-performance'
+gem 'rubocop-rails'
