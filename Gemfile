@@ -57,11 +57,9 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-end
 
-group :test do
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -80,6 +78,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'simplecov', :require => false
 end
 
 gem 'pg'
