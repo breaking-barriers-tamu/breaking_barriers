@@ -273,6 +273,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.3)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.4.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -306,8 +308,8 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
-  rexml
   rails-controller-testing
+  rexml
   rspec-rails
   rubocop
   rubocop-performance
