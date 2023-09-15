@@ -78,3 +78,7 @@ group :test do
 end
 
 gem 'pg'
+
+group :development do
+  	  gem 'brakeman'
+end
