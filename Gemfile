@@ -78,3 +78,7 @@ group :test do
 end
 
 gem 'pg'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
