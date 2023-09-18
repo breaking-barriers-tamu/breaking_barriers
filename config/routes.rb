@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
 
   # Defines the root path route ("/")
-  root "events#index"
+  root to: 'dashboards#show'
+  # root "events#index"
 end
