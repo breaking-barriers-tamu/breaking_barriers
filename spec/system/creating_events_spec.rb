@@ -7,7 +7,10 @@ RSpec.describe "CreatingEvents", type: :system do
 
   scenario 'create event' do
     visit new_event_path 
-    fill_in "event[name]", with: 'eventName'
+    fill_in "event[name]", with: 'EventName'
+    fill_in "event[date]", with: '2025-01-01'
+    fill_in "event[time]", with: '17:30:00'
+    fill_in "event[location]", with: 'Zach 420'
     click_on 'Create Event'
     expect(page).to have_content('Event was successfully created')
 
