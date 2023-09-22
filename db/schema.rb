@@ -24,6 +24,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_165521) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+ActiveRecord::Schema[7.0].define(version: 2023_09_14_012849) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "date"
