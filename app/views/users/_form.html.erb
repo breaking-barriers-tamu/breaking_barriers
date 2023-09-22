@@ -1,4 +1,5 @@
-<%= form_with(model: user) do |form| %>
+<%= form_with(model: @user, url: submit_registration_user_path(@user), local: true, method: :post) do |form| %>
+
   <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,10 +12,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :access_level, style: "display: block" %>
-    <%= form.number_field :access_level %>
+  <div class="field">
+    <%= form.label :access_level %>
+    <%= form.select :access_level, User.access_levels.keys.map { |w| [w.humanize, w] } %>
   </div>
+
 
   <div>
     <%= form.label :name, style: "display: block" %>

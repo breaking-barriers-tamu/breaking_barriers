@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
+    respond_to do |format|  
       if @user.save
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
@@ -57,14 +57,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def complete_registration
+    @user = User.find(params[:id])
+  end
+  
+  def submit_registration
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      @user.update(registration_completed: true)
+      redirect_to root_path, notice: "Registration completed!"
+    else
+      render :complete_registration
+    end
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:access_level, :name, :major, :year, :phone_number, :email)
+      params.require(:user).permit(:access_level, :name, :major, :year, :phone_number, :email, :password, :password_confirmation)
     end
+    
 end

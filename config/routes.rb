@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
-  resources :users
-  resources :events
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'static_pages#home'
 
-  devise_scope :admin do
-    get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
-    delete 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
+  get 'home', to: 'static_pages#home'
+  get 'about', to: 'static_pages#about'
+  get 'contact', to: 'static_pages#contact'
+
+ resources :users do
+    member do
+      get 'complete_registration', to: 'users#complete_registration'
+      post 'submit_registration', to: 'users#submit_registration'
+    end
   end
 
-  # Defines the root path route ("/")
-  # root to: 'dashboards#show'
-  root "events#index"
+  resources :events
+
+  devise_for :users, controllers: { sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
+
 end
