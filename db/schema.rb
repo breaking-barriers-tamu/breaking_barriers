@@ -33,4 +33,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_165521) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.integer "access_level"
+    t.string "name"
+    t.string "major"
+    t.integer "year"
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
