@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-09-11T21:34:14-05:00">2023-09-11T21:34:14-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-09-19T08:51:56-05:00">2023-09-19T08:51:56-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  99.35%
+  99.37%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.32
+         1.31
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>155</b> relevant lines,
-    <span class="green"><b>154</b> lines covered</span> and
+    <b>159</b> relevant lines,
+    <span class="green"><b>158</b> lines covered</span> and
     <span class="red"><b>1</b> lines missed. </span>
     (<span class="green">
-  99.35%
+  99.37%
 </span>
 )
   </div>
@@ -239,8 +239,8 @@
             <td class="strong t-file__name"><a href="#5c8c4f6801420618c42f6edd320c39f538cf4160" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">7</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">2</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">3</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -304,9 +304,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0ebd0da30d9d59546a6cc0ccdaf3dd34b3f4e7f5" class="src_link" title="spec/system/creating_events_spec.rb">spec/system/creating_events_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">26</td>
-            <td class="cell--number">16</td>
-            <td class="cell--number">16</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">19</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -1397,7 +1397,7 @@
 
             
 
-            <code class="ruby">    validates :name, presence: true</code>
+            <code class="ruby">    validates :name, :location, :date, :time, presence: true</code>
           </li>
         </div>
       
@@ -3503,8 +3503,8 @@
     
 
     <div class="t-line-summary">
-      <b>2</b> relevant lines.
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>3</b> relevant lines.
+      <span class="green"><b>3</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3571,13 +3571,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  # root &quot;articles#index&quot;</code>
+            
+
+            <code class="ruby">  root &quot;events#index&quot;</code>
           </li>
         </div>
       
@@ -5449,8 +5449,8 @@
     
 
     <div class="t-line-summary">
-      <b>16</b> relevant lines.
-      <span class="green"><b>16</b> lines covered</span> and
+      <b>19</b> relevant lines.
+      <span class="green"><b>19</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -5567,7 +5567,7 @@
 
             
 
-            <code class="ruby">    fill_in &quot;event[name]&quot;, with: &#39;eventName&#39;</code>
+            <code class="ruby">    fill_in &quot;event[name]&quot;, with: &#39;EventName&#39;</code>
           </li>
         </div>
       
@@ -5578,7 +5578,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Event&#39;</code>
+            <code class="ruby">    fill_in &quot;event[date]&quot;, with: &#39;2025-01-01&#39;</code>
           </li>
         </div>
       
@@ -5589,18 +5589,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Event was successfully created&#39;)</code>
+            <code class="ruby">    fill_in &quot;event[time]&quot;, with: &#39;17:30:00&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    fill_in &quot;event[location]&quot;, with: &#39;Zach 420&#39;</code>
           </li>
         </div>
       
@@ -5611,12 +5611,23 @@
 
             
 
-            <code class="ruby">    click_on &#39;Edit this event&#39;</code>
+            <code class="ruby">    click_on &#39;Create Event&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="covered" data-hits="1" data-linenumber="15">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Event was successfully created&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="16">
             
             
 
@@ -5627,24 +5638,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;Editing event&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="1" data-linenumber="17">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    fill_in &quot;event[name]&quot;, with: &#39;newEventName&#39;</code>
+            <code class="ruby">    click_on &#39;Edit this event&#39;</code>
           </li>
         </div>
       
@@ -5666,7 +5666,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Update Event&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Editing event&#39;)</code>
           </li>
         </div>
       
@@ -5677,7 +5677,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Event was successfully updated&#39;)</code>
+            <code class="ruby">    fill_in &quot;event[name]&quot;, with: &#39;newEventName&#39;</code>
           </li>
         </div>
       
@@ -5699,7 +5699,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Destroy this event&#39;</code>
+            <code class="ruby">    click_on &#39;Update Event&#39;</code>
           </li>
         </div>
       
@@ -5710,7 +5710,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Event was successfully destroyed.&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Event was successfully updated&#39;)</code>
           </li>
         </div>
       
@@ -5721,12 +5721,45 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="25">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Destroy this event&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Event was successfully destroyed.&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="28">
             
             
 
@@ -5737,7 +5770,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
