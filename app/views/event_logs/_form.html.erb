@@ -1,0 +1,37 @@
+<%= form_with(model: event_log) do |form| %>
+  <% if event_log.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(event_log.errors.count, "error") %> prohibited this event_log from being saved:</h2>
+
+      <ul>
+        <% event_log.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :hourlog_id, style: "display: block" %>
+    <%= form.number_field :hourlog_id %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :event_id, style: "display: block" %>
+    <%= form.number_field :event_id %>
+  </div>
+
+  <div>
+    <%= form.label :hours, style: "display: block" %>
+    <%= form.text_field :hours %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
