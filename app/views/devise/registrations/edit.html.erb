@@ -25,14 +25,17 @@
   </div>
 
   <div class="field">
-    <%= f.label :year %><br />
-    <%= f.number_field :year %>
-  </div>
+  <%= f.label :year %><br />
+  <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+</div>
+
 
   <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.telephone_field :phone_number %>
-  </div>
+  <%= f.label :phone_number %><br />
+  <%= f.telephone_field :phone_number, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %>
+  <small>Format: 123-456-7890</small>
+</div>
+
 
   <div class="actions">
     <%= f.submit "Update" %>
