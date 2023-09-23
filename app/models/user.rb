@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :events, through: :event_logs
+  has_many :user_books
+
   enum access_level: { member: 0, admin: 1, officer: 2 }
 
   devise :omniauthable, :database_authenticatable, :registerable,

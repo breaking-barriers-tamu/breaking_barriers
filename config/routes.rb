@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact'
 
   resources :events
+  resources :event_logs
 
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks', 
