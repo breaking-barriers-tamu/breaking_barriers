@@ -81,31 +81,35 @@
           null
         ]
       },
-      "/home/jason/csce431/breaking_barriers/spec/helpers/users_helper_spec.rb": {
+      "/home/jason/csce431/breaking_barriers/spec/helpers/admin_helper_spec.rb": {
         "lines": [
           1,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
           1,
           null
         ]
       },
       "/home/jason/csce431/breaking_barriers/spec/models/event_spec.rb": {
         "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
           null,
           null,
-          null
-        ]
-      },
-      "/home/jason/csce431/breaking_barriers/app/models/event.rb": {
-        "lines": [
-          1,
-          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -114,6 +118,35 @@
           1,
           null,
           1,
+          null
+        ]
+      },
+      "/home/jason/csce431/breaking_barriers/spec/requests/admin_spec.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -331,6 +364,33 @@
           null
         ]
       },
+      "/home/jason/csce431/breaking_barriers/spec/views/admin/events.html.erb_spec.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/jason/csce431/breaking_barriers/spec/views/admin/index.html.erb_spec.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/jason/csce431/breaking_barriers/spec/views/admin/show_event.html.erb_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
       "/home/jason/csce431/breaking_barriers/spec/views/users/edit.html.erb_spec.rb": {
         "lines": [
           null,
@@ -477,6 +537,6 @@
         ]
       }
     },
-    "timestamp": 1695442970
+    "timestamp": 1695450970
   }
 }
