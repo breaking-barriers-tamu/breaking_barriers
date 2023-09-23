@@ -1,9 +1,10 @@
 Rails.application.routes.draw do 
-  authenticated :user, ->(user) { user.admin? } do 
+  authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     get 'admin', to: 'admin#index'
     get 'admin/events'
     get 'admin/show_event'
   end
+
   root 'pages#home'
 
   get 'home', to: 'pages#home'

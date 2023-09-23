@@ -12,6 +12,10 @@ class User < ApplicationRecord
       user.avatar_url = auth.info.image
     end
   end
+
+  def can_access_admin_dashboard?
+    admin? || officer?
+  end
   
 end
 

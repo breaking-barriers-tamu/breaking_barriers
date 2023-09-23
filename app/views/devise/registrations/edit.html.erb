@@ -3,7 +3,6 @@
 
   <div class="field">
   <br/>
-    <div>0 for member, 1 for admin (for testing)</div>
     <%= f.label :access_level %><br />
     <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
 
