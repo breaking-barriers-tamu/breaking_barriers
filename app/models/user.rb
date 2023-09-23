@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum access_level: { member: 0, admin: 1 }
+  enum access_level: { member: 0, admin: 1, officer: 2 }
 
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
