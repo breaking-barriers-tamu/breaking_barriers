@@ -1,8 +1,18 @@
-Rails.application.routes.draw do
-  resources :users
-  resources :events
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+Rails.application.routes.draw do 
+  root 'pages#home'
 
-  # Defines the root path route ("/")
-  root "events#index"
+  get 'home', to: 'pages#home'
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
+
+  resources :events
+
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'users/omniauth_callbacks', 
+    sessions: 'users/sessions', 
+    registrations: 'users/registrations'
+  }
+
+  resources :users
+
 end
