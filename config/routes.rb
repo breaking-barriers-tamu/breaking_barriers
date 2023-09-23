@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
       resources :events
+      resources :users
       root to: 'admin#index'
     end
   end
