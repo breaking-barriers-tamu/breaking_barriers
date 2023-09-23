@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     get 'admin/events'
     get 'admin/show_event'
   end
+  authenticated :user, ->(user) { user.can_access_officer_dashboard? } do
+    get 'officer', to: 'officer#index'
+    get 'officer/users_view'
+  end
 
   root 'pages#home'
 

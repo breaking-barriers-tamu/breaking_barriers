@@ -17,6 +17,9 @@ class User < ApplicationRecord
   end
 
   def can_access_admin_dashboard?
+    admin?
+  end
+  def can_access_officer_dashboard?
     admin? || officer?
   end
   
