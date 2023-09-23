@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   enum access_level: { user: 0, admin: 1 }
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
 
@@ -15,4 +13,5 @@ class User < ApplicationRecord
       user.skip_confirmation!
     end
   end
+  
 end
