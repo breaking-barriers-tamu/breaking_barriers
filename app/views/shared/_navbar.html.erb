@@ -5,7 +5,10 @@
         <li><%= link_to "Events", events_path %></li>
         <li><%= link_to "Contact", contact_path %></li>
 
-        <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+        <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete%>
+
+        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Create Accounts", new_user_registration_path %>
 
     </ul>
 </div>

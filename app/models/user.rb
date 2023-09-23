@@ -1,30 +1,20 @@
 class User < ApplicationRecord
+  enum access_level: { user: 0, admin: 1 }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-    enum access_level: { user: 0, admin: 1 }
-    devise :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :omniauthable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
 
-
-    def self.from_google(email:, full_name:, uid:, avatar_url:)
-      return nil unless email =~ /@tamu.edu\z/
-      user = User.find_or_initialize_by(email: email)
-      if user.new_record?
-        user.uid = uid
-        user.full_name = full_name
-        user.avatar_url = avatar_url
-        user.save!
-      end
-      user
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.full_name = auth.info.name # assuming the user model has a name
+      user.avatar_url = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
     end
-
-    def password_required?
-      super && provider.blank?
-    end
-
-    
-    
-
-    def completed_registration!
-      update(registration_completed: true)
-    end
+  end
 end
