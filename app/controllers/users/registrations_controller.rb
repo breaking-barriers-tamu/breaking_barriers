@@ -7,6 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def account_update_params
-    params.require(:user).permit(:name, :major, :year, :phone_number, :access_level)
+    params.require(:user).permit(:first_name, :last_name, :major, :year, :phone_number, :access_level)
   end
 end

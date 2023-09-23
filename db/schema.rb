@@ -25,13 +25,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_012849) do
 
   create_table "users", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
-    t.string "full_name"
     t.string "avatar_url"
     t.string "uid"
     t.string "provider"
     t.datetime "remember_created_at"
     t.integer "access_level", default: 0
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "major"
     t.integer "year"
     t.string "phone_number"
