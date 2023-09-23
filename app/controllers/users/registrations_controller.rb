@@ -4,4 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.update(registration_completed: true) if resource.valid?
     end
   end
+  private
+
+  def account_update_params
+    params.require(:user).permit(:name, :major, :year, :phone_number, :access_level)
+  end
 end

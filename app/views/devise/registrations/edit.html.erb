@@ -5,7 +5,8 @@
   <br/>
     <div>0 for member, 1 for admin (temp)</div>
     <%= f.label :access_level %><br />
-    <%= f.number_field :access_level %>
+    <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+
   </div>
 
   <div class="field">
