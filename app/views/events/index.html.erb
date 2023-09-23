@@ -1,8 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Events (NEW TEST)</h1>
+<h1>Events List</h1>
 
-<div id="events">
+<div id="Events">
   <% @events.each do |event| %>
     <%= render event %>
     <p>
@@ -10,5 +10,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New event", new_event_path %>

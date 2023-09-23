@@ -1,9 +1,25 @@
-Rails.application.routes.draw do
-  resources :event_logs
-  resources :users
-  resources :events
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+Rails.application.routes.draw do 
+  authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
+    get 'admin', to: 'admin#index'
+    get 'admin/events'
+    get 'admin/show_event'
+  end
 
-  # Defines the root path route ("/")
-  root "events#index"
+  root 'pages#home'
+
+  get 'home', to: 'pages#home'
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
+
+  resources :events
+  resources :event_logs
+
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'users/omniauth_callbacks', 
+    sessions: 'users/sessions', 
+    registrations: 'users/registrations'
+  }
+
+  resources :users
+
 end
