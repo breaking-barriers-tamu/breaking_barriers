@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       root to: 'admin#index'
     end
   end
+  authenticated :user, ->(user) { user.can_access_officer_dashboard? } do
+    get 'officer', to: 'officer#index'
+    get 'officer/users_view'
+  end
 
   # Static Pages
   root 'pages#home'
