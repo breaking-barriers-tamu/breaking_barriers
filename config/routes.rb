@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
 
   # Events
-  resources :events, only: [:index, :show]
+  #resources :events, only: [:index, :show]
+  resources :events
   resources :event_logs
 
 end
