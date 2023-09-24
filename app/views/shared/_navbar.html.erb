@@ -6,7 +6,7 @@
         <li><%= link_to "Events", events_path %></li>
         <li><%= link_to "Users", users_path %></li>
         <% if current_user&.can_access_officer_dashboard? %>
-        <li><%= link_to "Officer Dashboard", officer_path %></li>
+        <li><%= link_to "Officer Dashboard", officer_root_path %></li>
         <% end %>
         <% if current_user&.can_access_admin_dashboard? %>
         <li><%= link_to "Admin Dashboard", admin_root_path %></li>
