@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   # Events
   resources :events, only: [:index, :show]
-  resources :event_logs
+  resources :event_logs do 
+    member do
+      get :delete
+   end
+  end
 
 end
