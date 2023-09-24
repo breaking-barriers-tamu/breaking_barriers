@@ -3,8 +3,12 @@
 <%= render 'officer/users/user', user: @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_officer_user_path(@user) %> |
-  <%= link_to "Back to users", officer_users_path %>
+  <p>
+    <strong>Total Hours:</strong>
+    <%= @total_hours %>
+  </p>
+</div>
 
-  <%= button_to "Destroy this user", officer_user_path(@user), method: :delete %>
+<div>
+  <%= link_to "Back to users", officer_users_path %>
 </div>
