@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  enum access_level: { member: 0, admin: 1 }
+  has_many :events, through: :event_logs
+  has_many :user_books
+
+  enum access_level: { member: 0, admin: 1, officer: 2 }
 
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
@@ -11,6 +14,13 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.avatar_url = auth.info.image
     end
+  end
+
+  def can_access_admin_dashboard?
+    admin?
+  end
+  def can_access_officer_dashboard?
+    admin? || officer?
   end
   
 end
