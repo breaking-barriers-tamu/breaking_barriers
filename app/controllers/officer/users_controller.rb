@@ -16,7 +16,7 @@ module Officer
             @total_hours = 0
             @event_logs = EventLog.all.where(user_id: @user.id)
             @event_logs.each do |event_log|
-                @total_hours += event_log.hours
+                @total_hours += event_log.hours if Event.find(event_log.event_id).date.past?
             end
         end
     end
