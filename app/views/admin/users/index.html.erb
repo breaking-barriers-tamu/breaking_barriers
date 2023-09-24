@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render 'admin/users/user', user: user %>
+    <p>
+      <%= link_to "Show this user", admin_user_path(user) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to 'Back to Admin Dashboard', admin_root_path %>

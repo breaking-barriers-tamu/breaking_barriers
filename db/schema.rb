@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_14_012849) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_22_165247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_logs", force: :cascade do |t|
+    t.integer "hourlog_id"
+    t.integer "user_id"
+    t.integer "event_id"
+    t.float "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -24,11 +33,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_012849) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "access_level"
-    t.string "name"
+    t.string "encrypted_password", default: "", null: false
+    t.string "avatar_url"
+    t.string "uid"
+    t.string "provider"
+    t.datetime "remember_created_at"
+    t.integer "access_level", default: 0
+    t.string "first_name"
+    t.string "last_name"
     t.string "major"
     t.integer "year"
     t.string "phone_number"
+    t.boolean "registration_completed", default: false
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
