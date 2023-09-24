@@ -27,7 +27,7 @@
       <% event_logs.each do |event_log| %>
         <% user = User.find(event_log.user_id) %>
         <li>
-          <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user, return_to_event: true) %>
+          <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
         </li>
       <% end %>
     </ul>
