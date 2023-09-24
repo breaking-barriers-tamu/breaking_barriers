@@ -6,10 +6,18 @@ module Officer
         # GET /users or /users.json
         def index
             @users = User.all
+            # Could calc all users hours here? would be easier for now to just do it per user in show
         end
         
         # GET /users/1 or /users/1.json
         def show
+            # calc user's hours here
+            # loop through event_logs with user_id, and add up hours
+            @total_hours = 0
+            @event_logs = EventLog.all.where(user_id: @user.id)
+            @event_logs.each do |event_log|
+                @total_hours += event_log.hours
+            end
         end
     end
 end
