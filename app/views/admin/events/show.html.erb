@@ -2,6 +2,17 @@
 
 <%= render 'admin/events/event', event: @event %>
 
+<ul>
+  <% event_logs = EventLog.where(event_id: @event.id) %>
+  <% event_logs.each do |event_log| %>
+    <% user = User.find(event_log.user_id) %>
+    <li>
+      <%= check_box_tag "participation_status[#{user.id}]", "participating", event_log.participating, class: "participation-checkbox", data: { participant_id: user.id } %>
+      <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
+    </li>
+  <% end %>
+</ul>
+
 <div>
   <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
   <%= link_to "Back to events", admin_events_path %>
