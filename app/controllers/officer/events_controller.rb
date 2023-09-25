@@ -1,4 +1,4 @@
-module Admin
+module Officer
     class EventsController < ApplicationController
         before_action :set_event, only: %i[ show edit update destroy ]
 
@@ -9,9 +9,6 @@ module Admin
 
   # GET /events/1 or /events/1.json
   def show
-    @event = Event.find(params[:id])
-    @event_logs = EventLog.where(event_id: @event.id)
-    @event_log = EventLog.find_by(user_id: current_user.id, event_id: @event.id)
   end
 
   # GET /events/new
@@ -29,7 +26,7 @@ module Admin
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to admin_event_path(@event), notice: "Event was successfully created." }
+        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +53,7 @@ module Admin
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_events_path, notice: "Event was successfully destroyed." }
+      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
   end

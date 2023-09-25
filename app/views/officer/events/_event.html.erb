@@ -19,10 +19,4 @@
     <%= event.location %>
   </p>
 
-  <p>
-    <strong>Participants:</strong>
-    <% event_logs = EventLog.where(event_id: event.id) %>
-    <%= event_logs.length %>
-  </p>
-
 </div>
