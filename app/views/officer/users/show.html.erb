@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render 'officer/users/user', user: @user %>
+
+<div>
+  <p>
+    <strong>Total Hours:</strong>
+    <%= @total_hours %>
+  </p>
+</div>
+
+<div>
+  <%= link_to "Back to users", officer_users_path %>
+</div>

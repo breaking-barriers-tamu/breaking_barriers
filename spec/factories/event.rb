@@ -1,4 +1,5 @@
 FactoryBot.define do
-    factory :event_log do
+    factory :event do
     end
   end
+  
