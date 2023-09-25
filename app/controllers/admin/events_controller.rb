@@ -11,6 +11,7 @@ module Admin
   def show
     @event = Event.find(params[:id])
     @event_logs = EventLog.where(event_id: @event.id)
+    @event_log = EventLog.find_by(user_id: current_user.id, event_id: @event.id)
   end
 
   # GET /events/new

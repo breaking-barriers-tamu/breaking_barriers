@@ -57,6 +57,8 @@ class EventLogsController < ApplicationController
     end
   end
 
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event_log
@@ -65,6 +67,6 @@ class EventLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_log_params
-      params.require(:event_log).permit(:hourlog_id, :user_id, :event_id, :hours)
+      params.require(:event_log).permit(:hourlog_id, :user_id, :event_id, :hours, :participating)
     end
 end
