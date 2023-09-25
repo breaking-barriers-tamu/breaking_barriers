@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :events
       resources :users
+
+      resources :event_logs do
+        patch 'update_participation', on: :member
+      end
+
       root to: 'admin#index'
     end
   end
