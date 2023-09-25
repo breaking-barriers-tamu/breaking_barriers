@@ -1,7 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @event %>
 
+<% if EventLog.where(user: current_user, event: @event).any?%>
+  <div>
+    <%= link_to "Remove me from this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
+  </div>
+<% else %>
+  <div>
+    <%= link_to "Sign up for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id)%>
+  </div>
+<% end %>
 <div>
 
   <% if current_user.can_access_officer_dashboard? %> 

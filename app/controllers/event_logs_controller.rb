@@ -1,5 +1,5 @@
 class EventLogsController < ApplicationController
-  before_action :set_event_log, only: %i[ show edit update destroy ]
+  before_action :set_event_log, only: %i[ show edit update destroy delete ]
 
   # GET /event_logs or /event_logs.json
   def index
@@ -12,7 +12,17 @@ class EventLogsController < ApplicationController
 
   # GET /event_logs/new
   def new
-    @event_log = EventLog.new
+    @event_log = EventLog.new(event_log_params)
+
+    respond_to do |format|
+      if @event_log.save
+        format.html { redirect_to event_url(@event_log.event), notice: "You are signed up for this event!" }
+        format.json { render :show, status: :created, location: @event_log }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @event_log.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /event_logs/1/edit
@@ -21,17 +31,6 @@ class EventLogsController < ApplicationController
 
   # POST /event_logs or /event_logs.json
   def create
-    @event_log = EventLog.new(event_log_params)
-
-    respond_to do |format|
-      if @event_log.save
-        format.html { redirect_to event_log_url(@event_log), notice: "Event log was successfully created." }
-        format.json { render :show, status: :created, location: @event_log }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event_log.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /event_logs/1 or /event_logs/1.json
@@ -48,11 +47,12 @@ class EventLogsController < ApplicationController
   end
 
   # DELETE /event_logs/1 or /event_logs/1.json
-  def destroy
+
+  def delete
     @event_log.destroy
 
     respond_to do |format|
-      format.html { redirect_to event_logs_url, notice: "Event log was successfully destroyed." }
+      format.html { redirect_to event_url(@event_log.event), notice: "Successfully removed you from this event." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class EventLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_log_params
-      params.require(:event_log).permit(:hourlog_id, :user_id, :event_id, :hours)
+      params.permit(:event_log, :hourlog_id, :user_id, :event_id, :hours, :participating)
     end
 end

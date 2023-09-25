@@ -2,13 +2,22 @@ Rails.application.routes.draw do
   # Admin
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
-          resources :users
+      resources :events
+      resources :users
+
+      resources :event_logs do
+        patch 'update_participation', on: :member
+      end
       root to: 'admin#index'
     end
   end
+  # Officer
   authenticated :user, ->(user) { user.can_access_officer_dashboard? } do
-    get 'officer', to: 'officer#index'
-    get 'officer/users_view'
+    namespace :officer do
+      resources :events
+      resources :users
+      root to: 'officer#index'
+    end
   end
 
   # Static Pages
@@ -27,8 +36,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
 
   # Events
-  #resources :events, only: [:index, :show]
-  resources :events
-  resources :event_logs
+  resources :events, only: [:index, :show]
+  resources :event_logs do 
+    member do
+      get :delete
+   end
+  end
 
 end
