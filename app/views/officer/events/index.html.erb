@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Events</h1>
+
+<div id="events">
+  <% @events.each do |event| %>
+    <%= render 'officer/events/event', event: event %>
+    <p>
+      <%= link_to "Show this event", officer_event_path(event) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New event", new_officer_event_path %>  <br/>
+<%= link_to 'Back to Officer Dashboard', officer_root_path %>

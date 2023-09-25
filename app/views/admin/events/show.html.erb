@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render 'admin/events/event', event: @event %>
+
+<% if @event_log.present? %>
+  <%= form_for @event_log, url: update_participation_admin_event_log_path(@event_log) do |f| %>
+    <h2>Participants</h2>
+    <ul>
+      <% event_logs = EventLog.where(event_id: @event.id) %>
+      <% event_logs.each do |event_log| %>
+        <% user = User.find(event_log.user_id) %>
+        <li>
+          <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
+          <%= f.select :participating, options_for_select([['Participating', true], ['Not Participating', false]], event_log.participating), {}, class: 'participation-dropdown' %>
+          <%= hidden_field_tag "original_participation_status[#{user.id}]", event_log.participating %>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.submit "Confirm Changes" %>
+  <% end %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
+  <%= link_to "Back to events", admin_events_path %>
+
+  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete %>
+</div>
