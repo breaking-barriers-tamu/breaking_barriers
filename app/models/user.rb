@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  validates :first_name, :last_name, presence: true, if: :registration_completed?
+
+
   has_many :events, through: :event_logs
   has_many :user_books
 
@@ -21,6 +24,10 @@ class User < ApplicationRecord
   end
   def can_access_officer_dashboard?
     admin? || officer?
+  end
+
+  def registration_completed?
+    registration_completed
   end
   
 end
