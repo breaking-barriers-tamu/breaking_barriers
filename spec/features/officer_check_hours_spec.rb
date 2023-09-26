@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-describe 'Hours Check', type: :feature do
-  let!(:user) { create(:user, access_level: 2, registration_completed: true) }
+feature 'Hours Check', type: :feature do
+  let!(:user) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 2, registration_completed: true) } 
   let!(:event1) { create(:event, name: 'Existing Event 1', date: '2001-12-31', time: '15:30:00', location: 'Event Location') }
   let!(:event2) { create(:event, name: 'Existing Event 2', date: '2002-12-31', time: '15:30:00', location: 'Event Location') }
   let!(:event3) { create(:event, name: 'Future Event', date: '9999-12-31', time: '15:30:00', location: 'Event Location') }
