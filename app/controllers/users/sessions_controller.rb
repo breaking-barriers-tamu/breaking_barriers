@@ -1,17 +1,13 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
-  def after_sign_out_path_for(_resource_or_scope)
-    root_path
-  end
+module Users
+  class SessionsController < Devise::SessionsController
+    def after_sign_out_path_for(_resource_or_scope)
+      root_path
+    end
 
-  def after_sign_in_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || root_path
+    def after_sign_in_path_for(resource_or_scope)
+      stored_location_for(resource_or_scope) || root_path
+    end
   end
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

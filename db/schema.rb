@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_14_012849) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_195758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_logs", force: :cascade do |t|
+    t.integer "hourlog_id"
+    t.integer "user_id"
+    t.integer "event_id"
+    t.float "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "participating", default: true
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -21,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_012849) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.decimal "duration"
   end
 
   create_table "users", force: :cascade do |t|
