@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       resources :events
       resources :users
       root to: 'officer#index'
+      resources :event_logs do
+        patch 'update_participation', on: :member
+      end
     end
   end
 

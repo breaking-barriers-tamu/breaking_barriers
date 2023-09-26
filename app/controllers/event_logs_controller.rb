@@ -3,11 +3,6 @@
 class EventLogsController < ApplicationController
   before_action :set_event_log, only: %i[show edit update delete]
 
-  # GET /event_logs or /event_logs.json
-  def index
-    @event_logs = EventLog.all
-  end
-
   # GET /event_logs/1 or /event_logs/1.json
   def show; end
 
@@ -21,25 +16,6 @@ class EventLogsController < ApplicationController
         format.json { render(:show, status: :created, location: @event_log) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
-        format.json { render(json: @event_log.errors, status: :unprocessable_entity) }
-      end
-    end
-  end
-
-  # GET /event_logs/1/edit
-  def edit; end
-
-  # POST /event_logs or /event_logs.json
-  def create; end
-
-  # PATCH/PUT /event_logs/1 or /event_logs/1.json
-  def update
-    respond_to do |format|
-      if @event_log.update(event_log_params)
-        format.html { redirect_to(event_log_url(@event_log), notice: 'Event log was successfully updated.') }
-        format.json { render(:show, status: :ok, location: @event_log) }
-      else
-        format.html { render(:edit, status: :unprocessable_entity) }
         format.json { render(json: @event_log.errors, status: :unprocessable_entity) }
       end
     end
