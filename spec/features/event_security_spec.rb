@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe('Event Security', type: :feature) do
-  let!(:user) { create(:user, first_name: "first", last_name: "last", access_level: 0, registration_completed: true) }
+  let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 0, registration_completed: true) }
   let!(:event) { create(:event, name: 'Existing Event', date: '2023-12-31', time: '05:30 PM', location: 'Event Location', duration: 1.0) }
 
   it 'Does not allow non-registered users to access events' do

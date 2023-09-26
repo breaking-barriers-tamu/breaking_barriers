@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EventLogsController < ApplicationController
-  before_action :set_event_log, only: %i[show edit update delete]
+  before_action :set_event_log, only: %i[show delete]
 
   # GET /event_logs/1 or /event_logs/1.json
   def show; end
