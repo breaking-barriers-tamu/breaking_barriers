@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Users
   class SessionsController < Devise::SessionsController
     def after_sign_out_path_for(_resource_or_scope)
@@ -8,5 +10,4 @@ module Users
       stored_location_for(resource_or_scope) || root_path
     end
   end
-
 end

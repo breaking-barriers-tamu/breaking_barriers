@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module Users
   class RegistrationsController < Devise::RegistrationsController
     def update
       super do |resource|
-        resource.update(registration_completed: true) if resource.valid?
+        resource.update!(registration_completed: true) if resource.valid?
       end
     end
+
     private
 
     def account_update_params
