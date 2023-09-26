@@ -4,7 +4,7 @@ class Admin::EventLogsController < ApplicationController
   # updating participation
   def update_participation
     @event_log = EventLog.find(params[:id])
-    @event_log.update(event_log_params)
+    @event_log.update!(event_log_params)
   end
 
   private
