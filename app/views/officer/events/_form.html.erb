@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
     <%= form.label :date, style: "display: block" %>
     <%= form.date_field :date %>
   </div>
@@ -31,6 +36,11 @@
     <%= form.text_field :location %>
   </div>
 
+  <div>
+    <%= form.label :duration, style: "display: block" %>
+    <%= form.number_field :duration, in: 0.0..12.0, step: 0.5 %>
+  </div>
+  
   <div>
     <%= form.submit %>
   </div>
