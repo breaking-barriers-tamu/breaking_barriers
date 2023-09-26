@@ -1,0 +1,47 @@
+require 'rails_helper'
+
+RSpec.feature "Admin Dashboard Access", type: :feature do
+  before do
+    OmniAuth.config.test_mode = true
+    auth_hash = OmniAuth::AuthHash.new({
+      :provider => 'google_oauth2',
+      :uid => '123545',
+      :info => { :email => 'user@tamu.edu' }
+    })
+    OmniAuth.config.mock_auth[:google_oauth2] = auth_hash
+  end
+
+  scenario "Admin accesses dashboard" do
+    visit "/users/sign_in"
+    click_button "Sign in with Google"
+
+    fill_in "First name", with: "Jason"
+    fill_in "Last name", with: "Le"
+    fill_in "Major", with: "CSCE"
+    select '2024', from: 'Year'
+    fill_in "Phone number", with: "123-456-7890"
+    select "Admin", from: "Access level"
+
+    click_button "Update"
+
+    visit admin_root_path
+
+    expect(page).to have_content("Admin Dashboard")
+  end
+
+  scenario "Member tries to access dashboard" do
+    visit "/users/sign_in"
+    click_button "Sign in with Google"
+
+    fill_in "First name", with: "Jason"
+    fill_in "Last name", with: "Le"
+    fill_in "Major", with: "CSCE"
+    select '2024', from: 'Year'
+    fill_in "Phone number", with: "123-456-7890"
+    select "Member", from: "Access level"
+
+    click_button "Update"
+
+    expect { visit admin_root_path }.to raise_error(ActionController::RoutingError)
+  end
+end

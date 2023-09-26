@@ -2,6 +2,24 @@
 
 <%= render 'officer/events/event', event: @event %>
 
+<% if @event_log.present? %>
+  <%= form_for @event_log, url: update_participation_officer_event_log_path(@event_log) do |f| %>
+    <h2>Participants</h2>
+    <ul>
+      <% event_logs = EventLog.where(event_id: @event.id) %>
+      <% event_logs.each do |event_log| %>
+        <% user = User.find(event_log.user_id) %>
+        <li>
+          <%= link_to "#{user.first_name} #{user.last_name}", officer_user_path(user) %>
+          <%= f.select :participating, options_for_select([['Participating', true], ['Not Participating', false]], event_log.participating), {}, class: 'participation-dropdown' %>
+          <%= hidden_field_tag "original_participation_status[#{user.id}]", event_log.participating %>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.submit "Confirm Changes" %>
+  <% end %>
+<% end %>
+
 <div>
   <%= link_to "Edit this event", edit_officer_event_path(@event) %> |
   <%= link_to "Back to events", officer_events_path %>

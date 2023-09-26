@@ -1,6 +1,8 @@
-class Event < ApplicationRecord
-    has_many :users, through: :event_logs
-    has_many :event_logs
+# frozen_string_literal: true
 
-    validates :name, :location, :date, :time, presence: true
+class Event < ApplicationRecord
+  has_many :users, through: :event_logs
+  has_many :event_logs, dependent: :destroy
+
+  validates :name, :location, :date, :time, presence: true
 end
