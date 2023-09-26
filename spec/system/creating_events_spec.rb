@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # require 'rails_helper'
 
 # RSpec.describe "CreatingEvents", type: :system do
@@ -6,7 +7,7 @@
 #   end
 
 #   scenario 'create event' do
-#     visit new_event_path 
+#     visit new_event_path
 #     fill_in "event[name]", with: 'EventName'
 #     fill_in "event[date]", with: '2025-01-01'
 #     fill_in "event[time]", with: '17:30:00'
