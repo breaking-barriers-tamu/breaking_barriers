@@ -1,7 +1,8 @@
-<h1>Home</h1>
-<% if user_signed_in? %>
-    <p>Logged in as: <%= current_user.email %></p>
-    <%= link_to 'Edit Profile', edit_user_registration_path %>
-<% else %>
-    <p>You are not logged in.</p>
-<% end %>
+<%= stylesheet_link_tag "home" %>
+<body data-page="home">
+    <div class="cover-container"> 
+        <%= image_tag("home-cover.jpg", alt: "medical center", class: "cover") %>
+
+        <div style="height: 500px">
+    </div>
+</body>
