@@ -4,7 +4,9 @@
 
 <div>
   <div> <%= @announcement.user.name %></div>
-  <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %> |
   <%= link_to "Back to announcements", announcements_path %>
+  <% if current_user.admin? %>
+     <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %>
   <%= button_to "Destroy this announcement", @announcement, method: :delete %>
+  <% end %>
 </div>

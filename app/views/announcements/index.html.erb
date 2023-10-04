@@ -11,4 +11,6 @@
   <% end %>
 </div>
 
-<%= link_to "New announcement", new_announcement_path %>
+<% if current_user.admin? %>
+    <%= link_to "Post announcement", new_announcement_path %>
+<% end %>
