@@ -9,9 +9,10 @@
     <%= announcement.body %>
   </p>
 
-  <p>
-    <strong>Timestamp:</strong>
-    <%= announcement.timestamp %>
-  </p>
+  <% if announcement.body.updated_at > announcement.body.created_at %>
+    <p>(edited)Last updated: <%= announcement.body.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+  <% else %>
+    <p>Created on: <%= announcement.body.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+  <% end %>
 
 </div>
