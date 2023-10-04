@@ -1,4 +1,5 @@
 Rails.application.routes.draw do 
+  resources :announcements
   # Admin
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
