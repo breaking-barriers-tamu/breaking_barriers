@@ -6,10 +6,30 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "home" %>
+
     <style>
         .flash__alert   { color: red; }
         .flash__notice  { color: blue; }
         .flash__success { color: green; }
+        .flash {
+            position: fixed;  
+            top: 10px;        
+            left: 50%; 
+            transform: translateX(-50%);
+            padding: 15px;
+            background-color: #fff; 
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .flash__close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
     </style>
     <%= javascript_importmap_tags %>
   </head>
@@ -19,9 +39,13 @@
 
     <% if flash.any? %>
       <% flash.each do |key, value| -%>
-        <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
+        <section class="flash flash__<%= key %>">
+          <%= value.html_safe %>
+          <span class="flash__close" onclick="this.parentElement.style.display='none'">X</span>
+        </section>
       <% end -%>
     <% end %>
+
     <%= yield %>
   </body>
 </html>

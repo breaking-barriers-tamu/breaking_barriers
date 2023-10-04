@@ -51,3 +51,15 @@ body {
     margin-right: 30px;
     font-size: larger;
 }
+
+.logout-button {
+    appearance: none; 
+    background: none;
+    text-decoration: none;
+    margin-right: 30px;
+    font-size: larger;
+    color: white;
+    border: none;
+    cursor: pointer;    
+    font-family: inherit;
+}
