@@ -5,7 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= turbo_include_tags %>
     <%= javascript_importmap_tags %>
+    <%= javascript_importmap_tags "delete_confirmation_dialog" %>
     <%= stylesheet_link_tag "home" %>
 
     <style>
@@ -31,7 +33,6 @@
             cursor: pointer;
         }
     </style>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
