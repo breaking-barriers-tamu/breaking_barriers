@@ -2,3 +2,5 @@
 
 pin "application", preload: true
 pin "narbar"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.js"

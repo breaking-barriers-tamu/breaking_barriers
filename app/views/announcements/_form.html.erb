@@ -16,10 +16,8 @@
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
-  </div>
+  <%= form.label :body %>
+  <%= form.rich_text_area :body %>
 
   <div>
     <%= form.submit %>
