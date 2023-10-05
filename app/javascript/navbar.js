@@ -12,3 +12,12 @@ function updateNavbarBgColor() {
   // Adjust padding for home screen
   document.body.style.paddingTop = isHomePage ? "0" : "70px";
 }
+
+// Execute the function on initial page load
+document.addEventListener("DOMContentLoaded", updateNavbarBgColor);
+
+// Listen for Turbo Load event and execute the function
+document.addEventListener("turbo:load", updateNavbarBgColor);
+
+// Listen for scroll events and update navbar color accordingly
+window.addEventListener("scroll", updateNavbarBgColor);
