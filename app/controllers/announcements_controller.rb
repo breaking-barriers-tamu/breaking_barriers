@@ -1,27 +1,23 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: %i[ show edit update destroy ]
 
-  # GET /announcements or /announcements.json
   def index
+    # Reverse order so that most recent announcements are first
     @announcements = Announcement.all.reverse
   end
   
-
-  # GET /announcements/1 or /announcements/1.json
   def show
   end
 
-  # GET /announcements/new
   def new
     @announcement = Announcement.new
   end
 
-  # GET /announcements/1/edit
   def edit
   end
 
-  # POST /announcements or /announcements.json
   def create
+    # TODO: build announcement baed on current user and current time
     @announcement = current_user.announcements.build(announcement_params)
     @announcement.timestamp = Time.current
 
@@ -36,7 +32,6 @@ class AnnouncementsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /announcements/1 or /announcements/1.json
   def update
     respond_to do |format|
       if @announcement.update(announcement_params)
@@ -49,7 +44,6 @@ class AnnouncementsController < ApplicationController
     end
   end
 
-  # DELETE /announcements/1 or /announcements/1.json
   def destroy
     @announcement.destroy
 
@@ -60,7 +54,6 @@ class AnnouncementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_announcement
       @announcement = Announcement.find(params[:id])
     end

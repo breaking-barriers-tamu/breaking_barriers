@@ -1,14 +1,5 @@
-console.log("Hello from delete_confirmation_dialog.js");
-
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("Document loaded");
-});
-
 window.addEventListener("turbo:load", () => {
-  console.log("Turbo loaded");
-});
-
-window.addEventListener("turbo:load", () => {
+  // Listen for the submit event for class delete-alertbox
   document.addEventListener("submit", (event) => {
     if (event.target && event.target.className === "delete-alertbox") {
       event.preventDefault();
