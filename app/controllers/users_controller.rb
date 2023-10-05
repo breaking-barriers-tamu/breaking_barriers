@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[show]
 
   # GET /users or /users.json
   def index
@@ -7,7 +9,15 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  def show
+  def show 
+    # calc user's hours here
+    # loop through event_logs with user_id, and add up hours
+    # code taken from officer view, this works under assumption that users cannot view other user's data
+    @total_hours = 0
+    @event_logs = EventLog.all.where(user_id: @user.id)
+    @event_logs.each do |event_log|
+      @total_hours += event_log.hours if Event.find(event_log.event_id).date.past?
+    end
   end
 
   # GET /users/new
@@ -16,8 +26,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users or /users.json
   def create
@@ -25,45 +34,23 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to(user_url(@user), notice: 'User was successfully created.') }
+        format.json { render(:show, status: :created, location: @user) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @user.errors, status: :unprocessable_entity) }
       end
-    end
-  end
-
-  # PATCH/PUT /users/1 or /users/1.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /users/1 or /users/1.json
-  def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.require(:user).permit(:access_level, :first_name, :last_name, :major, :year, :phone_number, :email)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:access_level, :first_name, :last_name, :major, :year, :phone_number, :email)
+  end
 end

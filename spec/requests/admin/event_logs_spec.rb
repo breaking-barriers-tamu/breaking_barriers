@@ -1,7 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
+# # frozen_string_literal: true
 
-RSpec.describe "Admin::EventLogs", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
-end
+# require 'rails_helper'
+
+# RSpec.describe('Admin::EventLogs', type: :request) do
+#   describe 'GET /index' do
+#     pending "add some examples (or delete) #{__FILE__}"
+#   end
+# end
