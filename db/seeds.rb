@@ -12,41 +12,41 @@ Event.destroy_all
 EventLog.destroy_all
 
 user1 = User.create!(
-    first_name: 'Admin',
-    last_name: '1',
-    email: 'Member1@tamu.edu',
-    password: 'password',
-    password_confirmation: 'password',
-    access_level: 'admin'
-  )
-  
-  user2 = User.create!(
-    first_name: 'Member',
-    last_name: '1',
-    email: 'Member2@tamu.edu',
-    password: 'password',
-    password_confirmation: 'password',
-    access_level: 'member'
-  )
+  first_name: 'Admin',
+  last_name: '1',
+  email: 'Member1@tamu.edu',
+  password: 'password',
+  password_confirmation: 'password',
+  access_level: 'admin'
+)
 
-  Announcement.create!(
-    user: user1,
-    body: 'This is an announcement from Admin 1.'
-  )
-  
-  Announcement.create!(
-    user: user1,
-    body: 'This is another annocument from Admin 1'
-  )
-  
+user2 = User.create!(
+  first_name: 'Member',
+  last_name: '1',
+  email: 'Member2@tamu.edu',
+  password: 'password',
+  password_confirmation: 'password',
+  access_level: 'member'
+)
 
-  # Assuming you already have user1 and user2 created from before...
+Announcement.create!(
+  user: user1,
+  body: 'This is an announcement from Admin 1.'
+)
+
+Announcement.create!(
+  user: user1,
+  body: 'This is another annocument from Admin 1'
+)
+
+
+# Assuming you already have user1 and user2 created from before...
 
 # Seed a few events
 event1 = Event.create!(
   name: 'General Meeting',
   date: Date.new(2023, 10, 7),
-  time: Time.now + 2.hours,
+  time: Time.now,
   location: 'Zach 450',
   description: 'Doing Nothing',
   duration: 2.5
@@ -55,8 +55,8 @@ event1 = Event.create!(
 event2 = Event.create!(
   name: 'General Meeting 2',
   date: Date.new(2023, 10, 9),
-  time: Time.now + 3.hours,
-  location: 'Zach 50',
+  time: Time.now,
+  location: 'Zach 420',
   description: 'Testing',
   duration: 1.5
 )
