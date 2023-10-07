@@ -53,7 +53,8 @@ describe 'Event CRUD', type: :feature do
   end
 
   # --- Showing Event ---
-  it 'Show an seeded event' do
+  it 'Show a seeded event', :focus do
+
     sign_in(user)
     visit event_path(seeded_event)
 
