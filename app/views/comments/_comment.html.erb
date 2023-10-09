@@ -1,0 +1,13 @@
+<div id="<%= dom_id comment %>">
+  <p>
+    <strong>User:</strong>
+    <%= comment.user.name %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.content %>
+  </p>
+
+  <p>Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+</div>

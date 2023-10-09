@@ -10,3 +10,26 @@
   <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: 'delete-alertbox'%>
   <% end %>
 </div>
+
+<br>
+<div>
+  <h2>Comments</h2>
+  <div id="comments">
+    <%= render @announcement.comments %>
+  </div>
+</div>
+
+<br>
+<div>
+  <h2>Add a Comment</h2>
+  <%= form_with(model: [@announcement, Comment.new]) do |form| %>
+    <div>
+      <%= form.label :content, "Comment:" %>
+      <%= form.rich_text_area :content, id: "comment_content" %>
+    </div>
+
+    <div>
+      <%= form.submit "Add Comment" %>
+    </div>
+  <% end %>
+</div>
