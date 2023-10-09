@@ -40,6 +40,13 @@
     <%= form.label :duration, style: "display: block" %>
     <%= form.number_field :duration, in: 0.0..12.0, step: 0.5 %>
   </div>
+
+  <div>
+    <label>
+      <%= form.check_box :event_enabled, checked: true %> Event Enabled
+    </label>
+  <div>
+
   
   <div>
     <%= form.submit %>

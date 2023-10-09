@@ -71,7 +71,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :date, :time, :location, :duration, :description)
+      params.require(:event).permit(:name, :date, :time, :location, :duration, :description, :event_enabled, :officer_in_charge)
     end
   end
 end
