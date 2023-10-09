@@ -5,4 +5,6 @@ class Event < ApplicationRecord
   has_many :event_logs, dependent: :destroy
 
   validates :name, :location, :date, :time, presence: true
+
+  accepts_nested_attributes_for :event_logs
 end
