@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :events, through: :event_logs
   has_many :event_logs, dependent: :destroy
+  has_many :announcements, dependent: :destroy
 
   enum access_level: { member: 0, admin: 1, officer: 2 }
 
@@ -31,5 +32,9 @@ class User < ApplicationRecord
 
   def registration_completed?
     registration_completed
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end
