@@ -2,7 +2,7 @@
 
 module Admin
   class EventsController < ApplicationController
-    before_action :set_event, only: %i[show edit update destroy]
+    before_action :set_event, :update_event_status, only: %i[show edit update destroy]
 
     # GET /events or /events.json
     def index
@@ -71,7 +71,8 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :date, :time, :location, :duration, :description, :event_enabled, :officer_in_charge)
+      params.require(:event).permit(:name, :location, :duration, :description, :event_enabled, :officer_in_charge, :datetime)
     end
+
   end
 end

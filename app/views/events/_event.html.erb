@@ -11,12 +11,12 @@
 
   <p>
     <strong>Date:</strong>
-     <%= event.date.strftime("%B %d, %Y") %>
+    <%= event.datetime.strftime("%B %d, %Y") %>
   </p>
 
   <p>
-    <strong>Time:</strong>
-    <%= event.time.strftime("%I:%M %p") %>
+    <strong>Time (CST):</strong>
+    <%= event.datetime.strftime("%I:%M %p") %>
   </p>
 
   <p>
@@ -27,5 +27,10 @@
   <p>
     <strong>Duration (hours):</strong>
     <%= event.duration %>
+  </p>
+
+  <p>
+    <strong>Event Active:</strong>
+    <%= event.event_enabled %>
   </p>
 </div>

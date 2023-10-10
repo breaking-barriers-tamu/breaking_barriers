@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show]
+  before_action :set_event, :update_event_status, only: %i[show]
 
   # GET /events or /events.json
   def index
     @events = Event.all
+    for event in @events
+      event.update_attribute(:event_enabled, event.is_active?)
+    end
   end
 
   # GET /events/1 or /events/1.json
@@ -22,4 +25,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :date, :time, :location, :description, :duration)
   end
+
 end
