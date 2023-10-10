@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :announcement do
-    title { "MyString" }
-    body { "MyString" }
-    timestamp { "2023-10-04 03:44:19" }
-    user { nil }
+    association :user
+    title { "My Announcement Title" }
+    body { "My Announcement Body" }
+    timestamp { Time.now.utc }
   end
 end
