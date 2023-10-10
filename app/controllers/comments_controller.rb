@@ -5,6 +5,14 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     
     if @comment.save
+      Turbo::StreamsChannel.broadcast_to(
+        @announcement,
+        turbo_stream.append(
+          "comments",
+          partial: "comments/comment",
+          locals: { comment: @comment }
+        )
+      )
       redirect_to @announcement, notice: 'Comment was successfully created.'
     else
       # Handle validation errors
