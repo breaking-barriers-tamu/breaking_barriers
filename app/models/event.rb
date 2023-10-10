@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   validates :name, :description, :datetime, :duration, presence: true
 
   def is_active?
-    event_enabled && datetime > Time.now.in_time_zone("Central Time (US & Canada)")
+    event_enabled && datetime.future?
   end
   
 

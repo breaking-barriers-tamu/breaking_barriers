@@ -1,6 +1,6 @@
 <%= render @event %>
 
-<% if @event.event_enabled %>
+<% if @event.is_active? %>
   <% if EventLog.where(user: current_user, event: @event).any?%>
     <div>
       <%= link_to "Remove me from this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>

@@ -35,6 +35,21 @@ describe 'Event CRUD', type: :feature do
     expect(page).to(have_content("Name can't be blank"))
   end
 
+  # it 'Create an event - Rainy - Past Datetime' do
+  #   sign_in(user)
+  #   visit new_admin_event_path
+
+  #   fill_in 'event[name]', with: 'New Event'
+  #   fill_in 'event[description]', with: 'New Event Description'
+  #   fill_in 'event[datetime]', with: '2020-12-31 04:35 PM'
+  #   fill_in 'event[location]', with: 'New Location'
+  #   fill_in 'event[duration]', with: 1.0
+
+  #   click_on 'Create Event'
+  #   string = "Value must be #{Time.zone.now.strftime("%B %d, %Y %I:%M %p")} or greater"
+  #   expect(page).to(have_content(string))
+  # end
+
   # --- Showing Event ---
   it 'Show an event' do
     sign_in(user)

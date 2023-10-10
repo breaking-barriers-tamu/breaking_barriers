@@ -5,13 +5,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def update_event_status
-    @events = Event.all
-    for event in @events
-      event.update_attribute(:event_enabled, event.is_active?)
-    end
-  end
-
   def check_registration_completion
     if user_signed_in? && !current_user.registration_completed?
       sign_out(current_user)

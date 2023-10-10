@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label "Date & Time", style: "display: block" %>
-    <%= form.datetime_field :datetime %>
+    <%= form.datetime_field :datetime, min: Time.zone.now.strftime("%B %d, %Y %I:%M %p") %>
   </div>
 
   <div>
@@ -38,7 +38,7 @@
 
   <div>
     <%= form.label "Event Enabled" %>
-    <%= form.check_box :event_enabled, checked: false %>
+    <%= form.check_box :event_enabled, checked: event.event_enabled %>
   <div>
 
   <div>
