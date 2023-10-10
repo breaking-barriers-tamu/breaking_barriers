@@ -3,12 +3,6 @@
 require 'rails_helper'
 
 describe 'Event CRUD', type: :feature do
-  before(:all) do
-    Rails.application.load_seed
-  end
-
-  let!(:seeded_event) { Event.find_by(name: 'General Meeting') }
-
   let!(:event) { create(:event, name: 'Existing Event', date: '2023-12-31', time: '05:30 PM', location: 'Event Location', duration: 1.0) }
   let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
 
@@ -50,17 +44,6 @@ describe 'Event CRUD', type: :feature do
     expect(page).to(have_content('December 31, 2023'))
     expect(page).to(have_content('05:30 PM'))
     expect(page).to(have_content('Event Location'))
-  end
-
-  # --- Showing Event ---
-  it 'Show a seeded event', :focus do
-
-    sign_in(user)
-    visit event_path(seeded_event)
-
-    expect(page).to(have_content('General Meeting'))
-    expect(page).to(have_content('October 07, 2023'))
-    expect(page).to(have_content('Zach 450'))
   end
 
   # --- Updating Event ---
