@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     else
       # Handle validation errors
       # You can render the same 'show' template with errors if needed
-      redirect_to @announcement, alert: 'Comment could not be saved.'
+      redirect_to @announcement, alert: 'Cannot add empty comment.'
     end
   end
     
