@@ -13,7 +13,6 @@ module Admin
     def show
       @event = Event.find(params[:id])
       @event_logs = EventLog.where(event_id: @event.id)
-      @event_log = EventLog.find_by(user_id: current_user.id, event_id: @event.id)
     end
 
     # GET /events/new
@@ -62,6 +61,15 @@ module Admin
       end
     end
 
+    def update_participation
+      params[:event][:event_logs_attributes].each do |attrs|
+        puts attrs.second
+        puts attrs.second
+        puts attrs.second
+        EventLog.find(attrs.second[:id]).update(:participating => attrs.second[:participating])
+      end
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -71,7 +79,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :date, :time, :location, :duration, :description)
+      params.require(:event).permit(:name, :date, :time, :location, :duration, :description, event_logs_attributes: [:id, :participating])
     end
   end
 end
