@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
   # Announcements and Comments
   resources :announcements do
-    resources :comments, only: [:create]
+    resources :comments
   end
 
 end

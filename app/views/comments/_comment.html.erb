@@ -10,4 +10,8 @@
   </p>
 
   <p>Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+
+  <% if current_user == comment.user %>
+    <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox' %>
+  <% end %>
 </div>
