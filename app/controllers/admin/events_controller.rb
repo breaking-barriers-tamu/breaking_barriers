@@ -12,7 +12,6 @@ module Admin
     # GET /events/1 or /events/1.json
     def show
       @event = Event.find(params[:id])
-      @event.update_attribute(:event_enabled, @event.is_active?)
       @event_logs = EventLog.where(event_id: @event.id)
       @event_log = EventLog.find_by(user_id: current_user.id, event_id: @event.id)
     end
