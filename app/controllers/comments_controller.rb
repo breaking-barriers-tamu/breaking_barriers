@@ -2,6 +2,12 @@ class CommentsController < ApplicationController
   before_action :set_announcement
   before_action :set_comment, only: [:destroy]
 
+  # SHOW
+  def show
+    @announcement = Announcement.find(params[:announcement_id])
+    @comments = @announcement.comments.order(created_at: :desc)
+  end
+
   # CREATE
   def create
     @announcement = Announcement.find(params[:announcement_id])
@@ -30,6 +36,27 @@ class CommentsController < ApplicationController
       end
     else
       redirect_to announcement, alert: "You are not authorized to delete this comment."
+    end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
+  
+  def update
+    @comment = Comment.find(params[:id])
+  
+    if @comment.update(comment_params)
+      respond_to do |format|
+        format.html { redirect_to @announcement, notice: 'Comment was successfully updated.' }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@comment) }
+      end
+    else
+      render 'edit'
     end
   end
 

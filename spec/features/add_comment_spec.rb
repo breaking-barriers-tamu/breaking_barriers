@@ -25,7 +25,7 @@ describe 'Comment Feature', type: :feature do
 
     click_button 'Add Comment'
 
-    expect(page).to have_content('Comment could not be saved. Cannot add empty comment.')
-    expect(page).not_to have_css('.comment') # Assuming comment elements have a class "comment"
+    expect(page).to have_content('Invalid Comment. Cannot add empty comment')
+    expect(page).not_to have_content('This is a valid comment.')
   end
 end

@@ -1,4 +1,5 @@
 <div id="<%= dom_id comment %>">
+  <br>
   <p>
     <strong>User:</strong>
     <%= comment.user.name %>
@@ -11,7 +12,14 @@
 
   <p>Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
 
+  <% if comment.updated_at != comment.created_at %>
+    <p>(edited) Updated on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+  <% end %>
+
   <% if current_user == comment.user %>
+    <%= turbo_frame_tag dom_id(comment, :edit) do %>
+      <%= link_to "Edit Comment", edit_announcement_comment_path(@announcement, comment) %>
+    <% end %>
     <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox' %>
   <% end %>
 </div>

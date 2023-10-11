@@ -2,6 +2,7 @@ window.addEventListener("turbo:load", () => {
   // Listen for the submit event for class delete-alertbox
   document.addEventListener("submit", (event) => {
     if (event.target && event.target.className === "delete-alertbox") {
+      console.log("Deletion Box Shown");
       event.preventDefault();
       Swal.fire({
         title: "Are you sure?",
@@ -14,6 +15,7 @@ window.addEventListener("turbo:load", () => {
       })
         .then((result) => {
           if (result.isConfirmed) {
+            console.log("manually confirmed");
             event.target.submit();
           }
         })

@@ -20,6 +20,11 @@
 </div>
 
 <br>
+<% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
+  <%= turbo_frame_tag 'error-message' do %>
+    <%= render 'comments/error_message' %>
+  <% end %>
+<% end %>
 <div>
   <h2>Add a Comment</h2>
   <%= form_with(model: [@announcement, Comment.new]) do |form| %>
