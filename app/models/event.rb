@@ -3,8 +3,13 @@
 class Event < ApplicationRecord
   has_many :users, through: :event_logs
   has_many :event_logs, dependent: :destroy
-
-  validates :name, :location, :date, :time, presence: true
-
+  
   accepts_nested_attributes_for :event_logs
+
+  validates :name, :description, :datetime, :duration, presence: true
+
+  def is_active?
+    event_enabled && datetime.future?
+  end
+  
 end

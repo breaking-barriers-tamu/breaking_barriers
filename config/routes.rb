@@ -13,16 +13,16 @@ Rails.application.routes.draw do
     end
   end
   # Officer
-  authenticated :user, ->(user) { user.can_access_officer_dashboard? } do
-    namespace :officer do
-      resources :events
-      resources :users
-      root to: 'officer#index'
-      resources :event_logs do
-        patch 'update_participation', on: :member
-      end
-    end
-  end
+  # authenticated :user, ->(user) { user.can_access_officer_dashboard? } do
+  #   namespace :officer do
+  #     resources :events
+  #     resources :users
+  #     root to: 'officer#index'
+  #     resources :event_logs do
+  #       patch 'update_participation', on: :member
+  #     end
+  #   end
+  # end
 
   # Static Pages
   root 'pages#home'
