@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   # Admin
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
-      resources :events
-      resources :users
-
-      resources :event_logs do
+      resources :events do
         patch 'update_participation', on: :member
       end
+      resources :users
+
+      resources :event_logs
 
       root to: 'admin#index'
     end
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:show]
 
   # Events
   resources :events, only: [:index, :show]

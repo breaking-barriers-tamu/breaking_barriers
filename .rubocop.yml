@@ -105,7 +105,7 @@ Layout/LineEndStringConcatenationIndentation: # (new in 1.18)
     Enabled: true
 
 Layout/LineLength:
-    Max: 150
+    Max: 100
     Exclude:
         - "**/spec/**/*"
 
@@ -264,6 +264,8 @@ Metrics/BlockLength:
         - "**/*.rake"
         - "**/factories/**/*"
         - "**/config/routes.rb"
+        - config/**/*
+        - spec/**/*
 
 Metrics/ClassLength:
     CountAsOne: ["array", "hash"]
@@ -298,6 +300,10 @@ Naming/ConstantName:
 
 Naming/InclusiveLanguage: # (new in 1.18)
   Enabled: true
+
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case #default
 
 Naming/PredicateName:
   Enabled: true
