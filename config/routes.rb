@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:show]
 
   # Events
   resources :events, only: [:index, :show]
