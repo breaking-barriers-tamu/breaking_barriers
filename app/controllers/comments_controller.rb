@@ -4,8 +4,6 @@ class CommentsController < ApplicationController
 
   # SHOW
   def show
-    @announcement = Announcement.find(params[:announcement_id])
-    @comments = @announcement.comments.order(created_at: :desc)
   end
 
   # CREATE
@@ -24,20 +22,28 @@ class CommentsController < ApplicationController
   end
 
   # DESTROY
-  def destroy
-    @comment = Comment.find(params[:id])
-    announcement = @comment.announcement
-  
-    if @comment.user == current_user
+def destroy
+  @comment = Comment.find(params[:id])
+  announcement = @comment.announcement
+
+  if @comment.user == current_user
+    if current_user.member?
+      @comment.update(archived: true)
+      respond_to do |format|
+        format.html { redirect_to announcement, notice: "Comment was successfully archived." }
+        format.json { head :no_content }
+      end
+    else
       @comment.destroy
       respond_to do |format|
         format.html { redirect_to announcement, notice: "Comment was successfully deleted." }
         format.json { head :no_content }
       end
-    else
-      redirect_to announcement, alert: "You are not authorized to delete this comment."
     end
+  else
+    redirect_to announcement, alert: "You are not authorized to delete this comment."
   end
+end
 
   def edit
     @comment = Comment.find(params[:id])
@@ -71,6 +77,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :archived)
   end
 end
