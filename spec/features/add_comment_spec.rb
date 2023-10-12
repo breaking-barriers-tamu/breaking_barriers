@@ -10,7 +10,7 @@ describe 'Comment Feature', type: :feature do
     visit announcement_path(announcement)
     comment_content = 'This is a valid comment.'
 
-    fill_in 'comment_content', with: comment_content
+    fill_in 'comment_box', with: comment_content
     click_button 'Add Comment'
 
     expect(page).to have_content('Comment was successfully created.')

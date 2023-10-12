@@ -29,7 +29,7 @@
   <h2>Add a Comment</h2>
   <%= form_with(model: [@announcement, Comment.new]) do |form| %>
     <div>
-      <%= form.text_area :content, id: "comment_content" %>
+      <%= form.text_area :content, id: "comment_box" %>
     </div>
 
     <div>
