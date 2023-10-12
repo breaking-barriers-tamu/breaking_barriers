@@ -36,8 +36,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', 
     registrations: 'users/registrations'
   }
-
-  resources :users, only: [:show]
+  authenticated :user, ->(user) { true } do
+    resources :users, only: [:show]
+  end
 
   # Events
   resources :events, only: [:index, :show]
