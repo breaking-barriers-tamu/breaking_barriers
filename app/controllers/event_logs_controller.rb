@@ -41,6 +41,6 @@ class EventLogsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_log_params
-    params.permit(:event_log, :hourlog_id, :user_id, :event_id, :hours, :participating)
+    params.permit(:event_log, :id, :hourlog_id, :user_id, :event_id, :hours, :participating)
   end
 end

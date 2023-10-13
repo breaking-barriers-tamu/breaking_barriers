@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @total_hours = 0
     @event_logs = EventLog.all.where(user_id: @user.id)
     @event_logs.each do |event_log|
-      @total_hours += event_log.hours if Event.find(event_log.event_id).date.past?
+      @total_hours += event_log.hours if Event.find(event_log.event_id).datetime.past?
     end
   end
 
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = @current_user # users should not be able to do anything with other users
   end
 
   def user_params
