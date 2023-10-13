@@ -9,15 +9,16 @@ class EventLogsController < ApplicationController
   # GET /event_logs/new
   def new
     @event_log = EventLog.new(event_log_params)
+    if Event.where(id: @event_log.event_id).blank? 
+      redirect_to(events_path, notice: 'Please try again later.') and return
+    end
+    @event_log.user_id = current_user.id
+    @event_log.hours = 
 
-    respond_to do |format|
-      if @event_log.save
-        format.html { redirect_to(event_url(@event_log.event), notice: 'You are signed up for this event!') }
-        format.json { render(:show, status: :created, location: @event_log) }
-      else
-        format.html { render(:new, status: :unprocessable_entity) }
-        format.json { render(json: @event_log.errors, status: :unprocessable_entity) }
-      end
+    if EventLog.where(user_id: current_user, event_id: @event_log.event_id).blank? && @event_log.save
+      redirect_to(event_path(@event_log.event_id), notice: 'You are signed up for this event!')
+    else
+      redirect_to(events_path, notice: 'Please try again later.')
     end
   end
 
