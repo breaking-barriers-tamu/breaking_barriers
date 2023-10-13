@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'delete_confirmation_dialog' %>
+
 <% unless comment.archived && !current_user.admin? %>
   <div id="<%= dom_id comment %>">
     <br>
