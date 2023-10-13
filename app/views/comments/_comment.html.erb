@@ -27,6 +27,8 @@
       <%= turbo_frame_tag dom_id(comment, :edit) do %>
         <%= link_to "Edit Comment", edit_announcement_comment_path(@announcement, comment) %>
       <% end %>
+    <% end %>
+    <% if current_user == comment.user || current_user.admin?%>
       <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox' %>
     <% end %>
   </div>

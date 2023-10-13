@@ -26,7 +26,7 @@ def destroy
   @comment = Comment.find(params[:id])
   announcement = @comment.announcement
 
-  if @comment.user == current_user
+  if @comment.user == current_user || current_user.admin?
     if current_user.member?
       @comment.update(archived: true)
       respond_to do |format|
