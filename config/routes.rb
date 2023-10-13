@@ -38,15 +38,14 @@ Rails.application.routes.draw do
   }
   authenticated :user, ->(user) { true } do
     resources :users, only: [:show]
+  end
 
-    # Events
-    resources :events, only: [:index, :show]
-
-    resources :event_logs, only: [:new] do 
-      member do
-        get :delete
-      end
-    end
+  # Events
+  resources :events, only: [:index, :show]
+  resources :event_logs do 
+    member do
+      get :delete
+   end
   end
 
   resources :announcements
