@@ -10,10 +10,10 @@ class EventLogsController < ApplicationController
   def new
     @event_log = EventLog.new(event_log_params)
     if Event.where(id: @event_log.event_id).blank? 
-      redirect_to(events_path, notice: 'Please try again later.') and return
+      redirect_to(events_path, notice: 'You are already signed up for this event.') and return
     end
     @event_log.user_id = current_user.id
-    @event_log.hours = 
+    @event_log.hours = @event_log.event.duration
 
     if EventLog.where(user_id: current_user, event_id: @event_log.event_id).blank? && @event_log.save
       redirect_to(event_path(@event_log.event_id), notice: 'You are signed up for this event!')
@@ -26,10 +26,13 @@ class EventLogsController < ApplicationController
 
   def delete
     @event_log.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to(event_url(@event_log.event), notice: 'Successfully removed you from this event.') }
-      format.json { head(:no_content) }
+    if @event_log.user_id != current_user.id
+      redirect_to(events_path, notice: 'Please try again later.')
+    else
+      respond_to do |format|
+        format.html { redirect_to(event_url(@event_log.event), notice: 'Successfully removed you from this event.') }
+        format.json { head(:no_content) }
+      end
     end
   end
 
