@@ -63,11 +63,16 @@ module Admin
 
     def update_participation
       params[:event][:event_logs_attributes].each do |attrs|
-        puts attrs.second
-        puts attrs.second
-        puts attrs.second
-        EventLog.find(attrs.second[:id]).update(:participating => attrs.second[:participating])
+        event_log = EventLog.find(attrs.second[:id])
+        
+        if (event_log.participating == false and attrs.second[:participating] = "1") then 
+          event_log.update(:participating => attrs.second[:participating])
+          EventConfirmationMailer.with(user: event_log.user, event: event_log.event).confirmation_email.deliver_later
+        else 
+          event_log.update(:participating => attrs.second[:participating])
+        end
       end
+
     end
 
     private
