@@ -9,6 +9,11 @@
     <%= announcement.body %>
   </p>
 
+  <p>
+    <strong>Created by:</strong>
+    <%= announcement.user.name %>
+  </p>
+
   <% if announcement.body.updated_at > announcement.body.created_at %>
     <p>(edited)Last updated: <%= announcement.body.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
   <% else %>

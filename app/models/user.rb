@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :announcements, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  enum access_level: { member: 0, admin: 1, officer: 2 }
+  enum access_level: { member: 0, admin: 1}
 
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
@@ -25,10 +25,6 @@ class User < ApplicationRecord
 
   def can_access_admin_dashboard?
     admin?
-  end
-
-  def can_access_officer_dashboard?
-    admin? || officer?
   end
 
   def registration_completed?

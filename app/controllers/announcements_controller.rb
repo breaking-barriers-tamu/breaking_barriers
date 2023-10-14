@@ -1,5 +1,7 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! 
+  before_action :ensure_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     # Reverse order so that most recent announcements are first
@@ -67,6 +69,13 @@ class AnnouncementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def announcement_params
-      params.require(:announcement).permit(:title, :body, :timestamp, :user_id)
+      params.require(:announcement).permit(:title, :body)
+    end
+
+    def ensure_admin
+      unless current_user && current_user.admin?
+        flash[:alert] = "You are not authorized to perform this action."
+        redirect_to root_path
+      end
     end
 end
