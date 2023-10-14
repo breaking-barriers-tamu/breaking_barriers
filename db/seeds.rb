@@ -31,11 +31,13 @@ user2 = User.create!(
 
 Announcement.create!(
   user: user1,
+  title: 'Announcement 1',
   body: 'This is an announcement from Admin 1.'
 )
 
 Announcement.create!(
   user: user1,
+  title: 'Announcement 2',
   body: 'This is another annocument from Admin 1'
 )
 
@@ -45,8 +47,7 @@ Announcement.create!(
 # Seed a few events
 event1 = Event.create!(
   name: 'General Meeting',
-  date: Date.new(2023, 10, 7),
-  time: Time.now,
+  datetime: DateTime.new(2023, 10, 7, Time.now.hour, Time.now.min, Time.now.sec),
   location: 'Zach 450',
   description: 'Doing Nothing',
   duration: 2.5
@@ -54,8 +55,7 @@ event1 = Event.create!(
 
 event2 = Event.create!(
   name: 'General Meeting 2',
-  date: Date.new(2023, 10, 9),
-  time: Time.now,
+  datetime: DateTime.new(2023, 10, 7, Time.now.hour, Time.now.min, Time.now.sec),
   location: 'Zach 420',
   description: 'Testing',
   duration: 1.5
