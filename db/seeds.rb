@@ -32,13 +32,15 @@ user2 = User.create!(
 Announcement.create!(
   user: user1,
   title: 'Announcement 1',
-  body: 'This is an announcement from Admin 1.'
+  body: 'This is an announcement from Admin 1.',
+  timestamp: DateTime.new(2023, 10, 7, Time.now.hour, Time.now.min, Time.now.sec)
 )
 
 Announcement.create!(
   user: user1,
   title: 'Announcement 2',
-  body: 'This is another annocument from Admin 1'
+  body: 'This is another annocument from Admin 1',
+  timestamp: DateTime.new(2023, 10, 8, Time.now.hour, Time.now.min, Time.now.sec)
 )
 
 
