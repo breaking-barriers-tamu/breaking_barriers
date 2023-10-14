@@ -2,7 +2,9 @@
 
 class Admin::EventLogsController < ApplicationController
 
-
+  def index
+    @event_logs = EventLog.all
+  end
   private
 
   # Only allow a list of trusted parameters through.
