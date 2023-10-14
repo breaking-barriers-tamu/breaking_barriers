@@ -9,6 +9,13 @@ class AnnouncementsController < ApplicationController
   end
   
   def show
+    @announcement = Announcement.find(params[:id])
+    @comments = @announcement.comments
+
+    # Check if the current user is a member, and if so, filter out archived comments
+    if current_user.member?
+      @comments = @comments.where(archived: false)
+    end
   end
 
   def new
