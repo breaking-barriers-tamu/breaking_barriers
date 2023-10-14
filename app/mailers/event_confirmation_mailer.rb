@@ -5,6 +5,6 @@ class EventConfirmationMailer < ApplicationMailer
     def confirmation_email
         @user = params[:user]
         @event = params[:event]
-        mail(to: @user.email, subject: "[Breaking Bariers] Your sign up for #{@event.name} has been approved!")
+        mail(to: @user.email, subject: "[Breaking Barriers] Your sign up for #{@event.name} has been approved!")
     end
 end
