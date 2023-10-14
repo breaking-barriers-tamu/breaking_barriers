@@ -5,10 +5,11 @@ Rails.application.routes.draw do
       resources :events do
         patch 'update_participation', on: :member
       end
-      resources :users
+      resources :users do
+        get 'export_participation_data', on: :collection
+      end
 
       resources :event_logs
-
       root to: 'admin#index'
     end
   end

@@ -1,0 +1,5 @@
+<%- headers = ['First Name', 'Last Name', 'Email', 'Total Volunteer Hours'] -%>
+<%= CSV.generate_line headers %>
+<%- @user_hours.each do |pair| -%>
+  <%= CSV.generate_line([pair.first.first_name, pair.first.last_name, pair.first.email, pair.second]) -%>
+<%- end -%>
