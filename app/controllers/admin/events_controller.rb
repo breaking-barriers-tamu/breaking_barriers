@@ -61,7 +61,10 @@ module Admin
       end
     end
 
+    # NEEDS FIXING
+    # Scenario: Clicking the "Confirm Changes" button when there are no participants
     def update_participation
+      # if params[:event]
       params[:event][:event_logs_attributes].each do |attrs|
         puts attrs.second
         puts attrs.second

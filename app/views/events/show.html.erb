@@ -1,5 +1,11 @@
 <%= render @event %>
-
+<strong>Officer In Charge: </strong>
+    <% if @event.officer %>
+      <%= link_to @event.officer.name, user_path(@event.officer) %>
+    <% else %>
+      None
+    <% end %>
+  <br>
 
 <% if @event.is_active? %>
   <% if EventLog.where(user: current_user, event: @event).any?%>
