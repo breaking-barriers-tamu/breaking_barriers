@@ -11,6 +11,6 @@
   <% end %>
 </div>
 
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
     <%= link_to "Post announcement", new_announcement_path %>
 <% end %>

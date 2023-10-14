@@ -5,7 +5,7 @@
 <div>
   <div> <%= @announcement.user.name %></div>
   <%= link_to "Back to announcements", announcements_path %>
-  <% if current_user.admin? %>
+  <% if current_user && current_user.admin? %>
      <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %>
   <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: 'delete-alertbox'%>
   <% end %>
