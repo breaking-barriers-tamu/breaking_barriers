@@ -35,6 +35,15 @@
   </p>
 
   <p>
+    <strong>Officer In Charge:</strong>
+    <% if event.officer %>
+      <%= event.officer.name %>
+    <% else %>
+        None
+    <% end %>
+  </p>
+
+  <p>
     <strong>Participants:</strong>
     <% event_logs = EventLog.where(event_id: event.id) %>
     <%= event_logs.length %>
