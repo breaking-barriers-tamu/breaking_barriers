@@ -6,7 +6,9 @@
             <%= link_to "Breaking Barriers", root_path%>
         </div>
         <ul class="nav-items">
+            <% if user_signed_in? %>
             <li><%= link_to "Events", events_path %></li>
+            <% end %>
             <li><%= link_to "Annoucements", announcements_path %></li>
 
             <li><%= link_to "About", about_path %></li>
