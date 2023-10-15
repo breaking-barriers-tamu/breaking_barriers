@@ -64,7 +64,7 @@ module Admin
     # NEEDS FIXING
     # Scenario: Clicking the "Confirm Changes" button when there are no participants
     def update_participation
-      params[:event_logs_attributes]&.each do |attrs|
+      params[:event][:event_logs_attributes]&.each do |attrs|
         event_log = EventLog.find(attrs.second[:id])
         if (event_log.participating == false and attrs.second[:participating] = "1") then 
           event_log.update(:participating => attrs.second[:participating])
