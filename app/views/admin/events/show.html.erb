@@ -2,7 +2,7 @@
 
 <%= render 'admin/events/event', event: @event %>
 
-    <%= form_for @event, url: update_participation_admin_event_path(@event) do |f| %>
+    <%= form_for @event, url: update_participation_admin_events_path(@event) do |f| %>
       <h2>Participants</h2>
       <ul>
         <% @event_logs.each do |event_log|%>
