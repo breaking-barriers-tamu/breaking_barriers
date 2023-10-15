@@ -1,3 +1,6 @@
+<%= javascript_include_tag 'delete_confirmation_dialog' %>
+
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @announcement %>
@@ -8,5 +11,32 @@
   <% if current_user && current_user.admin? %>
      <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %>
   <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: 'delete-alertbox'%>
+  <% end %>
+</div>
+
+<br>
+<div>
+  <h2>Comments</h2>
+  <div id="comments">
+    <%= render @announcement.comments %>
+  </div>
+</div>
+
+<br>
+<% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
+  <%= turbo_frame_tag 'error-message' do %>
+    <%= render 'comments/error_message' %>
+  <% end %>
+<% end %>
+<div>
+  <h2>Add a Comment</h2>
+  <%= form_with(model: [@announcement, Comment.new]) do |form| %>
+    <div>
+      <%= form.text_area :content, id: "comment_box" %>
+    </div>
+
+    <div>
+      <%= form.submit "Add Comment" %>
+    </div>
   <% end %>
 </div>

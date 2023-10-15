@@ -61,6 +61,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_055156) do
     t.index ["user_id"], name: "index_announcements_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "announcement_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "archived", default: false
+    t.index ["announcement_id"], name: "index_comments_on_announcement_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "event_logs", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
@@ -103,4 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_055156) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "announcements", "users"
+  add_foreign_key "comments", "announcements"
+  add_foreign_key "comments", "users"
 end
