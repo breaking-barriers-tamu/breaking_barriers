@@ -7,12 +7,20 @@ test:
   root: <%= Rails.root.join("tmp/storage") %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
+# Run EDITOR=vim rails credentials:edit to edit the encrypted credentials file
+# amazon:
+#   service: S3
+#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+#   region: us-east-1
+#   bucket: <%= Rails.application.credentials.dig(:aws, :s3_bucket) %>
+
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: us-east-1
-  bucket: csce431bucket
+  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  region: us-east-2
+  bucket: <%= ENV['S3_BUCKET'] %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

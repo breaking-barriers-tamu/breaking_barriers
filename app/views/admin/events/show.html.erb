@@ -3,6 +3,8 @@
 <% if @event.avatar.attached? %>
     <%= image_tag @event.avatar.variant(resize_to_limit: [500,500]) %>
     <%= button_to "Delete Flier Attachment", purge_avatar_admin_event_path(@event), method: :delete %>
+<% else %>
+    <%= "No Flier To Display" %>
 <% end %>
 
 <%= render 'admin/events/event', event: @event %>
