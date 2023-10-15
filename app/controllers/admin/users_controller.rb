@@ -13,23 +13,16 @@ module Admin
 
     # GET /users/1 or /users/1.json
     def show
-      @total_hours = 0
-      @event_logs = EventLog.all.where(user_id: @user.id)
-      @event_logs.each do |event_log|
-        @total_hours += event_log.hours if Event.find(event_log.event_id).datetime.past?
-      end
+      @total_hours = total_hours_for_user(@user)
     end
 
     def export_participation_data
       @user_hours = {}
+
       User.all.each do |user|
-        total_hours = 0
-        event_logs = EventLog.all.where(user_id: user.id)
-        event_logs.each do |event_log|
-          total_hours += event_log.hours if Event.find(event_log.event_id).datetime.past?
-        end
-        @user_hours[user] = total_hours
+        @user_hours[user] = total_hours_for_user(user)
       end
+
       respond_to do |format|
         format.csv do
           response.headers['Content-Type'] = 'text/csv'
@@ -40,6 +33,15 @@ module Admin
     end
 
     private
+
+    def total_hours_for_user(user)
+      total_hours = 0
+      event_logs = EventLog.all.where(user_id: user.id)
+      event_logs.each do |event_log|
+        total_hours += event_log.hours if (Event.find(event_log.event_id).datetime.past? and event_log.participating)
+      end
+      return total_hours
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_user
