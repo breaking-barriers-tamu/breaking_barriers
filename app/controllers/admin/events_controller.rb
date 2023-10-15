@@ -62,7 +62,7 @@ module Admin
     end
 
     def update_participation
-      params[:event][:event_logs_attributes].each do |attrs|
+      params[:event_logs_attributes]&.each do |attrs|
         puts attrs.second
         puts attrs.second
         puts attrs.second
