@@ -4,15 +4,18 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :events do
         patch 'update_participation', on: :member
+        
         member do
           delete :purge_avatar
         end
-
+        
+        patch 'update_participation', on: :collection
       end
-      resources :users
+      resources :users do
+        get 'export_participation_data', on: :collection
+      end
 
       resources :event_logs
-
       root to: 'admin#index'
     end
   end
@@ -42,14 +45,13 @@ Rails.application.routes.draw do
   }
   authenticated :user, ->(user) { true } do
     resources :users, only: [:show]
-  end
-
-  # Events
-  resources :events, only: [:index, :show]
-  resources :event_logs do 
-    member do
-      get :delete
-   end
+    # Events
+    resources :events, only: [:index, :show]
+    resources :event_logs do 
+      member do
+        get :delete
+      end
+    end
   end
 
   # Announcements and Comments
