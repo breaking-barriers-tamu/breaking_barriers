@@ -73,6 +73,14 @@ module Admin
       end
     end
 
+    def purge_avatar
+      @event = Event.find(params[:id])
+      if @event.avatar.attached?
+        @event.avatar.purge
+        redirect_to @event, notice: 'Flier was successfully deleted.'
+      end
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.

@@ -1,5 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
+<% if @event.avatar.attached? %>
+    <%= image_tag @event.avatar.variant(resize_to_limit: [500,500]) %>
+    <%= button_to "Delete Flier Attachment", purge_avatar_admin_event_path(@event), method: :delete %>
+<% end %>
+
 <%= render 'admin/events/event', event: @event %>
 
     <%= form_for @event, url: update_participation_admin_event_path(@event) do |f| %>

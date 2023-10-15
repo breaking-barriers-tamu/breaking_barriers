@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :events do
         patch 'update_participation', on: :member
+        member do
+          delete :purge_avatar
+        end
+
       end
       resources :users
 
