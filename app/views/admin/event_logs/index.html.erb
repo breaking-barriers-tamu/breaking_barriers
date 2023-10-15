@@ -5,10 +5,7 @@
 <div id="event_logs">
   <% @event_logs.each do |event_log| %>
     <%= render event_log %>
-    <p>
-      <%= link_to "Show this event log", event_log %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New event log", new_event_log_path %>
+<%= link_to 'Back to Admin Dashboard', admin_root_path %>
