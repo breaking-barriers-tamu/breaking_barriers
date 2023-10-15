@@ -5,6 +5,7 @@
         <% if @current_user %>
             <p>Logged in as: <%= @current_user.email %></p>
             <%= link_to 'Edit Profile', edit_user_registration_path %>
+            <%= link_to 'View Profile', user_path(id:1) %>
         <% end %>
 
         <div style="height: 500px">
