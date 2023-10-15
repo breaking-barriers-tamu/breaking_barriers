@@ -1,0 +1,35 @@
+<%= javascript_include_tag 'delete_confirmation_dialog' %>
+
+<% unless comment.archived && !current_user.admin? %>
+  <div id="<%= dom_id comment %>">
+    <br>
+    <p>
+      <strong>User:</strong>
+      <%= comment.user.name %>
+    </p>
+
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.content %>
+    </p>
+
+    <p>Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+
+    <% if comment.updated_at != comment.created_at && comment.saved_change_to_content? %>
+      <p>(edited) Updated on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+    <% end %>
+
+    <% if comment.updated_at != comment.created_at && comment.archived? %>
+      <p>(Archive) Deleted by Author on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+    <% end %>
+
+    <% if current_user == comment.user %>
+      <%= turbo_frame_tag dom_id(comment, :edit) do %>
+        <%= link_to "Edit Comment", edit_announcement_comment_path(@announcement, comment) %>
+      <% end %>
+    <% end %>
+    <% if current_user == comment.user || current_user.admin?%>
+      <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox' %>
+    <% end %>
+  </div>
+<% end %>
