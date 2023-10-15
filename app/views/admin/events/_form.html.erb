@@ -37,9 +37,14 @@
   </div>
 
   <div>
-    <%= form.label "Event Enabled" %>
+    <%= form.label "Enable Event  " %>
     <%= form.check_box :event_enabled, checked: event.event_enabled %>
+  </div>
+
   <div>
+    <%= form.label "Officer in Charge:" %>
+    <%= form.collection_select(:officer_in_charge, User.where(access_level: 1), :id, :name, include_blank: true) %>
+  </div>
 
   <div>
     <%= form.submit %>

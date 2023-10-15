@@ -1,17 +1,13 @@
 <div id="<%= dom_id event_log %>">
-  <p>
-    <strong>Hourlog:</strong>
-    <%= event_log.hourlog_id %>
-  </p>
-
+  
   <p>
     <strong>User:</strong>
-    <%= event_log.user_id %>
+    <%= event_log.user.name %>
   </p>
 
   <p>
     <strong>Event:</strong>
-    <%= event_log.event_id %>
+    <%= event_log.event.name %>
   </p>
 
   <p>
@@ -19,4 +15,8 @@
     <%= event_log.hours %>
   </p>
 
+  <p>
+    <strong>Participation Confirmed:</strong>
+    <%= event_log.participating %>
+  </p>
 </div>
