@@ -11,12 +11,12 @@
 
   <p>
     <strong>Date:</strong>
-     <%= event.date.strftime("%B %d, %Y") %>
+    <%= event.datetime.strftime("%B %d, %Y") %>
   </p>
 
   <p>
-    <strong>Time:</strong>
-    <%= event.time.strftime("%I:%M %p") %>
+    <strong>Time (CST):</strong>
+    <%= event.datetime.strftime("%I:%M %p") %>
   </p>
 
   <p>
@@ -30,8 +30,23 @@
   </p>
 
   <p>
+    <strong>Event Active:</strong>
+    <%= event.is_active? %>
+  </p>
+
+  <p>
+    <strong>Officer In Charge:</strong>
+    <% if event.officer %>
+      <%= event.officer.name %>
+    <% else %>
+        None
+    <% end %>
+  </p>
+
+  <p>
     <strong>Participants:</strong>
     <% event_logs = EventLog.where(event_id: event.id) %>
     <%= event_logs.length %>
   </p>
+
 </div>

@@ -1,31 +1,35 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Name:</strong>
-    <%= event.name %>
-  </p>
+<div id="<%= dom_id event %>" style = "display: flex; gap: 40px">
+  <div>
+    <p>
+      <strong>Name:</strong>
+      <%= event.name %>
+    </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
+    <p>
+      <strong>Description:</strong>
+      <%= event.description %>
+    </p>
 
-  <p>
-    <strong>Date:</strong>
-     <%= event.date.strftime("%B %d, %Y") %>
-  </p>
+    <p>
+      <strong>Date:</strong>
+      <%= event.datetime.strftime("%B %d, %Y") %>
+    </p>
 
-  <p>
-    <strong>Time:</strong>
-    <%= event.time.strftime("%I:%M %p") %>
-  </p>
+    <p>
+      <strong>Time (CST):</strong>
+      <%= event.datetime.strftime("%I:%M %p") %>
+    </p>
 
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
+    <p>
+      <strong>Location:</strong>
+      <%= event.location %>
+    </p>
 
-  <p>
-    <strong>Duration (hours):</strong>
-    <%= event.duration %>
-  </p>
+    <p>
+      <strong>Duration (hours):</strong>
+      <%= event.duration %>
+    </p>
+  </div>
+
+
 </div>

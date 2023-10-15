@@ -1,0 +1,23 @@
+<div id="<%= dom_id announcement %>">
+  <p>
+    <strong>Title:</strong>
+    <%= announcement.title %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= announcement.body %>
+  </p>
+
+  <p>
+    <strong>Created by:</strong>
+    <%= announcement.user.name %>
+  </p>
+
+  <% if announcement.body.updated_at > announcement.body.created_at %>
+    <p>(edited)Last updated: <%= announcement.body.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+  <% else %>
+    <p>Created on: <%= announcement.body.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+  <% end %>
+
+</div>

@@ -13,7 +13,6 @@ module Admin
     def show
       @event = Event.find(params[:id])
       @event_logs = EventLog.where(event_id: @event.id)
-      @event_log = EventLog.find_by(user_id: current_user.id, event_id: @event.id)
     end
 
     # GET /events/new
@@ -62,6 +61,20 @@ module Admin
       end
     end
 
+    # NEEDS FIXING
+    # Scenario: Clicking the "Confirm Changes" button when there are no participants
+    def update_participation
+      params[:event][:event_logs_attributes]&.each do |attrs|
+        event_log = EventLog.find(attrs.second[:id])
+        if (event_log.participating == false and attrs.second[:participating] = "1") then 
+          event_log.update(:participating => attrs.second[:participating])
+          EventConfirmationMailer.with(user: event_log.user, event: event_log.event).confirmation_email.deliver_later
+        else 
+          event_log.update(:participating => attrs.second[:participating])
+        end
+      end
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -71,7 +84,8 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :date, :time, :location, :duration, :description)
+      params.require(:event).permit(:name, :location, :duration, :description, :event_enabled, :officer_in_charge, :datetime, event_logs_attributes: [:id, :participating])
     end
+
   end
 end

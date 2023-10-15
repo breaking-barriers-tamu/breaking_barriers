@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Event logs</h1>
+
+<div id="event_logs">
+  <% @event_logs.each do |event_log| %>
+    <%= render event_log %>
+  <% end %>
+</div>
+
+<%= link_to 'Back to Admin Dashboard', admin_root_path %>

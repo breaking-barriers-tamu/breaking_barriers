@@ -5,8 +5,10 @@ class User < ApplicationRecord
 
   has_many :events, through: :event_logs
   has_many :event_logs, dependent: :destroy
+  has_many :announcements, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
-  enum access_level: { member: 0, admin: 1, officer: 2 }
+  enum access_level: { member: 0, admin: 1}
 
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
@@ -25,11 +27,11 @@ class User < ApplicationRecord
     admin?
   end
 
-  def can_access_officer_dashboard?
-    admin? || officer?
-  end
-
   def registration_completed?
     registration_completed
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end

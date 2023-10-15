@@ -1,13 +1,32 @@
 <%= render @event %>
+<strong>Officer In Charge: </strong>
+    <% if @event.officer %>
+      <%= link_to @event.officer.name, user_path(@event.officer) %>
+    <% else %>
+      No officer assigned
+    <% end %>
+  <br>
 
-<% if EventLog.where(user: current_user, event: @event).any?%>
-  <div>
-    <%= link_to "Remove me from this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
-  </div>
-<% else %>
-  <div>
-    <%= link_to "Sign up for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id)%>
-  </div>
+<% if @event.is_active? %>
+  <% if @event_log.any?%>
+  <br>
+    <div>
+      <h3>
+        <% if @event_log.first.participating %>
+          You are confirmed for this event! 
+
+        <% else %>
+          Confirmation pending. Once an admin approves you for this event, you will receive an email in your TAMU inbox
+
+        <% end %>
+      </h3>
+      <%= link_to "Remove me from this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "Sign up for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration)%>
+    </div>
+  <% end %>
 <% end %>
 <div>
   <%= link_to "Back to events", events_path %>

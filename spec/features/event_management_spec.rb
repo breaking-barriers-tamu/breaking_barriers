@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Event CRUD', type: :feature do
-  let!(:event) { create(:event, name: 'Existing Event', date: '2023-12-31', time: '05:30 PM', location: 'Event Location', duration: 1.0) }
+  let!(:event) { create(:event, name: 'Existing Event', description: "Event Description", datetime: '2023-12-31 05:30 PM', location: 'Event Location', duration: 1.0) }
   let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
 
   # --- Event Creation ---
@@ -12,8 +12,8 @@ describe 'Event CRUD', type: :feature do
     visit new_admin_event_path
 
     fill_in 'event[name]', with: 'New Event'
-    fill_in 'event[date]', with: '2024-01-01'
-    fill_in 'event[time]', with: '15:30:00'
+    fill_in 'event[description]', with: 'New Event Description'
+    fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'New Location'
     fill_in 'event[duration]', with: 1.0
 
@@ -26,14 +26,29 @@ describe 'Event CRUD', type: :feature do
     visit new_admin_event_path
 
     fill_in 'event[name]', with: ''
-    fill_in 'event[date]', with: '2024-01-01'
-    fill_in 'event[time]', with: '15:30:00'
+    fill_in 'event[description]', with: 'New Event Description'
+    fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'New Location'
     fill_in 'event[duration]', with: 1.0
 
     click_on 'Create Event'
     expect(page).to(have_content("Name can't be blank"))
   end
+
+  # it 'Create an event - Rainy - Past Datetime' do
+  #   sign_in(user)
+  #   visit new_admin_event_path
+
+  #   fill_in 'event[name]', with: 'New Event'
+  #   fill_in 'event[description]', with: 'New Event Description'
+  #   fill_in 'event[datetime]', with: '2020-12-31 04:35 PM'
+  #   fill_in 'event[location]', with: 'New Location'
+  #   fill_in 'event[duration]', with: 1.0
+
+  #   click_on 'Create Event'
+  #   string = "Value must be #{Time.zone.now.strftime("%B %d, %Y %I:%M %p")} or greater"
+  #   expect(page).to(have_content(string))
+  # end
 
   # --- Showing Event ---
   it 'Show an event' do
@@ -53,8 +68,7 @@ describe 'Event CRUD', type: :feature do
     click_on 'Edit this event'
 
     fill_in 'event[name]', with: 'Updated Event Name'
-    fill_in 'event[date]', with: '2024-01-01'
-    fill_in 'event[time]', with: '16:30:00'
+    fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'Updated Location'
 
     click_on 'Update Event'
@@ -67,8 +81,7 @@ describe 'Event CRUD', type: :feature do
     click_on 'Edit this event'
 
     fill_in 'event[name]', with: ''
-    fill_in 'event[date]', with: '2024-01-01'
-    fill_in 'event[time]', with: '16:30:00'
+    fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'Updated Location'
 
     click_on 'Update Event'
