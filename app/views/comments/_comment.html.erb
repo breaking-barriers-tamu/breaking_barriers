@@ -15,7 +15,7 @@
 
     <p>Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
 
-    <% if comment.updated_at != comment.created_at && comment.saved_change_to_content? %>
+    <% if comment.updated_at != comment.created_at %>
       <p>(edited) Updated on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
     <% end %>
 
