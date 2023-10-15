@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %>,</h1>
+    <p>
+      Your sign up for <%= @event.name %> on <% @event.datetime.strftime("%m/%d/%Y") %> has been confirmed!
+
+      The event will take place at <% @event.location %> at <%= @event.datetime.strftime("%H:%M")%>
+
+      You will receive <%= @event.duration %> service hours for participating.
+      
+    </p>
+    <p>Thanks for volunteering and have a great day!</p>
+  </body>
+</html>
