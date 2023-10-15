@@ -363,6 +363,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  mini_magick
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)

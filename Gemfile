@@ -84,6 +84,7 @@ group :test do
 end
 
 gem 'pg'
+gem 'mini_magick'
 
 gem 'devise'
 gem 'omniauth'

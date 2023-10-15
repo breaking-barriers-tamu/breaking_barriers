@@ -7,6 +7,10 @@
     <% end %>
   <br>
 
+<% if @event.avatar.attached? %>
+    <%= image_tag @event.avatar%>
+<% end %>
+
 <% if @event.is_active? %>
   <% if EventLog.where(user: current_user, event: @event).any?%>
     <div>
