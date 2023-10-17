@@ -29,7 +29,9 @@ module Admin
 
       respond_to do |format|
         if @event.save
-          format.html { redirect_to(admin_event_path(@event), notice: 'Event was successfully created.') }
+          format.html do
+            redirect_to(admin_event_path(@event), notice: 'Event was successfully created.')
+          end
           format.json { render(:show, status: :created, location: @event) }
         else
           format.html { render(:new, status: :unprocessable_entity) }
@@ -61,17 +63,29 @@ module Admin
       end
     end
 
-    # NEEDS FIXING
-    # Scenario: Clicking the "Confirm Changes" button when there are no participants
     def update_participation
+      # safe navigation: continue if event_log_attributes present
+
       params[:event][:event_logs_attributes]&.each do |attrs|
         event_log = EventLog.find(attrs.second[:id])
-        if (event_log.participating == false and attrs.second[:participating] = "1") then 
-          event_log.update(:participating => attrs.second[:participating])
-          EventConfirmationMailer.with(user: event_log.user, event: event_log.event).confirmation_email.deliver_later
-        else 
-          event_log.update(:participating => attrs.second[:participating])
+
+        # if going from false to true
+        if (event_log.participating == false) && (attrs.second[:participating] == '1')
+          event_log.update(participating: attrs.second[:participating])
+          EventConfirmationMailer.with(user: event_log.user,
+                                       event: event_log.event
+                                      ).confirmation_email.deliver_later
+        else
+          event_log.update(participating: attrs.second[:participating])
         end
+      end
+    end
+
+    def purge_avatar
+      @event = Event.find(params[:id])
+      if @event.avatar.attached?
+        @event.avatar.purge
+        redirect_to(@event, notice: 'Flier was successfully deleted.')
       end
     end
 
@@ -84,8 +98,10 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :location, :duration, :description, :event_enabled, :officer_in_charge, :datetime, event_logs_attributes: [:id, :participating])
+      params.require(:event).permit(:name, :location, :duration, :description, :event_enabled,
+                                    :officer_in_charge, :datetime,
+                                    :avatar, event_logs_attributes: %i[id participating]
+      )
     end
-
   end
 end

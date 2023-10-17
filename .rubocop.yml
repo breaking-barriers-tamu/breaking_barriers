@@ -306,7 +306,7 @@ Naming/MethodName:
   EnforcedStyle: snake_case #default
 
 Naming/PredicateName:
-  Enabled: true
+  Enabled: false
 
 ###########################################################
 ######################## Style ############################
@@ -473,4 +473,7 @@ RSpec/IdenticalEqualityAssertion: # (new in 2.4)
     Enabled: true
 
 RSpec/MultipleExpectations:
+    Enabled: false
+
+RSpec/MultipleDescribes:
     Enabled: false

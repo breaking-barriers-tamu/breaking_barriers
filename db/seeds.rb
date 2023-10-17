@@ -1,6 +1,10 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+
+# This file should contain all the record creation needed
+# to seed the database with its default values.
+# The data can then be loaded with:
+# bin/rails db:seed
+# (or created alongside the database with db:setup).
 #
 # Examples:
 #
@@ -20,7 +24,7 @@ user1 = User.create!(
   access_level: 'admin'
 )
 
-user2 = User.create!(
+User.create!(
   first_name: 'Member',
   last_name: '1',
   email: 'Member2@tamu.edu',
@@ -33,23 +37,22 @@ Announcement.create!(
   user: user1,
   title: 'Announcement 1',
   body: 'This is an announcement from Admin 1.',
-  timestamp: DateTime.new(2023, 10, 7, Time.now.hour, Time.now.min, Time.now.sec)
+  timestamp: DateTime.new(2023, 10, 7, Time.zone.now.hour, Time.zone.now.min, Time.zone.now.sec)
 )
 
 Announcement.create!(
   user: user1,
   title: 'Announcement 2',
   body: 'This is another annocument from Admin 1',
-  timestamp: DateTime.new(2023, 10, 8, Time.now.hour, Time.now.min, Time.now.sec)
+  timestamp: DateTime.new(2023, 10, 8, Time.zone.now.hour, Time.zone.now.min, Time.zone.now.sec)
 )
-
 
 # Assuming you already have user1 and user2 created from before...
 
 # Seed a few events
 event1 = Event.create!(
   name: 'General Meeting',
-  datetime: DateTime.new(2023, 10, 7, Time.now.hour, Time.now.min, Time.now.sec),
+  datetime: DateTime.new(2023, 10, 7, Time.zone.now.hour, Time.zone.now.min),
   location: 'Zach 450',
   description: 'Doing Nothing',
   duration: 2.5
@@ -57,7 +60,7 @@ event1 = Event.create!(
 
 event2 = Event.create!(
   name: 'General Meeting 2',
-  datetime: DateTime.new(2023, 10, 7, Time.now.hour, Time.now.min, Time.now.sec),
+  datetime: DateTime.new(2023, 10, 7, Time.zone.now.hour, Time.zone.now.min),
   location: 'Zach 420',
   description: 'Testing',
   duration: 1.5

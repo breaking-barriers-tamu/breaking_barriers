@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
   def check_registration_completion
     if user_signed_in? && !current_user.registration_completed?
       sign_out(current_user)
-      redirect_to(new_user_session_path, alert: 'Please complete your registration before proceeding.')
+      redirect_to(new_user_session_path,
+                  alert: 'Please complete your registration before proceeding.'
+                 )
     end
   end
 end

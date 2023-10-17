@@ -13,7 +13,7 @@ describe 'Announcement CRUD', type: :feature do
     puts page.html
 
     fill_in 'announcement[title]', with: 'New Announcement'
-    find(".trix-content").set("This is the annoucment body")
+    find('.trix-content').set('This is the annoucment body')
 
     click_on 'Create Announcement'
     expect(page).to(have_content('Announcement was successfully created.'))
@@ -24,7 +24,7 @@ describe 'Announcement CRUD', type: :feature do
     visit new_announcement_path
 
     fill_in 'announcement[title]', with: ''
-    find(".trix-content").set("This is the annoucment body")
+    find('.trix-content').set('This is the annoucment body')
 
     click_on 'Create Announcement'
     expect(page).to(have_content("Title can't be blank"))
@@ -54,7 +54,7 @@ describe 'Announcement CRUD', type: :feature do
     visit edit_announcement_path(announcement)
 
     fill_in 'announcement[title]', with: 'Updated Announcement Title'
-    find(".trix-content").set("This is the updated body of the announcement.")
+    find('.trix-content').set('This is the updated body of the announcement.')
 
     click_on 'Update Announcement'
     expect(page).to(have_content('Announcement was successfully updated.'))
@@ -65,7 +65,7 @@ describe 'Announcement CRUD', type: :feature do
     visit edit_announcement_path(announcement)
 
     fill_in 'announcement[title]', with: ''
-    find(".trix-content").set("This announcement is missing its title.")
+    find('.trix-content').set('This announcement is missing its title.')
 
     click_on 'Update Announcement'
     expect(page).to(have_content("Title can't be blank"))
@@ -78,7 +78,7 @@ describe 'Announcement CRUD', type: :feature do
 
   #   sign_in(user)
   #   visit announcement_path(announcement)
-  #   puts page.html 
+  #   puts page.html
   #   click_button 'Delete'
   #   sleep 1
   #   page.accept_alert 'Are you sure?'

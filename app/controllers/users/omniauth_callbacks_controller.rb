@@ -23,7 +23,9 @@ module Users
         end
       else
         flash[:alert] =
-          t('devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized.")
+          t('devise.omniauth_callbacks.failure', kind: 'Google',
+                                                 reason: "#{auth.info.email} is not authorized."
+          )
         redirect_to(new_user_session_path)
       end
     end

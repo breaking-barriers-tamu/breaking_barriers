@@ -64,7 +64,7 @@ Rails/RenderPlainText:
   Enabled: true
 
 Rails/SaveBang:
-  Enabled: true
+  Enabled: false
   AllowImplicitReturn: false
 
 Rails/ShortI18n:
@@ -87,3 +87,6 @@ Rails/WhereExists:
 
 Rails/WhereNot:
   Enabled: true
+
+Rails/InverseOf:
+  Enabled: false
