@@ -43,6 +43,8 @@ module Admin
 
     private
 
+    # sums all hours for past event logs
+    # uses event logs' hours field rather than event hours
     def total_hours_for_user(user)
       total_hours = 0
       event_logs = EventLog.all.where(user_id: user.id)

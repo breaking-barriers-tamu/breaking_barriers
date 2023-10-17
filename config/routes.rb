@@ -10,12 +10,15 @@ Rails.application.routes.draw do
         end
         
         patch 'update_participation', on: :collection
+
       end
       resources :users do
         get 'export_participation_data', on: :collection
       end
 
       resources :event_logs
+
+      get 'help', to: 'admin#help'
       root to: 'admin#index'
     end
   end
@@ -36,6 +39,7 @@ Rails.application.routes.draw do
   get 'home', to: 'pages#home'
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
+  get 'help', to: 'pages#help'
 
   # Users
   devise_for :users, controllers: {   
