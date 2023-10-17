@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @total_hours = 0
     @event_logs = EventLog.all.where(user_id: @user.id)
     @event_logs.each do |event_log|
-      @total_hours += event_log.hours if Event.find(event_log.event_id).datetime.past?
+      @total_hours += event_log.hours if Event.find(event_log.event_id).datetime.past? and event_log.participating
     end
   end
 
