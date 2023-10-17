@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :announcements, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  enum access_level: { member: 0, admin: 1}
+  enum access_level: { member: 0, admin: 1 }
 
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]

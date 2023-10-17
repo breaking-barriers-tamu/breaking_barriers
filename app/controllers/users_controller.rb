@@ -9,14 +9,18 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  def show 
+  def show
     # calc user's hours here
     # loop through event_logs with user_id, and add up hours
-    # code taken from officer view, this works under assumption that users cannot view other user's data
+    # code taken from officer view
+    # this works under assumption that users cannot view other user's data
+
     @total_hours = 0
     @event_logs = EventLog.all.where(user_id: @user.id)
     @event_logs.each do |event_log|
-      @total_hours += event_log.hours if Event.find(event_log.event_id).datetime.past? and event_log.participating
+      if Event.find(event_log.event_id).datetime.past? && event_log.participating
+        @total_hours += event_log.hours
+      end
     end
   end
 
@@ -46,11 +50,15 @@ class UsersController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+
   def set_user
-    @user = @current_user # users should not be able to do anything with other users
+    # users should not be able to do anything with other users
+    @user = @current_user
   end
 
   def user_params
-    params.require(:user).permit(:access_level, :first_name, :last_name, :major, :year, :phone_number, :email)
+    params.require(:user).permit(:access_level, :first_name, :last_name, :major, :year,
+                                 :phone_number, :email
+    )
   end
 end

@@ -12,7 +12,9 @@ class EventLogsController < ApplicationController
 
     respond_to do |format|
       if @event_log.save
-        format.html { redirect_to(event_url(@event_log.event), notice: 'You are signed up for this event!') }
+        format.html do
+          redirect_to(event_url(@event_log.event), notice: 'You are signed up for this event!')
+        end
         format.json { render(:show, status: :created, location: @event_log) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -27,7 +29,11 @@ class EventLogsController < ApplicationController
     @event_log.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(event_url(@event_log.event), notice: 'Successfully removed you from this event.') }
+      format.html do
+        redirect_to(event_url(@event_log.event),
+                    notice: 'Successfully removed you from this event.'
+                   )
+      end
       format.json { head(:no_content) }
     end
   end
