@@ -21,7 +21,7 @@ describe 'User Usability Check', type: :feature do
   end
 
   it 'Standard User' do
-    user.access_level=0
+    user.access_level = 0
     sign_in(user)
     visit '/'
     expect(page).not_to(have_content('Admin'))

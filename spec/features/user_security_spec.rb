@@ -15,7 +15,7 @@ describe 'User Usability Check', type: :feature do
   end
 
   it 'Rainy Day - standard user cannot view other user info' do
-    user.access_level=0
+    user.access_level = 0
     sign_in(user)
     expect { visit(admin_users_path) }.to(raise_error(ActionController::RoutingError))
   end
