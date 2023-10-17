@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
       resources :events do
+        patch 'update_participation', on: :member
+        
+        member do
+          delete :purge_avatar
+        end
+        
         patch 'update_participation', on: :collection
       end
       resources :users do

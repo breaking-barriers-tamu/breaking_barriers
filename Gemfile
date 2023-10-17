@@ -84,12 +84,15 @@ group :test do
 end
 
 gem 'pg'
-
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 gem 'brakeman'
-
 gem 'hotwire-rails'
+# Gems for Active Storage & S3
+gem 'aws-sdk-s3', require: false
+gem "dotenv-rails", "~> 2.8"
+gem "active_model_serializers", "~> 0.10.14"
+gem 'mini_magick'

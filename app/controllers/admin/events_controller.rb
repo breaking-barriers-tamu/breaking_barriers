@@ -75,6 +75,14 @@ module Admin
       end
     end
 
+    def purge_avatar
+      @event = Event.find(params[:id])
+      if @event.avatar.attached?
+        @event.avatar.purge
+        redirect_to @event, notice: 'Flier was successfully deleted.'
+      end
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -84,7 +92,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :location, :duration, :description, :event_enabled, :officer_in_charge, :datetime, event_logs_attributes: [:id, :participating])
+      params.require(:event).permit(:name, :location, :duration, :description, :event_enabled, :officer_in_charge, :datetime, :avatar, event_logs_attributes: [:id, :participating])
     end
 
   end
