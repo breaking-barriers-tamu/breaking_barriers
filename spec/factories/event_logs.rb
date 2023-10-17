@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :event_log do
-    #no need to seed anything here
+    # no need to seed anything here
   end
 end
