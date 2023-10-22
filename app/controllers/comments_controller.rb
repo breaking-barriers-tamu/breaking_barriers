@@ -78,6 +78,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :archived)
+    params.require(:comment).permit(:content, :archived, :anonymous)
   end
 end

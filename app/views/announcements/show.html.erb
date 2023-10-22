@@ -36,6 +36,11 @@
     </div>
 
     <div>
+      <%= form.label :anonymous, "Post anonymously" %>
+      <%= form.check_box :anonymous %>
+    </div>
+
+    <div>
       <%= form.submit "Add Comment" %>
     </div>
   <% end %>
