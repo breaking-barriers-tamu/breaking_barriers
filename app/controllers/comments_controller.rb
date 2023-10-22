@@ -13,6 +13,9 @@ class CommentsController < ApplicationController
     @comment = @announcement.comments.build(comment_params)
     @comment.user = current_user
 
+    # Ensure admin can't post an anonymous comment
+    @comment.anonymous = false if current_user.admin?
+
     if @comment.save
       redirect_to(@announcement, notice: 'Comment was successfully created.')
     else
