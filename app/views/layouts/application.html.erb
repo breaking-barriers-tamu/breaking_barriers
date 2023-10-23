@@ -6,8 +6,7 @@
     <%= csp_meta_tag %>
     <%= turbo_include_tags %>
     <%= javascript_importmap_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_link_tag "home" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
 
     <style>
         .flash__alert   { color: red; }
@@ -47,5 +46,5 @@
     <% end %>
 
     <%= yield %>
-  </body>
+      </body>
 </html>
