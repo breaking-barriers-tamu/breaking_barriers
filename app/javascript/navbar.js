@@ -3,10 +3,10 @@ function updateNavbarBgColor() {
   const navbar = document.querySelector(".nav-container");
   const isHomePage = document.body.getAttribute("data-page") === "home";
 
-  if (window.scrollY > 100 || !isHomePage) {
-    navbar.style.backgroundColor = "#4872AE";
-  } else {
+  if (window.scrollY < 100 && isHomePage) {
     navbar.style.backgroundColor = "transparent";
+  } else {
+    navbar.style.backgroundColor = "#4872AE";
   }
 
   // Adjust padding for home screen
