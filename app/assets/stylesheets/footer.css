@@ -1,0 +1,86 @@
+h3 {
+    font-size: x-large;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    width: 100%;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(72, 114, 174, 0.5);
+    padding: 20px;
+}
+
+.footer-main div {
+    margin: 0 40px;
+}
+
+.footer-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+    background:#4872AE;
+}
+
+.footer-sub p {
+    color: white;
+    font-size: small;
+    margin: 0 5px;
+}
+
+.site-map-items a {
+    text-decoration: none;
+    color: black;
+}
+
+.site-map-title {
+    width: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.site-map .subtitle {
+    font-size: medium;
+    color: #646464;
+    margin-bottom: 10px;
+}
+
+
+.site-map-items li a {
+    font-size: large;
+
+}
+
+.small-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px
+}
+
+.more-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.more-info div {
+    margin: 0;
+    display: flex; 
+    flex-direction: row;
+}
+
+.address {
+    padding-bottom: 10px;
+}
+
+.enmed-logo {
+    padding-bottom: 10px;
+}

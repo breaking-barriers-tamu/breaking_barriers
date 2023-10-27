@@ -4,10 +4,9 @@
     <title>Breaking Barriers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= turbo_include_tags %>
     <%= javascript_importmap_tags %>
-    <%= stylesheet_link_tag "home" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
 
     <style>
         .flash__alert   { color: red; }
@@ -47,5 +46,7 @@
     <% end %>
 
     <%= yield %>
-  </body>
+    <%= render 'shared/footer' %>
+
+    </body>
 </html>
