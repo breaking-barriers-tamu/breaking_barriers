@@ -35,6 +35,13 @@
       <%= form.text_area :content, id: "comment_box" %>
     </div>
 
+    <% unless current_user&.admin? %>
+      <div>
+        <%= form.label :anonymous, "Post anonymously" %>
+        <%= form.check_box :anonymous %>
+      </div>
+    <% end %>
+
     <div>
       <%= form.submit "Add Comment" %>
     </div>
