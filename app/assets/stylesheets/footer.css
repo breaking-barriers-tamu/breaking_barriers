@@ -1,0 +1,40 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    width: 100%;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(72, 114, 174, 0.5);
+    padding: 20px;
+}
+
+.footer-main div {
+    margin: 0 40px;
+}
+
+.footer-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+    background:#4872AE;
+}
+
+.footer-sub p {
+    color: white;
+    font-size: small;
+    margin: 0 5px;
+}
+.site-map-items a {
+        text-decoration: none;
+        color: black;
+}
+
+
+
