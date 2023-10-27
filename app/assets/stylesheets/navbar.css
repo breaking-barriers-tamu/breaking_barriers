@@ -48,8 +48,7 @@ body {
     text-decoration: none;
     color: white;
     font-size: larger;
-    display: block;
-    padding: 15px;
+    display: block;;
     text-decoration: none;
     margin: 0 10px;
 }
@@ -57,7 +56,9 @@ body {
 
 .logout-button {
     appearance: none; 
-    background: none;
+    background: #4872AE;
+    padding: 7px 20px 7px 20px;
+    border-radius: 2px;
     text-decoration: none;
     margin-left: 15px;
     margin-right: 15px;
@@ -65,6 +66,21 @@ body {
     color: white;
     border: none;
     cursor: pointer;    
+    font-family: inherit;
+}
+
+.login-button {
+    appearance: none;
+    background: #4872AE;
+    padding: 5px 20px 5px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: larger;
+    color: white;
+    border: none;
+    cursor: pointer;
     font-family: inherit;
 }
 
