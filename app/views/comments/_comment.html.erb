@@ -5,8 +5,10 @@
     <br>
     <p>
       <strong>User:</strong>
+      <!-- Only show "Anonymous" to Non-Admin members who are not the comment author -->
       <% if comment.anonymous && !(current_user.admin? || current_user == comment.user) %>
         Anonymous
+      <!-- For Admins and comment author, display name and message that it was posted anonymously -->
       <% else %>
         <%= comment.user.name %>
         <% if comment.anonymous %>
