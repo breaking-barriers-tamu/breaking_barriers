@@ -103,10 +103,13 @@
   .add-comment-button:hover {
     background-color: #4cae4c;
   }
+
+  .comment-form-action {
+    margin-top: 15px; /* Adjust the value as needed */
+  }
   
   /* Error Messages */
   .error-message {
     color: #d9534f;
     margin-top: 20px;
   }
-  
