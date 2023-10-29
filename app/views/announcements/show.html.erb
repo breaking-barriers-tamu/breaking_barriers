@@ -11,36 +11,41 @@
   <% end %>
 </div>
 
-<br>
-<div>
-  <h2>Comments</h2>
-  <div id="comments">
-    <%= render @announcement.comments %>
-  </div>
-</div>
-
-<br>
-<% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
-  <%= turbo_frame_tag 'error-message' do %>
-    <%= render 'comments/error_message' %>
-  <% end %>
-<% end %>
-<div>
-  <h2>Add a Comment</h2>
-  <%= form_with(model: [@announcement, Comment.new]) do |form| %>
-    <div>
-      <%= form.text_area :content, id: "comment_box" %>
+<div class="main-comment-container">
+  <br>
+  <div class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments" class="comment-list">
+      <%= render @announcement.comments %>
     </div>
+  </div>
 
-    <% unless current_user&.admin? %>
-      <div>
-        <%= form.label :anonymous, "Post anonymously" %>
-        <%= form.check_box :anonymous %>
+  <br>
+  <% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
+    <%= turbo_frame_tag 'error-message' do %>
+      <div class="error-message">
+        <%= render 'comments/error_message' %>
       </div>
     <% end %>
-
-    <div>
-      <%= form.submit "Add Comment" %>
-    </div>
   <% end %>
+
+  <div class="add-comment-form">
+    <h2>Add a Comment</h2>
+    <%= form_with(model: [@announcement, Comment.new], html: { class: 'add-comment' }) do |form| %>
+      <div class="comment-form-field">
+        <%= form.text_area :content, id: "comment_box" %>
+      </div>
+
+      <% unless current_user&.admin? %>
+        <div class="comment-form-anonymous">
+          <%= form.label :anonymous, "Post anonymously" %>
+          <%= form.check_box :anonymous %>
+        </div>
+      <% end %>
+
+      <div class="comment-form-action">
+        <%= form.submit "Add Comment", class: "add-comment-button" %>
+      </div>
+    <% end %>
+  </div>
 </div>
