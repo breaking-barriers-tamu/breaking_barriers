@@ -7,7 +7,9 @@
       <p>
         <%= link_to "Show this user", admin_user_path(user) %>
         
-        <%= button_to "Destroy this user", admin_user_path(user), method: :delete %>
+        <% unless user == current_user %>
+          <%= button_to "Destroy this user", admin_user_path(user), method: :delete %>
+        <% end %>
       </p>
 
       <%= form_with(model: [:admin, user], local: true, method: :patch) do |form| %>
