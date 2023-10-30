@@ -1,15 +1,16 @@
 <%= javascript_include_tag 'delete_confirmation_dialog' %>
 
 <% unless comment.archived && !current_user.admin? %>
-  <div id="<%= dom_id comment %>" class="comment">
+  <div id="<%= dom_id comment %>" class="<%= 'admin-comment' if comment.user.admin? %> comment">
     
     <div class="comment-user">
-      <!-- Only show "Anonymous" to Non-Admin members who are not the comment author -->
       <% if comment.anonymous && !(current_user.admin? || current_user == comment.user) %>
         Anonymous
-      <!-- For Admins and comment author, display name and message that it was posted anonymously -->
       <% else %>
         <%= comment.user.name %>
+        <% if comment.user.admin? %>
+          [ADMIN]
+        <% end %>
         <% if comment.anonymous %>
           (Posted as Anonymous)
         <% end %>

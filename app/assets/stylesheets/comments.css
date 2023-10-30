@@ -28,6 +28,10 @@
     border-radius: 5px;
     margin-bottom: 15px;
   }
+
+  .admin-comment {
+    background-color: #d8eff8; /* or your preferred color */
+  }
   
   .comment-user {
     font-weight: bold;
