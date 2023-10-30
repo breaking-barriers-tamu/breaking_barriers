@@ -1,37 +1,50 @@
 <%= stylesheet_link_tag "profile" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: "false" }   }) do |f| %>
-  <div>
-    <%= f.label :access_level %>
-    <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+<div class="profile-container">
+
+  <div class="profile-nav">
+      <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete %>
   </div>
 
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+  <div class="profile-form">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: "false" }   }) do |f| %>
+        <div>
+            <%= f.label :access_level %>
+            <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+        </div>
+
+        <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name %>
+        </div>
+
+        <div>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
+        </div>
+
+        <div>
+            <%= f.label :year %>
+            <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+        </div>
+
+
+        <div>
+          <%= f.label :phone_number %>
+          <%= f.telephone_field :phone_number %>
+          <small>Format: 123-456-7890</small>
+        </div>
+    
+        <div>
+          <%= f.submit "Update" %>
+        </div>
+
+    <% end %>
   </div>
 
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div>
-    <%= f.label :year %>
-    <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+  <div class="my-event-form">
+      <p>Upcoming My Event Form Feature</p>
   </div>
 
 
-    <div>
-    <%= f.label :phone_number %>
-    <%= f.telephone_field :phone_number %>
-    <small>Format: 123-456-7890</small>
-  </div>
-
-  <div>
-    <%= f.submit "Update" %>
-  </div>
-
-<% end %>
-
-<%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete %>
+</div>

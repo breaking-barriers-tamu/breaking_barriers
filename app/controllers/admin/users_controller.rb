@@ -20,10 +20,41 @@ module Admin
     def edit; end
 
     # PATCH/PUT /users/1 or /users/1.json
-    def update; end
+    def update
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        redirect_to admin_users_path, notice: 'User was successfully updated.'
+      else
+        redirect_to admin_users_path, alert: 'Could not update user.'
+      end
+    end
+
 
     # DELETE /users/1 or /users/1.json
-    def destroy; end
+    def destroy
+      @user = User.find(params[:id])
+      if @user.destroy
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.append("flash_messages", action: "replace", target: "flash_messages", partial: "shared/flash", locals: { key: :notice, value: 'User was successfully destroyed.' }) + 
+                                  turbo_stream.remove("user_#{@user.id}")
+          end
+          format.html { redirect_to admin_users_path, notice: 'User was successfully destroyed.' }
+        end
+      else
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.append("flash_messages", action: "replace", target: "flash_messages", partial: "shard/flash", locals: { key: :alert, value: 'User could not be destroyed.' })
+          end
+          format.html { redirect_to admin_users_path, alert: 'User could not be destroyed.' }
+        end
+      end
+    end
+
+
+
+
+
 
     def export_participation_data
       @user_hours = {}
