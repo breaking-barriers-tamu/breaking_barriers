@@ -32,6 +32,10 @@
   .admin-comment {
     background-color: #d8eff8; /* or your preferred color */
   }
+
+  .archived-comment {
+    background-color: #fdcdcd; /* a light khaki color; change as needed */
+  }
   
   .comment-user {
     font-weight: bold;
