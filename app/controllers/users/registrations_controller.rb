@@ -5,6 +5,8 @@ module Users
     def update
       super do |resource|
         resource.update(registration_completed: true) if resource.valid?
+        flash[:notice] = "Profile updated successfully!"
+        redirect_to edit_user_registration_path and return if resource.persisted?
       end
     end
 
