@@ -21,7 +21,6 @@ RSpec.describe('User Registration Form', type: :feature) do
 
       fill_in 'First name', with: 'Jason'
       fill_in 'Last name', with: 'Le'
-      fill_in 'Major', with: 'CSCE'
       select '2024', from: 'Year'
       fill_in 'Phone number', with: '123-456-7890'
       select 'Member', from: 'Access level'
