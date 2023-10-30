@@ -43,8 +43,9 @@
           </div>
 
           <div>
-              <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
-          </div>
+            <%= f.label :access_level %>
+            <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+        </div>
 
       <% end %>
     </div>
