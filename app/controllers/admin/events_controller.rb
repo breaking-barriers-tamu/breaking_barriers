@@ -44,7 +44,7 @@ module Admin
     def update
       respond_to do |format|
         if @event.update(event_params)
-          format.html { redirect_to(event_url(@event), notice: 'Event was successfully updated.') }
+          format.html { redirect_to(admin_event_path(@event), notice: 'Event was successfully updated.') }
           format.json { render(:show, status: :ok, location: @event) }
         else
           format.html { render(:edit, status: :unprocessable_entity) }
@@ -85,7 +85,7 @@ module Admin
       @event = Event.find(params[:id])
       if @event.avatar.attached?
         @event.avatar.purge
-        redirect_to(@event, notice: 'Flier was successfully deleted.')
+        redirect_to(admin_event_path(@event), notice: 'Flier was successfully deleted.')
       end
     end
 
