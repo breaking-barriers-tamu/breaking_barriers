@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= turbo_include_tags %>
-    <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
 
     <style>
@@ -39,7 +38,7 @@
     <% if flash.any? %>
       <% flash.each do |key, value| -%>
         <section class="flash flash__<%= key %>">
-          <%= value.html_safe %>
+          <%= value.gsub("\n", "<br>").html_safe %>
           <span class="flash__close" onclick="this.parentElement.style.display='none'">X</span>
         </section>
       <% end -%>

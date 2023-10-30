@@ -1,33 +1,30 @@
 <%= stylesheet_link_tag "profile" %>
 
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: "false" }   }) do |f| %>
   <div>
-    <%= f.label :access_level %><br />
+    <%= f.label :access_level %>
     <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
   </div>
 
   <div>
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>
 
   <div>
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>
 
   <div>
-    <%= f.label :year %><br />
+    <%= f.label :year %>
     <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
   </div>
 
 
     <div>
-    <%= f.label :phone_number %><br />
-    <%= f.telephone_field :phone_number, pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %>
+    <%= f.label :phone_number %>
+    <%= f.telephone_field :phone_number %>
     <small>Format: 123-456-7890</small>
   </div>
 

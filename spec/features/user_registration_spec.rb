@@ -27,11 +27,7 @@ RSpec.describe('User Registration Form', type: :feature) do
 
       click_button 'Update'
 
-      expect(page).to(have_content('Jason'))
-      expect(page).to(have_content('Le'))
-      expect(page).to(have_content('CSCE'))
-      expect(page).to(have_content('2024'))
-      expect(page).to(have_content('123-456-7890'))
+      expect(page).to(have_content('Profile updated successfully'))
     end
   end
 

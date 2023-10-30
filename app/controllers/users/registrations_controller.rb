@@ -5,7 +5,11 @@ module Users
     def update
       super do |resource|
         resource.update(registration_completed: true) if resource.valid?
-        flash[:notice] = "Profile updated successfully!"
+        if resource.errors.any?
+          flash[:alert] = resource.errors.full_messages.join("\n")
+        else
+          flash[:notice] = 'Profile updated successfully'
+        end 
         redirect_to edit_user_registration_path and return if resource.persisted?
       end
     end
@@ -13,7 +17,7 @@ module Users
     private
 
     def account_update_params
-      params.require(:user).permit(:first_name, :last_name, :year, :phone_number,
+      params.require(:user).permit(:first_name, :last_name, :major, :year, :phone_number,
                                    :access_level
       )
     end
