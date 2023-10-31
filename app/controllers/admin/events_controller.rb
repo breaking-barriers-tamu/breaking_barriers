@@ -81,10 +81,10 @@ module Admin
       end
     end
 
-    def purge_avatar
+    def purge_flier
       @event = Event.find(params[:id])
-      if @event.avatar.attached?
-        @event.avatar.purge
+      if @event.flier.attached?
+        @event.flier.purge
         redirect_to(admin_event_path(@event), notice: 'Flier was successfully deleted.')
       end
     end
@@ -100,7 +100,7 @@ module Admin
     def event_params
       params.require(:event).permit(:name, :location, :duration, :description, :event_enabled,
                                     :officer_in_charge, :datetime,
-                                    :avatar, event_logs_attributes: %i[id participating]
+                                    :flier, event_logs_attributes: %i[id participating]
       )
     end
   end

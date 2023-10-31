@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         patch 'update_participation', on: :member
         
         member do
-          delete :purge_avatar
+          delete :purge_flier
         end
         
         patch 'update_participation', on: :collection
