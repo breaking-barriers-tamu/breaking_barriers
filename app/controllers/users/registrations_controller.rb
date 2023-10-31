@@ -8,9 +8,9 @@ module Users
         if resource.errors.any?
           flash[:alert] = resource.errors.full_messages.join("\n")
         else
-          flash[:notice] = 'Profile updated successfully'
+          flash[:notice] = 'Registration Completed'
         end 
-        redirect_to edit_user_registration_path and return if resource.persisted?
+        redirect_to root_path and return if resource.persisted?
       end
     end
 
