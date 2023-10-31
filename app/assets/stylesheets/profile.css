@@ -27,8 +27,9 @@
 .last-name-field, .year-field{
     margin-left: 65px;
 }
-.year-field{
-    width: 100px;
+
+.year-field {
+    width: full;
 }
 
 .first-name-field, .last-name-field, .phone-field, .year-field {

@@ -5,6 +5,7 @@ pin "navbar"
 pin "footer"
 pin "delete_confirmation_dialog"
 pin "profile"
+pin "registration"
 
 
 pin "trix"
