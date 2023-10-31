@@ -7,15 +7,17 @@
     <% end %>
   <br>
 
-<strong> Event Flier: </strong>
+<strong> Event Flier: </strong> <br>
 <% if @event.avatar.attached? %>
     <% if @event.avatar.representable? %>
         <%= image_tag @event.avatar.representation(resize_to_limit: [500,500]) %>
-    <% end %>
-    <%= link_to "View Flier", @event.avatar %> 
+        <br>
+    <% end %> 
+    <%= link_to "View/Download Flier", @event.avatar %>
 <% else %>
     <%= "No Attachments" %>
 <% end %>
+
 
 <% if @event.is_active? %>
   <% if @event_log.any?%>
