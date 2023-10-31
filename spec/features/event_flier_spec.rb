@@ -20,7 +20,7 @@ describe 'File attachment feature', type: :feature do
     attach_file('event[avatar]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
     click_on 'Update Event'
 
-    expect(page).to(have_content('View Flier'))
+    expect(page).to(have_content('View/Download Flier'))
   end
 
   it 'Deletes a flier that has been attached' do
@@ -30,12 +30,12 @@ describe 'File attachment feature', type: :feature do
     attach_file('event[avatar]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
     click_on 'Update Event'
 
-    expect(page).to(have_content('View Flier'))
+    expect(page).to(have_content('View/Download Flier'))
 
     visit admin_event_path(event)
 
     click_on 'Delete Flier Attachment'
     expect(page).to(have_content('Flier was successfully deleted.'))
-    expect(page).to(have_content('No Attachments'))
+    expect(page).to(have_content('No Flier Attachments'))
   end
 end

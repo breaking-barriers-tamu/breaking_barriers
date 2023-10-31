@@ -24,16 +24,6 @@ describe 'Officer In Charge feature', type: :feature do
     expect(page).to(have_content('Officer In Charge: Alice Smith'))
   end
 
-  # Usability
-  # it 'Lets members view information about officer in charge' do
-  #     sign_in(member)
-
-  #     visit event_path(event)
-  #     click_on 'Alice Smith'
-
-  #     expect(page).to(have_content('444-444-4444'))
-  # end
-
   it 'Allows admin to add/modify officer in charge' do
     sign_in(admin1)
 
@@ -56,6 +46,6 @@ describe 'Officer In Charge feature', type: :feature do
     click_on 'Edit this event'
     select '', from: 'event_officer_in_charge'
     click_on 'Update Event'
-    expect(page).to(have_content('Officer In Charge: No officer assigned'))
+    expect(page).to(have_content('None'))
   end
 end
