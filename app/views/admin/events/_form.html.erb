@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
 <%= javascript_include_tag 'preview' %>
+
 <%= form_with(model: [:admin, event], local: true) do |form| %>
   <% if event.errors.any? %>
     <div style="color: red">
@@ -18,10 +19,9 @@
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
+
+  <%= form.label :description %>
+  <%= form.rich_text_area :description %>
 
   <div>
     <%= form.label :location, style: "display: block" %>
