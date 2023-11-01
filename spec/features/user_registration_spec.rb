@@ -22,12 +22,12 @@ RSpec.describe('User Registration Form', type: :feature) do
       fill_in 'First name', with: 'Jason'
       fill_in 'Last name', with: 'Le'
       select '2024', from: 'Year'
-      fill_in 'Phone number', with: '123-456-7890'
+      fill_in 'phone-number', with: '123-456-7890'
       select 'Member', from: 'Access level'
 
-      click_button 'Update'
+      click_button 'Register Account'
 
-      expect(page).to(have_content('Profile updated successfully'))
+      expect(page).to(have_content('Registration Completed'))
     end
   end
 
@@ -38,9 +38,9 @@ RSpec.describe('User Registration Form', type: :feature) do
 
       select '2024', from: 'Year'
       fill_in 'First name', with: ''
-      fill_in 'Phone number', with: '123-456-7890'
+      fill_in 'phone-number', with: '123-456-7890'
 
-      click_button 'Update'
+      click_button 'Register Account'
 
       expect(page).to(have_content("First name can't be blank"))
     end
