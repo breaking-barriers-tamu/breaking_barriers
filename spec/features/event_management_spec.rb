@@ -12,7 +12,6 @@ describe 'Event CRUD', type: :feature do
     visit new_admin_event_path
 
     fill_in 'event[name]', with: 'New Event'
-    fill_in 'event[description]', with: 'New Event Description'
     fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'New Location'
     fill_in 'event[duration]', with: 1.0
@@ -26,7 +25,6 @@ describe 'Event CRUD', type: :feature do
     visit new_admin_event_path
 
     fill_in 'event[name]', with: ''
-    fill_in 'event[description]', with: 'New Event Description'
     fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'New Location'
     fill_in 'event[duration]', with: 1.0
@@ -40,7 +38,7 @@ describe 'Event CRUD', type: :feature do
   #   visit new_admin_event_path
 
   #   fill_in 'event[name]', with: 'New Event'
-  #   fill_in 'event[description]', with: 'New Event Description'
+  #   find('.trix-content').set('Event Description goes here')
   #   fill_in 'event[datetime]', with: '2020-12-31 04:35 PM'
   #   fill_in 'event[location]', with: 'New Location'
   #   fill_in 'event[duration]', with: 1.0
