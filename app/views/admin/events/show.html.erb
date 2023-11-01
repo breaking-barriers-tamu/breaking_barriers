@@ -45,5 +45,5 @@
   <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
   <%= link_to "Back to events", admin_events_path %>
 
-  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete %>
+  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete, form_class: 'delete-alertbox' %>
 </div>
