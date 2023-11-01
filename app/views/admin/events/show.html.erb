@@ -1,15 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
-<% if @event.avatar.attached? %>
-    <% if @event.avatar.representable? %>
-        <%= image_tag @event.avatar.variant(resize_to_limit: [500,500]) %>
-    <% end %>
-    <br>
-    <%= link_to "View Flier", @event.avatar %>
-    <%= button_to "Delete Flier Attachment", purge_avatar_admin_event_path(@event), method: :delete, confirm: "Are you sure?" %>
-<% else %>
-    <%= "No Attachments" %>
-<% end %>
+<%= javascript_include_tag 'delete_confirmation_dialog' %>
 
 <%= render 'admin/events/event', event: @event %>
 
@@ -29,9 +19,23 @@
       <%= f.submit "Confirm Changes" %>
     <% end %>
 
+<% if @event.flier.attached? %>
+    <% if @event.flier.previewable? %>
+        <%= image_tag @event.flier.preview(resize_to_limit: [500,500]) %>
+    <% elsif @event.flier.variable? %>
+        <%= image_tag @event.flier, class: "image_preview" %>
+    <% end %>
+    <br>
+    <%= link_to "View/Download Flier", @event.flier %>
+    <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(@event), method: :delete, confirm: "Are you sure?" %>
+<% else %>
+    <%= "No Flier Attachments" %>
+<% end %>
+
+
 <div>
   <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
   <%= link_to "Back to events", admin_events_path %>
 
-  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete %>
+  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete, form_class: 'delete-alertbox' %>
 </div>
