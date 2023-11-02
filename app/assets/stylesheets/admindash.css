@@ -20,6 +20,15 @@
     text-align: center;
 }
 
+.dash-item:hover {
+    background-color: #4f74a7;
+    transition: 0.5s;
+    border-radius:  20px;
+
+    text-decoration: none;
+    text-align: center;
+}
+
 .dash-item a {
     color: white;
     text-decoration: none;
