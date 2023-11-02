@@ -1,7 +1,11 @@
-<h1>Admin Dashboard</h1>
+<%= stylesheet_link_tag "admindash" %>
 
-<%= link_to 'Events Managment', admin_events_path %>
-<%= link_to 'Users Management', admin_users_path %>
-<%= link_to 'View all event logs', admin_event_logs_path %>
-<%= link_to 'Export Member Volunteer Hours Spreadsheet', export_participation_data_admin_users_path(format: :csv) %>
-<%= link_to 'Admin Help', admin_help_path %>
+<div class="dash-main">
+    <div class="dash-container">
+        <div class="dash-item"><%= link_to 'Events Managment', admin_events_path %></div>
+        <div class="dash-item"><%= link_to 'Users Management', admin_users_path %></div>
+        <div class="dash-item"><%= link_to 'View Event Logs', admin_event_logs_path %></div>
+        <div class="dash-item"><%= link_to 'Export Member Hours', export_participation_data_admin_users_path(format: :csv) %></div>
+        <div class="dash-item"><%= link_to 'Admin Help', admin_help_path %></div>
+    </div>
+</div>
