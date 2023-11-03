@@ -9,3 +9,22 @@
         <div class="dash-item"><%= link_to 'Admin Help', admin_help_path %></div>
     </div>
 </div>
+
+<div class="ext-container">
+    <div class="int-container">
+        <div class="item-container">
+            <h2>Active Events</h2>
+            <% @activeEvents.each do |event| %>
+                <div>
+                    <p><%= event.name %></p>
+                    <p><%= event.datetime.month %>/<%= event.datetime.day %>/<%= event.datetime.year %></p>
+                    <p><%= link_to ">", admin_event_path(event) %></p>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="item-container">
+            <h2>New Sign-ups</h2>
+        </div>
+    </div>
+</div>
