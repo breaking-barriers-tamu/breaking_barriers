@@ -1,0 +1,100 @@
+/* announcements.css */
+
+.announcement-container {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .announcement-title {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .announcement-body {
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .announcement-meta {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .announcement-author {
+    font-weight: bold;
+  }
+  
+  .announcement-timestamp {
+    font-style: italic;
+  }
+
+/* Base button style */
+.btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Specific styles for different button types */
+.btn-primary {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Layout for edit/delete actions */
+.edit-delete-actions {
+    display: flex;
+    gap: 10px; /* space between buttons */
+    padding-left: 15px; /* padding from the left edge */
+}
+
+/* Style for the 'Back to announcements' button, making it full-width */
+.back-to-announcements {
+    margin-top: 10px;
+    padding-left: 15px;
+    display: block; /* make the link fill the container */
+}
+
+/* Ensuring consistency of edit/delete button styles with comments */
+.comment-edit, .comment-delete {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.comment-edit {
+    background-color: #f0ad4e; /* Edit button color */
+}
+
+.comment-edit:hover {
+    background-color: #ec971f; /* Edit button hover color */
+}
+
+.comment-delete {
+    background-color: #d9534f; /* Delete button color */
+}
+
+.comment-delete:hover {
+    background-color: #c9302c; /* Delete button hover color */
+}
