@@ -35,6 +35,12 @@
                 </div>
 
                 <div class="nav-items">
+                    <li class="<%= 'active' if current_page?(help_path) %>">
+                        <%= link_to "Help", help_path %>  
+                    </li>
+                </div>
+
+                <div class="nav-items">
                 <% if current_user&.can_access_admin_dashboard? %>
                     <li class="<%= 'active' if request.path.start_with?(admin_root_path) %>">
                         <%= link_to "Admin", admin_root_path %>
