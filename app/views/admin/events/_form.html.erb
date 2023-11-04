@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
+<%= javascript_include_tag 'preview' %>
 <%= form_with(model: [:admin, event], local: true) do |form| %>
   <% if event.errors.any? %>
     <div style="color: red">
@@ -47,8 +49,16 @@
   </div>
 
   <div>
-    <%= form.label "Flier" %>
-    <%= form.file_field :avatar %>
+    <%= form.label "Upload Flier" %>
+    <%= form.file_field :flier, id: "upload", class: "file_upload" %>
+  </div>
+
+  <div> 
+    <% if event.flier.attached? && event.flier.representable? %>
+      <%= image_tag event.flier, id: "file_preview" %>
+    <% else %>
+      <%= image_tag "", id: "file_preview" %>
+    <% end %>
   </div>
 
   <div>
