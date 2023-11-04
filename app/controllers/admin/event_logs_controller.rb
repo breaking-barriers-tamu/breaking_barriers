@@ -9,10 +9,13 @@ class Admin::EventLogsController < ApplicationController
     # safe navigation: continue if event_log_attributes present
 
     event_log = EventLog.find(params[:id])
-    event_log.update(confirmed: true)
+    event_log.update!(confirmed: true)
+    puts params[:participating]
+    puts "\n"
 
-    if params[:participating]
-      event_log.update(participating: true)
+    if (params[:participating] == "true")
+      puts "FUCK"
+      event_log.update!(participating: true)
       EventConfirmationMailer.with(user: event_log.user,
                                    event: event_log.event
                                   ).confirmation_email.deliver_later
@@ -21,7 +24,7 @@ class Admin::EventLogsController < ApplicationController
                                        event: event_log.event
                                       ).confirmation_email.deliver_later
     end
-    redirect_to(admin_event_path(event_log))
+    redirect_to(admin_event_path(event_log.event))
   end
 
   private
