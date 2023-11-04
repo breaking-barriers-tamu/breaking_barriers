@@ -29,6 +29,13 @@
       <%= f.submit "Confirm Changes" %>
     <% end %>
 
+<% if @event.flier.attached? %>
+    <% if @event.flier.previewable? %>
+        <%= image_tag @event.flier.preview(resize_to_limit: [500,500]) %>
+    <% elsif @event.flier.variable? %>
+        <%= image_tag @event.flier, class: "image_preview" %>
+    <% end %>
+
 <div>
   <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
   <%= link_to "Back to events", admin_events_path %>
