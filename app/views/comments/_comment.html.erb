@@ -1,45 +1,44 @@
 <%= javascript_include_tag 'delete_confirmation_dialog' %>
 
 <% unless comment.archived && !current_user.admin? %>
-  <div id="<%= dom_id comment %>" class="<%= 'admin-comment' if comment.user.admin? %> <%= 'archived-comment' if comment.archived? %> comment">
-    
-    <div class="comment-user">
+  <div id="<%= dom_id comment %>">
+    <br>
+    <p>
+      <strong>User:</strong>
+      <!-- Only show "Anonymous" to Non-Admin members who are not the comment author -->
       <% if comment.anonymous && !(current_user.admin? || current_user == comment.user) %>
         Anonymous
+      <!-- For Admins and comment author, display name and message that it was posted anonymously -->
       <% else %>
         <%= comment.user.name %>
-        <% if comment.user.admin? %>
-          [ADMIN]
-        <% end %>
         <% if comment.anonymous %>
           (Posted as Anonymous)
         <% end %>
       <% end %>
-    </div>
+    </p>
 
-    <div class="comment-content">
+    <p>
+      <strong>Comment:</strong>
       <%= comment.content %>
-    </div>
+    </p>
 
-    <div class="comment-time">
-      <br>
-      Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %><br>
-      <% if comment.updated_at != comment.created_at %>
-        <span>(edited) Updated on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></span><br>
-      <% end %>
+    <p>Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
 
-      <% if comment.updated_at != comment.created_at && comment.archived? %>
-        <span>(Archive) Deleted by Author on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></span>
-      <% end %>
-    </div>
+    <% if comment.updated_at != comment.created_at %>
+      <p>(edited) Updated on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+    <% end %>
+
+    <% if comment.updated_at != comment.created_at && comment.archived? %>
+      <p>(Archive) Deleted by Author on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+    <% end %>
 
     <% if current_user == comment.user %>
       <%= turbo_frame_tag dom_id(comment, :edit) do %>
-        <%= link_to "Edit Comment", edit_announcement_comment_path(@announcement, comment), class: "comment-edit" %>
+        <%= link_to "Edit Comment", edit_announcement_comment_path(@announcement, comment) %>
       <% end %>
     <% end %>
-    <% if current_user == comment.user || current_user.admin? %>
-      <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox', class: "comment-delete" %>
+    <% if current_user == comment.user || current_user.admin?%>
+      <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox' %>
     <% end %>
   </div>
 <% end %>

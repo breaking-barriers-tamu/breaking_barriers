@@ -1,10 +1,10 @@
 <%= turbo_frame_tag dom_id(@comment, :edit) do %>
-  <%= form_with(model: [@announcement, @comment], html: { class: 'add-comment' }) do |form| %>
+  <%= form_with(model: [@announcement, @comment]) do |form| %>
     <div>
-      <%= form.text_area :content, id: "comment_box" %>
+      <%= form.text_area :content %>
     </div>
     <div>
-      <%= form.submit "Update Comment", class: "add-comment-button" %>
+      <%= form.submit "Update Comment" %>
     </div>
   <% end %>
 <% end %>
