@@ -29,7 +29,7 @@ RSpec.describe('Admin Dashboard Access', type: :feature) do
 
     visit admin_root_path
 
-    expect(page).to(have_content('Admin Dashboard'))
+    expect(page).to(have_content('Active Events'))
   end
 
   it 'Member tries to access dashboard' do
