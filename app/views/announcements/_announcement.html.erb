@@ -1,23 +1,19 @@
-<div id="<%= dom_id announcement %>">
-  <p>
-    <strong>Title:</strong>
-    <%= announcement.title %>
-  </p>
+<!-- Announcement Partial -->
+<div id="<%= dom_id announcement %>" class="announcement-container">
+  <h1 class="announcement-title"><%= announcement.title %></h1>
 
-  <p>
-    <strong>Body:</strong>
+  <div class="announcement-body">
     <%= announcement.body %>
-  </p>
+  </div>
 
-  <p>
-    <strong>Created by:</strong>
-    <%= announcement.user.name %>
-  </p>
-
-  <% if announcement.body.updated_at > announcement.body.created_at %>
-    <p>(edited)Last updated: <%= announcement.body.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
-  <% else %>
-    <p>Created on: <%= announcement.body.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
-  <% end %>
-
+  <div class="announcement-meta">
+    <p class="announcement-author">Created by: <%= announcement.user.name %></p>
+    <p class="announcement-timestamp">
+      <% if announcement.updated_at > announcement.created_at %>
+        (edited) Last updated: <%= announcement.updated_at.strftime('%B %d, %Y at %I:%M %p') %>
+      <% else %>
+        Created on: <%= announcement.created_at.strftime('%B %d, %Y at %I:%M %p') %>
+      <% end %>
+    </p>
+  </div>
 </div>
