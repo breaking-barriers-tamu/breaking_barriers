@@ -3,20 +3,21 @@
 
 <%= render 'admin/events/event', event: @event %>
 
-<%= stylesheet_link_tag 'confirmation' %>
+    <%= form_for @event, url: update_participation_admin_events_path(@event) do |f| %>
       <h2>Participants</h2>
       <ul>
         <% @event_logs.each do |event_log|%>
-        <% if event_log.confirmed == false %>
-          <% user = User.find(event_log.user_id) %>
-          <li>
-            <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
-            <%= button_to "Confirm participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: true}, class: "confirmButton" %>
-            <%= button_to "Deny participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: false}, class: "denyButton"%>
-          </li>
-        <% end %>
+          <%= f.fields_for :event_logs, event_log do |event_log_subform| %>
+            <% user = User.find(event_log.user_id) %>
+            <li>
+              <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
+              Participating: <%= event_log_subform.check_box :participating %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
+      <%= f.submit "Confirm Changes" %>
+    <% end %>
 
 <% if @event.flier.attached? %>
     <% if @event.flier.previewable? %>
