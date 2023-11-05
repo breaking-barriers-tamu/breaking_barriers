@@ -20,7 +20,7 @@ body {
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 50px;
-    width: min(80%, 1000px);
+    width: 1000px;
     min-height: 500px;
     height: auto;
 }
@@ -32,7 +32,7 @@ body {
     justify-content: flex-start;
     background-color: #6088c0;
     border-radius:  20px;
-    width: 80%;
+    width: 100%;
     min-height: 100%;
     height: auto;
 }

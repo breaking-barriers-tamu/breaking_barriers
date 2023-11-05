@@ -10,6 +10,7 @@
              <td><p>Last Name</p></td>
              <td><p>Email</p></td>
              <td><p>Phone</p></td>
+             <td><p>Year</p></td>
              <td><p>Status</p></td>
              <td><p>Hrs</td>
              <td><p></p></td>
@@ -20,6 +21,7 @@
                 <td><p><%= user.last_name %></p></td>
                 <td><p><%= user.email %></p></td>
                 <td><p><%= user.phone_number %></p></td>
+                <td><p><%= user.year %></p></td>
                 <td><p><%= user.access_level %></p></td>
                 <td><p><%= @alluserhrs[user] %></p></td>
                 <td><p><%= link_to ">", admin_user_path(user) %></p></td>
