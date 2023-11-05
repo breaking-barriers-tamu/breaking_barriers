@@ -3,6 +3,10 @@
 
 
 <div class="announcements-container">
+<% if current_user && current_user.admin? %>
+      <%= link_to "Post announcement", new_announcement_path %>
+  <% end %>
+  
   <div class="title">
     <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'map' %>
     <h1>Announcements</h1>
@@ -30,7 +34,7 @@
           <p>
             <%= announcement.user.name %>
           </p>
-          
+
           <p>
             <%= announcement.body %>
           </p>
@@ -44,16 +48,12 @@
 
       <%# go to specific %>
       <p>
-        <%= link_to "Show this announcement", announcement %>
+        <%= link_to ">", announcement %>
       </p>
 
       </div>
     
     <% end %>
   </div>
-
-  <% if current_user && current_user.admin? %>
-      <%= link_to "Post announcement", new_announcement_path %>
-  <% end %>
 
 </div>
