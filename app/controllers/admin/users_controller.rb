@@ -27,19 +27,20 @@ module Admin
 
     # GET /users/1 or /users/1.json
     def show
-      @total_hours = total_hours_for_user(@user)
     end
 
     # GET /users/1/edit
-    def edit; end
+    def edit
+      @total_hours = total_hours_for_user(@user)
+    end
 
     # PATCH/PUT /users/1 or /users/1.json
     def update
       @user = User.find(params[:id])
       if @user.update(user_params)
-        redirect_to admin_users_path, notice: 'User was successfully updated.'
+        redirect_to edit_admin_user_path(@user), notice: 'User was successfully updated.'
       else
-        redirect_to admin_users_path, alert: 'Could not update user.'
+        redirect_to edit_admin_user_path(@user), alert: 'Could not update user.'
       end
     end
 

@@ -1,10 +1,64 @@
-<h1>Editing user</h1>
+<%= stylesheet_link_tag "adminusershow" %>
 
-<%= render "form", user: @user %>
+<div class="profile-container">
+  <div class="forms">
+    <div class="profile-form">
+      <div class="current-user-display">
+          <% if @user.avatar_url.present? %>
+            <%= image_tag @user.avatar_url, alt: "#{@user.name}'s Avatar", width: 150 %>
+          <% else %>
+            <p>No avatar available</p>
+          <% end %>
+          <p><%= @user.name %>'s Profile</p>
+      </div>
+      
+      <%= form_for(@user, url: admin_user_path(@user), html: { method: :patch, data: { turbo: "false" } }) do |f| %>
+          <div class="row-1">
+            <div class="first-name-field">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name %>
+            </div>
 
-<br>
+            <div class="last-name-field">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name %>
+            </div>
+          </div>
 
-<div>
-  <%= link_to "Show this user", admin_user_path(@user) %> |
-  <%= link_to "Back to users", admin_users_path %>
+          <div class="row-2">
+            <div class="phone-field">
+              <%= f.label :phone_number %>
+              <%= f.telephone_field :phone_number, id: "phone-number" %>
+            </div>
+
+            <div class="year-field">
+                <%= f.label :year %>
+                <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+            </div>
+          </div>
+      
+          <div class="row-23">
+            <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+          </div>
+
+          <div class="row-3">
+            <%= f.submit "Update" %>
+            <% unless @user == current_user %>
+              <%= button_to "Delete", admin_user_path(@user), method: :delete %>
+            <% end %>
+          </div>
+
+      <% end %>
+    </div>
+
+    <div class="my-event-form">
+        <p>Upcoming My Event Form Feature</p>
+        <p>
+          <strong>Total Hours:</strong>
+          <%= @total_hours %>
+        </p>
+    </div>
+
+  </div>
+
 </div>

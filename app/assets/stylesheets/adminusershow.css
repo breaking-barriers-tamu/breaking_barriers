@@ -2,15 +2,118 @@ body {
     background-color: rgba(128, 128, 128, 0.3);
 }
 
-.ext-container {
+.profile-container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 80%;
-    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
 }
 
-.ext-container h1 {
-    margin-top: 50px;
+.profile-form {
+    background-color: #4872AE;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.row-1, .row-2, .row-3, .row-23 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    
+}
+
+.row-1 {
+    margin-bottom: 50px;
+}
+
+.last-name-field, .year-field{
+    margin-left: 65px;
+}
+
+.year-field {
+    width: full;
+}
+
+.first-name-field, .last-name-field, .phone-field, .year-field {
+    display:flex; 
+    flex-direction: column;
+}
+
+.current-user-display img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.current-user-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-user-display p {
+    margin-left: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.profile-nav .button_to button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: larger;
+    background-color: #CF2E2E;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 100px;
+}
+
+
+.profile-form label {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.profile-form input, select {
+    border: none;
+    height: 30px;
+    font-size: larger;
+    padding-left: 5px;
+}
+
+.profile-form select {
+    border: none; 
+    height: 30px;
+    font-size: larger
+}
+
+.row-2 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.row-3 input {
+    cursor: pointer;
+    background: #CF2E2E;
+    color: white;
+    padding: 5px 40px;
+}
+
+.row-3 button {
+    cursor: pointer;
+    background: #CF2E2E;
+    padding: 5px 40px;
+    margin-left: 200px;
+    color: white;
 }
