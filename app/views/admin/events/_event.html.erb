@@ -1,33 +1,36 @@
 <div class = "e-partial" >
 
   <section class = "e-left"> 
-    <div>
-      <h1> <%= event.name %> </h1>
+    <div class = "left-section">
+      <h1 style = "color:rgb(72, 114, 174)"> <%= event.name %> </h1>
       <h3> <%= event.duration %> hours </h3>
+      <%= event.description %>
     </div>
 
-    <div>
-        <%= event.description %>
-    </div>
-
-    <% if event.flier.attached? %>
-      <% if event.flier.previewable? %>
-          <%= image_tag event.flier.preview(resize_to_limit: [600,nil]) %>
-      <% elsif event.flier.variable? %>
-          <%= image_tag event.flier, class: "image_preview" %>
+    <div class = "image-section">
+      <% if event.flier.attached? %>
+        <% if event.flier.previewable? %>
+            <%= image_tag event.flier.preview(resize_to_limit: [600,nil]) %>
+        <% elsif event.flier.variable? %>
+            <%= image_tag event.flier, class: "image_preview" %>
+        <% end %>
+        <br>
+        <%= link_to "View/Download Flier", event.flier %>
+        <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
+      <% else %>
+          <img src="<%= asset_path 'uim_image-v.svg' %>" class = "image_preview">
+          <%= "No Flier Attachments" %>
       <% end %>
-      <br>
-      <%= link_to "View/Download Flier", event.flier %>
-      <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
-    <% else %>
-        <%= "No Flier Attachments" %>
-    <% end %>
+    </div>
   </section>
 
   <section class = "e-right" > 
-    <div>
-
+    <div class = right-section>
+      <h2>Participants:</h2>
+      <% event_logs = EventLog.where(event_id: event.id) %>
+      <%= event_logs.length %>
     </div>
+
     <div class = "right-section">
       <h2> Information </h2>
       <div class = "e-row"> 
@@ -40,16 +43,26 @@
       </div>
       <div class = "e-row"> 
         <img src="<%= asset_path 'location-icon.svg' %>">
-        <%= event.location %> 
+        <%= event.get_location %> 
       </div>
     </div>
+
     <div class = "right-section">
       <% officer = event.officer %>
       <% if officer %>
         <h2> Contact Officer </h2>
-          <%= officer.name %> 
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'user-icon.svg' %>">
+          <%= officer.name %>
+        </div>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'phone-solid-blue.svg' %>">
           <%= officer.phone_number %>
-          <%= officer.email %>
+        </div>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'email-solid-blue.svg' %>">
+          <%= officer.email %> 
+        </div>
       <% else %>
         <h2> No Officer In Charge </h2>
       <% end %>
@@ -60,8 +73,4 @@
 
 </div>
 
-  <p>
-    <strong>Participants:</strong>
-    <% event_logs = EventLog.where(event_id: event.id) %>
-    <%= event_logs.length %>
-  </p>
+

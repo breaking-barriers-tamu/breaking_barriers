@@ -19,4 +19,13 @@ class Event < ApplicationRecord
   def has_participants?
     event_logs.any?
   end
+
+  def get_location
+    if (location.present?)
+      location
+    else 
+      "TBD"
+    end
+  end
+
 end
