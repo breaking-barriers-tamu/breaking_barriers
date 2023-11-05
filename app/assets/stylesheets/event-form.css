@@ -49,6 +49,7 @@
 .back-link:hover::before {
     width: 100%;
 }
+/* --------------  */
 
 /* Container that holds the _form partial */
 .form-container {
@@ -103,6 +104,7 @@
     color: #616A6B;
     font-weight: bold;
 }
+/* --------------  */
 
 /* Container for event enabled feature */
 .enabled-container {
@@ -129,6 +131,7 @@
 #event_event_enabled {
     margin-left: 15px;
 }
+/* --------------  */
 
 /* Container for event description */
 .description-container {
@@ -158,6 +161,7 @@
     color: #616A6B;
     font-weight: bold;
 }
+/* --------------  */
 
 /* Container to display attachment */
 .attachment-container {
@@ -186,7 +190,9 @@
     margin-bottom: 10px;
     width: 500px;
 }
+/* --------------  */
 
+/* Create/Update Event button styling */
 #submit-button {
     width: 200px;
     height: 50px;
