@@ -1,14 +1,57 @@
-<h1>Announcements</h1>
+<%= stylesheet_link_tag "announcements" %>
+<%= javascript_include_tag 'announcements' %>
 
-<div id="announcements">
-  <% @announcements.each do |announcement| %>
-    <%= render announcement %>
-    <p>
-      <%= link_to "Show this announcement", announcement %>
-    </p>
+
+<div class="announcments-container">
+  <div class="title">
+    <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'map' %>
+    <h1>Announcements</h1>
+  </div>
+
+  <div id="announcements">
+    <% @announcements.each do |announcement| %>
+
+      <div class="announcement-card">
+      <%# date %>
+      <div>
+        <p><%= announcement.body.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+      </div>
+
+      <%# vertical line %>
+      <div></div>
+
+      <%# body and description %>
+      <div>
+          <p>
+            <%= announcement.title %>
+          </p>
+
+          <p>
+            <%= announcement.body %>
+          </p>
+
+          <p>
+            <%= announcement.user.name %>
+          </p>
+      </div>
+
+      <%# show edited tag %>
+      <% if announcement.body.updated_at > announcement.body.created_at %>
+        <p>(edited)Last updated: <%= announcement.body.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+      <% end %>
+
+      <%# go to specific %>
+      <p>
+        <%= link_to "Show this announcement", announcement %>
+      </p>
+
+      </div>
+    
+    <% end %>
+  </div>
+
+  <% if current_user && current_user.admin? %>
+      <%= link_to "Post announcement", new_announcement_path %>
   <% end %>
-</div>
 
-<% if current_user && current_user.admin? %>
-    <%= link_to "Post announcement", new_announcement_path %>
-<% end %>
+</div>
