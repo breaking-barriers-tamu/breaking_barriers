@@ -1,5 +1,5 @@
 <!-- Announcement Partial -->
-<div id="<%= dom_id announcement %>" class="announcement-container">
+<div id="<%= dom_id(announcement) %>" class="announcement-container">
   <h1 class="announcement-title"><%= announcement.title %></h1>
 
   <div class="announcement-body">
@@ -9,11 +9,13 @@
   <div class="announcement-meta">
     <p class="announcement-author">Created by: <%= announcement.user.name %></p>
     <p class="announcement-timestamp">
-      <% if announcement.updated_at > announcement.created_at %>
-        (edited) Last updated: <%= announcement.updated_at.strftime('%B %d, %Y at %I:%M %p') %>
-      <% else %>
-        Created on: <%= announcement.created_at.strftime('%B %d, %Y at %I:%M %p') %>
-      <% end %>
+      Created on: <%= announcement.created_at.strftime('%B %d, %Y at %I:%M %p') %>
     </p>
+    <%# Only show the updated timestamp if it's different from the created timestamp %>
+    <% if announcement.updated_at > (announcement.created_at + 0.1.minute) %>
+      <p class="announcement-updated-timestamp">
+        Updated at: <%= announcement.updated_at.strftime('%B %d, %Y at %I:%M %p') %>
+      </p>
+    <% end %>
   </div>
 </div>
