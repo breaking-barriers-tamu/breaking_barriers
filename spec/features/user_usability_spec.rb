@@ -5,7 +5,6 @@ require 'rails_helper'
 describe 'User Usability Check', type: :feature do
   let!(:user) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
   it 'Sunny Day - Admin can view admin pages' do
-    puts page.body
     sign_in(user)
     visit '/'
     expect(page).to(have_content('Admin'))
