@@ -7,6 +7,14 @@
     flex-direction: row;
 }
 
+
+.e-left {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin-right: 50px;
+    float: left;
+}
+
 .e-left h1 {
     font-size: 3em;
 }
@@ -15,6 +23,15 @@
     margin-bottom: 40px;
 } 
 
+
 .e-right {
+    width: 30%;
+    float: right;
     display: grid;
 }
+
+.e-right div {
+    margin: 20px 0 20px 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+

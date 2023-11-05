@@ -1,15 +1,13 @@
 <div class = "e-partial" >
 
-  <div class = "e-left"> 
+  <section class = "e-left"> 
     <div>
       <h1> <%= event.name %> </h1>
       <h3> <%= event.duration %> hours </h3>
     </div>
 
     <div>
-      <p>
         <%= event.description %>
-      </p>
     </div>
 
     <% if event.flier.attached? %>
@@ -24,19 +22,30 @@
     <% else %>
         <%= "No Flier Attachments" %>
     <% end %>
-  </div>
+  </section>
 
-  <div class = "e-right" > 
+  <section class = "e-right" > 
     <div>
 
     </div>
     <div>
-      <h1> Information </h1>
+      <h2> Information </h2>
+      <h4> <%= event.datetime.strftime("%B %d, %Y") %> </h4>
+      <h4> <%= event.datetime.strftime("%I:%M %p") %> (CST) </h4>
+      <h4> <%= event.location %> </h4>
     </div>
     <div>
-
+      <% officer = event.officer %>
+      <% if officer %>
+        <h2> Contact Officer <h2>
+          <h5> <%= officer.name %> </h5>
+          <h5> <%= officer.phone_number %> </h5>
+          <h5> <%= officer.email %> </h5>
+      <% else %>
+        <h2> No Officer In Charge </h2>
+      <% end %>
     </div>
-  </div>
+  </section>
 
 
 
