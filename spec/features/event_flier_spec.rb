@@ -18,7 +18,7 @@ describe 'File attachment feature', type: :feature do
     visit admin_event_path(event)
     click_on 'Edit this event'
     attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
-    click_on 'Update Event'
+    find('#submit-button').click
 
     expect(page).to(have_content('View/Download Flier'))
   end
@@ -28,7 +28,7 @@ describe 'File attachment feature', type: :feature do
     visit admin_event_path(event)
     click_on 'Edit this event'
     attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
-    click_on 'Update Event'
+    find('#submit-button').click
 
     expect(page).to(have_content('View/Download Flier'))
 

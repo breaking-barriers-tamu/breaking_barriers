@@ -16,7 +16,7 @@ describe 'Event CRUD', type: :feature do
     fill_in 'event[location]', with: 'New Location'
     fill_in 'event[duration]', with: 1.0
 
-    click_on 'Create Event'
+    find('#submit-button').click
     expect(page).to(have_content('Event was successfully created.'))
   end
 
@@ -29,24 +29,9 @@ describe 'Event CRUD', type: :feature do
     fill_in 'event[location]', with: 'New Location'
     fill_in 'event[duration]', with: 1.0
 
-    click_on 'Create Event'
+    find('#submit-button').click
     expect(page).to(have_content("Name can't be blank"))
   end
-
-  # it 'Create an event - Rainy - Past Datetime' do
-  #   sign_in(user)
-  #   visit new_admin_event_path
-
-  #   fill_in 'event[name]', with: 'New Event'
-  #   find('.trix-content').set('Event Description goes here')
-  #   fill_in 'event[datetime]', with: '2020-12-31 04:35 PM'
-  #   fill_in 'event[location]', with: 'New Location'
-  #   fill_in 'event[duration]', with: 1.0
-
-  #   click_on 'Create Event'
-  #   string = "Value must be #{Time.zone.now.strftime("%B %d, %Y %I:%M %p")} or greater"
-  #   expect(page).to(have_content(string))
-  # end
 
   # --- Showing Event ---
   it 'Show an event' do
@@ -69,7 +54,7 @@ describe 'Event CRUD', type: :feature do
     fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'Updated Location'
 
-    click_on 'Update Event'
+    find('#submit-button').click
     expect(page).to(have_content('Event was successfully updated.'))
   end
 
@@ -82,7 +67,7 @@ describe 'Event CRUD', type: :feature do
     fill_in 'event[datetime]', with: '2023-12-31'
     fill_in 'event[location]', with: 'Updated Location'
 
-    click_on 'Update Event'
+    find('#submit-button').click
     expect(page).to(have_content("Name can't be blank"))
   end
 
