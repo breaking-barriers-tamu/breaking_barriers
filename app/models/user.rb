@@ -14,7 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
 
   def self.from_omniauth(auth)
-    return nil unless /@tamu.edu\z/.match?(auth.info.email)
+    #return nil unless /@tamu.edu\z/.match?(auth.info.email)
 
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email

@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :major %><br />
-    <%= f.text_field :major %>
-  </div>
-
-  <div class="field">
   <%= f.label :year %><br />
   <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
 </div>

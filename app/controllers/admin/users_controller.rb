@@ -8,7 +8,21 @@ module Admin
 
     # GET /users or /users.json
     def index
-      @users = User.all
+      @users = User.all.sort_by { |user| [user.first_name, user.last_name] }
+      @alluserhrs = {}
+      User.all.each do |user|
+        @alluserhrs[user] = 0.0
+      end
+      EventLog.all.where(participating: true).each do |log|
+        if !log.event.datetime.past? 
+          next
+        end
+        if @alluserhrs.key?(log.user)
+          @alluserhrs[log.user] += log.hours
+        else
+          @alluserhrs[log.user] = log.hours
+        end
+      end
     end
 
     # GET /users/1 or /users/1.json
