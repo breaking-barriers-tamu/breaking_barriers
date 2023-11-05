@@ -2,7 +2,7 @@
 <%= javascript_include_tag 'announcements' %>
 
 
-<div class="announcments-container">
+<div class="announcements-container">
   <div class="title">
     <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'map' %>
     <h1>Announcements</h1>
@@ -13,8 +13,9 @@
 
       <div class="announcement-card">
       <%# date %>
-      <div>
-        <p><%= announcement.body.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+      <div class="announcement-time">
+        <p><%= announcement.body.created_at.strftime('%B %d') %></p>
+        <p><%= announcement.body.created_at.strftime('%I:%M %p') %></p>
       </div>
 
       <%# vertical line %>
@@ -27,12 +28,13 @@
           </p>
 
           <p>
+            <%= announcement.user.name %>
+          </p>
+          
+          <p>
             <%= announcement.body %>
           </p>
 
-          <p>
-            <%= announcement.user.name %>
-          </p>
       </div>
 
       <%# show edited tag %>
