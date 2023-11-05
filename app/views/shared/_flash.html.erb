@@ -1,0 +1,4 @@
+<section class="flash flash__<%= key %>">
+  <%= value.gsub("\n", "<br>").html_safe %>
+  <span class="flash__close" onclick="this.parentElement.style.display='none'">X</span>
+</section>
