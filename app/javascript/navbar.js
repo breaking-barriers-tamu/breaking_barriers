@@ -4,22 +4,17 @@ function updateNavbarBgColor() {
   const navbarShade = document.querySelector(".nav-shade");
   const isHomePage = document.body.getAttribute("data-page") === "home";
 
-  const logoutButton = document.querySelector(".logout-button");
   const loginButton = document.querySelector(".login-button");
 
   if (window.scrollY < 100 && isHomePage) {
     navbar.style.backgroundColor = "transparent";
     navbarShade.style.background = "linear-gradient(to bottom, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%)";
-    if (logoutButton) logoutButton.style.background = "#4872AE";  
     if (loginButton) loginButton.style.background = "#4872AE"; 
-    if (logoutButton) logoutButton.style.color = "white";
     if (loginButton) loginButton.style.color = "white"; 
   } else {
     navbar.style.backgroundColor = "#4872AE";
     navbarShade.style.background = "transparent";
-    if (logoutButton) logoutButton.style.background = "white";
     if (loginButton) loginButton.style.background = "white";
-    if (logoutButton) logoutButton.style.color = "black";
     if (loginButton) loginButton.style.color = "black";
   }
   // Adjust padding for home screen

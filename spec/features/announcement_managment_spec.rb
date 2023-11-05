@@ -10,7 +10,6 @@ describe 'Announcement CRUD', type: :feature do
   it 'Create an announcement - Sunny' do
     sign_in(user)
     visit new_announcement_path
-    puts page.html
 
     fill_in 'announcement[title]', with: 'New Announcement'
     find('.trix-content').set('This is the annoucment body')
