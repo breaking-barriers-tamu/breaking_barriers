@@ -1,17 +1,20 @@
 <div class = "e-partial" >
+
   <div class = "e-left"> 
-    <h1> <%= event.name %> </h1>
+    <div>
+      <h1> <%= event.name %> </h1>
+      <h3> <%= event.duration %> hours </h3>
+    </div>
 
-    <h2> <%= event.duration %> hours </h2>
-
-    <p>
-      <strong>Description:</strong>
-      <%= event.description %>
-    </p>
+    <div>
+      <p>
+        <%= event.description %>
+      </p>
+    </div>
 
     <% if event.flier.attached? %>
       <% if event.flier.previewable? %>
-          <%= image_tag event.flier.preview(resize_to_limit: [500,500]) %>
+          <%= image_tag event.flier.preview(resize_to_limit: [600,nil]) %>
       <% elsif event.flier.variable? %>
           <%= image_tag event.flier, class: "image_preview" %>
       <% end %>
@@ -21,19 +24,26 @@
     <% else %>
         <%= "No Flier Attachments" %>
     <% end %>
-
   </div>
 
   <div class = "e-right" > 
+    <div>
 
+    </div>
+    <div>
+      <h1> Information </h1>
+    </div>
+    <div>
 
+    </div>
   </div>
+
+
+
+</div>
 
   <p>
     <strong>Participants:</strong>
     <% event_logs = EventLog.where(event_id: event.id) %>
     <%= event_logs.length %>
   </p>
-
-
-</div>
