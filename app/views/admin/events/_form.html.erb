@@ -16,7 +16,7 @@
     <% end %>
 
   <div class = "input-container">
-    <img src="<%= asset_path 'solid-text.svg' %>">
+    <img src="<%= asset_path 'name-icon.svg' %>">
     <div>
       <%= form.text_field :name, class: "event-form-input", placeholder: "Add name" %>
       <%= form.label "Name (Required)" %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class = "input-container">
-    <img src="<%= asset_path 'clock-solid 2.svg' %>"> 
+    <img src="<%= asset_path 'clock-icon.svg' %>"> 
     <div>
       <%= form.number_field :duration, in: 0.0..12.0, step: 0.5, class: "event-form-input", placeholder: "Add Duration" %>
       <%= form.label "Hours (Required)" %>
@@ -32,7 +32,7 @@
   </div>
 
   <div class = "input-container"> 
-    <img src="<%= asset_path 'calendar-days-solid (2) 1.svg' %>">
+    <img src="<%= asset_path 'calendar-icon.svg' %>">
     <div>
       <%= form.datetime_field :datetime, min: Time.zone.now.strftime("%B %d, %Y %I:%M %p"), class: "event-form-input" %>
       <%= form.label "Date & Time (Required)"  %>
@@ -40,7 +40,7 @@
   </div> 
 
   <div class = "input-container">
-    <img src="<%= asset_path 'location-dot-solid 1.svg' %>">
+    <img src="<%= asset_path 'location-icon.svg' %>">
     <div>
       <%= form.text_field :location, class: "event-form-input", placeholder: "Add location" %>
       <%= form.label :location  %>
@@ -48,7 +48,7 @@
   </div>
 
   <div class = "input-container">
-    <img src="<%= asset_path 'user-solid (1) 1.svg' %>">
+    <img src="<%= asset_path 'user-icon.svg' %>">
     <div >
       <%= form.collection_select(:officer_in_charge, 
         User.where(access_level: 1), :id, :name, 
@@ -59,7 +59,7 @@
   </div>
 
   <div class = "enabled-container"> 
-    <img src="<%= asset_path 'signup-enabled.svg'%>">
+    <img src="<%= asset_path 'checlist-icon.svg'%>">
     <div>
       <strong> Enable Sign-Up </strong>
       <%= form.check_box :event_enabled, checked: event.event_enabled %>
@@ -73,7 +73,7 @@
 
   <div class ="attachment-container">
     <div class = "attachment-label"> 
-      <img src="<%= asset_path 'img-icon.svg'%>">
+      <img src="<%= asset_path 'picture-icon.svg'%>">
       <div>
         <strong> Flier Attachment </strong> 
       </div>
