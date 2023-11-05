@@ -32,30 +32,28 @@
 
 /* Base button style */
 .btn {
-    padding: 10px 15px;
-    font-size: 14px;
-    border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
+  font-size: 14px;
+  padding: 10px 15px;
+  margin-top: 5px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Specific styles for different button types */
 .btn-primary {
     background-color: #f0ad4e;
-    color: #fff;
 }
 
 .btn-secondary {
     background-color: #6c757d;
-    color: #fff;
 }
 
 .btn-danger {
     background-color: #dc3545;
-    color: #fff;
 }
 
 /* Layout for edit/delete actions */
@@ -73,28 +71,30 @@
 }
 
 /* Ensuring consistency of edit/delete button styles with comments */
-.comment-edit, .comment-delete {
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
+.announcement-edit, .announcement-delete {
+  font-size: 14px;
+  padding: 10px 15px;
+  margin-top: 5px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.comment-edit {
+.announcement-edit {
     background-color: #f0ad4e; /* Edit button color */
 }
 
-.comment-edit:hover {
+.announcement-edit:hover {
     background-color: #ec971f; /* Edit button hover color */
 }
 
-.comment-delete {
+.announcement-delete {
     background-color: #d9534f; /* Delete button color */
 }
 
-.comment-delete:hover {
+.announcement-delete:hover {
     background-color: #c9302c; /* Delete button hover color */
 }

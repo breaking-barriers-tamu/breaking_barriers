@@ -8,8 +8,8 @@
 <!-- Separate container for edit/delete which will allow us to easily control layout -->
 <div class="announcement-actions edit-delete-actions">
   <% if current_user && current_user.admin? %>
-    <%= link_to "Edit this announcement", edit_announcement_path(@announcement), class: "comment-edit btn" %>
-    <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: 'delete-alertbox', class: "comment-delete btn" %>
+    <%= link_to "Edit this announcement", edit_announcement_path(@announcement), class: "btn announcement-edit" %>
+    <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: "delete-alertbox", class: "btn announcement-delete"%>
   <% end %>
 </div>
 
