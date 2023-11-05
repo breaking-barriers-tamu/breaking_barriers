@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "navbar" %>
+<%= javascript_include_tag 'navbar' %>
 
 <div class="nav-container">
     <div class="nav-shade">
@@ -49,7 +50,7 @@
                 <% end %>
 
                 <% if user_signed_in? %>
-                    <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete, class: "logout-button" %>
+                    <%= link_to 'Profile', edit_user_path(current_user), class: "login-button" %>
                 <% else %>
                     <%= link_to "Login", new_user_session_path, class: "login-button" %>
                 <% end %>

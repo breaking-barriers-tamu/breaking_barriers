@@ -2,6 +2,8 @@
 
 class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, if: :registration_completed?
+  validates :first_name, :last_name, exclusion: { in: [""], message: "First name can't be blank" }
+
 
   has_many :events, through: :event_logs
   has_many :event_logs, dependent: :destroy
