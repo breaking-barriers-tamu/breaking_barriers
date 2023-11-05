@@ -31,21 +31,21 @@ describe 'Officer In Charge feature', type: :feature do
     visit admin_event_path(event)
     click_on 'Edit this event'
     select 'Bob Shelby', from: 'event_officer_in_charge'
-    click_on 'Update Event'
+    find('#submit-button').click
     expect(page).to(have_content('Officer In Charge: Bob Shelby'))
 
     # Change an officer in charge
     visit admin_event_path(event)
     click_on 'Edit this event'
     select 'Alice Smith', from: 'event_officer_in_charge'
-    click_on 'Update Event'
+    find('#submit-button').click
     expect(page).to(have_content('Officer In Charge: Alice Smith'))
 
     # Remove an officer in charge
     visit admin_event_path(event)
     click_on 'Edit this event'
-    select '', from: 'event_officer_in_charge'
-    click_on 'Update Event'
+    select '--', from: 'event_officer_in_charge'
+    find('#submit-button').click
     expect(page).to(have_content('None'))
   end
 end

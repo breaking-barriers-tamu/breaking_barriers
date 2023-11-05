@@ -91,7 +91,11 @@
 }
 
 .event-form-input:hover {
-    animation: border-wrap 5s linear infinite;
+    border-bottom: 3px solid  #9B59B6;
+}
+
+.event-form-input:focus {
+    border-bottom: 3px solid  #9B59B6;
 }
 
 .input-container label {
@@ -139,6 +143,14 @@
     font-size: 16px;
     border-radius: 2px;
     background-color: white;
+}
+
+#description-input:hover {
+    border-bottom: 3px solid  #9B59B6;
+}
+
+#description-input:focus {
+    border-bottom: 3px solid  #9B59B6;
 }
 
 .description-container label {
