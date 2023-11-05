@@ -9,10 +9,11 @@
 
 
 .e-left {
-    background-color: rgba(0, 0, 0, 0.1);
     width: 70%;
     margin-right: 50px;
-    float: left;
+    padding: 10px 10px 10px 10px;
+    float: left; 
+    background-color: rgb(72, 114, 174);
 }
 
 .e-left h1 {
@@ -30,8 +31,21 @@
     display: grid;
 }
 
-.e-right div {
+.right-section {
     margin: 20px 0 20px 0;
+    padding: 10px 10px 10px 10px;
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.e-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.e-row img {
+    height: 25px;
+    width: 20px;
+    margin-right: 10px;
+}

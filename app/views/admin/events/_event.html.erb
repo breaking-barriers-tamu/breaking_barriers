@@ -28,19 +28,28 @@
     <div>
 
     </div>
-    <div>
+    <div class = "right-section">
       <h2> Information </h2>
-      <h4> <%= event.datetime.strftime("%B %d, %Y") %> </h4>
-      <h4> <%= event.datetime.strftime("%I:%M %p") %> (CST) </h4>
-      <h4> <%= event.location %> </h4>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'calendar-icon.svg' %>">
+        <%= event.datetime.strftime("%B %d, %Y") %>
+      </div>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'clock-icon.svg' %>">
+        <%= event.datetime.strftime("%I:%M %p") %> (CST)
+      </div>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'location-icon.svg' %>">
+        <%= event.location %> 
+      </div>
     </div>
-    <div>
+    <div class = "right-section">
       <% officer = event.officer %>
       <% if officer %>
-        <h2> Contact Officer <h2>
-          <h5> <%= officer.name %> </h5>
-          <h5> <%= officer.phone_number %> </h5>
-          <h5> <%= officer.email %> </h5>
+        <h2> Contact Officer </h2>
+          <%= officer.name %> 
+          <%= officer.phone_number %>
+          <%= officer.email %>
       <% else %>
         <h2> No Officer In Charge </h2>
       <% end %>

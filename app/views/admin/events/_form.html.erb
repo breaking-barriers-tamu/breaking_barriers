@@ -16,7 +16,7 @@
     <% end %>
 
   <div class = "input-container">
-    <img src="<%= asset_path 'name-icon.svg' %>">
+    <img src="<%= asset_path 'name-solid.svg' %>">
     <div>
       <%= form.text_field :name, class: "event-form-input", placeholder: "Add name" %>
       <%= form.label "Name (Required)" %>
@@ -59,7 +59,7 @@
   </div>
 
   <div class = "enabled-container"> 
-    <img src="<%= asset_path 'checlist-icon.svg'%>">
+    <img src="<%= asset_path 'checklist-icon.svg'%>">
     <div>
       <strong> Enable Sign-Up </strong>
       <%= form.check_box :event_enabled, checked: event.event_enabled %>
@@ -73,7 +73,7 @@
 
   <div class ="attachment-container">
     <div class = "attachment-label"> 
-      <img src="<%= asset_path 'picture-icon.svg'%>">
+      <img src="<%= asset_path 'img-icon.svg'%>">
       <div>
         <strong> Flier Attachment </strong> 
       </div>
