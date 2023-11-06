@@ -1,10 +1,21 @@
-<h1>Editing announcement</h1>
+<%= stylesheet_link_tag "announcements_form" %>
+<%= javascript_include_tag 'announcements_form' %>
 
-<%= render "form", announcement: @announcement %>
+<div class="form-container">
+  <div class="title">
+      <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'speaker' %>
+      <h1>Edit Announcements</h1>
+    </div>
 
-<br>
+  <%= render "form", announcement: @announcement %>
 
-<div>
-  <%= link_to "Show this announcement", @announcement %> |
-  <%= link_to "Back to announcements", announcements_path %>
+  <br>
+
+
+ 
+  <div class="options">
+    <%= link_to "Cancel", announcements_path, class: "options-cancel"%>
+    <%= link_to "View", @announcement, class: "options-preview" %> 
+  </div>
 </div>
+
