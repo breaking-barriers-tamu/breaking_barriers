@@ -68,6 +68,11 @@
   font-weight: bold;
 }
 
+.announcement-title a {
+  text-decoration: none;
+  color: black
+}
+
 .announcement-author {
   font-size: small;
   color: grey;

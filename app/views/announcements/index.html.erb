@@ -31,8 +31,11 @@
           <%# body and description %>
           <div>
               <div class="announcement-title">
-                <%= announcement.title %>
+                <%= link_to announcement do %>
+                  <%= announcement.title %>
+                <% end %>
               </div>
+
 
               <div class="announcement-author">
                 <%= announcement.user.name %>
@@ -49,10 +52,10 @@
 
         <%# go to specific %>
         <div class="arrow">
-          <%= link_to ">", announcement %>
+          <%= link_to announcement do %>
+            <%= image_tag 'chevron-right-solid.svg', class: "small-logo", alt: 'Next' %>
+          <% end %>
         </div>
-      
-
         </div>
       
       <% end %>
