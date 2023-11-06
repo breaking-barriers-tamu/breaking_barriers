@@ -2,58 +2,60 @@
 <%= javascript_include_tag 'announcements' %>
 
 
-<div class="announcements-container">
-<% if current_user && current_user.admin? %>
-      <%= link_to "Post announcement", new_announcement_path %>
-  <% end %>
-  
-  <div class="title">
-    <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'map' %>
-    <h1>Announcements</h1>
-  </div>
-
-  <div id="announcements">
-    <% @announcements.each do |announcement| %>
-
-      <div class="announcement-card">
-      <%# date %>
-      <div class="announcement-time">
-        <p><%= announcement.body.created_at.strftime('%B %d') %></p>
-        <p><%= announcement.body.created_at.strftime('%I:%M %p') %></p>
-      </div>
-
-      <%# vertical line %>
-      <div></div>
-
-      <%# body and description %>
-      <div>
-          <p>
-            <%= announcement.title %>
-          </p>
-
-          <p>
-            <%= announcement.user.name %>
-          </p>
-
-          <p>
-            <%= announcement.body %>
-          </p>
-
-      </div>
-
-      <%# show edited tag %>
-      <% if announcement.body.updated_at > announcement.body.created_at %>
-        <p>(edited)Last updated: <%= announcement.body.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
-      <% end %>
-
-      <%# go to specific %>
-      <p>
-        <%= link_to ">", announcement %>
-      </p>
-
-      </div>
-    
+  <% if current_user && current_user.admin? %>  
+        <%= link_to "Post announcement", new_announcement_path %>
     <% end %>
-  </div>
 
+<div class="announcements-container">
+  <div class="announcements-content">
+    <div class="title">
+      <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'speaker' %>
+      <h1>Announcements</h1>
+    </div>
+
+    <div id="announcements">
+      <% @announcements.each do |announcement| %>
+
+        <div class="announcement-card">
+          <div class="announcement-details">
+          <%# date %>
+          <div class="announcement-time">
+            <p><%= announcement.body.created_at.strftime('%b %d') %></p>
+            <p><%= announcement.body.created_at.strftime('%I:%M %p') %></p>
+          </div>
+
+          <%# vertical line %>
+          <div class="line">
+          </div>
+
+          <%# body and description %>
+          <div>
+              <div class="announcement-title">
+                <%= announcement.title %>
+              </div>
+
+              <div class="announcement-author">
+                <%= announcement.user.name %>
+              </div>
+
+              <div class="announcement-body">
+                <%= announcement.body %>
+              </div>
+
+          </div>
+
+          <%# show edited tag %>
+        </div>
+
+        <%# go to specific %>
+        <div class="arrow">
+          <%= link_to ">", announcement %>
+        </div>
+      
+
+        </div>
+      
+      <% end %>
+    </div>
+  </div>
 </div>
