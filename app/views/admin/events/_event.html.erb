@@ -47,6 +47,33 @@
     </div>
 
     <div class = "info-section">
+      <p>
+        <% event_logs = EventLog.where(event_id: event.id, participating: true) %>
+        <h2>Confirmed Participants: <%= event_logs.length %></h2>
+        <% event_logs.each do |log| %>
+          <div class = "e-row"> 
+            <img src="<%= asset_path 'user-icon.svg' %>">
+            <%= log.user.name %>
+          </div>
+        <% end %>
+        <%= stylesheet_link_tag 'confirmation' %>
+        <h2>Volunteer sign-ups:</h2>
+        <ul>
+          <% @event_logs.each do |event_log|%>
+          <% if event_log.confirmed == false %>
+            <% user = User.find(event_log.user_id) %>
+            <li>
+              <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
+              <%= button_to "Confirm participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: true}, class: "confirmButton" %>
+              <%= button_to "Deny participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: false}, class: "denyButton"%>
+            </li>
+          <% end %>
+          <% end %>
+        </ul>
+      </p>
+    </div>
+
+    <div class = "info-section">
       <% officer = event.officer %>
       <% if officer %>
         <h2> Contact Officer </h2>
@@ -71,12 +98,6 @@
       <% end %>
     </div>
   </section>
-
-  <p>
-    <strong>Confirmed Participants:</strong>
-    <% event_logs = EventLog.where(event_id: event.id, participating: true) %>
-    <%= event_logs.length %>
-  </p>
 
 
 </div>

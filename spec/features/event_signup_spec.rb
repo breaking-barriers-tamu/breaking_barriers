@@ -10,7 +10,7 @@ describe 'Event signup', type: :feature do
     sign_in(user)
     visit event_path(event)
     click_link 'Sign Up'
-    expect(page).to(have_content('You are signed up for this event!'))
+    expect(page).to(have_content('You are signed up to volunteer for this event!'))
     expect(EventLog.where(user: user, event: event)).not_to(be_empty)
   end
 
@@ -27,8 +27,8 @@ describe 'Event signup', type: :feature do
     visit event_path(event)
     click_link 'Sign Up'
     visit event_path(event)
-    click_link 'Remove Me'
-    expect(page).to(have_content('Successfully removed you from this event.'))
+    click_link 'Remove My'
+    expect(page).to(have_content('Successfully removed your request to volunteer for this event.'))
     expect(EventLog.where(user: user, event: event)).to(be_empty)
   end
 end

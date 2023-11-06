@@ -12,21 +12,6 @@
 
 <%= render 'admin/events/event', event: @event %>
 
-<%= stylesheet_link_tag 'confirmation' %>
-      <h2>Volunteer sign-ups:</h2>
-      <ul>
-        <% @event_logs.each do |event_log|%>
-        <% if event_log.confirmed == false %>
-          <% user = User.find(event_log.user_id) %>
-          <li>
-            <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
-            <%= button_to "Confirm participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: true}, class: "confirmButton" %>
-            <%= button_to "Deny participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: false}, class: "denyButton"%>
-          </li>
-        <% end %>
-        <% end %>
-      </ul>
-
 <div class = "event-controls">
   <%= link_to edit_admin_event_path(@event) do %>
     <button class = "edit-event"> 
