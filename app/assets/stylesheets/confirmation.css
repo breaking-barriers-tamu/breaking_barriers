@@ -1,20 +1,20 @@
 /* app/assets/stylesheets/participants.css */
 
 /* Style the Participants heading */
-h2 {
+  .participantHeading {
     font-size: 24px;
     margin-bottom: 10px;
     font-family: 'Arial', sans-serif; /* Replace with your preferred font-family */
   }
   
   /* Style the list of participants */
-  ul {
+  .participantList {
     list-style: none;
     padding: 0;
   }
   
   /* Style each participant entry */
-  li {
+  .participantEntry {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     padding: 10px;
