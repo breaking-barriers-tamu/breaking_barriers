@@ -28,6 +28,24 @@ describe 'User Management', type: :feature do
     expect(page).to(have_content('2.5'))
   end
 
+  it 'sunny day - admin edits user' do
+    sign_in(user)
+    visit edit_admin_user_path(user2)
+    expect(page).to(have_content('Baba'))
+    fill_in 'First name', with: 'Bubba'
+    click_button 'Update'
+    expect(page).to(have_content('Bubba'))
+    expect(page).not_to(have_content('Baba'))
+  end
+
+  it 'sunny day - admin deletes user' do
+    sign_in(user)
+    visit edit_admin_user_path(user2)
+    expect(page).to(have_content('Green'))
+    click_button 'Delete'
+    expect(page).not_to(have_content('Green'))
+  end
+
   it 'rainy day - member visits page' do
     sign_in(user2)
     expect { visit(admin_users_path) }.to(raise_error(ActionController::RoutingError))
