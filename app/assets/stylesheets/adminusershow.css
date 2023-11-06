@@ -110,10 +110,19 @@ body {
     padding: 5px 40px;
 }
 
-.row-3 button {
+.delbutton {
+    width: 100%;
+    justify-content: end;
+}
+
+.delbutton button {
     cursor: pointer;
     background: #CF2E2E;
     padding: 5px 40px;
     margin-left: 200px;
     color: white;
+}
+
+.row-23 {
+    justify-content: space-between;
 }

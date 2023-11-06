@@ -80,7 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_002859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "participating", default: false
-    t.boolean "confirmed", default: false
   end
 
   create_table "events", force: :cascade do |t|

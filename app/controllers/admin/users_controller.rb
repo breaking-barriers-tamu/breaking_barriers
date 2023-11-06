@@ -49,20 +49,9 @@ module Admin
     def destroy
       @user = User.find(params[:id])
       if @user.destroy
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.append("flash_messages", action: "replace", target: "flash_messages", partial: "shared/flash", locals: { key: :notice, value: 'User was successfully destroyed.' }) + 
-                                  turbo_stream.remove("user_#{@user.id}")
-          end
-          format.html { redirect_to admin_users_path, notice: 'User was successfully destroyed.' }
-        end
+        redirect_to admin_users_path, notice: 'User was successfully destroyed.'
       else
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.append("flash_messages", action: "replace", target: "flash_messages", partial: "shard/flash", locals: { key: :alert, value: 'User could not be destroyed.' })
-          end
-          format.html { redirect_to admin_users_path, alert: 'User could not be destroyed.' }
-        end
+        redirect_to admin_users_path, alert: 'User could not be destroyed.'
       end
     end
 
