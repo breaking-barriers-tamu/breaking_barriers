@@ -2,6 +2,9 @@
 
 <div class="profile-container">
   <div class="forms">
+    <div class="back-to-users">
+      <%= link_to "Back to all users", admin_users_path %>
+    </div>
     <div class="profile-form">
       <div class="current-user-display">
           <% if @user.avatar_url.present? %>

@@ -126,3 +126,15 @@ body {
 .row-23 {
     justify-content: space-between;
 }
+
+.back-to-users {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.back-to-users a {
+    text-decoration: none;
+    color: #CF2E2E;
+    font-size: large;
+}
