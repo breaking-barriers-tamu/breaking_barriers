@@ -1,6 +1,6 @@
 /* Header styling */
 #event-form-header {
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
 }
@@ -23,7 +23,7 @@
     font-size: 1.5em;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
-    color: #0693E3;
+    color: rgb(72, 114, 174);
     cursor: pointer;
     align-items: center;
     position: relative;
@@ -42,7 +42,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0693E3;
+    background-color: rgb(72, 114, 174);
     transition: width .5s;
 }
 
@@ -84,7 +84,7 @@
     height: 35px;
     border: none;
     outline: none;
-    border-bottom: 2px solid #0693E3;
+    border-bottom: 2px solid rgb(72, 114, 174);
     font-size: 16px;
     border-radius: 2px;
     background-color: white;
@@ -118,7 +118,7 @@
     display: block;
     align-items: center;
     outline: none;
-    border-bottom: 2px solid #0693E3;
+    border-bottom: 2px solid rgb(72, 114, 174);
     padding: 5px 0 5px 0;
 }
 
@@ -142,7 +142,7 @@
     height: 150px;
     border: none;
     outline: none;
-    border-bottom: 2px solid #0693E3;
+    border-bottom: 2px solid rgb(72, 114, 174);
     font-size: 16px;
     border-radius: 2px;
     background-color: white;

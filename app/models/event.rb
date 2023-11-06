@@ -19,4 +19,19 @@ class Event < ApplicationRecord
   def has_participants?
     event_logs.any?
   end
+
+  def get_location
+    if (location.present?)
+      location
+    else 
+      "TBD"
+    end
+  end
+
+  def get_duration
+    minutes = duration * 60
+    "#{(minutes/60).to_i} hours #{(minutes % 60).to_i} minutes"
+  end
+
+
 end

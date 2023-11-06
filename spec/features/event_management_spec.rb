@@ -48,7 +48,7 @@ describe 'Event CRUD', type: :feature do
   it 'Edit an event - Sunny' do
     sign_in(user)
     visit admin_event_path(event)
-    click_on 'Edit this event'
+    click_link('Edit Event')
 
     fill_in 'event[name]', with: 'Updated Event Name'
     fill_in 'event[datetime]', with: '2023-12-31'
@@ -61,7 +61,7 @@ describe 'Event CRUD', type: :feature do
   it 'Edit an event - Rainy' do
     sign_in(user)
     visit admin_event_url(event)
-    click_on 'Edit this event'
+    click_link('Edit Event')
 
     fill_in 'event[name]', with: ''
     fill_in 'event[datetime]', with: '2023-12-31'
@@ -75,7 +75,7 @@ describe 'Event CRUD', type: :feature do
   it 'Destroy an event' do
     sign_in(user)
     visit admin_event_url(event)
-    click_on 'Destroy this event'
+    click_on 'Delete Event'
     expect(page).to(have_content('Event was successfully destroyed.'))
   end
 end

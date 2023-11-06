@@ -1,23 +1,14 @@
+<div class = "header-container">
+  <h1 id = "event-form-header">Event View</h1>
+  <%= link_to events_path, class: "events-link" do %>
+    <div class = "back-link">
+      <img src= "<%= asset_path 'back-icon.svg' %>">
+      Back to Events
+    </div>
+  <% end %>
+</div>
+
 <%= render @event %>
-<strong>Officer In Charge: </strong>
-    <% if @event.officer %>
-      <%= link_to @event.officer.name, user_path(@event.officer) %>
-    <% else %>
-      No officer assigned
-    <% end %>
-  <br>
-
-<strong> Event Flier: </strong> <br>
-<% if @event.flier.attached? %>
-    <% if @event.flier.representable? %>
-        <%= image_tag @event.flier.representation(resize_to_limit: [500,500]) %>
-        <br>
-    <% end %> 
-    <%= link_to "View/Download Flier", @event.flier %>
-<% else %>
-    <%= "No Attachments" %>
-<% end %>
-
 
 <% if @event.is_active? %>
   <% if @event_log.any?%>
@@ -35,17 +26,6 @@
           <% end %>
         <% end %>
       </h3>
-
-      <% if @event_log.first.confirmed == false %>
-        <%= link_to "Remove my request to sign up to volunteer for this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
-      <% end %>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to "Sign up to volunteer for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration)%>
     </div>
   <% end %>
 <% end %>
-<div>
-  <%= link_to "Back to events", events_path %>
-</div>

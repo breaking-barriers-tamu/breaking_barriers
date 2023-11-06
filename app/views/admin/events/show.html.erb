@@ -1,5 +1,15 @@
 <%= javascript_include_tag 'delete_confirmation_dialog' %>
 
+<div class = "header-container">
+  <h1 id = "event-form-header">Event View</h1>
+  <%= link_to admin_events_path, class: "events-link" do %>
+    <div class = "back-link">
+      <img src= "<%= asset_path 'back-icon.svg' %>">
+      Back to Events
+    </div>
+  <% end %>
+</div>
+
 <%= render 'admin/events/event', event: @event %>
 
 <%= stylesheet_link_tag 'confirmation' %>
@@ -17,9 +27,15 @@
         <% end %>
       </ul>
 
-<div>
-  <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
-  <%= link_to "Back to events", admin_events_path %>
-
-  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete, form_class: 'delete-alertbox' %>
+<div class = "event-controls">
+  <%= link_to edit_admin_event_path(@event) do %>
+    <button class = "edit-event"> 
+      Edit Event <img src = "<%= asset_path 'edit-icon.svg' %>"> 
+    </button>
+  <% end %> 
+  <%= button_to admin_event_path(@event), method: :delete, class: "delete-alertbox" do %>
+    <div class = "delete-event"> 
+      Delete Event <img src = "<%= asset_path 'delete-icon.svg' %>"> 
+    </div>
+  <% end %>
 </div>

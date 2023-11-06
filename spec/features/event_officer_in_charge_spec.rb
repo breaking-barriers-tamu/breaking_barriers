@@ -14,14 +14,14 @@ describe 'Officer In Charge feature', type: :feature do
     sign_in(member)
     visit event_path(event_no_officer)
 
-    expect(page).to(have_content('No officer assigned'))
+    expect(page).to(have_content('None'))
   end
 
   it 'Shows when there is an officer in charge' do
     sign_in(member)
     visit event_path(event)
 
-    expect(page).to(have_content('Officer In Charge: Alice Smith'))
+    expect(page).to(have_content('Alice Smith'))
   end
 
   it 'Allows admin to add/modify officer in charge' do
@@ -29,21 +29,20 @@ describe 'Officer In Charge feature', type: :feature do
 
     # Add an officer in charge
     visit admin_event_path(event)
-    click_on 'Edit this event'
+    click_link 'Edit Event'
     select 'Bob Shelby', from: 'event_officer_in_charge'
     find('#submit-button').click
-    #expect(page).to(have_content('Officer In Charge: Bob Shelby'))
+    expect(page).to(have_content('Bob Shelby'))
 
     # Change an officer in charge
     visit admin_event_path(event)
-    click_on 'Edit this event'
+    click_link 'Edit Event'
     select 'Alice Smith', from: 'event_officer_in_charge'
     find('#submit-button').click
-    #expect(page).to(have_content('Officer In Charge: Alice Smith'))
-
+    expect(page).to(have_content('Alice Smith'))
     # Remove an officer in charge
     visit admin_event_path(event)
-    click_on 'Edit this event'
+    click_link 'Edit Event'
     select '--', from: 'event_officer_in_charge'
     find('#submit-button').click
     #expect(page).to(have_content('None'))
