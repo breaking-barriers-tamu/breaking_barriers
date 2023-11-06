@@ -154,3 +154,53 @@
     display: flex;
     flex-direction: row;
 }
+
+.signup-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 15px 15px 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(72, 114, 174);
+}
+
+.signup-section a { text-decoration: none; }
+
+.signup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #28B463;   
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.signup:hover { background-color: #1D8348; }
+
+.remove {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #E74C3C;   
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.remove:hover { background-color: #B03A2E;} 

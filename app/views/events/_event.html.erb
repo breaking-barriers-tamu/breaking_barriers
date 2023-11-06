@@ -28,10 +28,25 @@
   </section>
 
   <section class = "event-info" > 
-    <div class = info-section>
-      <h2>Participants:</h2>
-      <% event_logs = EventLog.where(event_id: event.id) %>
-      <%= event_logs.length %>
+
+    <div class = "signup-section">
+      <% if event.is_active? %>
+        <% if @event_log.any? %>
+          <%= link_to delete_event_log_path(EventLog.where(user: current_user, event: @event).first) do %>
+            <button class = "remove"> 
+              Remove Me
+            </button>
+          <% end %>
+        <% else %>
+          <%= link_to new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration) do %>
+            <button class = "signup"> 
+              Sign Up
+            </button>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h2> Sign Up Disabled <h2>
+      <% end %>
     </div>
 
     <div class = "info-section">

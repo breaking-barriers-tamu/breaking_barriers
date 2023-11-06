@@ -23,14 +23,6 @@
 
         <% end %>
       </h3>
-      <%= link_to "Remove me from this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to "Sign up for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration)%>
     </div>
   <% end %>
 <% end %>
-<div>
-  <%= link_to "Back to events", events_path %>
-</div>
