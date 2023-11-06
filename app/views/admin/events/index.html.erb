@@ -1,15 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Events</h1>
-
-<div id="events">
-  <% @events.each do |event| %>
-    <p>
-      <%= event.name %>
-      <%= link_to "Show this event", admin_event_path(event) %>
-    </p>
+<div class = "management-header"> 
+  <%= link_to admin_root_path do  %>
+    <button class = "admin-dashboard">
+      Admin Dashboard <img src = "<%= asset_path 'back-icon-white.svg' %>">
+    </button>
+  <% end %>
+  <h1> Events Dashboard </h1>
+  <%= link_to new_admin_event_path do %>
+    <button class = "new-event">
+      New Event <img src = "<%= asset_path 'new-event.svg' %>">
+    </button>
   <% end %>
 </div>
 
-<%= link_to "New event", new_admin_event_path %>  <br/>
-<%= link_to 'Back to Admin Dashboard', admin_root_path %>
+
+<div class = "management-body">
+  <div id="upcoming-events">
+    <% @events.each do |event| %>
+      <p>
+        <%= event.name %>
+        <%= link_to "Show this event", admin_event_path(event) %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+
