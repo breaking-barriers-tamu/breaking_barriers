@@ -2,7 +2,7 @@
 
   <section class = "e-left"> 
     <div class = "left-section">
-      <h1 style = "color:rgb(72, 114, 174)"> <%= event.name %> </h1>
+      <h1> <%= event.name %> </h1>
       <h3> <%= event.get_duration %> </h3>
       <%= event.description %>
     </div>
@@ -15,8 +15,12 @@
             <%= image_tag event.flier, class: "image_preview" %>
         <% end %>
         <br>
-        <%= link_to "View/Download Flier", event.flier %>
-        <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
+        <div class = "flier-buttons">
+          <%= link_to event.flier do %>
+            <img src = "<%= asset_path 'open-icon.svg' %>">
+          <% end %>
+          <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
+        </div>
       <% else %>
           <img src="<%= asset_path 'uim_image-v.svg' %>" class = "image_preview">
           <%= "No Flier Attachments" %>
@@ -64,7 +68,11 @@
           <%= officer.email %> 
         </div>
       <% else %>
-        <h2> No Officer In Charge </h2>
+        <h2> Contact Officer </h2>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'user-icon.svg' %>">
+          <%= "None" %>
+        </div>
       <% end %>
     </div>
   </section>
