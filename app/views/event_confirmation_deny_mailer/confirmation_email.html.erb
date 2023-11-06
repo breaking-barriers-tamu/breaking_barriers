@@ -54,7 +54,7 @@
 <body>
   <h1><%= @user.name %>,</h1>
   <p>
-    Your sign up for <%= @event.name %> on <% @event.datetime.strftime("%m/%d/%Y") %> has been rejected.
+    Your sign up for <span class="event-details"><%= @event.name %></span> on <span class="event-details"><%= @event.datetime.strftime("%m/%d/%Y")%> </span> has been rejected.
   </p>
   <p>Thanks for signing up to volunteer and have a great day!</p>
   <div class="footer-banner">
