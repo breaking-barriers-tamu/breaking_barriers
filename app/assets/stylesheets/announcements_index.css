@@ -1,100 +1,74 @@
-/* announcements.css */
-
-.announcement-container {
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .announcement-title {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .announcement-body {
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
-  
-  .announcement-meta {
-    color: #666;
-    font-size: 0.9em;
-  }
-  
-  .announcement-author {
-    font-weight: bold;
-  }
-  
-  .announcement-timestamp {
-    font-style: normal;
-  }
-
-/* Base button style */
-.btn {
-  font-size: 14px;
-  padding: 10px 15px;
-  margin-top: 5px;
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.announcements-container {
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Specific styles for different button types */
-.btn-primary {
-    background-color: #f0ad4e;
+.announcements-content {
+  width: 40%;
 }
 
-.btn-secondary {
-    background-color: #6c757d;
+.announcement-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+  justify-content: space-between
 }
 
-.btn-danger {
-    background-color: #dc3545;
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-/* Layout for edit/delete actions */
-.edit-delete-actions {
-    display: flex;
-    gap: 10px; /* space between buttons */
-    padding-left: 15px; /* padding from the left edge */
+.title h1 {
+  font-size: 40px;
 }
 
-/* Style for the 'Back to announcements' button, making it full-width */
-.back-to-announcements {
-    margin-top: 10px;
-    padding-left: 15px;
-    display: block; /* make the link fill the container */
+.title img {
+  width: auto;
+  height: 35px;
 }
 
-/* Ensuring consistency of edit/delete button styles with comments */
-.announcement-edit, .announcement-delete {
-  font-size: 14px;
-  padding: 10px 15px;
-  margin-top: 5px;
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.line {
+  background-color: black;
+  content: '.';
+  width: 2px;
+  margin: 2px 8px;
 }
 
-.announcement-edit {
-    background-color: #f0ad4e; /* Edit button color */
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
 }
 
-.announcement-edit:hover {
-    background-color: #ec971f; /* Edit button hover color */
+.announcement-details {
+  display: flex;
+  flex-direction: row;
 }
 
-.announcement-delete {
-    background-color: #d9534f; /* Delete button color */
+.announcement-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.announcement-delete:hover {
-    background-color: #c9302c; /* Delete button hover color */
+.announcement-title {
+  font-size: 20px;
+  font-weight: bold;
 }
+
+.announcement-author {
+  font-size: small;
+  color: grey;
+  margin-bottom: 15px;
+}
+
+.announcement-body {}
