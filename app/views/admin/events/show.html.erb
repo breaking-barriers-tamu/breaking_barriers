@@ -1,7 +1,22 @@
 <p style="color: green"><%= notice %></p>
 <%= javascript_include_tag 'delete_confirmation_dialog' %>
 
+<div class = "header-container">
+  <h1 id = "event-form-header">Event View</h1>
+  <%= link_to admin_events_path, class: "events-link" do %>
+    <div class = "back-link">
+      <img src= "<%= asset_path 'back-icon.svg' %>">
+      Back to Events
+    </div>
+  <% end %>
+</div>
+
 <%= render 'admin/events/event', event: @event %>
+
+<div>
+  <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
+  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete, form_class: 'delete-alertbox' %>
+</div>
 
 <%= form_for @event, url: update_participation_admin_events_path(@event) do |f| %>
   <h2>Participants</h2>
@@ -18,10 +33,3 @@
   </ul>
   <%= f.submit "Confirm Changes" %>
 <% end %>
-
-<div>
-  <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
-  <%= link_to "Back to events", admin_events_path %>
-
-  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete, form_class: 'delete-alertbox' %>
-</div>
