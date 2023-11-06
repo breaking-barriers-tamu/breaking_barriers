@@ -7,9 +7,8 @@
 }
 
 .announcements-content {
-  width: 40%;
+  width: 50%;
 }
-
 .announcement-card {
   display: flex;
   flex-direction: row;
@@ -55,9 +54,14 @@
 
 .announcement-time {
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.announcement-time p{
+  white-space: nowrap;
 }
 
 .announcement-title {
