@@ -30,17 +30,36 @@
   <section class = "event-info" > 
 
     <div class = "signup-section">
+          <% if @event.is_active? %>
+        <% if @event_log.any?%>
+        <br>
+          <div>
+            <h4 style="padding-right:10px">
+              <% if @event_log.first.participating %>
+                You are confirmed for this event! 
+
+              <% else %>
+                <% if @event_log.first.confirmed == false %>
+                Confirmation pending. Once an admin approves you for this event, you will receive an email in your TAMU inbox
+                <% else %>
+                Your request to participate in this event has been denied!
+                <% end %>
+              <% end %>
+            </h4>
+          </div>
+        <% end %>
+      <% end %>
       <% if event.is_active? %>
         <% if @event_log.any? %>
           <%= link_to delete_event_log_path(EventLog.where(user: current_user, event: @event).first) do %>
             <button class = "remove"> 
-              Remove Me
+              Remove My Request to Volunteer
             </button>
           <% end %>
         <% else %>
           <%= link_to new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration) do %>
             <button class = "signup"> 
-              Sign Up
+              Sign Up to Volunteer
             </button>
           <% end %>
         <% end %>

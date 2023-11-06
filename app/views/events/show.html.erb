@@ -10,22 +10,3 @@
 
 <%= render @event %>
 
-<% if @event.is_active? %>
-  <% if @event_log.any?%>
-  <br>
-    <div>
-      <h3>
-        <% if @event_log.first.participating %>
-          You are confirmed for this event! 
-
-        <% else %>
-          <% if @event_log.first.confirmed == false %>
-          Confirmation pending. Once an admin approves you for this event, you will receive an email in your TAMU inbox
-          <% else %>
-          Your request to participate in this event has been denied!
-          <% end %>
-        <% end %>
-      </h3>
-    </div>
-  <% end %>
-<% end %>
