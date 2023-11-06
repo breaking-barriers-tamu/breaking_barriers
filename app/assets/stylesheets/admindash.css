@@ -7,6 +7,11 @@ body {
     justify-content: center;
 }
 
+#two-part-item{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 .dash-container {
     display: flex;
     justify-content: space-between;
@@ -68,6 +73,16 @@ body {
     width: 40%;
 }
 
+.item-container-wide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #6088c0;
+    border-radius:  20px;
+    width: 60%;
+    margin-left: 30px;
+}
+
 .item-container h2 {
     color: white;
     font-family: inherit;
@@ -79,6 +94,7 @@ body {
 }
 
 .item-container div{
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -95,6 +111,43 @@ body {
 }
 
 .item-container div p a{
+    margin-right: 20px;
+    color: white;
+    font-family: inherit;
+    font-size: medium;
+    text-decoration: none;
+}
+
+
+
+.item-container-wide h2 {
+    color: white;
+    font-family: inherit;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.item-container-wide div{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #6088c0;
+    margin-bottom: 10px;
+}
+
+.item-container-wide div p{
+    margin-right: 20px;
+    color: white;
+    font-family: inherit;
+    font-size: medium;
+    text-wrap: wrap;
+}
+
+.item-container-wide div p a{
     margin-right: 20px;
     color: white;
     font-family: inherit;

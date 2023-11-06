@@ -23,8 +23,26 @@
             <% end %>
         </div>
 
-        <div class="item-container">
-            <h2>New Sign-ups</h2>
+        <div class="item-container-wide">
+        <h2>New Sign-ups:</h2>
+            <% EventLog.where(confirmed: false).each do |log|%>
+                <% if log.event.is_active? %>
+                    <div>
+                        <div id="two-part-item">
+                            <p><%= log.event.name %></p>
+                            <p style="color:lightgray"><%= log.event.datetime.month %>/<%= log.event.datetime.day %>/<%= log.event.datetime.year %></p>
+                        </div>
+                        <div id="two-part-item">
+                            <p><%= log.user.first_name %> <%= log.user.last_name %></p>
+                            <p style="color:lightgray"><%= log.user.email %></p>
+                        </div>
+                        <div>
+                            <%= button_to "Confirm participation", confirm_participation_admin_event_log_url(log), method: :patch, params: {participating: true}, class: "confirmButton" %>
+                            <%= button_to "Deny participation", confirm_participation_admin_event_log_url(log), method: :patch, params: {participating: false}, class: "denyButton"%>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
         </div>
     </div>
 </div>
