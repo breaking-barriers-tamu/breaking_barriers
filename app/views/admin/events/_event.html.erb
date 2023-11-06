@@ -1,6 +1,6 @@
-<div class = "e-partial" >
+<div class = "event-view" >
 
-  <section class = "e-left"> 
+  <section class = "event-main"> 
     <div class = "left-section">
       <h1> <%= event.name %> </h1>
       <h3> <%= event.get_duration %> </h3>
@@ -28,14 +28,14 @@
     </div>
   </section>
 
-  <section class = "e-right" > 
-    <div class = right-section>
+  <section class = "event-info" > 
+    <div class = info-section>
       <h2>Participants:</h2>
       <% event_logs = EventLog.where(event_id: event.id) %>
       <%= event_logs.length %>
     </div>
 
-    <div class = "right-section">
+    <div class = "info-section">
       <h2> Information </h2>
       <div class = "e-row"> 
         <img src="<%= asset_path 'calendar-icon.svg' %>">
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class = "right-section">
+    <div class = "info-section">
       <% officer = event.officer %>
       <% if officer %>
         <h2> Contact Officer </h2>
