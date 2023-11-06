@@ -33,9 +33,8 @@
 }
 
 .line {
-  background-color: black;
+  border-left: 3px solid black;
   content: '.';
-  width: 2px;
   margin: 2px 8px;
 }
 
