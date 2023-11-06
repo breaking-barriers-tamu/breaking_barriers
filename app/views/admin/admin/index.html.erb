@@ -1,7 +1,30 @@
-<h1>Admin Dashboard</h1>
+<%= stylesheet_link_tag "admindash" %>
 
-<%= link_to 'Events Managment', admin_events_path %>
-<%= link_to 'Users Management', admin_users_path %>
-<%= link_to 'View all event logs', admin_event_logs_path %>
-<%= link_to 'Export Member Volunteer Hours Spreadsheet', export_participation_data_admin_users_path(format: :csv) %>
-<%= link_to 'Admin Help', admin_help_path %>
+<div class="dash-main">
+    <div class="dash-container">
+        <div class="dash-item"><%= link_to 'Events Managment', admin_events_path %></div>
+        <div class="dash-item"><%= link_to 'Users Management', admin_users_path %></div>
+        <div class="dash-item"><%= link_to 'View Event Logs', admin_event_logs_path %></div>
+        <div class="dash-item"><%= link_to 'Export Member Hours', export_participation_data_admin_users_path(format: :csv) %></div>
+        <div class="dash-item"><%= link_to 'Admin Help', admin_help_path %></div>
+    </div>
+</div>
+
+<div class="ext-container">
+    <div class="int-container">
+        <div class="item-container">
+            <h2>Active Events</h2>
+            <% @activeEvents.each do |event| %>
+                <div>
+                    <p><%= event.name %></p>
+                    <p><%= event.datetime.month %>/<%= event.datetime.day %>/<%= event.datetime.year %></p>
+                    <p><%= link_to ">", admin_event_path(event) %></p>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="item-container">
+            <h2>New Sign-ups</h2>
+        </div>
+    </div>
+</div>
