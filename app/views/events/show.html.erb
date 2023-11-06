@@ -26,15 +26,21 @@
           You are confirmed for this event! 
 
         <% else %>
+          <% if @event_log.first.confirmed == false %>
           Confirmation pending. Once an admin approves you for this event, you will receive an email in your TAMU inbox
-
+          <% else %>
+          Your request to participate in this event has been denied!
+          <% end %>
         <% end %>
       </h3>
-      <%= link_to "Remove me from this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
+
+      <% if @event_log.first.confirmed == false %>
+        <%= link_to "Remove my request to sign up to volunteer for this event", delete_event_log_path(EventLog.where(user: current_user, event: @event).first)%>
+      <% end %>
     </div>
   <% else %>
     <div>
-      <%= link_to "Sign up for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration)%>
+      <%= link_to "Sign up to volunteer for this event", new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration)%>
     </div>
   <% end %>
 <% end %>
