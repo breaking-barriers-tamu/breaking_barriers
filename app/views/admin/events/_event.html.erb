@@ -19,11 +19,11 @@
           <%= link_to event.flier do %>
             <img src = "<%= asset_path 'open-icon.svg' %>">
           <% end %>
-          <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
+          <%= button_to "Delete Flier", purge_flier_admin_event_path(event), method: :delete, class: "delete-flier" %>
         </div>
       <% else %>
-          <img src="<%= asset_path 'uim_image-v.svg' %>" class = "image_preview">
-          <%= "No Flier Attachments" %>
+          <img src="<%= asset_path 'placeholder.svg' %>" class = "image_preview">
+          <%= "No Flier Attachment" %>
       <% end %>
     </div>
   </section>

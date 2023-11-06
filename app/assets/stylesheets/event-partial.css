@@ -81,3 +81,18 @@
     width: 100%;
     padding: 0 10% 0 10%;
 }
+
+.delete-flier {
+    font-family: 'Inter', sans-serif;
+    color: white;
+    background-color: #E74C3C;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px 5px 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.delete-flier:hover {
+    background-color:  #B03A2E ;
+}
