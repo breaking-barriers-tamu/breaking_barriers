@@ -1,14 +1,21 @@
+<!-- Announcement Show Page -->
 <%= javascript_include_tag 'delete_confirmation_dialog' %>
+
+<p class="notice" style="color: green"><%= notice %></p>
 
 <%= render @announcement %>
 
-<div>
-  <div> <%= @announcement.user.name %></div>
-  <%= link_to "Back to announcements", announcements_path %>
+<!-- Separate container for edit/delete which will allow us to easily control layout -->
+<div class="announcement-actions edit-delete-actions">
   <% if current_user && current_user.admin? %>
-     <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %>
-  <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: 'delete-alertbox'%>
+    <%= link_to "Edit this announcement", edit_announcement_path(@announcement), class: "btn announcement-edit" %>
+    <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: "delete-alertbox", class: "btn announcement-delete"%>
   <% end %>
+</div>
+
+<!-- Back button in its own div for separate styling -->
+<div class="back-to-announcements">
+  <%= link_to "Back to announcements", announcements_path, class: "btn btn-secondary" %>
 </div>
 
 <div class="main-comment-container">
