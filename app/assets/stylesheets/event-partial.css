@@ -85,7 +85,7 @@
 .delete-flier {
     font-family: 'Inter', sans-serif;
     color: white;
-    background-color: #E74C3C;
+    background-color: #E67E22;
     cursor: pointer;
     border: none;
     border-radius: 4px;
@@ -94,6 +94,63 @@
 }
 
 .delete-flier:hover {
-    background-color:  #B03A2E ;
+    background-color:  #AF601A;
 }
 
+.event-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin: 25px 25px 25px 25px;
+}
+
+.event-controls a { text-decoration: none; }
+
+.edit-event {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(72, 114, 174);   
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.edit-event:hover {
+    background-color:rgb(26, 75, 142);
+}
+
+.delete-event {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #E74C3C;   
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);     
+}
+
+.delete-event:hover {
+    background-color: #B03A2E;
+}
+
+.delete-alertbox {
+    display: flex;
+    flex-direction: row;
+}

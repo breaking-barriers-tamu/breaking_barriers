@@ -13,9 +13,17 @@
 
 <%= render 'admin/events/event', event: @event %>
 
-<div>
-  <%= link_to "Edit this event", edit_admin_event_path(@event) %> |
-  <%= button_to "Destroy this event", admin_event_path(@event), method: :delete, form_class: 'delete-alertbox' %>
+<div class = "event-controls">
+  <%= link_to edit_admin_event_path(@event) do %>
+    <button class = "edit-event"> 
+      Edit Event <img src = "<%= asset_path 'edit-icon.svg' %>"> 
+    </button>
+  <% end %> 
+  <%= button_to admin_event_path(@event), method: :delete, class: "delete-alertbox" do %>
+    <div class = "delete-event"> 
+      Delete Event <img src = "<%= asset_path 'delete-icon.svg' %>"> 
+    </div>
+  <% end %>
 </div>
 
 <%= form_for @event, url: update_participation_admin_events_path(@event) do |f| %>
