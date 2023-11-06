@@ -30,9 +30,21 @@
 
   <section class = "event-info" > 
     <div class = info-section>
-      <h2>Participants:</h2>
-      <% event_logs = EventLog.where(event_id: event.id) %>
-      <%= event_logs.length %>
+      <%= form_for event, url: update_participation_admin_events_path(@event) do |f| %>
+        <h2>Participants</h2>
+        <ul>
+          <% @event_logs.each do |event_log|%>
+            <%= f.fields_for :event_logs, event_log do |event_log_subform| %>
+              <% user = User.find(event_log.user_id) %>
+              <li>
+                <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
+                Participating: <%= event_log_subform.check_box :participating %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <%= f.submit "Confirm Changes" %>
+      <% end %>
     </div>
 
     <div class = "info-section">
