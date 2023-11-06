@@ -2,12 +2,6 @@
 <body data-page="home">
     <div class="cover-container"> 
         <%= image_tag("home-cover.jpg", alt: "medical center", class: "cover") %>
-        <% if @current_user %>
-            <p>Logged in as: <%= @current_user.email %></p>
-            <%= link_to 'Edit Profile', edit_user_registration_path %>
-            <%= link_to 'View Profile', user_path(id:1) %>
-        <% end %>
-
         <div style="height: 500px">
     </div>
 </body>

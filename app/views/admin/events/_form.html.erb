@@ -1,59 +1,84 @@
 <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
 <%= javascript_include_tag 'preview' %>
-<%= form_with(model: [:admin, event], local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<main class = "form-container">
+  <%= form_with(model: [:admin, event], local: true) do |form| %>
+    <% if event.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+        <ul>
+          <% event.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class = "input-container">
+    <img src="<%= asset_path 'name-icon.svg' %>">
+    <div>
+      <%= form.text_field :name, class: "event-form-input", placeholder: "Add name" %>
+      <%= form.label "Name (Required)" %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class = "input-container">
+    <img src="<%= asset_path 'clock-icon.svg' %>"> 
+    <div>
+      <%= form.number_field :duration, in: 0.0..12.0, step: 0.5, class: "event-form-input", placeholder: "Add Duration" %>
+      <%= form.label "Hours (Required)" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+  <div class = "input-container"> 
+    <img src="<%= asset_path 'calendar-icon.svg' %>">
+    <div>
+      <%= form.datetime_field :datetime, min: Time.zone.now.strftime("%B %d, %Y %I:%M %p"), class: "event-form-input" %>
+      <%= form.label "Date & Time (Required)"  %>
+    </div>
+  </div> 
+
+  <div class = "input-container">
+    <img src="<%= asset_path 'location-icon.svg' %>">
+    <div>
+      <%= form.text_field :location, class: "event-form-input", placeholder: "Add location" %>
+      <%= form.label :location  %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label "Date & Time", style: "display: block" %>
-    <%= form.datetime_field :datetime, min: Time.zone.now.strftime("%B %d, %Y %I:%M %p") %>
+  <div class = "input-container">
+    <img src="<%= asset_path 'user-icon.svg' %>">
+    <div >
+      <%= form.collection_select(:officer_in_charge, 
+        User.where(access_level: 1), :id, :name, 
+        {include_blank: "--"}, 
+        {class: "event-form-input"}) %>
+      <%= form.label "Officer in charge"%>
+    </div>
   </div>
 
-  <div>
-    <%= form.label "Duration (hrs)", style: "display: block" %>
-    <%= form.number_field :duration, in: 0.0..12.0, step: 0.5 %>
+  <div class = "enabled-container"> 
+    <img src="<%= asset_path 'checlist-icon.svg'%>">
+    <div>
+      <strong> Enable Sign-Up </strong>
+      <%= form.check_box :event_enabled, checked: event.event_enabled %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label "Enable Event  " %>
-    <%= form.check_box :event_enabled, checked: event.event_enabled %>
+  <div class= "description-container">
+    <%= form.rich_text_area :description, placeholder: "Add description", id: "description-input" %>
+    <%= form.label "Event Description" %>
   </div>
 
-  <div>
-    <%= form.label "Officer in Charge:" %>
-    <%= form.collection_select(:officer_in_charge, User.where(access_level: 1), :id, :name, include_blank: true) %>
-  </div>
-
-  <div>
-    <%= form.label "Upload Flier" %>
-    <%= form.file_field :flier, id: "upload", class: "file_upload" %>
-  </div>
-
-  <div> 
+  <div class ="attachment-container">
+    <div class = "attachment-label"> 
+      <img src="<%= asset_path 'picture-icon.svg'%>">
+      <div>
+        <strong> Flier Attachment </strong> 
+      </div>
+    </div>
+    <%= form.file_field :flier, id: "upload", class: "file_upload", accept: ".pdf,image/png,image/jpeg" %>
     <% if event.flier.attached? && event.flier.representable? %>
       <%= image_tag event.flier, id: "file_preview" %>
     <% else %>
@@ -62,6 +87,8 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "", id: "submit-button" %>
   </div>
-<% end %>
+
+  <% end %>
+</main>

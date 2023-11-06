@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_182814) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_01_014802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_182814) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "participating", default: false
+    t.boolean "confirmed", default: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -87,7 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_182814) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
     t.decimal "duration"
     t.boolean "event_enabled"
     t.integer "officer_in_charge"
@@ -103,7 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_182814) do
     t.integer "access_level", default: 0
     t.string "first_name"
     t.string "last_name"
-    t.string "major"
     t.integer "year"
     t.string "phone_number"
     t.boolean "registration_completed", default: false

@@ -1,52 +1,39 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Name:</strong>
-    <%= event.name %>
-  </p>
+<div class = "e-partial" >
+  <div class = "e-left"> 
+    <h1> <%= event.name %> </h1>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
+    <h2> <%= event.duration %> hours </h2>
 
-  <p>
-    <strong>Date:</strong>
-    <%= event.datetime.strftime("%B %d, %Y") %>
-  </p>
+    <p>
+      <strong>Description:</strong>
+      <%= event.description %>
+    </p>
 
-  <p>
-    <strong>Time (CST):</strong>
-    <%= event.datetime.strftime("%I:%M %p") %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
-
-  <p>
-    <strong>Duration (hours):</strong>
-    <%= event.duration %>
-  </p>
-
-  <p>
-    <strong>Event Active:</strong>
-    <%= event.is_active? %>
-  </p>
-
-  <p>
-    <strong>Officer In Charge:</strong>
-    <% if event.officer %>
-      <%= event.officer.name %>
+    <% if event.flier.attached? %>
+      <% if event.flier.previewable? %>
+          <%= image_tag event.flier.preview(resize_to_limit: [500,500]) %>
+      <% elsif event.flier.variable? %>
+          <%= image_tag event.flier, class: "image_preview" %>
+      <% end %>
+      <br>
+      <%= link_to "View/Download Flier", event.flier %>
+      <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
     <% else %>
-        None
+        <%= "No Flier Attachments" %>
     <% end %>
-  </p>
+
+  </div>
+
+  <div class = "e-right" > 
+
+
+  </div>
 
   <p>
-    <strong>Participants:</strong>
-    <% event_logs = EventLog.where(event_id: event.id) %>
+    <strong>Confirmed Participants:</strong>
+    <% event_logs = EventLog.where(event_id: event.id, participating: true) %>
     <%= event_logs.length %>
   </p>
+
 
 </div>

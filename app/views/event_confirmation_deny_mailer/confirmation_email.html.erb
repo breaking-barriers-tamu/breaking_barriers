@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      /* Add general styling to the email body */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+      }
+
+      /* Style the main heading with the user's name */
+      h1 {
+        font-size: 24px;
+        color: #333;
+        margin: 0;
+        padding: 10px 0;
+      }
+
+      /* Style the paragraphs for the email content */
+      p {
+        font-size: 16px;
+        color: #555;
+        margin: 0;
+        padding: 10px 0;
+      }
+
+      /* Style the event name and date */
+      .event-details {
+        font-weight: bold;
+        color: #007acc;
+      }
+
+      /* Style the volunteer hours information */
+      .service-hours {
+        font-weight: bold;
+        color: #00a658;
+      }
+
+      /* Style the footer banner */
+      .footer-banner {
+        background-color: #007acc;
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        margin-top: 10px;
+        padding: 10px 0;
+      }
+    </style>
+</head>
+<body>
+  <h1><%= @user.name %>,</h1>
+  <p>
+    Your sign up for <span class="event-details"><%= @event.name %></span> on <span class="event-details"><%= @event.datetime.strftime("%m/%d/%Y")%> </span> has been rejected.
+  </p>
+  <p>Thanks for signing up to volunteer and have a great day!</p>
+  <div class="footer-banner">
+    Breaking Barriers
+  </div>
+</body>
+</html>

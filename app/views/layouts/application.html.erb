@@ -36,14 +36,16 @@
   <body>
     <%= render 'shared/navbar' %>
 
-    <% if flash.any? %>
-      <% flash.each do |key, value| -%>
-        <section class="flash flash__<%= key %>">
-          <%= value.html_safe %>
-          <span class="flash__close" onclick="this.parentElement.style.display='none'">X</span>
-        </section>
-      <% end -%>
-    <% end %>
+    <div id="flash_messages">
+      <% if flash.any? %>
+        <% flash.each do |key, value| -%>
+          <section class="flash flash__<%= key %>">
+            <%= value.gsub("\n", "<br>").html_safe %>
+            <span class="flash__close" onclick="this.parentElement.style.display='none'">X</span>
+          </section>
+        <% end %>
+      <% end %>
+    </div>
 
     <%= yield %>
     <%= render 'shared/footer' %>

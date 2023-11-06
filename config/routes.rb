@@ -3,36 +3,23 @@ Rails.application.routes.draw do
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
       resources :events do
-        patch 'update_participation', on: :member
-        
         member do
           delete :purge_flier
         end
-        
-        patch 'update_participation', on: :collection
-
       end
+
       resources :users do
         get 'export_participation_data', on: :collection
       end
 
-      resources :event_logs
+      resources :event_logs do
+        patch 'confirm_participation', on: :member
+      end
 
       get 'help', to: 'admin#help'
       root to: 'admin#index'
     end
   end
-  # Officer
-  # authenticated :user, ->(user) { user.can_access_officer_dashboard? } do
-  #   namespace :officer do
-  #     resources :events
-  #     resources :users
-  #     root to: 'officer#index'
-  #     resources :event_logs do
-  #       patch 'update_participation', on: :member
-  #     end
-  #   end
-  # end
 
   # Static Pages
   root 'pages#home'
@@ -48,7 +35,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   authenticated :user, ->(user) { true } do
-    resources :users, only: [:show]
+     resources :users, only: [:show, :edit, :update]
     # Events
     resources :events, only: [:index, :show]
     resources :event_logs do 
