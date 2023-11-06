@@ -30,8 +30,8 @@
   </div>
 
   <p>
-    <strong>Participants:</strong>
-    <% event_logs = EventLog.where(event_id: event.id) %>
+    <strong>Confirmed Participants:</strong>
+    <% event_logs = EventLog.where(event_id: event.id, participating: true) %>
     <%= event_logs.length %>
   </p>
 
