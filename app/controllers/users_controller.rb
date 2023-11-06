@@ -1,38 +1,33 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: %i[show edit update]
 
-  # GET /users or /users.json
-  def index
-    @users = User.all
-  end
-
-  # GET /users/1 or /users/1.json
   def show
-    # calc user's hours here
-    # loop through event_logs with user_id, and add up hours
-    # code taken from officer view
-    # this works under assumption that users cannot view other user's data
-
-    @total_hours = 0
-    @event_logs = EventLog.all.where(user_id: @user.id)
-    @event_logs.each do |event_log|
-      if Event.find(event_log.event_id).datetime.past? && event_log.participating
-        @total_hours += event_log.hours
-      end
-    end
+    calculate_total_hours
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit; end
+  def edit
+    @user = User.find(params[:id])
+    calculate_total_hours
+  end
 
-  # POST /users or /users.json
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = "Profile updated successfully!"
+      redirect_to edit_user_path(@user)
+    else
+      render :edit
+    end
+  end
+
+
   def create
     @user = User.new(user_params)
 
@@ -48,17 +43,28 @@ class UsersController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-
   def set_user
     # users should not be able to do anything with other users
     @user = @current_user
   end
 
   def user_params
-    params.require(:user).permit(:access_level, :first_name, :last_name, :major, :year,
+    params.require(:user).permit(:access_level, :first_name, :last_name, :year,
                                  :phone_number, :email
     )
+  end
+
+  def calculate_total_hours
+    # calc user's hours here
+    # loop through event_logs with user_id, and add up hours
+    # code taken from officer view
+    # this works under assumption that users cannot view other user's data
+    @total_hours = 0
+    @event_logs = EventLog.where(user_id: @user.id)
+    @event_logs.each do |event_log|
+      if Event.find(event_log.event_id).datetime.past? && event_log.participating
+        @total_hours += event_log.hours
+      end
+    end
   end
 end

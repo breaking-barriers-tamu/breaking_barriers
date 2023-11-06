@@ -10,11 +10,8 @@ class Admin::EventLogsController < ApplicationController
 
     event_log = EventLog.find(params[:id])
     event_log.update!(confirmed: true)
-    puts params[:participating]
-    puts "\n"
 
     if (params[:participating] == "true")
-      puts "FUCK"
       event_log.update!(participating: true)
       EventConfirmationMailer.with(user: event_log.user,
                                    event: event_log.event

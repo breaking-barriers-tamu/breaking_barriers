@@ -7,15 +7,17 @@
     <% end %>
   <br>
 
-<strong> Event Flier: </strong>
-<% if @event.avatar.attached? %>
-    <% if @event.avatar.representable? %>
-        <%= image_tag @event.avatar.variant(resize_to_limit: [500,500]) %>
-    <% end %>
-    <%= link_to "View Flier", @event.avatar %> 
+<strong> Event Flier: </strong> <br>
+<% if @event.flier.attached? %>
+    <% if @event.flier.representable? %>
+        <%= image_tag @event.flier.representation(resize_to_limit: [500,500]) %>
+        <br>
+    <% end %> 
+    <%= link_to "View/Download Flier", @event.flier %>
 <% else %>
     <%= "No Attachments" %>
 <% end %>
+
 
 <% if @event.is_active? %>
   <% if @event_log.any?%>

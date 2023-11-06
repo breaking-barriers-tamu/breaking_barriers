@@ -44,7 +44,7 @@ module Admin
     def update
       respond_to do |format|
         if @event.update(event_params)
-          format.html { redirect_to(event_url(@event), notice: 'Event was successfully updated.') }
+          format.html { redirect_to(admin_event_path(@event), notice: 'Event was successfully updated.') }
           format.json { render(:show, status: :ok, location: @event) }
         else
           format.html { render(:edit, status: :unprocessable_entity) }
@@ -81,11 +81,11 @@ module Admin
       end
     end
 
-    def purge_avatar
+    def purge_flier
       @event = Event.find(params[:id])
-      if @event.avatar.attached?
-        @event.avatar.purge
-        redirect_to(@event, notice: 'Flier was successfully deleted.')
+      if @event.flier.attached?
+        @event.flier.purge
+        redirect_to(admin_event_path(@event), notice: 'Flier was successfully deleted.')
       end
     end
 
@@ -100,7 +100,7 @@ module Admin
     def event_params
       params.require(:event).permit(:name, :location, :duration, :description, :event_enabled,
                                     :officer_in_charge, :datetime,
-                                    :avatar, event_logs_attributes: %i[id participating]
+                                    :flier, event_logs_attributes: %i[id participating]
       )
     end
   end
