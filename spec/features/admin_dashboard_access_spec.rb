@@ -20,16 +20,15 @@ RSpec.describe('Admin Dashboard Access', type: :feature) do
 
     fill_in 'First name', with: 'Jason'
     fill_in 'Last name', with: 'Le'
-    fill_in 'Major', with: 'CSCE'
     select '2024', from: 'Year'
-    fill_in 'Phone number', with: '123-456-7890'
+    fill_in 'phone-number', with: '123-456-7890'
     select 'Admin', from: 'Access level'
 
-    click_button 'Update'
+    click_button 'Register Account'
 
     visit admin_root_path
 
-    expect(page).to(have_content('Admin Dashboard'))
+    expect(page).to(have_content('Active Events'))
   end
 
   it 'Member tries to access dashboard' do
@@ -38,12 +37,11 @@ RSpec.describe('Admin Dashboard Access', type: :feature) do
 
     fill_in 'First name', with: 'Jason'
     fill_in 'Last name', with: 'Le'
-    fill_in 'Major', with: 'CSCE'
     select '2024', from: 'Year'
-    fill_in 'Phone number', with: '123-456-7890'
+    fill_in 'phone-number', with: '123-456-7890'
     select 'Member', from: 'Access level'
 
-    click_button 'Update'
+    click_button 'Register Account'
 
     expect { visit(admin_root_path) }.to(raise_error(ActionController::RoutingError))
   end

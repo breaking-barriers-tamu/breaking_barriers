@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render 'admin/users/user', user: @user %>
 
 <div>
@@ -13,5 +11,7 @@
   <%= link_to "Edit this user", edit_admin_user_path(@user) %> |
   <%= link_to "Back to users", admin_users_path %>
 
-  <%= button_to "Destroy this user", admin_user_path(@user), method: :delete %>
+  <% unless @user == current_user %>
+      <%= button_to "Destroy this user", admin_user_path(@user), method: :delete %>
+  <% end %>
 </div>
