@@ -14,6 +14,18 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     calculate_total_hours
+    @upcoming_events = []
+    @past_events = []
+    @event_logs.each do |event_log|
+      event = Event.find(event_log.event_id)
+      if event.datetime > DateTime.now
+        @upcoming_events << event
+      else
+        if(event_log.participating == true)
+          @past_events << event
+        end
+      end
+    end
   end
 
   def update
