@@ -49,4 +49,77 @@
 
 .admin-dashboard:hover { background-color: rgb(26, 75, 142); }
 
-.management-body { margin: 25px 25px 25px 25px; }
+.management-body { 
+    margin: 50px 25px 50px 25px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Table styling */
+.events-table table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-y: scroll;
+    max-height: 500px;
+    display: block;
+    text-align: center;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+/* Table header text styling */
+.events-table h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: rgb(72, 114, 174);
+}
+
+/* Table header elements styling */ 
+.events-table th {
+    padding: 10px 25px 10px 25px;
+    font-size: 20px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Table cell styling */
+.events-table td {
+    padding: 10px 25px 10px 25px;
+    border-bottom: 1px solid rgb(72, 114, 174);
+}
+
+.events-table a {text-decoration: none; }
+.events-table img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.events-table img:hover { 
+    opacity: 0.5; 
+    transition: 0.3s;
+}
+
+.events-table form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.events-table button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

@@ -7,6 +7,8 @@ module Admin
     # GET /events or /events.json
     def index
       @events = Event.all
+      @upcoming_events = Event.where('datetime > ?', DateTime.now).order(datetime: :asc)
+      @past_events = Event.where('datetime < ?', DateTime.now).order(datetime: :desc)
     end
 
     # GET /events/1 or /events/1.json
