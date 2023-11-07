@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'Event signup', type: :feature do
   let!(:event) { create(:event, name: 'Existing Event', description: 'Event Description', datetime: '2023-12-31 05:30 PM', event_enabled: true, duration: 1.0) }
-  let!(:user) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
 
   it 'Sign up for an event-- Sunny day' do
     sign_in(user)

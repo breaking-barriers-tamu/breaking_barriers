@@ -7,7 +7,7 @@ pin "delete_confirmation_dialog"
 pin "profile"
 pin "registration"
 pin "announcements_index"
-print "announcements_form"
+pin "announcements_form"
 
 
 pin "trix"

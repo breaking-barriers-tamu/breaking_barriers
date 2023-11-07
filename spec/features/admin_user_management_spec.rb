@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe 'User Management', type: :feature do
-  let!(:user) { create(:user, first_name: 'Baba', last_name: 'You', access_level: 1, registration_completed: true) }
-  let!(:user2) { create(:user, first_name: 'Baba', last_name: 'Green', access_level: 0, registration_completed: true) }
-  let!(:user3) { create(:user, first_name: 'Ari', last_name: 'Zona', access_level: 0, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'Baba', last_name: 'You', access_level: 1, registration_completed: true) }
+  let!(:user2) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'Baba', last_name: 'Green', access_level: 0, registration_completed: true) }
+  let!(:user3) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'Ari', last_name: 'Zona', access_level: 0, registration_completed: true) }
   let!(:event) { create(:event, name: 'Event 1', datetime: '2001-12-31 15:30:00', location: 'Event Location') }
   let!(:event2) { create(:event, name: 'Event 2', datetime: '2201-12-31 15:30:00', location: 'Event Location') }
   let!(:event_log1) { create(:event_log, event_id: event.id, user_id: user.id, hours: 0.5, participating: true) }
