@@ -117,7 +117,7 @@
 }
 
 /* Update cell containing actions */
-.icon-cell {
+.actions-cell {
     display: flex;
     flex-direction: row;
     justify-content: center;
