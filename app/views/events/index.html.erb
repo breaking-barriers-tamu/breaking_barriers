@@ -3,6 +3,16 @@
 </div>
 
 <div class = "calendar-container">
+  <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
+    <div> 
+      <%= date.day %>
+    </div>
+    <% events.each do |event| %>
+      <div>
+        <%= event.name %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
 

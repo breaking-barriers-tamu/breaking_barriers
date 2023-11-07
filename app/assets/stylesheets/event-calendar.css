@@ -5,3 +5,11 @@
     font-size: 1.5em;
     text-align: center;
 }
+
+.calendar-heading {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    margin: 25px 0 25px 0;
+    font-size: 1.5em;
+    text-align: center;
+}
