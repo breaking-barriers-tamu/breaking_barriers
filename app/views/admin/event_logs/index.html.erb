@@ -3,14 +3,9 @@
 <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     <style>
-        /* Style the notice paragraph with green color */
-        p {
-          font-size: 16px;
-          color: green;
-        }
 
         /* Style the main heading */
-        h1 {
+        .eventLogHeading {
 
             font-family: Arial;
             font-size: 36px;
@@ -38,7 +33,7 @@
 <body>
     <p><%= notice %></p>
 
-    <h1>All Event Logs</h1>  
+    <h1 class="eventLogHeading">All Event Logs</h1>  
     <%= link_to 'Back to Admin Dashboard', admin_root_path %>
 
     <div id="event_logs">

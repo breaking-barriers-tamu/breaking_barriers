@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(128, 128, 128, 0.3);
+    background-color: white
 }
 
 .dash-main {
@@ -51,7 +51,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
 }
 
 .int-container {

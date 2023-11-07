@@ -1,23 +1,33 @@
-<h1>Users</h1>
+<%= stylesheet_link_tag "adminuserindex" %>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <div id="user_<%= user.id %>"> 
-      <%= render 'admin/users/user', user: user %>
-      <p>
-        <%= link_to "Show this user", admin_user_path(user) %>
-        
-        <% unless user == current_user %>
-          <%= button_to "Destroy this user", admin_user_path(user), method: :delete %>
-        <% end %>
-      </p>
-
-      <%= form_with(model: [:admin, user], local: true, method: :patch) do |form| %>
-          <%= form.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] }, selected: user.access_level %>
-          <%= form.submit 'Update Access Level' %>
-      <% end %>
+<div class="ext-container">
+    <div class="int-container">
+        <div class="item-container">
+          <h2>User Management</h2>
+          <table>
+            <tr class="header">
+             <td><p>First Name</p></td>
+             <td><p>Last Name</p></td>
+             <td><p>Email</p></td>
+             <td><p>Phone</p></td>
+             <td><p>Year</p></td>
+             <td><p>Status</p></td>
+             <td><p>Hrs</td>
+             <td><p></p></td>
+            </tr>
+            <% @users.each do |user| %>
+                <tr><div>
+                <td><p><%= user.first_name %></p></td>
+                <td><p><%= user.last_name %></p></td>
+                <td><p><%= user.email %></p></td>
+                <td><p><%= user.phone_number %></p></td>
+                <td><p><%= user.year %></p></td>
+                <td><p><%= user.access_level %></p></td>
+                <td><p><%= @alluserhrs[user] %></p></td>
+                <td><p><%= link_to ">", edit_admin_user_path(user) %></p></td>
+                </div></tr>
+            <% end %>
+          </table>
+        </div>
     </div>
-  <% end %>
 </div>
-
-<%= link_to 'Back to Admin Dashboard', admin_root_path %>
