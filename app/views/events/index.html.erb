@@ -10,7 +10,8 @@
     <% events.each do |event| %>
       <div class = "calendar-info">
         <%= link_to event_path(event) do %>
-          <%= event.name %>
+          <%= event.name %> <br>
+          <%= event.datetime.strftime("%I:%M %p") %>
         <% end %>
       </div>
     <% end %>
