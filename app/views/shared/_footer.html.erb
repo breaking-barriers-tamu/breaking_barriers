@@ -1,0 +1,57 @@
+<%= stylesheet_link_tag "footer" %>
+<%= javascript_include_tag 'footer' %>
+
+
+<div class="footer-container">
+    <div class="footer-main">
+        <%# Contact Info %>
+        <div id="contact-section">
+            <h3>Contact US</h3>
+            <p>Feauture Coming Soon</p>
+        </div>
+
+        <%# Site Map %>
+        <div id="sitemap-section" class="site-map">
+            <h3>Sitemap</h3>
+            <p class="subtitle">All our pages</p>
+         
+            <ul class="site-map-items">
+                <% if user_signed_in? %>
+                    <li><%= link_to "Events", events_path %></li>
+                    <li><%= link_to "Annoucements", announcements_path %></li>
+                <% end %>
+                <li><%= link_to "About", about_path %></li>
+                <% if current_user&.can_access_admin_dashboard? %>
+                    <li><%= link_to "Admin", admin_root_path %></li>
+                <% end %>
+            </ul>
+        </div>
+
+        <%# Logo, Location, Phone %>
+        <div class="more-info">
+            <%= image_tag 'EnMed.png', alt: 'EnMed Logo', class: "enmed-logo" %>
+            <div>
+                <%= image_tag 'map-solid.svg', class:"small-logo", alt: 'map' %>
+                <p>Texas A&M University</p>
+            </div>
+            <div class="address">
+                <p class="small-logo"></p>
+                <p>1020 Holcombe Blvd, Houston, TX 77030</p>
+            </div>
+
+            <div>
+                <%= image_tag 'phone-solid.svg', class: "small-logo", alt: 'phone' %>
+                <p>(123) 456-7890</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-sub">
+        <p>© 2023  Breaking Barriers</p>
+        <p>•</p>
+        <p>All Rights Reserved</p>
+        <p>•</p>
+        <p>Privacy Policy</p>
+    </div>
+</div> 

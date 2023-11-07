@@ -1,42 +1,58 @@
+<!-- Announcement Show Page -->
 <%= javascript_include_tag 'delete_confirmation_dialog' %>
 
-
-<p style="color: green"><%= notice %></p>
+<p class="notice" style="color: green"><%= notice %></p>
 
 <%= render @announcement %>
 
-<div>
-  <div> <%= @announcement.user.name %></div>
-  <%= link_to "Back to announcements", announcements_path %>
+<!-- Separate container for edit/delete which will allow us to easily control layout -->
+<div class="announcement-actions edit-delete-actions">
   <% if current_user && current_user.admin? %>
-     <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %>
-  <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: 'delete-alertbox'%>
+    <%= link_to "Edit this announcement", edit_announcement_path(@announcement), class: "btn announcement-edit" %>
+    <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: "delete-alertbox", class: "btn announcement-delete"%>
   <% end %>
 </div>
 
-<br>
-<div>
-  <h2>Comments</h2>
-  <div id="comments">
-    <%= render @announcement.comments %>
+<!-- Back button in its own div for separate styling -->
+<div class="back-to-announcements">
+  <%= link_to "Back to announcements", announcements_path, class: "btn btn-secondary" %>
+</div>
+
+<div class="main-comment-container">
+  <br>
+  <div class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments" class="comment-list">
+      <%= render @announcement.comments %>
+    </div>
   </div>
-</div>
 
-<br>
-<% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
-  <%= turbo_frame_tag 'error-message' do %>
-    <%= render 'comments/error_message' %>
+  <br>
+  <% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
+    <%= turbo_frame_tag 'error-message' do %>
+      <div class="error-message">
+        <%= render 'comments/error_message' %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-<div>
-  <h2>Add a Comment</h2>
-  <%= form_with(model: [@announcement, Comment.new]) do |form| %>
-    <div>
-      <%= form.text_area :content, id: "comment_box" %>
-    </div>
 
-    <div>
-      <%= form.submit "Add Comment" %>
-    </div>
-  <% end %>
+  <div class="add-comment-form">
+    <h2>Add a Comment</h2>
+    <%= form_with(model: [@announcement, Comment.new], html: { class: 'add-comment' }) do |form| %>
+      <div class="comment-form-field">
+        <%= form.text_area :content, id: "comment_box" %>
+      </div>
+
+      <% unless current_user&.admin? %>
+        <div class="comment-form-anonymous">
+          <%= form.label :anonymous, "Post anonymously" %>
+          <%= form.check_box :anonymous %>
+        </div>
+      <% end %>
+
+      <div class="comment-form-action">
+        <%= form.submit "Add Comment", class: "add-comment-button" %>
+      </div>
+    <% end %>
+  </div>
 </div>

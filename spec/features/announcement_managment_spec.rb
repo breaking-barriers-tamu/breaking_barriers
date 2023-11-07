@@ -3,14 +3,13 @@
 require 'rails_helper'
 
 describe 'Announcement CRUD', type: :feature do
-  let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
   let!(:announcement) { create(:announcement, title: 'Existing Announcement', body: 'This is the body of the announcement.') }
 
   # --- Announcement Creation ---
   it 'Create an announcement - Sunny' do
     sign_in(user)
     visit new_announcement_path
-    puts page.html
 
     fill_in 'announcement[title]', with: 'New Announcement'
     find('.trix-content').set('This is the annoucment body')

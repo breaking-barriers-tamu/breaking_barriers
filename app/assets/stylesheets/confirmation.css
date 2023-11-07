@@ -1,0 +1,56 @@
+/* app/assets/stylesheets/participants.css */
+
+/* Style the Participants heading */
+  .participantHeading {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif; /* Replace with your preferred font-family */
+  }
+  
+  /* Style the list of participants */
+  .participantList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Style each participant entry */
+  .participantEntry {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif; /* Replace with your preferred font-family */
+  }
+  
+  /* Style the participant's name link */
+  li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Arial', sans-serif; /* Replace with your preferred font-family */
+  }
+  
+  /* Style the "Confirm participation" button */
+  .confirmButton {
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Larger size */
+    margin: 3px 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif; /* Replace with your preferred font-family */
+  }
+  
+  /* Style the "Deny participation" button */
+  .denyButton {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Larger size */
+    margin: 3px 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif; /* Replace with your preferred font-family */
+  }
+  

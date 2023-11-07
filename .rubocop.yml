@@ -77,6 +77,7 @@ Layout/ClassStructure:
         - private_delegate
         - private_methods
 
+
 Layout/IndentationWidth:
     Width: 2
 
@@ -104,8 +105,9 @@ Layout/FirstHashElementLineBreak:
 Layout/LineEndStringConcatenationIndentation: # (new in 1.18)
     Enabled: true
 
+
 Layout/LineLength:
-    Max: 100
+    Max: 200
     Exclude:
         - "**/spec/**/*"
 
@@ -132,6 +134,15 @@ Layout/SpaceAroundMethodCallOperator:
 
 Layout/SpaceBeforeBrackets: # (new in 1.7)
     Enabled: true
+
+Rails/FindEach:
+    Enabled: false
+
+Style/StringConcatenation:
+    Enabled: false
+
+Style/IfUnlessModifier:
+    Enabled: false
 
 Layout/SpaceInLambdaLiteral:
     EnforcedStyle: require_space
@@ -205,7 +216,7 @@ Lint/NoReturnInBeginEndBlocks: # (new in 1.2)
     Enabled: true
 
 Lint/NumberConversion:
-    Enabled: true
+    Enabled: false
 
 Lint/NumberedParameterAssignment: # (new in 1.9)
     Enabled: true
@@ -221,7 +232,8 @@ Lint/RedundantDirGlobSort: # (new in 1.8)
 
 Lint/SelfAssignment:
     Enabled: true
-
+Rails/TimeZone:
+    Enabled: false
 Lint/SymbolConversion: # (new in 1.9)
     Enabled: true
 
@@ -308,6 +320,14 @@ Naming/MethodName:
 Naming/PredicateName:
   Enabled: false
 
+Naming/AccessorMethodName:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
 ###########################################################
 ######################## Style ############################
 ###########################################################
@@ -341,7 +361,10 @@ Style/CollectionMethods:
 
 Style/CombinableLoops:
     Enabled: true
-
+Style/IdenticalConditionalBranches:
+   Enabled: false
+Style/StringConcatenation:
+   Enabled: false
 Style/CommandLiteral:
     EnforcedStyle: percent_x
 

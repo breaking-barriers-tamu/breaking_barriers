@@ -7,6 +7,8 @@ module Admin
     # GET /events or /events.json
     def index
       @events = Event.all
+      @upcoming_events = Event.where('datetime > ?', DateTime.now).order(datetime: :asc)
+      @past_events = Event.where('datetime < ?', DateTime.now).order(datetime: :desc)
     end
 
     # GET /events/1 or /events/1.json
@@ -44,7 +46,9 @@ module Admin
     def update
       respond_to do |format|
         if @event.update(event_params)
-          format.html { redirect_to(event_url(@event), notice: 'Event was successfully updated.') }
+          format.html do
+            redirect_to(admin_event_path(@event), notice: 'Event was successfully updated.')
+          end
           format.json { render(:show, status: :ok, location: @event) }
         else
           format.html { render(:edit, status: :unprocessable_entity) }
@@ -70,7 +74,7 @@ module Admin
         event_log = EventLog.find(attrs.second[:id])
 
         # if going from false to true
-        if (event_log.participating == false) && (attrs.second[:participating] == '1')
+        if event_log.participating
           event_log.update(participating: attrs.second[:participating])
           EventConfirmationMailer.with(user: event_log.user,
                                        event: event_log.event
@@ -81,11 +85,11 @@ module Admin
       end
     end
 
-    def purge_avatar
+    def purge_flier
       @event = Event.find(params[:id])
-      if @event.avatar.attached?
-        @event.avatar.purge
-        redirect_to(@event, notice: 'Flier was successfully deleted.')
+      if @event.flier.attached?
+        @event.flier.purge
+        redirect_to(admin_event_path(@event), notice: 'Flier was successfully deleted.')
       end
     end
 
@@ -100,7 +104,7 @@ module Admin
     def event_params
       params.require(:event).permit(:name, :location, :duration, :description, :event_enabled,
                                     :officer_in_charge, :datetime,
-                                    :avatar, event_logs_attributes: %i[id participating]
+                                    :flier, event_logs_attributes: %i[id participating]
       )
     end
   end

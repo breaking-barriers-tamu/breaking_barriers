@@ -4,38 +4,36 @@ require 'rails_helper'
 
 describe 'File attachment feature', type: :feature do
   let!(:event) { create(:event, name: 'Existing Event', description: 'Event Description', datetime: '2023-12-31 05:30 PM', location: 'Event Location', duration: 1.0) }
-  let!(:admin) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
+  let!(:admin) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
 
   it 'Shows when there is no flier attached' do
     sign_in(admin)
     visit event_path(event)
 
-    expect(page).to(have_content('Event Flier: No Attachments'))
+    expect(page).to(have_content('No Flier Attachment'))
   end
 
   it 'Allows admin to attach flier' do
     sign_in(admin)
     visit admin_event_path(event)
-    click_on 'Edit this event'
-    attach_file('event[avatar]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
-    click_on 'Update Event'
+    click_link('Edit Event')
+    attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s, make_visible: true)
+    find('#submit-button').click
 
-    expect(page).to(have_content('View Flier'))
+    expect(page).to(have_content('Delete Flier'))
   end
 
   it 'Deletes a flier that has been attached' do
     sign_in(admin)
     visit admin_event_path(event)
-    click_on 'Edit this event'
-    attach_file('event[avatar]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
-    click_on 'Update Event'
+    click_link('Edit Event')
+    attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s, make_visible: true)
+    find('#submit-button').click
 
-    expect(page).to(have_content('View Flier'))
+    expect(page).to(have_content('Delete Flier'))
 
-    visit admin_event_path(event)
-
-    click_on 'Delete Flier Attachment'
+    click_on 'Delete Flier'
     expect(page).to(have_content('Flier was successfully deleted.'))
-    expect(page).to(have_content('No Attachments'))
+    expect(page).to(have_content('No Flier Attachment'))
   end
 end

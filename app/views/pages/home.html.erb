@@ -1,13 +1,30 @@
-<%= stylesheet_link_tag "home" %>
-<body data-page="home">
-    <div class="cover-container"> 
-        <%= image_tag("home-cover.jpg", alt: "medical center", class: "cover") %>
-        <% if @current_user %>
-            <p>Logged in as: <%= @current_user.email %></p>
-            <%= link_to 'Edit Profile', edit_user_registration_path %>
-            <%= link_to 'View Profile', user_path(id:1) %>
-        <% end %>
+<%= stylesheet_link_tag "static_home" %>
 
-        <div style="height: 500px">
+<body data-page="home">
+    <div class="home-container">
+        <div class="cover-container"> 
+            <%= image_tag("home-cover.jpg", alt: "medical center", class: "cover") %>
+        </div>
+
+        <div class="main-content">
+            <%# About Section %>
+            <div class="about">
+                <%= image_tag("about_1.jpg", alt: "about image", class: "image_about") %>
+                <div class="about-content">
+                    <div class="about-content-main">
+                    <h1>About Us</h1>
+                    <h4>Keeping Families Close</h4>
+                    <p>Breaking Barriers is a service organization which aims to empower youth from underserved communities and provide them with the tools to succeed in higher education and their chosen careers. The name of the organization is an ode to our mission to overcome societal obstacles adolescents might encounter along their path to college and beyond. With a focus on science, technology, engineering, and medicine, our organization exposures adolescents to educational STEM opportunities with the hope of inspiring academic interests, supporting career ambitions, and developing future generations of lifelong learners. The three pillars of our organization include the Ronald McDonald House Partnership, the Future Doctors’ Summer Camps, and the Future Doctors Mentorship Program. </p>
+                    </div>
+                    <%= link_to about_path, class: "about-link" do %>
+                        <p>Learn More</p>
+                        <%= image_tag 'chevron-right-solid.svg', class: "small-logo", alt: 'Next' %>
+                    <% end %>
+                </div>
+            </div>
+
+        
+
+        </div>
     </div>
 </body>

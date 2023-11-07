@@ -1,4 +1,4 @@
-<div id="<%= dom_id event_log %>">
+<div id="<%= dom_id event_log %>" class="event-log">
   
   <p>
     <strong>User:</strong>
@@ -16,7 +16,12 @@
   </p>
 
   <p>
-    <strong>Participation Confirmed:</strong>
+    <strong>Participating?: </strong>
     <%= event_log.participating %>
+  </p>
+
+  <p>
+    <strong>Participation Request Acknowledged by an officer?:</strong>
+    <%= event_log.confirmed %>
   </p>
 </div>

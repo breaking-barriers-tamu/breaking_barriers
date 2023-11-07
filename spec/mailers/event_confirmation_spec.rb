@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe(EventConfirmationMailer, type: :mailer) do
   describe 'confirmation' do
-    let(:user) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
+    let(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
     let(:event) { create(:event, name: 'Event 1', datetime: '2023-12-31 05:30 PM', location: 'Event Location') }
     let(:event_log1) { create(:event_log, event_id: event.id, user_id: user.id, participating: true) }
     let(:mail) { described_class.with(user: user, event: event).confirmation_email }

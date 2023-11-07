@@ -1,0 +1,126 @@
+.management-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 25px 0 25px;
+}
+
+.management-header h1 { font-size: 2.5em; }
+.management-header a { text-decoration: none; }
+
+.new-event {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #28B463;   
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.new-event:hover { background-color:#1D8348; }
+
+.admin-dashboard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(72, 114, 174);   
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.admin-dashboard:hover { background-color: rgb(26, 75, 142); }
+
+.management-body { 
+    margin: 50px 25px 50px 25px; 
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Table styling */
+.events-table table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-y: scroll;
+    max-height: 500px;
+    text-align: center;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background-color: white;
+}
+
+/* Table header text styling */
+.events-table h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: rgb(72, 114, 174);
+}
+
+/* Table header elements styling */ 
+.events-table th {
+    padding: 10px 25px 10px 25px;
+    font-size: 20px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Table cell styling */
+.events-table td {
+    padding: 10px 25px 10px 25px;
+    border-bottom: 1px solid rgb(72, 114, 174);
+}
+
+.events-table a {text-decoration: none; }
+.events-table img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.events-table img:hover { 
+    opacity: 0.5; 
+    transition: 0.3s;
+}
+
+.events-table form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.events-table button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Update cell containing actions */
+.actions-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

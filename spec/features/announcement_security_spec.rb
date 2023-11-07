@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe('Announcement Security', type: :feature) do
-  let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 0, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 0, registration_completed: true) }
   let!(:announcement) { create(:announcement, title: 'Existing Announcement', body: 'Announcement Body') }
 
   it 'Does not allow non-admins to access the edit announcement page directly' do

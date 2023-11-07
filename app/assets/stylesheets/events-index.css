@@ -1,0 +1,45 @@
+
+.events-index {
+    margin: 25px 50px 25px 50px;
+
+}
+
+.event-index-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: solid 1px rgb(72, 114, 174);
+    border-radius: 0 2px 0 2px;
+}
+
+.event-index-container div {
+    width: 30%;
+    display: grid;
+
+}
+
+.index_preview {
+    width: 100%;
+    height: auto;
+}
+
+.event-index-container h1 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    color: rgb(72, 114, 174);
+}
+
+.event-index-container h2 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.event-index-container h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+}

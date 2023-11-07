@@ -98,3 +98,6 @@ gem 'active_model_serializers', '~> 0.10.14'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails', '~> 2.8'
 gem 'mini_magick'
+gem 'pdf-reader'
+
+gem 'simple_calendar', '~> 3.0'

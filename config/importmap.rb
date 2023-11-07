@@ -2,8 +2,12 @@
 
 pin "application", preload: true
 pin "navbar"
-pin "delete_confirmation_dialog", to: "app/javascript/delete_confirmation_dialog.js"
-
+pin "footer"
+pin "delete_confirmation_dialog"
+pin "profile"
+pin "registration"
+pin "announcements_index"
+pin "announcements_form"
 
 
 pin "trix"
