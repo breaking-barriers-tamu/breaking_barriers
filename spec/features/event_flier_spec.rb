@@ -26,7 +26,6 @@ describe 'File attachment feature', type: :feature do
   it 'Deletes a flier that has been attached' do
     sign_in(admin)
     visit admin_event_path(event)
-    
     click_link('Edit Event')
     attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s, make_visible: true)
     find('#submit-button').click
