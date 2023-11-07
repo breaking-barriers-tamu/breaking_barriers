@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 describe 'Comment Feature', type: :feature do
-  let!(:member) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 0, registration_completed: true) }
-  let!(:admin) { create(:user, first_name: 'admin', last_name: 'admin', access_level: 1, registration_completed: true) }
+  let!(:member) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', phone_number: '(214) 123 - 4567', access_level: 0, registration_completed: true) }
+  let!(:admin) { create(:user, first_name: 'admin', last_name: 'admin', phone_number: '(214) 123 - 4567', access_level: 1, registration_completed: true) }
   let!(:announcement) { create(:announcement) }
 
   # --- Sunny Day: Adding a Valid Comment ---

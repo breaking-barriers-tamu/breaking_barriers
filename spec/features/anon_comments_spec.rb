@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe('Anonymous Comments', type: :feature) do
-  let!(:member) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 0, registration_completed: true) }
-  let!(:member2) { create(:user, first_name: 'First', last_name: 'Last', access_level: 0, registration_completed: true) }
-  let!(:admin) { create(:user, first_name: 'admin', last_name: 'admin', access_level: 1, registration_completed: true) }
+  let!(:member) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first_name_1', last_name: 'last_name_1', access_level: 0, registration_completed: true) }
+  let!(:member2) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'First', last_name: 'Last', access_level: 0, registration_completed: true) }
+  let!(:admin) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'admin', last_name: 'admin', access_level: 1, registration_completed: true) }
   let!(:announcement) { create(:announcement) }
 
   # --- Sunny Day: Member adds anonymous Comment ---

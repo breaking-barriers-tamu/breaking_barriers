@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Announcement CRUD', type: :feature do
-  let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
   let!(:announcement) { create(:announcement, title: 'Existing Announcement', body: 'This is the body of the announcement.') }
 
   # --- Announcement Creation ---
