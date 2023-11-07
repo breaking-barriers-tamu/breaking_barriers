@@ -78,6 +78,9 @@
 }
 
 
+.about-link {
+    margin-top: 20px;
+}
 .about-link p {
     font-size: large;
     font-weight: bold;
