@@ -19,11 +19,30 @@
 </div>
 
 
-<div id="Events">
-  <% @events.each do |event| %>
-    <p>
-      <%= event.name %>
-      <%= link_to "Show this event", event %>
-    </p>
+<div class="events-index">
+  <% @calendar_events.each do |event| %>
+    <div class="event-index-container">
+      <div>
+        <h1> <%= event.datetime.strftime("%A") %> </h1>
+        <h2> <%= event.datetime.strftime("%d") %> </h2>
+      </div>
+      <div>
+        <h1> <%= event.name %> </h1>
+        <h2> <%= event.get_location %> </h2>
+        <h3> <%= event.get_duration %> </h3>
+      </div>
+      <div>
+        <% if event.flier.attached? %>
+          <% if event.flier.previewable? %>
+              <%= image_tag event.flier.preview(resize_to_limit: [400,nil]) %>
+          <% elsif event.flier.variable? %>
+              <%= image_tag event.flier, class: "index_preview" %>
+          <% end %>
+        <% else %>
+            <img src="<%= asset_path 'placeholder.svg' %>" class = "index_preview">
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>
+
