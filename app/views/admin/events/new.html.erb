@@ -1,9 +1,10 @@
-<h1>New event</h1>
-
-<%= render "form", event: @event %>
-
-<br>
-
-<div>
-  <%= link_to "Back to events", admin_events_path %>
+<div class = "header-container">
+  <h1 id = "event-form-header">New Event</h1>
+  <%= link_to admin_events_path, class: "events-link" do %>
+    <div class = "back-link">
+      <img src= "<%= asset_path 'back-icon.svg' %>">
+      Back to Events
+    </div>
+  <% end %>
 </div>
+<%= render "form", event: @event %>

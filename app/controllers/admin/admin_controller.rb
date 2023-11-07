@@ -2,6 +2,8 @@
 
 module Admin
   class AdminController < ApplicationController
-    def index; end
+    def index
+      @active_events = Event.where(event_enabled: true)
+    end
   end
 end

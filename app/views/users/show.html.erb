@@ -1,4 +1,31 @@
-<p style="color: green"><%= notice %></p>
+<div id="<%= dom_id @user %>">
+  <p>
+    <strong>First Name:</strong>
+    <%= @user.first_name %>
+  </p>
 
-<%= render @user %>
+  <p>
+    <strong>Last Name:</strong>
+    <%= @user.last_name %>
+  </p>
 
+  <p>
+    <strong>Year:</strong>
+    <%= @user.year %>
+  </p>
+
+  <p>
+    <strong>Phone number:</strong>
+    <%= @user.phone_number %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <strong>Total Hours:</strong>
+    <%= @total_hours %>
+  </p>
+</div>

@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
+  <div class="title-input">
+    <%= form.label :title, 'Title:' %>
     <%= form.text_field :title %>
   </div>
 
-  <%= form.label :body %>
-  <%= form.rich_text_area :body %>
+  <div class="form-desc">
+    <%= form.label :body, "Add Message" %>
+    <%= form.rich_text_area :body %>
+  </div>
 
-  <div>
+  <div class="form-submit">
     <%= form.submit %>
   </div>
 <% end %>

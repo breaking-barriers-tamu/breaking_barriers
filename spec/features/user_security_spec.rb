@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'User Usability Check', type: :feature do
-  let!(:user) { create(:user, first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first_name_1', last_name: 'last_name_1', access_level: 1, registration_completed: true) }
 
   it 'Sunny Day - Admin can view user info' do
     sign_in(user)

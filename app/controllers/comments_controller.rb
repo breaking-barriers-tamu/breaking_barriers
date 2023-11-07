@@ -2,7 +2,8 @@
 
 class CommentsController < ApplicationController
   before_action :set_announcement
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: %i[edit update destroy]
+  before_action :check_user, only: %i[edit update]
 
   # SHOW
   def show; end
@@ -12,6 +13,9 @@ class CommentsController < ApplicationController
     @announcement = Announcement.find(params[:announcement_id])
     @comment = @announcement.comments.build(comment_params)
     @comment.user = current_user
+
+    # Ensure admin can't post an anonymous comment
+    @comment.anonymous = false if current_user.admin?
 
     if @comment.save
       redirect_to(@announcement, notice: 'Comment was successfully created.')
@@ -78,6 +82,15 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :archived)
+    params.require(:comment).permit(:content, :archived, :anonymous)
+  end
+
+  def check_user
+    # Only the author of the comment can edit/update it, not even an admin.
+    unless current_user == @comment.user
+      redirect_to(announcement_path(@announcement),
+                  alert: 'You are not authorized to edit this comment.'
+                 )
+    end
   end
 end

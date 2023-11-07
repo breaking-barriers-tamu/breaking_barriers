@@ -1,6 +1,16 @@
-<h1>Login</h1>
+<%= stylesheet_link_tag "login" %>
 
-<%= button_to "Sign in with Google", omniauth_authorize_path(resource_name, :google_oauth2), data: { turbo: false } %>
-
-<%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete %>
-     
+<div class="login-container">
+    <div class="login-main">
+        <div class="welcome">
+            <p>Welcome Image</p>
+        </div>
+        <div class="login">
+            <h1>Breaking Barriers</h1>
+            <div>
+                <%= button_to "Sign in with Google", omniauth_authorize_path(resource_name, :google_oauth2),data: { turbo: false }, class: "login-with-google-btn" %>
+                <p>Login with your student email (uid@tamu.edu)</p>
+            </div>
+        </div>
+    </div>
+</div>

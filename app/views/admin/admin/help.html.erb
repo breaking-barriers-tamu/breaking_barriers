@@ -1,36 +1,86 @@
-<h1>Help</h1>
+<h1>Admin Help</h1>
 <br>
-<h2>Admin Training</h2>
-<br>
-<h3>Getting Started</h3>
-<br>
+<h2>User and event management</h2>
 <div>
-Click "Login" in the top right hand corner of the app to log in with your TAMU gmail account.
-</div>
-<h3>User and event management</h3>
-<br>
-<div>
-You can edit an event or user's details by clicking "Events" or "Users" in the navigation bar, selecting the event or user to update info for, 
+You can edit an event or user's details by clicking "Events" or "Users" in the admin dashboard, selecting the event or user to update info for, 
 clicking the "edit" button, and then submitting the form to update their details.
-
+<br>
 Note that this allows you to grant admin access to other users.
 </div>
+<br>
 
-<br>
-<h3>Confirming user participation</h3>
-<br>
+<h2>Confirming user participation</h2>
 <div>
-For final confirmation of members hwo have signed up for a volunteer event, you can simply navigate to the volunteer event in question under "Events"
-click the checkbox next to the name of the user you'd like to confirm, and then click confirm to confirm the changes to participation for the event.
+For final confirmation that a member who signed up for an event is permitted to participate, you can navigate to the volunteer event in question under "Events"
+click the "Confirm" or "Deny" button next to the name of the user you'd like to confirm.
+<br>
+This will also send the user an email. Until an admin does this, users will not be registered for the event!
 </div>
 <br>
 
-<h3>Troubleshooting Heroku</h3>
+<h2>Annoucement/Comment Management</h2>
+<div>
+The Announcements page can be found by clicking on the button in the bar at the top. As an administrator, you can post, edit, and delete annoucements or comments.
 <br>
+On the list of announcements, click "Post Announcement". This will open up a page that allows you to write a post in rich text, and attach images or link to other websites.
+<br>
+On the page of any given announcement, you can use the relevant buttons to edit or delete the announcement as a whole, or delete comments from other users.
+</div>
+<br>
+
+<h2>Event Logs</h2>
+<div>
+For debugging purposes, an admin can see a list of all "Event Logs" from the admin dashboard. An Event Log is just a marker that a user has signed up for an event.
+<br>
+This page can be sorted to show things such as all events a user has signed up for, all users who have signed up for an event, or all confirmed users for an event.
+</div>
+<br>
+
+<h2>User Log Data</h2>
+<div>
+From the admin dashboard, user participation data can be downloaded as a CSV file.
+<br>
+This file contains the name, email, and total volunteer hours of all registered users.
+</div>
+<br>
+
+<h2>Troubleshooting Heroku</h2>
 <div>
 Q- I got an email from Heroku saying that the app is down for maintenance. What should I do?
-
+<br>
 A- This is unavoidable and will result in short downtime for the app.
 </div>
 
+<br>
+
+
+<h3 style="color:red">Please pay close attention to the following section to get familiar with how to handle error states in the app:</h3>
+<br>
+<h2 style="color:red">Troubleshooting Error States Q&A</h2>
+<div>
+Q- Certain parts of the app are inaccessible and show errors. What should I do?
+<br>
+A- This is likely caused by a database problem with Heroku, which will resolve on its own and is out of our hands,
+but if it still doesn't seem to be fixed after an hour, please navigate to the Help page in the main navbar and fill out the survey to let us know
+something is broken
+</div>
+
+<br>
+<div>
+Q- I accidentally denied a user access to an event that they were meant to be approved for. What should I do?
+<br>
+A- Send the user an email asking them to remove their request to participate from the event and then sign up to volunteer again.
+You can then approve the user.
+</div>
+
+<br>
+<div>
+Q- I accidentally demoted myself from an admin to a member. What should I do?
+<br>
+A- It would be impossible for someone in this position to reach this section of the site, but this is an important situation to be able to handle.
+If there are other admins, you can just ask them to promote you back to admin. If you were the only admin, then please reach out via
+the survey linked at the bottom of the Help page in the main and we can promote you to admin.
+</div>
+
+<br>
 

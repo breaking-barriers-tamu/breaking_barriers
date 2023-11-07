@@ -1,0 +1,82 @@
+.announcements-container {
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcements-content {
+  width: 50%;
+}
+.announcement-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+  justify-content: space-between
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.title h1 {
+  font-size: 40px;
+}
+
+.title img {
+  width: auto;
+  height: 35px;
+}
+
+.line {
+  border-left: 3px solid black;
+  content: '.';
+  margin: 2px 8px;
+}
+
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.announcement-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.announcement-time {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcement-time p{
+  white-space: nowrap;
+}
+
+.announcement-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.announcement-title a {
+  text-decoration: none;
+  color: black
+}
+
+.announcement-author {
+  font-size: small;
+  color: grey;
+  margin-bottom: 15px;
+}
+
+.announcement-body {}

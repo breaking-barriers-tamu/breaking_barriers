@@ -1,0 +1,212 @@
+/* Header styling */
+#event-form-header {
+
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+}
+
+.events-link {
+    text-decoration: none;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 25px 0 25px;
+}
+
+.back-link {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    color: rgb(72, 114, 174);
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+}
+
+.back-link img {
+    height: 35px;
+    width: 30px;
+    margin-right: 15px;
+}
+
+.back-link::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(72, 114, 174);
+    transition: width .5s;
+}
+
+.back-link:hover::before {
+    width: 100%;
+}
+/* --------------  */
+
+/* Container that holds the _form partial */
+.form-container {
+    margin: 25px 25px 25px 25px;
+    padding: 20px 20px 20px 20px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    line-height: normal;
+    border-radius: 4px;
+}
+
+/* Container to display icon, input, and label */
+.input-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.input-container img {
+    height: 25px;
+    width: 20px;
+    margin: 5px 15px 0 0;
+}
+
+.input-container div {
+    display: grid;
+}
+
+.event-form-input {
+    width: 300px;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(72, 114, 174);
+    font-size: 16px;
+    border-radius: 2px;
+    background-color: white;
+    padding: 0 5px 0 5px;
+}
+
+.event-form-input:hover {
+    border-bottom: 3px solid  #9B59B6;
+}
+
+.event-form-input:focus {
+    border-bottom: 3px solid  #9B59B6;
+}
+
+.input-container label {
+    font-size: 14px;
+    color: #616A6B;
+    font-weight: bold;
+}
+/* --------------  */
+
+/* Container for event enabled feature */
+.enabled-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+
+.enabled-container div {
+    width: 300px;
+    display: block;
+    align-items: center;
+    outline: none;
+    border-bottom: 2px solid rgb(72, 114, 174);
+    padding: 5px 0 5px 0;
+}
+
+.enabled-container img {
+    height: 25px;
+    width: 20px;
+    margin: 5px 15px 0 0;
+}
+
+#event_event_enabled {
+    margin-left: 15px;
+}
+/* --------------  */
+
+/* Container for event description */
+.description-container {
+    margin: 25px 0 40px 0;
+}
+
+#description-input {
+    height: 150px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(72, 114, 174);
+    font-size: 16px;
+    border-radius: 2px;
+    background-color: white;
+}
+
+#description-input:hover {
+    border-bottom: 3px solid  #9B59B6;
+}
+
+#description-input:focus {
+    border-bottom: 3px solid  #9B59B6;
+}
+
+.description-container label {
+    font-size: 14px;
+    color: #616A6B;
+    font-weight: bold;
+}
+/* --------------  */
+
+/* Container to display attachment */
+.attachment-container {
+    margin: 25px 0 50px 0;
+    display: grid;
+}
+
+.attachment-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.attachment-label img {
+    height: 25px;
+    width: 20px;
+    margin-right: 15px;
+}
+
+#file_preview {
+    width: 450px;
+    height: auto;
+}
+
+.file-upload {
+    margin-bottom: 10px;
+    width: 500px;
+}
+/* --------------  */
+
+/* Create/Update Event button styling */
+#submit-button {
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: large;
+    background-color: #28B463;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+}
+
+#submit-button:hover {
+    background-color: #1D8348;
+}

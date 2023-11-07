@@ -24,7 +24,7 @@ user1 = User.create!(
   access_level: 'admin'
 )
 
-User.create!(
+user2 = User.create!(
   first_name: 'Member',
   last_name: '1',
   email: 'Member2@tamu.edu',
@@ -33,7 +33,7 @@ User.create!(
   access_level: 'member'
 )
 
-Announcement.create!(
+announcement1 = Announcement.create!(
   user: user1,
   title: 'Announcement 1',
   body: 'This is an announcement from Admin 1.',
@@ -45,6 +45,18 @@ Announcement.create!(
   title: 'Announcement 2',
   body: 'This is another annocument from Admin 1',
   timestamp: DateTime.new(2023, 10, 8, Time.zone.now.hour, Time.zone.now.min, Time.zone.now.sec)
+)
+
+Comment.create!(
+  user: user1,
+  content: 'Test Comment from Seed File',
+  announcement: announcement1
+)
+
+Comment.create!(
+  user: user2,
+  content: 'Test Comment from Seed File',
+  announcement: announcement1
 )
 
 # Assuming you already have user1 and user2 created from before...

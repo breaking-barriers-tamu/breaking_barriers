@@ -2,10 +2,7 @@
 
 class PagesController < ApplicationController
   def home
-    @current_user = current_user
+    @upcoming_events = Event.where('datetime >= ? AND event_enabled = ?', Time.zone.now, true)
+                            .order(:datetime)
   end
-
-  def about; end
-
-  def contact; end
 end

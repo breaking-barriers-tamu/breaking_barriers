@@ -1,0 +1,96 @@
+.form-container {
+    padding: 50px;
+}
+
+
+.title h1 {
+    font-size: 40px;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.title img {
+    width: auto;
+    height: 35px;
+}
+
+.title-input label {
+    font-size: x-large;
+    margin-right: 5px;
+} 
+.title-input input {
+    border:none;
+    border-bottom: 1px solid #000;
+    font-size : x-large;
+    padding: 5px;
+}
+
+.title-input {
+    margin-bottom: 40px;
+}
+
+
+.title-input label {
+    font-size: x-large;
+    margin-right: 5px;
+}
+
+.form-desc label {
+    font-size: x-large;
+    margin-right: 5px;
+}
+
+.form-desc {
+    font-size: large;
+}
+
+.form-submit input {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    text-align: inherit;
+    margin: 20px 0px;
+    padding: 10px 30px;
+    background: #4872AE;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+}
+
+.cancel-btn  a {
+    color: white;
+    text-decoration: none;
+    background: grey;   
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+.options {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.options-cancel {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+    background: grey;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.options-preview {
+    background: rgba(72, 114, 174, 0.5);
+    color: black;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+}

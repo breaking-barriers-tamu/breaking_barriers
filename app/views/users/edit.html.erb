@@ -1,10 +1,128 @@
-<%# This will be used by admins %>
-<h1>Editing user</h1>
-<%= render "form", user: @user %>
+<%= stylesheet_link_tag "profile" %>
+<%= javascript_include_tag 'profile' %>
 
-<br>
+<div class="profile-container">
+  <div class="profile-nav">
+      <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete %>
+  </div>
 
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
+  <div class="forms">
+    <div class="profile-form">
+      <div class="current-user-display">
+          <% if @user.avatar_url.present? %>
+            <%= image_tag @user.avatar_url, alt: "#{@user.name}'s Avatar", width: 150 %>
+          <% else %>
+            <p>No avatar available</p>
+          <% end %>
+          <p>My Profile</p>
+      </div>
+      
+      <%= form_for(@user, url: user_path(@user), html: { method: :patch, data: { turbo: "false" } }) do |f| %>
+          <div class="row-1">
+            <div class="first-name-field">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name %>
+            </div>
+
+            <div class="last-name-field">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name %>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div class="phone-field">
+              <%= f.label :phone_number %>
+              <%= f.telephone_field :phone_number, id: "phone-number" %>
+            </div>
+
+            <div class="year-field">
+                <%= f.label :year %>
+                <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+            </div>
+          </div>
+      
+          <div class="row-3">
+            <%= f.submit "Update" %>
+          </div>
+
+          <div>
+              <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+          </div>
+
+      <% end %>
+    </div>
+
+    <div class="my-event-form">
+        
+
+    <div class="events-table">
+      <h1> Future Events I've Signed Up For</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Participation Approved?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @upcoming_events.any? %>
+            <% @upcoming_events.each do |event| %>
+              <tr>
+                <td><%= event.name %></td>
+                <td><%= event.datetime.strftime("%B %d, %Y") %></td>
+                <td><%= event.duration %></td>
+                <td><%= EventLog.where(user: @user, event: event).first.participating ? "✓" : "X"%></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="5">No records to display.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="events-table", style="display: auto">
+      <h1> Past Events Attended</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @past_events.any? %>
+            <% @past_events.each do |event| %>
+              <tr>
+                <td><%= event.name %></td>
+                <td><%= event.datetime.strftime("%B %d, %Y") %></td>
+                <td><%= event.duration %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="5">No records to display.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+
+        <p>
+          <strong>Total Hours:</strong>
+          <%= @total_hours %>
+        </p>
+    </div>
+
+  </div>
+
 </div>

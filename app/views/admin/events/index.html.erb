@@ -1,15 +1,104 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Events</h1>
-
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render 'admin/events/event', event: event %>
-    <p>
-      <%= link_to "Show this event", admin_event_path(event) %>
-    </p>
+<div class = "management-header"> 
+  <%= link_to admin_root_path do  %>
+    <button class = "admin-dashboard">
+      Admin Dashboard <img src = "<%= asset_path 'back-icon-white.svg' %>">
+    </button>
+  <% end %>
+  <h1> Events Dashboard </h1>
+  <%= link_to new_admin_event_path do %>
+    <button class = "new-event">
+      New Event <img src = "<%= asset_path 'new-event.svg' %>">
+    </button>
   <% end %>
 </div>
 
-<%= link_to "New event", new_admin_event_path %>  <br/>
-<%= link_to 'Back to Admin Dashboard', admin_root_path %>
+
+<div class = "management-body">
+  <div class="events-table">
+    <h1> Upcoming Events </h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Hours</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @upcoming_events.any? %>
+          <% @upcoming_events.each do |event| %>
+            <tr>
+              <td><%= event.name %></td>
+              <td><%= event.datetime.strftime("%B %d, %Y") %></td>
+              <td><%= event.get_location %></td>
+              <td><%= event.duration %></td>
+              <td class = "actions-cell">
+                <%= link_to admin_event_path(event) do %>
+                  <img src = "<%= asset_path 'carbon_view-filled.svg' %>">
+                <% end %>
+                <%= link_to edit_admin_event_path(event) do %>
+                  <img src = "<%= asset_path 'edit-icon-blue.svg' %>">
+                <% end %>
+                <%= button_to admin_event_path(event), method: :delete, form_class: "delete-alertbox" do %>
+                  <img src = "<%= asset_path 'delete-icon-red.svg' %>">
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5">No records to display.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="events-table">
+    <h1> Past Events </h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Hours</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @past_events.any? %>
+          <% @past_events.each do |event| %>
+            <tr>
+              <td><%= event.name %></td>
+              <td><%= event.datetime.strftime("%B %d, %Y") %></td>
+              <td><%= event.get_location %></td>
+              <td><%= event.duration %></td>
+              <td class = "actions-cell">
+                <%= link_to admin_event_path(event) do %>
+                  <img src = "<%= asset_path 'carbon_view-filled.svg' %>">
+                <% end %>
+                <%= link_to edit_admin_event_path(event) do %>
+                  <img src = "<%= asset_path 'edit-icon-blue.svg' %>">
+                <% end %>
+                <%= button_to admin_event_path(event), method: :delete, form_class: "delete-alertbox" do %>
+                  <img src = "<%= asset_path 'delete-icon-red.svg' %>">
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5">No records to display</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
