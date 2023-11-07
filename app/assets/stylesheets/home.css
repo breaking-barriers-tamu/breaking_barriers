@@ -1,7 +1,6 @@
-html, body, .cover-container {
+.home-container .cover-container {
     height: 100%;
 }
-
 
 .cover {
     object-fit: cover;
