@@ -16,30 +16,27 @@ class UsersController < ApplicationController
     @upcoming_events = []
     @past_events = []
 
-    #pull out all future events i have signed up for
-    #and past events for which i received credit
+    # pull out all future events i have signed up for
+    # and past events for which i received credit
     @event_logs.each do |event_log|
       event = Event.find(event_log.event_id)
       if event.datetime > DateTime.now
         @upcoming_events << event
-      else
-        if(event_log.participating == true)
-          @past_events << event
-        end
+      elsif event_log.participating == true
+        @past_events << event
       end
     end
   end
 
   def update
     if @user.update(user_params)
-      flash[:success] = "Profile updated successfully!"
-      redirect_to edit_user_path(@user)
+      flash[:success] = 'Profile updated successfully!'
+      redirect_to(edit_user_path(@user))
     else
       flash[:alert] = @user.errors.full_messages.join("\n")
-      redirect_to edit_user_path(@user)
+      redirect_to(edit_user_path(@user))
     end
   end
-
 
   def create
     @user = User.new(user_params)
@@ -56,6 +53,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     # users should not be able to do anything with other users
     @user = @current_user

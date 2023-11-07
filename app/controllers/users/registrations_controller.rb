@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Users
   class RegistrationsController < Devise::RegistrationsController
     def update
@@ -5,7 +7,7 @@ module Users
         if resource.errors.empty?
           resource.update(registration_completed: true)
           flash[:notice] = 'Registration Completed'
-          redirect_to root_path and return
+          redirect_to(root_path) and return
         else
           flash[:alert] = resource.errors.full_messages.join("\n")
         end
@@ -23,6 +25,7 @@ module Users
     end
 
     private
+
     def account_update_params
       params.require(:user).permit(:first_name, :last_name, :year, :phone_number,
                                    :access_level

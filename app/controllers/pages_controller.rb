@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
   def home
     @upcoming_events = Event.where('datetime >= ? AND event_enabled = ?', Time.zone.now, true)

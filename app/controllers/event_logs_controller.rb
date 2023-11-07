@@ -13,7 +13,9 @@ class EventLogsController < ApplicationController
     respond_to do |format|
       if @event_log.save
         format.html do
-          redirect_to(event_url(@event_log.event), notice: 'You are signed up to volunteer for this event!')
+          redirect_to(event_url(@event_log.event),
+                      notice: 'You are signed up to volunteer for this event!'
+                     )
         end
         format.json { render(:show, status: :created, location: @event_log) }
       else
