@@ -18,7 +18,7 @@
       Edit Event <img src = "<%= asset_path 'edit-icon.svg' %>"> 
     </button>
   <% end %> 
-  <%= button_to admin_event_path(@event), method: :delete, class: "delete-alertbox" do %>
+  <%= button_to admin_event_path(@event), method: :delete, form_class: "delete-alertbox" do %>
     <div class = "delete-event"> 
       Delete Event <img src = "<%= asset_path 'delete-icon.svg' %>"> 
     </div>
