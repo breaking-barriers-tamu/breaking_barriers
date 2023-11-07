@@ -13,7 +13,7 @@ describe 'Hours Check', type: :feature do
     create(:event_log, user_id: user.id, event_id: event2.id, hours: 2.6, participating: false)
 
     sign_in(user)
-    visit admin_user_path(user)
+    visit edit_admin_user_path(user)
     expect(page).to(have_content('13.0'))
   end
 
@@ -22,13 +22,13 @@ describe 'Hours Check', type: :feature do
     create(:event_log, user_id: user.id, event_id: event3.id, hours: 10.5, participating: true)
 
     sign_in(user)
-    visit admin_user_path(user)
+    visit edit_admin_user_path(user)
     expect(page).to(have_content('13.0'))
   end
 
   it 'Check hours of no complete' do
     sign_in(user)
-    visit admin_user_path(user)
+    visit edit_admin_user_path(user)
     expect(page).to(have_content('0'))
   end
 end
