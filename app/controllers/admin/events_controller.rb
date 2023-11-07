@@ -72,7 +72,7 @@ module Admin
         event_log = EventLog.find(attrs.second[:id])
 
         # if going from false to true
-        if (event_log.participating == false) && (attrs.second[:participating] == '1')
+        if event_log.participating
           event_log.update(participating: attrs.second[:participating])
           EventConfirmationMailer.with(user: event_log.user,
                                        event: event_log.event

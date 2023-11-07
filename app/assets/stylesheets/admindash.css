@@ -1,0 +1,156 @@
+body {
+    background-color: rgba(128, 128, 128, 0.3);
+}
+
+.dash-main {
+    display: flex;
+    justify-content: center;
+}
+
+#two-part-item{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.dash-container {
+    display: flex;
+    justify-content: space-between;
+    width: min(80%, 1000px);
+    align-items: center;
+    margin-top: 30px;
+}
+
+.dash-item {
+    background-color: #6088c0;
+    border-radius:  20px;
+
+    text-decoration: none;
+    text-align: center;
+}
+
+.dash-item:hover {
+    background-color: #4f74a7;
+    transition: 0.5s;
+    border-radius:  20px;
+
+    text-decoration: none;
+    text-align: center;
+}
+
+.dash-item a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    font-size: large;
+    font-family: inherit;
+    padding: 10px 10px 10px 10px;
+}
+
+.ext-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.int-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: min(80%, 1000px);
+    min-height: 80%;
+}
+
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #6088c0;
+    border-radius:  20px;
+    width: 40%;
+}
+
+.item-container-wide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #6088c0;
+    border-radius:  20px;
+    width: 60%;
+    margin-left: 30px;
+}
+
+.item-container h2 {
+    color: white;
+    font-family: inherit;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.item-container div{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #6088c0;
+    margin-bottom: 10px;
+}
+
+.item-container div p{
+    margin-right: 20px;
+    color: white;
+    font-family: inherit;
+    font-size: medium;
+    text-wrap: wrap;
+}
+
+.item-container div p a{
+    margin-right: 20px;
+    color: white;
+    font-family: inherit;
+    font-size: medium;
+    text-decoration: none;
+}
+
+
+
+.item-container-wide h2 {
+    color: white;
+    font-family: inherit;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.item-container-wide div{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #6088c0;
+    margin-bottom: 10px;
+}
+
+.item-container-wide div p{
+    margin-right: 20px;
+    color: white;
+    font-family: inherit;
+    font-size: medium;
+    text-wrap: wrap;
+}
+
+.item-container-wide div p a{
+    margin-right: 20px;
+    color: white;
+    font-family: inherit;
+    font-size: medium;
+    text-decoration: none;
+}
