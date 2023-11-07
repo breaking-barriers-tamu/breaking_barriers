@@ -54,7 +54,69 @@
     </div>
 
     <div class="my-event-form">
-        <p>Upcoming My Event Form Feature</p>
+        
+
+    <div class="events-table">
+      <h1> Future Events I've Signed Up For</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Participation Approved?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @upcoming_events.any? %>
+            <% @upcoming_events.each do |event| %>
+              <tr>
+                <td><%= event.name %></td>
+                <td><%= event.datetime.strftime("%B %d, %Y") %></td>
+                <td><%= event.duration %></td>
+                <td><%= EventLog.where(user: @user, event: event).first.participating ? "✓" : "X"%></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="5">No records to display.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="events-table", style="display: auto">
+      <h1> Past Events Attended</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @past_events.any? %>
+            <% @past_events.each do |event| %>
+              <tr>
+                <td><%= event.name %></td>
+                <td><%= event.datetime.strftime("%B %d, %Y") %></td>
+                <td><%= event.duration %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="5">No records to display.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+
         <p>
           <strong>Total Hours:</strong>
           <%= @total_hours %>
