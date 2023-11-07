@@ -40,9 +40,11 @@ describe 'Officer In Charge feature', type: :feature do
     select 'Alice Smith', from: 'event_officer_in_charge'
     find('#submit-button').click
     expect(page).to(have_content('Alice Smith'))
+    
     # Remove an officer in charge
     visit admin_event_path(event)
     click_link 'Edit Event'
+
     select '--', from: 'event_officer_in_charge'
     find('#submit-button').click
     #expect(page).to(have_content('None'))

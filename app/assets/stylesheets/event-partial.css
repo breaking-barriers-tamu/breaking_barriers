@@ -8,7 +8,6 @@
     justify-content: space-between;
 }
 
-
 .left-section { 
     width: 40%; 
     display: flex;
@@ -90,7 +89,7 @@
     border: none;
     border-radius: 4px;
     padding: 5px 10px 5px 10px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .delete-flier:hover {
@@ -122,7 +121,7 @@
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .edit-event:hover {
@@ -143,7 +142,7 @@
     background-color: #E74C3C;   
     cursor: pointer;
     border-radius: 4px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);     
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);     
 }
 
 .delete-event:hover {
@@ -182,6 +181,7 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .signup:hover { background-color: #1D8348; }
@@ -201,6 +201,8 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .remove:hover { background-color: #B03A2E;} 
+

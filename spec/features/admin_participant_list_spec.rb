@@ -22,6 +22,8 @@ describe 'Participants List', type: :feature do
     expect(page).to(have_content('Participants: 0'))
     click_button "Confirm"
     expect(event_log1.reload.confirmed).to eq(true)
+    #usability: provide feedback to user:
+    expect(page).to(have_content('Successfully confirmed'))
     expect(event_log1.reload.participating).to eq(true)
   end
 
@@ -35,6 +37,8 @@ describe 'Participants List', type: :feature do
     expect(page).to(have_content('Participants: 0'))
     click_button "Deny"
     expect(event_log2.reload.confirmed).to eq(true)
+    #usability: provide feedback to user:
+    expect(page).to(have_content('Successfully denied'))
     expect(event_log2.reload.participating).to eq(false)
   end
 end

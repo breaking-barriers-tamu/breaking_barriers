@@ -1,9 +1,18 @@
-<h1>New announcement</h1>
+<%= stylesheet_link_tag "announcements_form" %>
+<%= javascript_include_tag 'announcements_form' %>
 
-<%= render "form", announcement: @announcement %>
+<div class="form-container">
+  <div class="title">
+      <%= image_tag 'bullhorn-solid.svg', class:"small-logo", alt: 'speaker' %>
+      <h1>Create an announcements</h1>
+    </div>
 
-<br>
+  <%= render "form", announcement: @announcement %>
 
-<div>
-  <%= link_to "Back to announcements", announcements_path %>
+  <br>
+
+
+  <div class="cancel-btn">
+    <%= link_to "Cancel", announcements_path %>
+  </div>
 </div>
