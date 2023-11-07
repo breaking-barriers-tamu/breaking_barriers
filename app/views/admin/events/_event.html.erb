@@ -1,39 +1,106 @@
-<div class = "e-partial" >
-  <div class = "e-left"> 
-    <h1> <%= event.name %> </h1>
+<div class = "event-view" >
 
-    <h2> <%= event.duration %> hours </h2>
-
-    <p>
-      <strong>Description:</strong>
+  <section class = "event-main"> 
+    <div class = "left-section">
+      <h1> <%= event.name %> </h1>
+      <h3> <%= event.get_duration %> </h3>
       <%= event.description %>
-    </p>
+    </div>
 
-    <% if event.flier.attached? %>
-      <% if event.flier.previewable? %>
-          <%= image_tag event.flier.preview(resize_to_limit: [500,500]) %>
-      <% elsif event.flier.variable? %>
-          <%= image_tag event.flier, class: "image_preview" %>
+    <div class = "image-section">
+      <% if event.flier.attached? %>
+        <% if event.flier.previewable? %>
+            <%= image_tag event.flier.preview(resize_to_limit: [600,nil]) %>
+        <% elsif event.flier.variable? %>
+            <%= image_tag event.flier, class: "image_preview" %>
+        <% end %>
+        <br>
+        <div class = "flier-buttons">
+          <%= link_to event.flier do %>
+            <img src = "<%= asset_path 'open-icon.svg' %>">
+          <% end %>
+          <%= button_to "Delete Flier", purge_flier_admin_event_path(event), method: :delete, class: "delete-flier" %>
+        </div>
+      <% else %>
+          <img src="<%= asset_path 'placeholder.svg' %>" class = "image_preview">
+          <%= "No Flier Attachment" %>
       <% end %>
-      <br>
-      <%= link_to "View/Download Flier", event.flier %>
-      <%= button_to "Delete Flier Attachment", purge_flier_admin_event_path(event), method: :delete, confirm: "Are you sure?" %>
-    <% else %>
-        <%= "No Flier Attachments" %>
-    <% end %>
+    </div>
+  </section>
 
-  </div>
+  <section class = "event-info" > 
+    
+    <div class = "info-section">
+      <h2> Information </h2>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'calendar-icon.svg' %>">
+        <%= event.datetime.strftime("%B %d, %Y") %>
+      </div>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'clock-icon.svg' %>">
+        <%= event.datetime.strftime("%I:%M %p") %> (CST)
+      </div>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'location-icon.svg' %>">
+        <%= event.get_location %> 
+      </div>
+    </div>
 
-  <div class = "e-right" > 
+    <div class = "info-section">
+      <p>
+        <% event_logs = EventLog.where(event_id: event.id, participating: true) %>
+        <h2>Confirmed Participants: <%= event_logs.length %></h2>
+        <% event_logs.each do |log| %>
+          <div class = "e-row"> 
+            <img src="<%= asset_path 'user-icon.svg' %>">
+            <%= log.user.name %>
+          </div>
+        <% end %>
+        <%= stylesheet_link_tag 'confirmation' %>
+        <h2>Volunteer sign-ups:</h2>
+        <ul>
+          <% @event_logs.each do |event_log|%>
+          <% if event_log.confirmed == false %>
+            <% user = User.find(event_log.user_id) %>
+            <li>
+              <%= link_to "#{user.first_name} #{user.last_name}", admin_user_path(user) %>
+              <%= button_to "Confirm participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: true}, class: "confirmButton" %>
+              <%= button_to "Deny participation", confirm_participation_admin_event_log_url(event_log), method: :patch, params: {participating: false}, class: "denyButton"%>
+            </li>
+          <% end %>
+          <% end %>
+        </ul>
+      </p>
+    </div>
 
+    <div class = "info-section">
+      <% officer = event.officer %>
+      <% if officer %>
+        <h2> Contact Officer </h2>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'user-icon.svg' %>">
+          <%= officer.name %>
+        </div>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'phone-solid-blue.svg' %>">
+          <%= officer.phone_number %>
+        </div>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'email-solid-blue.svg' %>">
+          <%= officer.email %> 
+        </div>
+      <% else %>
+        <h2> Contact Officer </h2>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'user-icon.svg' %>">
+          <%= "None" %>
+        </div>
+      <% end %>
+    </div>
+  </section>
 
-  </div>
-
-  <p>
-    <strong>Participants:</strong>
-    <% event_logs = EventLog.where(event_id: event.id) %>
-    <%= event_logs.length %>
-  </p>
 
 
 </div>
+
+

@@ -1,35 +1,115 @@
-<div id="<%= dom_id event %>" style = "display: flex; gap: 40px">
-  <div>
-    <p>
-      <strong>Name:</strong>
-      <%= event.name %>
-    </p>
+<div class = "event-view" >
 
-    <p>
-      <strong>Description:</strong>
+  <section class = "event-main"> 
+    <div class = "left-section">
+      <h1> <%= event.name %> </h1>
+      <h3> <%= event.get_duration %> </h3>
       <%= event.description %>
-    </p>
+    </div>
 
-    <p>
-      <strong>Date:</strong>
-      <%= event.datetime.strftime("%B %d, %Y") %>
-    </p>
+    <div class = "image-section">
+      <% if event.flier.attached? %>
+        <% if event.flier.previewable? %>
+            <%= image_tag event.flier.preview(resize_to_limit: [600,nil]) %>
+        <% elsif event.flier.variable? %>
+            <%= image_tag event.flier, class: "image_preview" %>
+        <% end %>
+        <br>
+        <div class = "flier-buttons">
+          <%= link_to event.flier do %>
+            <img src = "<%= asset_path 'open-icon.svg' %>">
+          <% end %>
+        </div>
+      <% else %>
+          <img src="<%= asset_path 'placeholder.svg' %>" class = "image_preview">
+          <%= "No Flier Attachment" %>
+      <% end %>
+    </div>
+  </section>
 
-    <p>
-      <strong>Time (CST):</strong>
-      <%= event.datetime.strftime("%I:%M %p") %>
-    </p>
+  <section class = "event-info" > 
 
-    <p>
-      <strong>Location:</strong>
-      <%= event.location %>
-    </p>
+    <div class = "signup-section">
+          <% if @event.is_active? %>
+        <% if @event_log.any?%>
+        <br>
+          <div>
+            <h4 style="padding-right:10px">
+              <% if @event_log.first.participating %>
+                You are confirmed for this event! 
 
-    <p>
-      <strong>Duration (hours):</strong>
-      <%= event.duration %>
-    </p>
-  </div>
+              <% else %>
+                <% if @event_log.first.confirmed == false %>
+                Confirmation pending. Once an admin approves you for this event, you will receive an email in your TAMU inbox
+                <% else %>
+                Your request to participate in this event has been denied!
+                <% end %>
+              <% end %>
+            </h4>
+          </div>
+        <% end %>
+      <% end %>
+      <% if event.is_active? %>
+        <% if @event_log.any? %>
+          <%= link_to delete_event_log_path(EventLog.where(user: current_user, event: @event).first) do %>
+            <button class = "remove"> 
+              Remove My Request to Volunteer
+            </button>
+          <% end %>
+        <% else %>
+          <%= link_to new_event_log_path(user_id: current_user.id, event_id: @event.id, hours: @event.duration) do %>
+            <button class = "signup"> 
+              Sign Up to Volunteer
+            </button>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h2> Sign Up Disabled <h2>
+      <% end %>
+    </div>
+
+    <div class = "info-section">
+      <h2> Information </h2>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'calendar-icon.svg' %>">
+        <%= event.datetime.strftime("%B %d, %Y") %>
+      </div>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'clock-icon.svg' %>">
+        <%= event.datetime.strftime("%I:%M %p") %> (CST)
+      </div>
+      <div class = "e-row"> 
+        <img src="<%= asset_path 'location-icon.svg' %>">
+        <%= event.get_location %> 
+      </div>
+    </div>
+
+    <div class = "info-section">
+      <% officer = event.officer %>
+      <% if officer %>
+        <h2> Contact Officer </h2>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'user-icon.svg' %>">
+          <%= officer.name %>
+        </div>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'phone-solid-blue.svg' %>">
+          <%= officer.phone_number %>
+        </div>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'email-solid-blue.svg' %>">
+          <%= officer.email %> 
+        </div>
+      <% else %>
+        <h2> Contact Officer </h2>
+        <div class = "e-row"> 
+          <img src="<%= asset_path 'user-icon.svg' %>">
+          <%= "None" %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
 
 
 </div>

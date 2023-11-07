@@ -10,32 +10,30 @@ describe 'File attachment feature', type: :feature do
     sign_in(admin)
     visit event_path(event)
 
-    expect(page).to(have_content('Event Flier: No Attachments'))
+    expect(page).to(have_content('No Flier Attachment'))
   end
 
   it 'Allows admin to attach flier' do
     sign_in(admin)
     visit admin_event_path(event)
-    click_on 'Edit this event'
-    attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
+    click_link('Edit Event')
+    attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s, make_visible: true)
     find('#submit-button').click
 
-    expect(page).to(have_content('View/Download Flier'))
+    expect(page).to(have_content('Delete Flier'))
   end
 
   it 'Deletes a flier that has been attached' do
     sign_in(admin)
     visit admin_event_path(event)
-    click_on 'Edit this event'
-    attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s)
+    click_link('Edit Event')
+    attach_file('event[flier]', Rails.root.join('app/assets/images/home-cover.jpg').to_s, make_visible: true)
     find('#submit-button').click
 
-    expect(page).to(have_content('View/Download Flier'))
+    expect(page).to(have_content('Delete Flier'))
 
-    visit admin_event_path(event)
-
-    click_on 'Delete Flier Attachment'
+    click_on 'Delete Flier'
     expect(page).to(have_content('Flier was successfully deleted.'))
-    expect(page).to(have_content('No Flier Attachments'))
+    expect(page).to(have_content('No Flier Attachment'))
   end
 end
