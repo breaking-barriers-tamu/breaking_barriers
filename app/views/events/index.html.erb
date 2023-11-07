@@ -4,12 +4,14 @@
 
 <div class = "calendar-container">
   <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
-    <div> 
+    <div class = "day-cont"> 
       <%= date.day %>
     </div>
     <% events.each do |event| %>
-      <div>
-        <%= event.name %>
+      <div class = "calendar-info">
+        <%= link_to event_path(event) do %>
+          <%= event.name %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
