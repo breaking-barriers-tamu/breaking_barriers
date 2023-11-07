@@ -43,7 +43,7 @@
                 <%= link_to edit_admin_event_path(event) do %>
                   <img src = "<%= asset_path 'edit-icon-blue.svg' %>">
                 <% end %>
-                <%= button_to admin_event_path(event), method: :delete, class: "delete-alertbox" do %>
+                <%= button_to admin_event_path(event), method: :delete, form_class: "delete-alertbox" do %>
                   <img src = "<%= asset_path 'delete-icon-red.svg' %>">
                 <% end %>
               </td>
@@ -85,7 +85,7 @@
                 <%= link_to edit_admin_event_path(event) do %>
                   <img src = "<%= asset_path 'edit-icon-blue.svg' %>">
                 <% end %>
-                <%= button_to admin_event_path(event), method: :delete, class: "delete-alertbox" do %>
+                <%= button_to admin_event_path(event), method: :delete, form_class: "delete-alertbox" do %>
                   <img src = "<%= asset_path 'delete-icon-red.svg' %>">
                 <% end %>
               </td>

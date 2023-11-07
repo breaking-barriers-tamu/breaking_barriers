@@ -1,10 +1,48 @@
-<h1>Events</h1>
+<div class = "calendar-header">
+  <h1 >Event Calendar</h1>
+</div>
 
-<div id="Events">
-  <% @events.each do |event| %>
-    <p>
-      <%= event.name %>
-      <%= link_to "Show this event", event %>
-    </p>
+<div class = "calendar-container">
+  <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
+    <div class = "day-cont"> 
+      <%= date.day %>
+    </div>
+    <% events.each do |event| %>
+      <div class = "calendar-info">
+        <%= link_to event_path(event) do %>
+          <%= event.name %> <br>
+          <%= event.datetime.strftime("%I:%M %p") %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
+
+
+<div class="events-index">
+  <% @calendar_events.each do |event| %>
+    <div class="event-index-container">
+      <div>
+        <h1> <%= event.datetime.strftime("%A") %> </h1>
+        <h2> <%= event.datetime.strftime("%d") %> </h2>
+      </div>
+      <div>
+        <h1> <%= event.name %> </h1>
+        <h2> <%= event.get_location %> </h2>
+        <h3> <%= event.get_duration %> </h3>
+      </div>
+      <div>
+        <% if event.flier.attached? %>
+          <% if event.flier.previewable? %>
+              <%= image_tag event.flier.preview(resize_to_limit: [400,nil]) %>
+          <% elsif event.flier.variable? %>
+              <%= image_tag event.flier, class: "index_preview" %>
+          <% end %>
+        <% else %>
+            <img src="<%= asset_path 'placeholder.svg' %>" class = "index_preview">
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
