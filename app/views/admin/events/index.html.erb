@@ -78,7 +78,7 @@
               <td><%= event.datetime.strftime("%B %d, %Y") %></td>
               <td><%= event.get_location %></td>
               <td><%= event.duration %></td>
-              <td class = "icon-cell">
+              <td class = "actions-cell">
                 <%= link_to admin_event_path(event) do %>
                   <img src = "<%= asset_path 'carbon_view-filled.svg' %>">
                 <% end %>

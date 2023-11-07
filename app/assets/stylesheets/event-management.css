@@ -116,6 +116,7 @@
     cursor: pointer;
 }
 
+/* Update cell containing actions */
 .icon-cell {
     display: flex;
     flex-direction: row;
