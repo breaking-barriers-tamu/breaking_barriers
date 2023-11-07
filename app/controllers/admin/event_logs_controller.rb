@@ -16,12 +16,15 @@ class Admin::EventLogsController < ApplicationController
       EventConfirmationMailer.with(user: event_log.user,
                                    event: event_log.event
                                   ).confirmation_email.deliver_later
+      redirect_to(admin_event_path(event_log.event), 
+                                  notice: "Successfully confirmed " + event_log.user.first_name + " " + event_log.user.last_name + " for this event!")
     else
       EventConfirmationDenyMailer.with(user: event_log.user,
                                        event: event_log.event
                                       ).confirmation_email.deliver_later
+      redirect_to(admin_event_path(event_log.event), 
+                                  notice: "Successfully denied " + event_log.user.first_name + " " + event_log.user.last_name + " for this event!")
     end
-    redirect_to(admin_event_path(event_log.event))
   end
 
   private
