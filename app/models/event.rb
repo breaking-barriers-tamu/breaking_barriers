@@ -21,17 +21,11 @@ class Event < ApplicationRecord
   end
 
   def get_location
-    if (location.present?)
-      location
-    else 
-      "TBD"
-    end
+    (location.presence || 'TBD')
   end
 
   def get_duration
     minutes = duration * 60
-    "#{(minutes/60).to_i} hours #{(minutes % 60).to_i} minutes"
+    "#{(minutes / 60).to_i} hours #{(minutes % 60).to_i} minutes"
   end
-
-
 end

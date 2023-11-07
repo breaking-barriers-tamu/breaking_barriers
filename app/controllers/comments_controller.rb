@@ -2,8 +2,8 @@
 
 class CommentsController < ApplicationController
   before_action :set_announcement
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :check_user, only: [:edit, :update]
+  before_action :set_comment, only: %i[edit update destroy]
+  before_action :check_user, only: %i[edit update]
 
   # SHOW
   def show; end
@@ -88,7 +88,9 @@ class CommentsController < ApplicationController
   def check_user
     # Only the author of the comment can edit/update it, not even an admin.
     unless current_user == @comment.user
-      redirect_to announcement_path(@announcement), alert: "You are not authorized to edit this comment."
+      redirect_to(announcement_path(@announcement),
+                  alert: 'You are not authorized to edit this comment.'
+                 )
     end
   end
 end

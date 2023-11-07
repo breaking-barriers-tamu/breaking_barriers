@@ -49,13 +49,13 @@ Announcement.create!(
 
 Comment.create!(
   user: user1,
-  content: "Test Comment from Seed File",
+  content: 'Test Comment from Seed File',
   announcement: announcement1
 )
 
 Comment.create!(
   user: user2,
-  content: "Test Comment from Seed File",
+  content: 'Test Comment from Seed File',
   announcement: announcement1
 )
 

@@ -14,9 +14,8 @@ module Admin
         @alluserhrs[user] = 0.0
       end
       EventLog.all.where(participating: true).each do |log|
-        if !log.event.datetime.past? 
-          next
-        end
+        next unless log.event.datetime.past?
+
         if @alluserhrs.key?(log.user)
           @alluserhrs[log.user] += log.hours
         else
@@ -26,8 +25,7 @@ module Admin
     end
 
     # GET /users/1 or /users/1.json
-    def show
-    end
+    def show; end
 
     # GET /users/1/edit
     def edit
@@ -38,27 +36,21 @@ module Admin
     def update
       @user = User.find(params[:id])
       if @user.update(user_params)
-        redirect_to edit_admin_user_path(@user), notice: 'User was successfully updated.'
+        redirect_to(edit_admin_user_path(@user), notice: 'User was successfully updated.')
       else
-        redirect_to edit_admin_user_path(@user), alert: 'Could not update user.'
+        redirect_to(edit_admin_user_path(@user), alert: 'Could not update user.')
       end
     end
-
 
     # DELETE /users/1 or /users/1.json
     def destroy
       @user = User.find(params[:id])
       if @user.destroy
-        redirect_to admin_users_path, notice: 'User was successfully destroyed.'
+        redirect_to(admin_users_path, notice: 'User was successfully destroyed.')
       else
-        redirect_to admin_users_path, alert: 'User could not be destroyed.'
+        redirect_to(admin_users_path, alert: 'User could not be destroyed.')
       end
     end
-
-
-
-
-
 
     def export_participation_data
       @user_hours = {}

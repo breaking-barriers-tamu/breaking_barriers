@@ -14,11 +14,11 @@ describe 'User Management', type: :feature do
   let!(:event_log4) { create(:event_log, event_id: event2.id, user_id: user2.id, hours: 1.5, participating: true) }
   let!(:event_log5) { create(:event_log, event_id: event.id, user_id: user3.id, hours: 2.5, participating: true) }
   let!(:event_log6) { create(:event_log, event_id: event2.id, user_id: user3.id, hours: 1.5, participating: false) }
-  
+
   it 'sunny day - admin visits page' do
     sign_in(user)
     visit admin_users_path
-    expect(page.text).to match(/Ari[\S\s]*Zona[\S\s]*Baba[\S\s]*Green[\S\s]*Baba[\S\s]*You/)
+    expect(page.text).to(match(/Ari[\S\s]*Zona[\S\s]*Baba[\S\s]*Green[\S\s]*Baba[\S\s]*You/))
     expect(page).to(have_content(user.first_name))
     expect(page).to(have_content(user2.first_name))
     expect(page).to(have_content(user3.first_name))
@@ -49,6 +49,5 @@ describe 'User Management', type: :feature do
   it 'rainy day - member visits page' do
     sign_in(user2)
     expect { visit(admin_users_path) }.to(raise_error(ActionController::RoutingError))
-
   end
 end

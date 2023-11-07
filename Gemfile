@@ -100,4 +100,4 @@ gem 'dotenv-rails', '~> 2.8'
 gem 'mini_magick'
 gem 'pdf-reader'
 
-gem "simple_calendar", "~> 3.0"
+gem 'simple_calendar', '~> 3.0'

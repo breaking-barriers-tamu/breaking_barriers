@@ -46,7 +46,9 @@ module Admin
     def update
       respond_to do |format|
         if @event.update(event_params)
-          format.html { redirect_to(admin_event_path(@event), notice: 'Event was successfully updated.') }
+          format.html do
+            redirect_to(admin_event_path(@event), notice: 'Event was successfully updated.')
+          end
           format.json { render(:show, status: :ok, location: @event) }
         else
           format.html { render(:edit, status: :unprocessable_entity) }
