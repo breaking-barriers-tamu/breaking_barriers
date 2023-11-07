@@ -12,13 +12,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     calculate_total_hours
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       flash[:success] = "Profile updated successfully!"
       redirect_to edit_user_path(@user)
