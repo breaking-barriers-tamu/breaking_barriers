@@ -3,8 +3,8 @@
 
 
   <% if current_user && current_user.admin? %>  
-        <%= link_to "Post announcement", new_announcement_path %>
-    <% end %>
+    <%= link_to "Post Announcement", new_announcement_path, class: "post-btn" %>
+  <% end %>
 
 <div class="announcements-container">
   <div class="announcements-content">
