@@ -128,6 +128,11 @@
     background-color:rgb(26, 75, 142);
 }
 
+.event-controls button {
+    border: none;
+    outline: none;
+}
+
 .delete-event {
     display: flex;
     flex-direction: row;
