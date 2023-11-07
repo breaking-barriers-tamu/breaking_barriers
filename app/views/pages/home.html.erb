@@ -1,9 +1,48 @@
-<%= stylesheet_link_tag "home" %>
+<%= stylesheet_link_tag "static_home" %>
+
 <body data-page="home">
     <div class="home-container">
         <div class="cover-container"> 
             <%= image_tag("home-cover.jpg", alt: "medical center", class: "cover") %>
-            <div style="height: 500px">
+        </div>
+
+        <div class="main-content">
+            <%# About Section %>
+            <div class="about">
+                <%= image_tag("placeholder.svg", alt: "about image", class: "image_about") %>
+                <div class="about-content">
+                    <div class="about-content-main">
+                    <h1>About Us</h1>
+                    <h4>Keeping Families Close</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus venenatis ac libero at ullamcorper. Pellentesque pharetra eros eu elementum tempor. Fusce pharetra pharetra urna. </p>
+                    </div>
+                    <%= link_to about_path, class: "about-link" do %>
+                        <p>Learn More</p>
+                        <%= image_tag 'chevron-right-solid.svg', class: "small-logo", alt: 'Next' %>
+                    <% end %>
+                </div>
+            </div>
+
+            <%#  %>
+            <div class="about">
+                <div class="about-content">
+                    <div class="about-content-main">
+                    <h1>About Us</h1>
+                    <h4>Keeping Families Close</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus venenatis ac libero at ullamcorper. Pellentesque pharetra eros eu elementum tempor. Fusce pharetra pharetra urna. </p>
+                    </div>
+                    <%= link_to about_path, class: "about-link" do %>
+                        <p>Learn More</p>
+                        <%= image_tag 'chevron-right-solid.svg', class: "small-logo", alt: 'Next' %>
+                    <% end %>
+                </div>
+                <%= image_tag("placeholder.svg", alt: "about image", class: "second-image") %>
+            </div>
+
+            <div class="upcoming-events">
+                <p> upcoming events</p>
+            </div>
+
         </div>
     </div>
 </body>
