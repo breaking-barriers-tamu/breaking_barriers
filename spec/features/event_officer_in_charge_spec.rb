@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe 'Officer In Charge feature', type: :feature do
-  let!(:admin1) { create(:user, first_name: 'Bob', last_name: 'Shelby', access_level: 1, registration_completed: true) }
-  let!(:admin2) { create(:user, first_name: 'Alice', last_name: 'Smith', access_level: 1, phone_number: '444-444-4444', registration_completed: true) }
-  let!(:member) { create(:user, first_name: 'John', last_name: 'Doe', access_level: 0, registration_completed: true) }
+  let!(:admin1) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'Bob', last_name: 'Shelby', access_level: 1, registration_completed: true) }
+  let!(:admin2) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'Alice', last_name: 'Smith', access_level: 1, phone_number: '444-444-4444', registration_completed: true) }
+  let!(:member) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'John', last_name: 'Doe', access_level: 0, registration_completed: true) }
   let!(:event) { create(:event, name: 'Existing Event', description: 'Event Description', datetime: '2024-12-31 05:30 PM', location: 'Event Location', duration: 1.0, officer_in_charge: admin2.id) }
   let!(:event_no_officer) { create(:event, name: 'Existing Event', description: 'Event Description', datetime: '2024-12-31 05:30 PM', location: 'Event Location', duration: 1.0, officer_in_charge: nil) }
 

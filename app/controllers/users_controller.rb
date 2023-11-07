@@ -35,7 +35,8 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated successfully!"
       redirect_to edit_user_path(@user)
     else
-      render :edit
+      flash[:alert] = @user.errors.full_messages.join("\n")
+      redirect_to edit_user_path(@user)
     end
   end
 

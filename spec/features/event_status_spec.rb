@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Event Enable/Disable', type: :feature do
-  let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
   let!(:event) { create(:event, name: 'Existing Event', datetime: '2023-12-31 15:30:00', event_enabled: true) }
 
   it 'Shows event is enabled' do

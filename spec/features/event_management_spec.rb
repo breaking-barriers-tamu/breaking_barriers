@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'Event CRUD', type: :feature do
   let!(:event) { create(:event, name: 'Existing Event', description: 'Event Description', datetime: '2023-12-31 05:30 PM', location: 'Event Location', duration: 1.0) }
-  let!(:user) { create(:user, first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
+  let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
 
   # --- Event Creation ---
   it 'Create an event - Sunny' do
