@@ -19,8 +19,10 @@
                 <% if user_signed_in?  && current_user.registration_completed? %>
                     <li><%= link_to "Events", events_path %></li>
                     <li><%= link_to "Annoucements", announcements_path %></li>
+                    
                 <% end %>
-                <li><%= link_to "About", about_path %></li>
+                <li><%= link_to "About", about_path %></li>       
+                <li> <%= link_to "Help", help_path %>  </li>
                 <% if current_user&.can_access_admin_dashboard? %>
                     <li><%= link_to "Admin", admin_root_path %></li>
                 <% end %>
