@@ -9,7 +9,7 @@
 
         <div class="nav-items"> 
             <ul>
-                <% if user_signed_in? %>
+                <% if user_signed_in? && current_user.registration_completed? %>
                 <div class="nav-items">
                     <li class="<%= 'active' if request.path.start_with?(events_path) %>">
                         <%= link_to "Events", events_path %>
@@ -43,7 +43,7 @@
                 </div>
                 <% end %>
 
-                <% if user_signed_in? %>
+                <% if user_signed_in? && current_user.registration_completed? %>
                     <%= link_to 'Profile', edit_user_path(current_user), class: "login-button" %>
                 <% else %>
                     <%= link_to "Login", new_user_session_path, class: "login-button" %>
