@@ -41,7 +41,7 @@
 
             <div class="year-field">
                 <%= f.label :year %>
-                <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+                <%= f.select :year, (Date.today.year-10..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
             </div>
           </div>
       

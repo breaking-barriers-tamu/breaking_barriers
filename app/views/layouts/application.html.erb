@@ -22,6 +22,8 @@
             border: 1px solid #aaa;
             border-radius: 5px;
             z-index: 1000;
+            cursor: pointer;
+
         }
 
         .flash__close {
@@ -37,15 +39,15 @@
     <%= render 'shared/navbar' %>
 
     <div id="flash_messages">
-      <% if flash.any? %>
-        <% flash.each do |key, value| -%>
-          <section class="flash flash__<%= key %>">
-            <%= value.gsub("\n", "<br>").html_safe %>
-            <span class="flash__close" onclick="this.parentElement.style.display='none'">X</span>
-          </section>
-        <% end %>
+    <% if flash.any? %>
+      <% flash.each do |key, value| -%>
+        <!-- Added onclick event to the section element -->
+        <section class="flash flash__<%= key %>" onclick="this.style.display='none';">
+          <%= value.gsub("\n", "<br>").html_safe %>
+        </section>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
     <%= yield %>
     <%= render 'shared/footer' %>
