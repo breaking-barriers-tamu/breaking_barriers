@@ -16,7 +16,7 @@
 
     <div class="announcement-main-body">
     <div class="announcement-header">
-      <%= image_tag announcement.user.avatar_url, alt: "#{announcement.user.name}'s Avatar", class:"announcement-avatar" %>
+      <%= image_tag announcement.user.avatar_url || 'user-solid.svg', alt: "Avatar", class:"announcement-avatar" %>
 
       <div class="announcement-base-info">
         <h1 h1 class="announcement-title"><%= announcement.title %></h1>
