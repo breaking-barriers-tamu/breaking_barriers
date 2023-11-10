@@ -30,14 +30,17 @@
         </div>
       </div>
       <div class="comment-options">
-        <%= image_tag 'ellipsis-solid.svg', class: "comment-editor dropdown-toggle", alt: 'options' %>
+
+        <% if current_user == comment.user || current_user.admin? %>
+          <%= image_tag 'ellipsis-solid.svg', class: "comment-editor dropdown-toggle", alt: 'options' %>
+        <% end %>
         <div class="dropdown-content">
           <% if current_user == comment.user %>
             <%= link_to "Edit Comment", "#", onclick: "toggleEditComment(#{comment.id}, true); return false;", class: "comment-edit" %>
           <% end %>
 
           <% if current_user == comment.user || current_user.admin? %>
-            <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox', class: "comment-delete" %>
+            <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox-comment', class: "comment-delete" %>
           <% end %>
         </div>
       </div>
@@ -47,11 +50,11 @@
 
     <div id="edit_comment_<%= comment.id %>" style="display: none;">
       <%= form_with(model: [@announcement, comment], html: { class: 'add-comment' }) do |form| %>
-        <div>
+        <div class="edit_comment_form">
           <%= form.text_area :content, id: "comment_box_#{comment.id}" %>
         </div>
         <div>
-          <%= form.submit "Update Comment", class: "add-comment-button", onclick: "toggleEditComment(#{comment.id}, false);" %>
+          <%= form.submit "Save", class: "add-comment-button", onclick: "toggleEditComment(#{comment.id}, false);" %>
          <%= link_to "Cancel", "#", onclick: "cancelEditComment(#{comment.id}, event); return false;", class: "cancel-edit-button" %>
         </div>
       <% end %>

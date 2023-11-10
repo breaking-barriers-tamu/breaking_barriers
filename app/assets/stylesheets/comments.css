@@ -83,32 +83,40 @@
 
   
   /* Edit and Delete Buttons */
-  .comment-edit, .comment-delete {
-    font-size: 14px;
-    padding: 5px 10px;
-    margin-top: 10px;
-    display: inline-block;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+ .dropdown-content a.comment-edit,
+ .dropdown-content form.delete-alertbox-comment button {
+   font-size: 1rem;
+   padding: 1em 1em;
+   margin:  0;
+   text-align: left;
+   display: inline-block;
+   width: 100%;
+   box-sizing: border-box;
+   font-family: inherit;
+ }
   .comment-edit {
-    background-color: #f0ad4e;
+    /* background-color: #f0ad4e; */
   }
   
   .comment-delete {
-    background-color: #d9534f;
+    font-size: 14px;
+    width: full;
+    background: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
   }
   
   .comment-edit:hover {
-    background-color: #ec971f;
+    background-color: #d3d3d3;
   }
   
   .comment-delete:hover {
-    background-color: #c9302c;
+    background-color: #d3d3d3;
   }
   
   /* Add Comment Form Styles */
@@ -120,16 +128,31 @@
     color: #333;
   }
   
-  #comment_box {
+  .cancel-edit-button {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+
+    .cancel-edit-button:hover {
+      background: grey;
+    }
+
+
+  #comment_box, .edit_comment_form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 10px;
+    resize: none;
   }
   
   .add-comment-button {
     background-color: #5cb85c;
+    font-size: 14px;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -161,7 +184,7 @@
   position: absolute;
   right: 0;
   /* Adjust as needed */
-  top: 0;
+  top: .9;
   /* Adjust as needed */
 }
 
@@ -173,10 +196,11 @@
   position: absolute;
   right: 0;
   /* Adjust as needed */
-  background-color: #f9f9f9;
+  background-color: #bdbdbd;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  padding: 10px 0px;
 }
 
 .dropdown-content a {
