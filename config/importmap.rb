@@ -1,13 +1,6 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "application", preload: true
-pin "navbar"
-pin "footer"
-pin "delete_confirmation_dialog"
-pin "profile"
-pin "registration"
-pin "announcements_index"
-pin "announcements_form"
+pin "application"
 
 
 pin "trix"

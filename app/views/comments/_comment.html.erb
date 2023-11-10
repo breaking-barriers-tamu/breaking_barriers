@@ -1,45 +1,61 @@
-<%= javascript_include_tag 'delete_confirmation_dialog' %>
-
 <% unless comment.archived && !current_user.admin? %>
   <div id="<%= dom_id comment %>" class="<%= 'admin-comment' if comment.user.admin? %> <%= 'archived-comment' if comment.archived? %> comment">
-    
-    <div class="comment-user">
-      <% if comment.anonymous && !(current_user.admin? || current_user == comment.user) %>
-        Anonymous
-      <% else %>
-        <%= comment.user.name %>
-        <% if comment.user.admin? %>
-          [ADMIN]
-        <% end %>
-        <% if comment.anonymous %>
-          (Posted as Anonymous)
-        <% end %>
-      <% end %>
-    </div>
 
-    <div class="comment-content">
-      <%= comment.content %>
-    </div>
+    <div class="comment-container">
+      <div>     
+        <div class="comment-user">
+          <% if comment.anonymous && !(current_user.admin? || current_user == comment.user) %>
+            Anonymous
+          <% else %>
+            <%= comment.user.name %>
+            <% if comment.anonymous && (current_user == comment.user) %>
+              (Posted as Anonymous)
+            <% end %>
+          <% end %>
 
-    <div class="comment-time">
-      <br>
-      Posted on: <%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %><br>
-      <% if comment.updated_at != comment.created_at %>
-        <span>(edited) Updated on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></span><br>
-      <% end %>
+          <div class="comment-time">
+              <span> <%= time_in_words(comment.created_at) %> ago </span>
+              <% if comment.updated_at != comment.created_at %>
+                <span>(edited) </span>
+              <% end %>
+              <% if comment.updated_at != comment.created_at && comment.archived? %>
+                <span>(Archive)</span>
+              <% end %>
+          </div>
 
-      <% if comment.updated_at != comment.created_at && comment.archived? %>
-        <span>(Archive) Deleted by Author on: <%= comment.updated_at.strftime('%B %d, %Y at %I:%M %p') %></span>
-      <% end %>
-    </div>
+        </div>
 
-    <% if current_user == comment.user %>
-      <%= turbo_frame_tag dom_id(comment, :edit) do %>
-        <%= link_to "Edit Comment", edit_announcement_comment_path(@announcement, comment), class: "comment-edit" %>
-      <% end %>
-    <% end %>
-    <% if current_user == comment.user || current_user.admin? %>
-      <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox', class: "comment-delete" %>
-    <% end %>
+        <div class="comment-content">
+          <%= comment.content %>
+        </div>
+      </div>
+      <div class="comment-options">
+        <%= image_tag 'ellipsis-solid.svg', class: "comment-editor dropdown-toggle", alt: 'options' %>
+        <div class="dropdown-content">
+          <% if current_user == comment.user %>
+            <%= link_to "Edit Comment", "#", onclick: "toggleEditComment(#{comment.id}, true); return false;", class: "comment-edit" %>
+          <% end %>
+
+          <% if current_user == comment.user || current_user.admin? %>
+            <%= button_to "Delete Comment", announcement_comment_path(@announcement, comment), method: :delete, form_class: 'delete-alertbox', class: "comment-delete" %>
+          <% end %>
+        </div>
+      </div>
+
+    </div> 
   </div>
+
+    <div id="edit_comment_<%= comment.id %>" style="display: none;">
+      <%= form_with(model: [@announcement, comment], html: { class: 'add-comment' }) do |form| %>
+        <div>
+          <%= form.text_area :content, id: "comment_box_#{comment.id}" %>
+        </div>
+        <div>
+          <%= form.submit "Update Comment", class: "add-comment-button", onclick: "toggleEditComment(#{comment.id}, false);" %>
+         <%= link_to "Cancel", "#", onclick: "cancelEditComment(#{comment.id}, event); return false;", class: "cancel-edit-button" %>
+        </div>
+      <% end %>
+    </div>
 <% end %>
+
+

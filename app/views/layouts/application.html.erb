@@ -7,6 +7,9 @@
     <%= turbo_include_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'comments' %>
+    <%= javascript_include_tag 'delete_confirmation_dialog' %>
+
 
     <style>
         .flash__alert   { color: red; }

@@ -1,5 +1,5 @@
 <!-- Announcement Show Page -->
-<%= javascript_include_tag 'delete_confirmation_dialog' %>
+
 
 <!-- Back button in its own div for separate styling -->
 <div class="back-to-announcements">
@@ -20,13 +20,7 @@
   </div>
 
   <br>
-  <% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
-    <%= turbo_frame_tag 'error-message' do %>
-      <div class="error-message">
-        <%= render 'comments/error_message' %>
-      </div>
-    <% end %>
-  <% end %>
+
 
   <div class="add-comment-form">
     <h2>Add a Comment</h2>

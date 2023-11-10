@@ -22,5 +22,5 @@ window.addEventListener("turbo:load", () => {
         .catch(event.preventDefault());
     }
   });
-  console.log("Script is being executed");
 });
+
