@@ -8,7 +8,8 @@
             Anonymous
           <% else %>
             <%= comment.user.name %>
-            <% if comment.anonymous && (current_user == comment.user) %>
+            <%# other user should already see Anonymous user name %>
+            <% if comment.anonymous && (current_user.admin? || current_user == comment.user) %>
               (Posted as Anonymous)
             <% end %>
           <% end %>
