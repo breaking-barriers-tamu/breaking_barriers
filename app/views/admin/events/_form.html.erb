@@ -49,7 +49,7 @@
 
   <div class = "input-container">
     <img src="<%= asset_path 'user-icon.svg' %>">
-    <div >
+    <div>
       <%= form.collection_select(:officer_in_charge, 
         User.where(access_level: 1), :id, :name, 
         {include_blank: "--"}, 
