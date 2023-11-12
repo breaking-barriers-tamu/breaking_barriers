@@ -118,3 +118,16 @@ body {
 .nav-items ul .active a:after {
     width: 100%;
 }
+
+.title-container {
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+.title-container h1 {
+    font-size: 60px;
+    color: white;
+    font-weight: bolder;
+}
+
