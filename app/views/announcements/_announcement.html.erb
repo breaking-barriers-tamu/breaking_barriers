@@ -1,21 +1,36 @@
 <!-- Announcement Partial -->
 <div id="<%= dom_id(announcement) %>" class="announcement-container">
-  <h1 class="announcement-title"><%= announcement.title %></h1>
 
-  <div class="announcement-body">
-    <%= announcement.body %>
+  <div class="announcement-content">
+
+    <div class="announcement-admin-controls">
+      <% if current_user && current_user.admin? %>
+        <%= link_to edit_announcement_path(announcement) do %>
+          <%= image_tag 'pen-to-square-solid.svg', class: "small-logo-announcement", alt: 'Edit' %>
+        <% end %>
+        <%= button_to announcement_path(announcement), method: :delete, form_class: "delete-alertbox", data: { confirm: 'Are you sure?' } do %>
+          <%= image_tag 'trash-solid.svg', class: "small-logo-announcement", alt: 'Delete' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="announcement-main-body">
+    <div class="announcement-header">
+      <%= image_tag announcement.user.avatar_url || 'user-solid.svg', alt: "Avatar", class:"announcement-avatar" %>
+
+      <div class="announcement-base-info">
+        <h1 h1 class="announcement-title"><%= announcement.title %></h1>
+        <p class="announcement-author-title"><%= announcement.user.name %></p>
+      </div>
+
+    </div>
+
+
+    <div class="announcement-body">
+      <%= announcement.body %>
+    </div>
+    </div>
   </div>
 
-  <div class="announcement-meta">
-    <p class="announcement-author">Created by: <%= announcement.user.name %></p>
-    <p class="announcement-timestamp">
-      Created on: <%= announcement.created_at.strftime('%B %d, %Y at %I:%M %p') %>
-    </p>
-    <%# Only show the updated timestamp if it's different from the created timestamp %>
-    <% if announcement.updated_at > (announcement.created_at + 0.1.minute) %>
-      <p class="announcement-updated-timestamp">
-        Updated at: <%= announcement.updated_at.strftime('%B %d, %Y at %I:%M %p') %>
-      </p>
-    <% end %>
-  </div>
 </div>
+

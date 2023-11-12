@@ -9,11 +9,7 @@
   <div class="forms">
     <div class="profile-form">
       <div class="current-user-display">
-          <% if @user.avatar_url.present? %>
-            <%= image_tag @user.avatar_url, alt: "#{@user.name}'s Avatar", width: 150 %>
-          <% else %>
-            <p>No avatar available</p>
-          <% end %>
+            <%= image_tag @user.avatar_url || 'user-solid.svg', alt: "#{@user.name}'s Avatar", width: 150 %>
           <p>My Profile</p>
       </div>
       

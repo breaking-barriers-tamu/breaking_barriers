@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :first_name, :last_name, :phone_number, presence: true, if: :registration_completed?
-  validates :first_name, exclusion: { in: [''], message: "First name can't be blank" }
-  validates :last_name, exclusion: { in: [''], message: "Last name can't be blank" }
-  validates :phone_number, exclusion: { in: [''], message: "Phone number can't be blank" }
+  validates :first_name, exclusion: { in: [''], message: "can't be blank" }
+  validates :last_name, exclusion: { in: [''], message: "can't be blank" }
+  validates :phone_number, exclusion: { in: [''], message: "can't be blank" }
+  validates :year, presence: { message: "can't be blank" }, if: :registration_completed?
+
 
   has_many :events, through: :event_logs
   has_many :event_logs, dependent: :destroy
@@ -23,6 +24,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.avatar_url = auth.info.image
+      user.year ||= Date.today.year
     end
   end
 
