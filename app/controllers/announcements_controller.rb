@@ -6,8 +6,12 @@ class AnnouncementsController < ApplicationController
   before_action :ensure_admin, only: %i[new create edit update destroy]
 
   def index
-    # Reverse order so that most recent announcements are first
-    @announcements = Announcement.all.reverse
+    @announcements = Announcement.order(created_at: :desc).page(params[:page]).per(5)
+    # Pagination logic
+    respond_to do |format|
+      format.html # Normal HTML response
+      format.js { render partial: "announcements/announcement_card", locals: { announcement: announcement } } # JS response
+    end
   end
 
   def show

@@ -43,12 +43,20 @@
                 </div>
                 <% end %>
 
+
+
                 <% if user_signed_in? && current_user.registration_completed? %>
-                    <%= link_to 'Profile', edit_user_path(current_user), class: "login-button" %>
+                    <%= link_to  edit_user_path(current_user)do %>
+                         <%= image_tag 'user-solid.svg', class: "profile-button", alt: 'profile' %>
+                    <% end %>
                 <% else %>
                     <%= link_to "Login", new_user_session_path, class: "login-button" %>
                 <% end %>
             </ul>
         </div>
+    </div>
+
+     <div class="title-container">
+        <h1>Breaking Barriers</h1>
     </div>
 </div>

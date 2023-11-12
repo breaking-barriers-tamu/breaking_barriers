@@ -101,3 +101,7 @@ gem 'mini_magick'
 gem 'pdf-reader'
 
 gem 'simple_calendar', '~> 3.0'
+
+
+gem 'kaminari'
+
