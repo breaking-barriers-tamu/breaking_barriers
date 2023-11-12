@@ -3,10 +3,22 @@
 </div>
 
 <div class = "calendar-container">
+  <% current_month = Date.today %>
+  <% previous_month = @start_date.prev_month %>
+  <% next_month = @start_date.next_month %>
+
+  <div class="calendar-navigation">
+    <%= link_to 'Previous', events_path(start_date: previous_month), class: 'prev-link' %>
+    <%= link_to 'Today', events_path(start_date: current_month), class: 'today-link' %>
+    <%= link_to 'Next', events_path(start_date: next_month), class: 'next-link' %>
+  </div>
+
   <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
     <div class = "day-cont"> 
       <%= date.day %>
     </div>
+
+
     <% events.each do |event| %>
       <div class = "calendar-info">
         <%= link_to event_path(event) do %>
@@ -15,6 +27,8 @@
         <% end %>
       </div>
     <% end %>
+
+
   <% end %>
 </div>
 
