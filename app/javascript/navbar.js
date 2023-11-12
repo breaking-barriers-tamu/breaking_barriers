@@ -28,13 +28,9 @@ function updateNavbarBgColor() {
     navbar.style.backgroundColor = "transparent";
     navbarShade.style.background =
       "linear-gradient(to bottom, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%)";
-    if (loginButton) loginButton.style.background = "#4872AE";
-    if (loginButton) loginButton.style.color = "white";
   } else {
     navbar.style.backgroundColor = "#4872AE";
     navbarShade.style.background = "transparent";
-    if (loginButton) loginButton.style.background = "white";
-    if (loginButton) loginButton.style.color = "black";
   }
   // Adjust padding for home screen
   document.body.style.paddingTop = isHomePage || isAboutPage ? "0" : "70px";
