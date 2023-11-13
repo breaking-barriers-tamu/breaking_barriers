@@ -14,7 +14,7 @@ describe 'Event signup', type: :feature do
     expect(EventLog.where(user: user, event: event)).not_to(be_empty)
   end
 
-  it 'Sign up for an event present but already signed up-- Rainy day' do
+  it 'Sign up for an event present but already signed up-- Rainy day (security)' do
     sign_in(user)
     visit event_path(event)
     click_link 'Sign Up'
