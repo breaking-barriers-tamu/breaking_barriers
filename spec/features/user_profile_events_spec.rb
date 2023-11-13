@@ -14,20 +14,17 @@ describe 'User profile events list', type: :feature do
   it 'sunny day - Event is present in page' do
     sign_in(user)
     visit edit_user_path(user)
-    expect(page).to(have_content("Event 1"))
-    expect(page).to(have_content("December 31, 2023"))
-    expect(page).to(have_content("1.0"))
-    expect(page).to(have_content("X"))
+    expect(page).to(have_content('Event 1'))
+    expect(page).to(have_content('December 31, 2023'))
+    expect(page).to(have_content('1.0'))
+    expect(page).to(have_content('X'))
   end
-
 
   it 'rainy day (security) - Event is not present in page if not signed up' do
     sign_in(user2)
     visit edit_user_path(user2)
-    expect(page).not_to(have_content("Event 1"))
-    expect(page).not_to(have_content("December 31, 2023"))
-    expect(page).not_to(have_content("1.0"))
+    expect(page).not_to(have_content('Event 1'))
+    expect(page).not_to(have_content('December 31, 2023'))
+    expect(page).not_to(have_content('1.0'))
   end
-
-
 end

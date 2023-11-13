@@ -15,12 +15,12 @@ describe 'Event Log Index Security', type: :feature do
 
   it 'sunny day - admin tries to see event log index page' do
     sign_in(user)
-    visit admin_event_logs_path;
-    expect(page).to(have_content("Event 1"));
+    visit admin_event_logs_path
+    expect(page).to(have_content('Event 1'))
   end
 
   it 'rainy day - regular user tries to see event log index page' do
     sign_in(user2)
-    expect { visit(admin_event_logs_path) }.to(raise_error(ActionController::RoutingError));
+    expect { visit(admin_event_logs_path) }.to(raise_error(ActionController::RoutingError))
   end
 end

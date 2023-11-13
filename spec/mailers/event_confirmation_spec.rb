@@ -15,9 +15,9 @@ RSpec.describe(EventConfirmationMailer, type: :mailer) do
     end
 
     it 'renders the body' do
-      expect(mail.body.encoded).to(have_content('Your sign-up for Event 1 on 12/31/2029 has been confirmed!'));
-      expect(mail.body.encoded).to(have_content('The event will take place at Event Location at 05:30 pm.'));
-      expect(mail.body.encoded).to(have_content('You will receive 1.0 service hours for participating.'));
+      expect(mail.body.encoded).to(have_content('Your sign-up for Event 1 on 12/31/2029 has been confirmed!'))
+      expect(mail.body.encoded).to(have_content('The event will take place at Event Location at 05:30 pm.'))
+      expect(mail.body.encoded).to(have_content('You will receive 1.0 service hours for participating.'))
     end
   end
 end
