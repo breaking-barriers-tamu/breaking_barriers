@@ -80,9 +80,9 @@
 .event-form-input {
     width: 300px;
     height: 35px;
-    border: none;
+    border: none !important;
     outline: none;
-    border-bottom: 2px solid rgb(72, 114, 174);
+    border-bottom: 2px solid rgb(72, 114, 174) !important;
     font-size: 16px;
     border-radius: 2px;
     background-color: rgba(0,0,0, 0.1);
@@ -90,11 +90,11 @@
 }
 
 .event-form-input:hover {
-    border: 2px solid  #9B59B6;
+    border: 2px solid  #9B59B6 !important;
 }
-
+ 
 .event-form-input:focus {
-    border: 2px solid  #9B59B6;
+    border: 2px solid  #9B59B6 !important;
 }
 
 .input-container label {
