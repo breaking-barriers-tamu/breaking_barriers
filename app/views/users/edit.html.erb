@@ -6,44 +6,42 @@
       <%= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method: :delete %>
   </div>
 
-  <div class="forms">
+  <div class="">
     <div class="profile-form">
       <div class="current-user-display">
             <%= image_tag @user.avatar_url || 'user-solid.svg', alt: "#{@user.name}'s Avatar", width: 150 %>
-          <p>My Profile</p>
+          <p><%= @user.name %></p>
       </div>
+
+      <hr class="horizontal-line">
       
       <%= form_for(@user, url: user_path(@user), html: { method: :patch, data: { turbo: "false" } }) do |f| %>
-          <div class="row-1">
-            <div class="first-name-field">
-                <%= f.label :first_name %>
-                <%= f.text_field :first_name %>
-            </div>
-
-            <div class="last-name-field">
-                <%= f.label :last_name %>
-                <%= f.text_field :last_name %>
-            </div>
+          <div class="profile-first-name-field profile-field" >
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name %>
           </div>
 
-          <div class="row-2">
-            <div class="phone-field">
-              <%= f.label :phone_number %>
-              <%= f.telephone_field :phone_number, id: "phone-number" %>
-            </div>
-
-            <div class="year-field">
-                <%= f.label :year %>
-                <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
-            </div>
-          </div>
-      
-          <div class="row-3">
-            <%= f.submit "Update" %>
+          <div class="profile-last-name-field profile-field">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
           </div>
 
-          <div>
-              <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+          <div class="profile-phone-field profile-field">
+            <%= f.label :phone_number %>
+            <%= f.telephone_field :phone_number, id: "phone-number" %>
+          </div>
+
+          <div class="profile-year-field profile-field">
+              <%= f.label :year %>
+              <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+          </div>
+
+          <div class="profile-submit-section">
+            <%= f.submit "Update", class: "profile-update-btn" %>
+            
+            <div class="temp-selection">
+                <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
+            </div>
           </div>
 
       <% end %>
@@ -52,71 +50,76 @@
     <div class="my-event-form">
         
 
-    <div class="events-table">
-      <h1> Future Events I've Signed Up For</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Hours</th>
-            <th>Participation Approved?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @upcoming_events.any? %>
-            <% @upcoming_events.each do |event| %>
+    <div class="profile-events-table">
+      <div class="events-table-header">
+        <img src="<%= asset_path 'calendar-icon.svg' %>">
+        <h3>  My Upcoming Events</h3>
+      </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Hours</th>
+              <th class="table-approval">Approved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @upcoming_events.any? %>
+              <% @upcoming_events.each do |event| %>
+                <tr>
+                  <td><%= event.name %></td>
+                  <td><%= event.datetime.strftime("%b %d, %Y") %></td>
+                  <td><%= event.duration %></td>
+                  <td class="table-approval"><%= EventLog.where(user: @user, event: event).first.participating ? "✓" : "X"%></td>
+                </tr>
+              <% end %>
+            <% else %>
               <tr>
-                <td><%= event.name %></td>
-                <td><%= event.datetime.strftime("%B %d, %Y") %></td>
-                <td><%= event.duration %></td>
-                <td><%= EventLog.where(user: @user, event: event).first.participating ? "✓" : "X"%></td>
+                <td colspan="5" class="no-records">No records</td>
               </tr>
             <% end %>
-          <% else %>
-            <tr>
-              <td colspan="5">No records to display.</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
     </div>
 
 
-    <div class="events-table", style="display: auto">
-      <h1> Past Events Attended</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Hours</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @past_events.any? %>
-            <% @past_events.each do |event| %>
+    <div class="profile-events-table">
+      <div class="events-table-header">
+        <img src="<%= asset_path 'calendar-icon.svg' %>">
+        <h3>  My Past Events</h3>
+      </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Hours</th>
+              <th class="table-approval">Approved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @past_events.any? %>
+              <% @past_events.each do |event| %>
+                <tr>
+                  <td><%= event.name %></td>
+                  <td><%= event.datetime.strftime("%b %d, %Y") %></td>
+                  <td><%= event.duration %></td>
+                  <td class="table-approval"><%= EventLog.where(user: @user, event: event).first.participating ? "✓" : "X"%></td>
+                </tr>
+              <% end %>
+            <% else %>
               <tr>
-                <td><%= event.name %></td>
-                <td><%= event.datetime.strftime("%B %d, %Y") %></td>
-                <td><%= event.duration %></td>
+                <td colspan="5" class="no-records">No records </td>
               </tr>
             <% end %>
-          <% else %>
-            <tr>
-              <td colspan="5">No records to display.</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
     </div>
 
+       
 
 
-        <p>
-          <strong>Total Hours:</strong>
-          <%= @total_hours %>
-        </p>
     </div>
 
   </div>
