@@ -105,3 +105,5 @@ gem 'simple_calendar', '~> 3.0'
 
 gem 'kaminari'
 
+
+gem "pagy", "~> 6.2"

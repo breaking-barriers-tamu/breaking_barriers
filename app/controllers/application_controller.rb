@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include Pagy::Backend
 
 class ApplicationController < ActionController::Base
   before_action :check_registration_completion, unless: :devise_controller?

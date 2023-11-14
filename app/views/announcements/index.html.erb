@@ -26,11 +26,12 @@
           <%= render partial: "announcements/announcement_card", locals: { announcement: announcement } %>
         <% end %>
 
-        <% if @announcements.prev_page %>
-          <%= link_to 'Go Back', announcements_path(page: @announcements.prev_page), remote: true, class: "go-back-button" %>
-        <% end %>
-        <%= link_to 'Load More', announcements_path(page: @announcements.next_page), remote: true, class: "load-more-button" if @announcements.next_page %>
       </div>
+
+      <div id="next_link">
+        <%= button_to "Load More", pagy_url_for(@pagy, @pagy.next), class: "next_button" %>
+      </div>
+
     </div>
   </div>
 </body>
