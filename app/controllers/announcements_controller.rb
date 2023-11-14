@@ -6,11 +6,21 @@ class AnnouncementsController < ApplicationController
   before_action :ensure_admin, only: %i[new create edit update destroy]
 
   def index
-    @announcements = Announcement.order(created_at: :desc).page(params[:page]).per(5)
-    # Pagination logic
+    @pagy, @announcements = pagy_countless(Announcement.order(created_at: :desc), items: 5)
+
+    Rails.logger.debug "Load More: #{@announcements}"
+
     respond_to do |format|
-      format.html # Normal HTML response
-      format.js { render partial: "announcements/announcement_card", locals: { announcement: announcement } } # JS response
+      format.html 
+      format.turbo_stream
+    end
+  end
+
+  def load_more
+    @pagy, @announcements = pagy_countless(Announcement.order(created_at: :desc), items: 5, page: params[:page])
+
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 

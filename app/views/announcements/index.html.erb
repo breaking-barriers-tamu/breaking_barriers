@@ -26,10 +26,11 @@
           <%= render partial: "announcements/announcement_card", locals: { announcement: announcement } %>
         <% end %>
 
-        <% if @announcements.prev_page %>
-          <%= link_to 'Go Back', announcements_path(page: @announcements.prev_page), remote: true, class: "go-back-button" %>
+      </div>
+      <div id="next_link">
+        <% if @pagy.next.present? %>
+          <%= button_to "Load More", load_more_announcements_path(page: @pagy.next), method: :post, class: "next_button" %>
         <% end %>
-        <%= link_to 'Load More', announcements_path(page: @announcements.next_page), remote: true, class: "load-more-button" if @announcements.next_page %>
       </div>
     </div>
   </div>
