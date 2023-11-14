@@ -1,0 +1,39 @@
+<div class="announcement-card">
+    <div class="announcement-details">
+    <%# date %>
+    <div class="announcement-time">
+        <p><%= announcement.body.created_at.strftime('%b %d') %></p>
+        <p><%= announcement.body.created_at.strftime('%I:%M %p') %></p>
+    </div>
+
+    <%# vertical line %>
+    <div class="line">
+    </div>
+
+    <%# body and description %>
+    <div>
+        <div class="announcement-title">
+            <%= link_to announcement do %>
+            <%= announcement.title %>
+            <% end %>
+        </div>
+
+
+        <div class="announcement-author">
+            <%= announcement.user.name %>
+        </div>
+
+        <div class="announcement-body">
+            <%= summarize_text(announcement.body, 100) %>
+        </div>
+
+    </div>
+    </div>
+
+    <%# go to specific %>
+    <div class="arrow">
+    <%= link_to announcement do %>
+        <%= image_tag 'chevron-right-solid.svg', class: "small-logo", alt: 'Next' %>
+    <% end %>
+    </div>
+</div>

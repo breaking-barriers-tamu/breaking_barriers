@@ -1,22 +1,14 @@
 <!-- Announcement Show Page -->
-<%= javascript_include_tag 'delete_confirmation_dialog' %>
 
-<p class="notice" style="color: green"><%= notice %></p>
-
-<%= render @announcement %>
-
-<!-- Separate container for edit/delete which will allow us to easily control layout -->
-<div class="announcement-actions edit-delete-actions">
-  <% if current_user && current_user.admin? %>
-    <%= link_to "Edit this announcement", edit_announcement_path(@announcement), class: "btn announcement-edit" %>
-    <%= button_to "Delete", announcement_path(@announcement), method: :delete, form_class: "delete-alertbox", class: "btn announcement-delete"%>
-  <% end %>
-</div>
 
 <!-- Back button in its own div for separate styling -->
 <div class="back-to-announcements">
   <%= link_to "Back to announcements", announcements_path, class: "btn btn-secondary" %>
 </div>
+
+<%= render @announcement %>
+
+
 
 <div class="main-comment-container">
   <br>
@@ -28,13 +20,7 @@
   </div>
 
   <br>
-  <% if flash[:alert] == 'Comment could not be saved. Cannot add an empty comment.' %>
-    <%= turbo_frame_tag 'error-message' do %>
-      <div class="error-message">
-        <%= render 'comments/error_message' %>
-      </div>
-    <% end %>
-  <% end %>
+
 
   <div class="add-comment-form">
     <h2>Add a Comment</h2>

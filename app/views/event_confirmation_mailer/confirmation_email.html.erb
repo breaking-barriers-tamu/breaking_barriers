@@ -56,9 +56,11 @@
   <p>
     Your sign-up for <span class="event-details"><%= @event.name %></span> on <span class="event-details"><%= @event.datetime.strftime("%m/%d/%Y") %></span> has been confirmed!
     <br>
-    The event will take place at <span class="event-details"><%= @event.location %></span> at <span class="event-details"><%= @event.datetime.strftime("%H:%M %P") %></span>.
+    The event will take place at <span class="event-details"><%= @event.location %></span> at <span class="event-details"><%= @event.datetime.strftime("%I:%M %P") %></span>.
     <br>
     You will receive <span class="service-hours"><%= @event.duration %> service hours</span> for participating.
+    <br>
+    See more details about the event in the Breaking Barriers website.
   </p>
   <p>Thanks for volunteering, and have a great day!</p>
   

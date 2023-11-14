@@ -51,7 +51,7 @@
 
 .management-body { 
     margin: 50px 25px 50px 25px; 
-    display: block;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -82,14 +82,12 @@
 .events-table th {
     padding: 10px 25px 10px 25px;
     font-size: 20px;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Table cell styling */
 .events-table td {
     padding: 10px 25px 10px 25px;
-    border-bottom: 1px solid rgb(72, 114, 174);
 }
 
 .events-table a {text-decoration: none; }
