@@ -1,0 +1,25 @@
+{
+  "name": "breaking_barriers",
+  "version": "1.0.0",
+  "description": "## Introduction ##",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/breaking-barriers-tamu/breaking_barriers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/breaking-barriers-tamu/breaking_barriers/issues"
+  },
+  "homepage": "https://github.com/breaking-barriers-tamu/breaking_barriers#readme"
+}
