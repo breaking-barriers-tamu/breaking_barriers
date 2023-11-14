@@ -12,11 +12,9 @@
     <div class="profile-form">
 
       <div class="current-user-display">
-          <% if @user.avatar_url.present? %>
-            <%= image_tag @user.avatar_url, alt: "#{@user.name}'s Avatar", width: 150 %>
-          <% else %>
-            <p>No avatar available</p>
-          <% end %>
+
+          <%= image_tag @user.avatar_url || 'user-solid.svg', alt: "#{@user.name}'s Avatar", width: 150 %>
+
            <p><%= current_user.email %></p>
       </div>
 
@@ -41,7 +39,7 @@
 
             <div class="year-field">
                 <%= f.label :year %>
-                <%= f.select :year, (Date.today.year-30..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
+                <%= f.select :year, (Date.today.year-10..Date.today.year+10).to_a.reverse, prompt: 'Select Year' %>
             </div>
           </div>
       

@@ -1,48 +1,95 @@
-<div class = "calendar-header">
-  <h1 >Event Calendar</h1>
-</div>
+<div class="events-container">
+  <div class = "calendar-header">
+    <h1 >Event Calendar</h1>
+  </div>
 
-<div class = "calendar-container">
-  <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
-    <div class = "day-cont"> 
-      <%= date.day %>
-    </div>
-    <% events.each do |event| %>
-      <div class = "calendar-info">
-        <%= link_to event_path(event) do %>
-          <%= event.name %> <br>
-          <%= event.datetime.strftime("%I:%M %p") %>
+  <div class = "calendar-container">
+    <% current_month = Date.today %>
+    <% previous_month = @start_date.prev_month %>
+    <% next_month = @start_date.next_month %>
+
+    <div class="calendar-navigation">
+      <div class = "calendar-date"> 
+        <%= @start_date.strftime("%B %Y") %> 
+      </div>
+      <div class = "calendar-actions">
+        <%= link_to events_path(start_date: previous_month), class: 'prev-link' do %>
+          <div> <img src = "<%= asset_path 'prev.svg' %>"> </div>
         <% end %>
+        <%= link_to "Today", events_path(start_date: current_month), class: 'today-link' %>
+        <%= link_to events_path(start_date: next_month), class: 'next-link' do %>
+          <div> <img src = "<%= asset_path 'next.svg' %>"> </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
+      <div class = "day-cont"> 
+        <%= date.day %>
+        <% events.each do |event| %>
+            <%= link_to event_path(event) do %>
+            <div class = "calendar-info">
+              <%= event.name %> <br>
+              <%= event.datetime.strftime("%I:%M %p") %>
+            </div>
+            <% end %>
+        <% end %>
+        <div>
+        </div>
       </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
 
-<div class="events-index">
-  <% @calendar_events.each do |event| %>
-    <div class="event-index-container">
-      <div>
-        <h1> <%= event.datetime.strftime("%A") %> </h1>
-        <h2> <%= event.datetime.strftime("%d") %> </h2>
-      </div>
-      <div>
-        <h1> <%= event.name %> </h1>
-        <h2> <%= event.get_location %> </h2>
-        <h3> <%= event.get_duration %> </h3>
-      </div>
-      <div>
-        <% if event.flier.attached? %>
-          <% if event.flier.previewable? %>
-              <%= image_tag event.flier.preview(resize_to_limit: [400,nil]) %>
-          <% elsif event.flier.variable? %>
-              <%= image_tag event.flier, class: "index_preview" %>
-          <% end %>
-        <% else %>
-            <img src="<%= asset_path 'placeholder.svg' %>" class = "index_preview">
-        <% end %>
-      </div>
+  <div class="events-index">
+    <div class="events-index-header">
+      <h1><%= @start_date.strftime("%B %Y") %></h1>
     </div>
-  <% end %>
+
+
+    <% @calendar_events.each do |event| %>
+      <div class="event-index-container" style="<%= 'color: grey;' if event.datetime < Time.current %>">
+        <%# Time %>
+        <div class="event-index-time"  >
+          <h1> <%= event.datetime.strftime("%a") %> </h1>
+          <h1> <%= event.datetime.strftime("%d") %> </h1>
+        </div>
+
+        <%# Event Info %>
+        <div class="event-index-info">
+            
+             <%= link_to event.name, event_path(event), class: "event-name-link" %>
+            <div class="event-index-details">
+              <h3> <%= event.get_location %> </h3>
+              <p>•</p>
+              <h3>
+                  <%# format duration ex: 2.0hr to 2hr %>
+                  <% event_duration = event.duration %>
+                  <% formatted_duration = event_duration.round(1) %>
+                  <% formatted_duration = formatted_duration.to_i if formatted_duration % 1 == 0 %>
+                  <%= "#{formatted_duration}hr" %>
+                </h3>
+            </div>
+          <h3> <%= summarize_text(event.description, 140) %> </h3>
+        </div>
+
+        <%# Event Image %>
+        <div class="event-index-image">
+          <% if event.flier.attached? %>
+            <% if event.flier.previewable? %>
+                <%= image_tag event.flier.preview(resize_to_limit: [600,nil]), class: "index_preview" %>
+            <% elsif event.flier.variable? %>
+                <%= image_tag event.flier, class: "index_preview" %>
+            <% end %>
+          <% else %>
+              <img src="<%= asset_path 'placeholder.svg' %>" class = "index_preview">
+          <% end %>
+        </div>
+
+
+      </div>
+    <% end %>
+  </div>
+
 </div>
 

@@ -23,7 +23,7 @@
   }
   
   /* Style the participant's name link */
-  li a {
+  .participantEntry a {
     text-decoration: none;
     font-weight: bold;
     color: #333;

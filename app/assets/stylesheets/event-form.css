@@ -15,7 +15,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 25px 0 25px;
+    padding: 25px;
 }
 
 .back-link {
@@ -53,13 +53,11 @@
 /* --------------  */
 
 /* Container that holds the _form partial */
-.form-container {
-    margin: 25px 25px 25px 25px;
-    padding: 20px 20px 20px 20px;
+.event-form-container {
+    padding: 25px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     line-height: normal;
-    border-radius: 4px;
 }
 
 /* Container to display icon, input, and label */
@@ -82,21 +80,21 @@
 .event-form-input {
     width: 300px;
     height: 35px;
-    border: none;
+    border: none !important;
     outline: none;
-    border-bottom: 2px solid rgb(72, 114, 174);
+    border-bottom: 2px solid rgb(72, 114, 174) !important;
     font-size: 16px;
     border-radius: 2px;
-    background-color: white;
+    background-color: rgba(0,0,0, 0.1);
     padding: 0 5px 0 5px;
 }
 
 .event-form-input:hover {
-    border-bottom: 3px solid  #9B59B6;
+    border: 2px solid  #9B59B6 !important;
 }
-
+ 
 .event-form-input:focus {
-    border-bottom: 3px solid  #9B59B6;
+    border: 2px solid  #9B59B6 !important;
 }
 
 .input-container label {
@@ -119,6 +117,7 @@
     align-items: center;
     outline: none;
     border-bottom: 2px solid rgb(72, 114, 174);
+    background-color: rgba(0,0,0, 0.1);
     padding: 5px 0 5px 0;
 }
 
@@ -145,15 +144,15 @@
     border-bottom: 2px solid rgb(72, 114, 174);
     font-size: 16px;
     border-radius: 2px;
-    background-color: white;
+    background-color: rgba(0,0,0, 0.1);
 }
 
 #description-input:hover {
-    border-bottom: 3px solid  #9B59B6;
+    border: 2px solid  #9B59B6;
 }
 
 #description-input:focus {
-    border-bottom: 3px solid  #9B59B6;
+    border: 2px solid  #9B59B6;
 }
 
 .description-container label {
@@ -208,5 +207,5 @@
 }
 
 #submit-button:hover {
-    background-color: #1D8348;
+    background-color: #239B56;
 }

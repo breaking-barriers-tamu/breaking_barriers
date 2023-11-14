@@ -1,34 +1,80 @@
 /* announcements.css */
 
+.announcement-main-body {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #D3D3D3;
+  padding: 50px 25px;
+
+}
+
+.announcement-admin-controls {
+  display: flex;
+  background: #D3D3D3;
+  min-height: 50px;
+  align-items: center;
+}
+
+.announcement-admin-controls form button {
+  background: none;
+  border: none;
+}
+
 .announcement-container {
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .announcement-title {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .announcement-body {
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
-  
-  .announcement-meta {
-    color: #666;
-    font-size: 0.9em;
-  }
-  
-  .announcement-author {
-    font-weight: bold;
-  }
-  
-  .announcement-timestamp {
-    font-style: normal;
-  }
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcement-content {
+  width: 60vw;
+}
+.announcement-actions {
+  margin-top: 100px;
+}
+
+.announcement-avatar {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 25px;
+}
+
+.announcement-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.announcement-title {
+  color: #333;
+}
+
+.announcement-body {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.announcement-meta {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.announcement-author-title {
+  font-size: small;
+    color: grey;
+
+}
+
+.announcement-timestamp {
+  font-style: normal;
+}
 
 /* Base button style */
 .btn {
@@ -42,6 +88,21 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.small-logo-announcement {
+  width: 25px;
+  height: 25px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.announcement-admin-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
 
 /* Specific styles for different button types */
 .btn-primary {

@@ -10,7 +10,7 @@
     <div class = "image-section">
       <% if event.flier.attached? %>
         <% if event.flier.previewable? %>
-            <%= image_tag event.flier.preview(resize_to_limit: [600,nil]) %>
+            <%= image_tag event.flier.preview(resize_to_limit: [600,nil]), class: "image_preview" %>
         <% elsif event.flier.variable? %>
             <%= image_tag event.flier, class: "image_preview" %>
         <% end %>

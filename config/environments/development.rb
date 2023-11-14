@@ -1,6 +1,10 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.assets.debug = true
+  config.assets.compile = true
+  config.assets.digest = false
+  config.assets.cache_store = :null_store
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -24,6 +28,7 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+
 
   # Show full error reports.
   config.consider_all_requests_local = true

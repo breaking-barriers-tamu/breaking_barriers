@@ -5,11 +5,10 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
-    @calendar_events = Event.where(
-      datetime: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week
-    )
+    @start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today.beginning_of_month
+    @calendar_events = Event.where(datetime: @start_date.beginning_of_month..@start_date.end_of_month)
   end
+
 
   # GET /events/1 or /events/1.json
   def show
