@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
 <%= javascript_include_tag 'preview' %>
 
-<main class = "form-container">
+<main class = "event-form-container">
   <%= form_with(model: [:admin, event], local: true) do |form| %>
     <% if event.errors.any? %>
       <div style="color: red">
