@@ -47,9 +47,8 @@ Rails.application.routes.draw do
   # Announcements and Comments
   resources :announcements do
     collection do
-      post :index
+      post :load_more, to: 'announcements#load_more'
     end
     resources :comments
   end
-
 end

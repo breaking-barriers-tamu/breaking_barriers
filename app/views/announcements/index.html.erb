@@ -27,11 +27,11 @@
         <% end %>
 
       </div>
-
       <div id="next_link">
-        <%= button_to "Load More", pagy_url_for(@pagy, @pagy.next), class: "next_button" %>
+        <% if @pagy.next.present? %>
+          <%= button_to "Load More", load_more_announcements_path(page: @pagy.next), method: :post, class: "next_button" %>
+        <% end %>
       </div>
-
     </div>
   </div>
 </body>

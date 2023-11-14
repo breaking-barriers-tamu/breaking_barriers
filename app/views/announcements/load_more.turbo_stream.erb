@@ -1,0 +1,15 @@
+<%= turbo_stream.append "announcements" do %>
+  <%= render partial: "announcements/announcement_card", collection: @announcements, as: :announcement %>
+<% end %>
+
+<%= turbo_stream.replace "next_link" do %>
+  <% if @pagy.next.present? %>
+    <div id="next_link">
+      <%= button_to "Load More", load_more_announcements_path(page: @pagy.next), method: :post, class: "next_button" %>
+    </div>
+  <% else %>
+    <div id="next_link">
+      <p>end of announcements</p>
+    </div>
+  <% end %>
+<% end %>

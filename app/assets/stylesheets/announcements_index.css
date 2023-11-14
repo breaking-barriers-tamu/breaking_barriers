@@ -129,7 +129,6 @@
 }
 
 .next_button {
-  all: unset;
   background-color: #4872AE;
   color: white;
   padding: 10px 20px;
