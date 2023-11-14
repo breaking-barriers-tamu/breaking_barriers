@@ -7,39 +7,45 @@
 }
 
 .profile-form {
-    background-color: #4872AE;
-    border-radius: 10px;
+    background-color: white;
+    border-radius: 3px;
     padding: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    min-width: 35vw;
+    margin-bottom: 60px;
 }
 
-.row-1, .row-2, .row-3 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.profile-form label {
+    font-size: small;
+    font-weight: normal;
+}
+
+.profile-field label {
+    font-size: small !important;
+    font-weight: bold !important;
+    color: grey;
+    margin-bottom: 8px !important;
+}
+
+.profile-field input, select {
+    background-color: white;
+    border: 1px solid black !important;
+    border-radius: 3px;
+}
+.horizontal-line {
+    border: none;
+    height: 1px;
+    background-color: grey;
+    width: calc(100% + 40px);
+    margin: 10px -20px;
+    margin-bottom: 40px;
+}
+.profile-field {
     margin-bottom: 20px;
-    
 }
-
-.row-1 {
-    margin-bottom: 50px;
-}
-
-.last-name-field, .year-field{
-    margin-left: 65px;
-}
-
-.year-field {
-    width: full;
-}
-
-.first-name-field, .last-name-field, .phone-field, .year-field {
-    display:flex; 
-    flex-direction: column;
-}
-
 .current-user-display img {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -93,14 +99,78 @@
     font-size: larger
 }
 
-.row-2 {
+
+
+.profile-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-update-btn {
+    background: #4872AE !important;
+    padding: 5px 10px !important;
+    border-radius: 3px; 
+    color: white;
+
+}
+
+.profile-submit-section {
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
 }
-.row-3 input {
-    cursor: pointer;
-    background: #CF2E2E;
-    color: white;
-    padding: 5px 40px;
+
+.temp-selection {
+    margin-left: 20px;
+}
+
+.profile-events-table img {
+    width: 30px;
+    height: 30px;
+
+}
+
+.events-table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.profile-events-table h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.profile-events-table thead th {
+    text-align: left;
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+.profile-events-table tbody td {
+    padding: 10px 0px;
+    font-size: 18px;
+}
+
+.table-approval {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-events-table {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    min-width: 45vw;
+    margin-bottom: 60px;
+}
+
+.no-records {
+    text-align: center;
 }
