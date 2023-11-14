@@ -20,11 +20,6 @@
     box-sizing: border-box;
   }
 
-.image_preview {
-  width: 80%;
-  height: auto;
-}
-
 body {
   font-family: 'Inter', sans-serif;
 }

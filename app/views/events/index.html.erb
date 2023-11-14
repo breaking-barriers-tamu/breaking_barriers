@@ -9,27 +9,34 @@
     <% next_month = @start_date.next_month %>
 
     <div class="calendar-navigation">
-      <%= link_to 'Previous', events_path(start_date: previous_month), class: 'prev-link' %>
-      <%= link_to 'Today', events_path(start_date: current_month), class: 'today-link' %>
-      <%= link_to 'Next', events_path(start_date: next_month), class: 'next-link' %>
+      <div class = "calendar-date"> 
+        <%= @start_date.strftime("%B %Y") %> 
+      </div>
+      <div class = "calendar-actions">
+        <%= link_to events_path(start_date: previous_month), class: 'prev-link' do %>
+          <div> <img src = "<%= asset_path 'prev.svg' %>"> </div>
+        <% end %>
+        <%= link_to "Today", events_path(start_date: current_month), class: 'today-link' %>
+        <%= link_to events_path(start_date: next_month), class: 'next-link' do %>
+          <div> <img src = "<%= asset_path 'next.svg' %>"> </div>
+        <% end %>
+      </div>
     </div>
 
     <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
       <div class = "day-cont"> 
         <%= date.day %>
-      </div>
-
-
-      <% events.each do |event| %>
-        <div class = "calendar-info">
-          <%= link_to event_path(event) do %>
-            <%= event.name %> <br>
-            <%= event.datetime.strftime("%I:%M %p") %>
-          <% end %>
+        <% events.each do |event| %>
+            <%= link_to event_path(event) do %>
+            <div class = "calendar-info">
+              <%= event.name %> <br>
+              <%= event.datetime.strftime("%I:%M %p") %>
+            </div>
+            <% end %>
+        <% end %>
+        <div>
         </div>
-      <% end %>
-
-
+      </div>
     <% end %>
   </div>
 
@@ -70,7 +77,7 @@
         <div class="event-index-image">
           <% if event.flier.attached? %>
             <% if event.flier.previewable? %>
-                <%= image_tag event.flier.preview(resize_to_limit: [400,nil]) %>
+                <%= image_tag event.flier.preview(resize_to_limit: [600,nil]), class: "index_preview" %>
             <% elsif event.flier.variable? %>
                 <%= image_tag event.flier, class: "index_preview" %>
             <% end %>
