@@ -106,28 +106,28 @@ describe 'Comment Feature', type: :feature do
   end
 
   # --- Sunny Day: Editing a Comment (Member) ---
-it 'Member editing their own comment' do
-  sign_in(member)
-  member_comment = create(:comment, user: member, announcement: announcement)
-  updated_content = 'Updated message.'
+  it 'Member editing their own comment' do
+    sign_in(member)
+    member_comment = create(:comment, user: member, announcement: announcement)
+    updated_content = 'Updated message.'
 
-  visit announcement_path(announcement)
-  expect(page).to(have_content(member_comment.content))
+    visit announcement_path(announcement)
+    expect(page).to(have_content(member_comment.content))
 
-  within "#comment_#{member_comment.id}" do
-    click_link 'Edit Comment'
+    within "#comment_#{member_comment.id}" do
+      click_link 'Edit Comment'
+    end
+
+    within "#edit_comment_#{member_comment.id}", visible: false do
+      expect(page).to(have_field('comment[content]', visible: :all))
+      fill_in 'comment[content]', with: updated_content, visible: :all
+      find_button('Save', visible: :all).click
+    end
+
+    expect(page).to(have_content('Comment was successfully updated.'))
+    expect(page).to(have_content(updated_content))
+    expect(page).to(have_content('updated'))
   end
-
-  within "#edit_comment_#{member_comment.id}", visible: false do
-    expect(page).to have_field("comment[content]", visible: :all)
-    fill_in "comment[content]", with: updated_content, visible: :all
-    find_button('Save', visible: :all).click
-  end
-
-  expect(page).to have_content('Comment was successfully updated.')
-  expect(page).to have_content(updated_content)
-  expect(page).to have_content('updated')
-end
 
   # --- Rainy Day: Editing a Comment (Member) ---
   it 'Member editing their own comment with nothing' do
@@ -143,11 +143,11 @@ end
     end
 
     within "#edit_comment_#{member_comment.id}", visible: false do
-      expect(page).to have_field("comment[content]", visible: :all)
-      fill_in "comment[content]", with: updated_content, visible: :all
+      expect(page).to(have_field('comment[content]', visible: :all))
+      fill_in 'comment[content]', with: updated_content, visible: :all
       find_button('Save', visible: :all).click
     end
-    
+
     expect(page).to(have_field('comment[content]'))
     expect(page).not_to(have_content('updated'))
   end

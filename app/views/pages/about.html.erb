@@ -61,6 +61,22 @@
                 <%= image_tag("about_4.jpg", alt: "about image", class: "second-image") %>
             </div>
 
+
+            <hr style="height:2px;width:80%;color:black;background-color:black">
+
+            <div class="about">
+                <div class="about-content">
+                    <div class="about-content-main">
+
+                    <h1>Current Leadership</h1>
+                    <p><%= EditableContent.all.first.description %></p>
+                    <% if current_user&.admin? %>
+                        <%= link_to "Edit", edit_admin_editable_content_url(EditableContent.first) %>
+                    <% end%>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

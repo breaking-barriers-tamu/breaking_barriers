@@ -46,6 +46,9 @@
     justify-content: space-between;
 }
 
+.about-content-main .trix-content {
+    font-size: 20px;
+  }
 .about-content-main h1 {
     font-size: 40px;
 }

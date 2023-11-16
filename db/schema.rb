@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_014802) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_16_155827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_014802) do
     t.boolean "anonymous", default: false
     t.index ["announcement_id"], name: "index_comments_on_announcement_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "editable_contents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "event_logs", force: :cascade do |t|
