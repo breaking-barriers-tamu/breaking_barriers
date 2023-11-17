@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Admin
   authenticated :user, ->(user) { user.can_access_admin_dashboard? } do
     namespace :admin do
+      resources :editable_contents
       resources :events do
         member do
           delete :purge_flier

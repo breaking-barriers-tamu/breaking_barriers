@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :phone_number, exclusion: { in: [''], message: "can't be blank" }
   validates :year, presence: { message: "can't be blank" }, if: :registration_completed?
 
-
   has_many :events, through: :event_logs
   has_many :event_logs, dependent: :destroy
   has_many :announcements, dependent: :destroy
