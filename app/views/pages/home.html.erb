@@ -16,15 +16,60 @@
                     <h4>Keeping Families Close</h4>
                     <p>Breaking Barriers is a service organization which aims to empower youth from underserved communities and provide them with the tools to succeed in higher education and their chosen careers. The name of the organization is an ode to our mission to overcome societal obstacles adolescents might encounter along their path to college and beyond. With a focus on science, technology, engineering, and medicine, our organization exposures adolescents to educational STEM opportunities with the hope of inspiring academic interests, supporting career ambitions, and developing future generations of lifelong learners. The three pillars of our organization include the Ronald McDonald House Partnership, the Future Doctors’ Summer Camps, and the Future Doctors Mentorship Program. </p>
                     </div>
-                    <%= link_to about_path, class: "about-link" do %>
-                        <p>Learn More</p>
-                        <%= image_tag 'chevron-right-solid.svg', class: "small-logo", alt: 'Next' %>
-                    <% end %>
                 </div>
             </div>
 
-        
+            <div class="about">
+                <div class="about-content">
+                    <div class="about-content-main">
+                    <h1>Ronald McDonald House Partnership </h1>
+                    <p>The Ronald McDonald House (RMH) partnership entails a biweekly afterschool program series in which medical students host STEM activities for pediatric patients and their siblings staying at RMH while receiving medical care in the Texas Medical Center. The partnership is aimed at instilling consistency and something for the adolescent patients to look forward to each week. The children at RMH partake in interactive activities for all ages include making slim, marshmallow catapults, sailboat races, 3D-printing demos, and rocket launchers. </p>
+                    </div>
+              
+                </div>
+                <%= image_tag("about_4.jpg", alt: "about image", class: "second-image") %>
+            </div>
 
+            <%# 3 %>
+            <div class="about">
+                <%= image_tag("about_2.jpg", alt: "about image", class: "image_about") %>
+                <div class="about-content">
+                    <div class="about-content-main">
+                    <h1>Future Doctors Summer Camps </h1>
+                    <p>The Future Doctors Summer Camp series was established in partnership with Dr. Zalamea, a Houston Methodist sports medicine physician, who shares our organization’s vision of mentorship and equal opportunity. The weeklong summer camps, which outside organizations charge hundreds of dollars to attend, are completely free to high school students. The immersive curriculum includes an interactive lectureship series, medical jeopardy, pig heart dissections, physical examination sessions, a suture clinic, and a field trip to the medical center. The camps showcase the exciting aspects of medicine and highlight the field’s endless learning opportunities.  </p>
+                    </div>
+          
+                </div>
+            </div>
+
+            <%# 4 %>
+            <div class="about">
+                <div class="about-content">
+                    <div class="about-content-main">
+                    <h1>Future Doctors Mentorship Program </h1>
+                    <p>The Future Doctors Mentorship Program is a continuation of the Future Doctors summer camp series, which aims to establish an avenue of ongoing support for high school students interested in pursuing a career in healthcare. These students are assigned a medical student mentor and encouraged to meet monthly to foster a professional relationship students can utilize as they navigate the path to college and their future careers. 
+                    </p>
+                    </div>
+        
+                </div>
+                <%= image_tag("future_doctors_mentorship.jpg", alt: "about image", class: "second-image") %>
+            </div>
+
+
+            <hr style="height:2px;width:80%;color:black;background-color:black">
+
+            <div class="about">
+                <div class="about-content">
+                    <div class="about-content-main">
+
+                    <h1>Current Leadership</h1>
+                    <p><%= EditableContent.all.first&.description %></p>
+                    <% if current_user&.admin? %>
+                        <%= link_to "Edit", edit_admin_editable_content_path(current_user,EditableContent.first) %>
+                    <% end%>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

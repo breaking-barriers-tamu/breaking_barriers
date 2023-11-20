@@ -15,6 +15,10 @@ Announcement.destroy_all
 Event.destroy_all
 EventLog.destroy_all
 
+EditableContent.create!(
+  description: 'President- Natalia Miroballi'
+)
+
 user1 = User.create!(
   first_name: 'Admin',
   last_name: '1',

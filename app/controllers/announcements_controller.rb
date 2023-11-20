@@ -8,10 +8,10 @@ class AnnouncementsController < ApplicationController
   def index
     @pagy, @announcements = pagy_countless(Announcement.order(created_at: :desc), items: 5)
 
-    Rails.logger.debug "Load More: #{@announcements}"
+    Rails.logger.debug { "Load More: #{@announcements}" }
 
     respond_to do |format|
-      format.html 
+      format.html
       format.turbo_stream
     end
   end
