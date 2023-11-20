@@ -105,11 +105,11 @@
     text-decoration: none;
 }
 
-.calendar-info:hover {
+.calendar-event:hover {
     background-color: rgba(236, 112, 99, 1);
 }
 
-.calendar-info {
+.calendar-event {
     align-items: center;
     justify-content: center;
     padding: 2px 5px 2px 5px;
@@ -122,3 +122,15 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
 }
 
+
+.calendar-today{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(72, 114, 174);
+    width: 25px;
+    height: 25px;
+    color: white;
+    border-radius: 50%;
+}
