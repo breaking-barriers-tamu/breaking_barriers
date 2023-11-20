@@ -88,10 +88,6 @@
     background-color: rgba(0,0,0, 0.1);
     padding: 0 5px 0 5px;
 }
-
-.event-form-input:hover {
-    border: 2px solid  #9B59B6 !important;
-}
  
 .event-form-input:focus {
     border: 2px solid  #9B59B6 !important;
@@ -145,10 +141,6 @@
     font-size: 16px;
     border-radius: 2px;
     background-color: rgba(0,0,0, 0.1);
-}
-
-#description-input:hover {
-    border: 2px solid  #9B59B6;
 }
 
 #description-input:focus {
