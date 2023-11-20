@@ -65,7 +65,7 @@
                     <h1>Current Leadership</h1>
                     <p><%= EditableContent.all.first&.description %></p>
                     <% if current_user&.admin? %>
-                        <%= link_to "Edit", edit_admin_editable_content_url(EditableContent.first) %>
+                        <%= link_to "Edit", edit_admin_editable_content_path(current_user,EditableContent.first) %>
                     <% end%>
                     </div>
                 </div>
