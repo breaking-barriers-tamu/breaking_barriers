@@ -16,11 +16,11 @@ module Admin
       respond_to do |format|
         if EditableContent.first.update(editable_content_params)
           format.html do
-            redirect_to(about_path, notice: 'Description was successfully updated!.')
+            redirect_to(root_path, notice: 'Description was successfully updated!.')
           end
         else
           format.html do
-            redirect_to(about_path, notice: 'Failed to update description!')
+            redirect_to(root_path, notice: 'Failed to update description!')
           end
         end
       end

@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   # Static Pages
   root 'pages#home'
   get 'home', to: 'pages#home'
-  get 'about', to: 'pages#about'
   get 'help', to: 'pages#help'
 
   # Users
