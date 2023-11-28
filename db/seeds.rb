@@ -27,3 +27,12 @@ user1 = User.create!(
   password_confirmation: 'password',
   access_level: 'admin'
 )
+
+user2 = User.create!(
+  first_name: 'Natalia',
+  last_name: 'Miroballi',
+  email: 'natmiroballi@tamu.edu',
+  password: 'password',
+  password_confirmation: 'password',
+  access_level: 'admin'
+)
