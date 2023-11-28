@@ -34,6 +34,12 @@
     <p><%= notice %></p>
 
     <h1 class="eventLogHeading">All Event Logs</h1>  
+    <p style="margin: 10px 10px;"> This page lists all records of users that signed up for an event, and this record is created
+        when a user signs up to volunteer for an event. 
+        <br> "Participated" indicates whether the user participated in the event. By default, a user does NOT participate in an event
+        unless their sign-up is approved by an admin.
+        <br>"Sign-up reviewed" indicates whether the sign up was acknowledged(approved or denied) by an administrator.
+    </p>
     <%= link_to 'Back to Admin Dashboard', admin_root_path %>
 
     <div id="event_logs">
