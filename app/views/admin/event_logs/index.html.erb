@@ -37,11 +37,17 @@
     <%= link_to 'Back to Admin Dashboard', admin_root_path %>
 
     <div id="event_logs">
-        <% @event_logs.each do |event_log| %>
+        <% if @event_logs.any? %>
+            <% @event_logs.each do |event_log| %>
+                <div>
+                <%= render event_log %>
+                </div>
+            <% end %>
+        <% else %>
             <div>
-              <%= render event_log %>
+                No records to display
             </div>
-        <% end %>
+        <%  end %>
     </div>
 </body>
 </html>
