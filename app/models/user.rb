@@ -19,6 +19,11 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     return nil unless /@tamu.edu\z/.match?(auth.info.email)
 
+    if (user = User.where(email: auth.info.email).first)
+      user.update(provider: auth.provider, uid: auth.uid, avatar_url: auth.info.image)
+      return user
+    end
+
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]

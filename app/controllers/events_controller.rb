@@ -6,7 +6,8 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today.beginning_of_month
-    @calendar_events = Event.where(datetime: @start_date.all_month)
+    month = @start_date.month
+    @calendar_events = Event.where('extract(month from datetime) = ?', month)
   end
 
   # GET /events/1 or /events/1.json
