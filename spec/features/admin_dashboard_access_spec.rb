@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe('Admin Dashboard Access', type: :feature) do
+  let!(:admin) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 1, registration_completed: true) }
   before do
     OmniAuth.config.test_mode = true
     auth_hash = OmniAuth::AuthHash.new({
@@ -15,16 +16,7 @@ RSpec.describe('Admin Dashboard Access', type: :feature) do
   end
 
   it 'Admin accesses dashboard' do
-    visit '/users/sign_in'
-    click_button 'Sign in with Google'
-
-    fill_in 'First name', with: 'Jason'
-    fill_in 'Last name', with: 'Le'
-    select '2024', from: 'Year'
-    fill_in 'phone-number', with: '123-456-7890'
-    select 'Admin', from: 'Access level'
-
-    click_button 'Register Account'
+    sign_in(admin)
 
     visit admin_root_path
 
@@ -39,7 +31,6 @@ RSpec.describe('Admin Dashboard Access', type: :feature) do
     fill_in 'Last name', with: 'Le'
     select '2024', from: 'Year'
     fill_in 'phone-number', with: '123-456-7890'
-    select 'Member', from: 'Access level'
 
     click_button 'Register Account'
 

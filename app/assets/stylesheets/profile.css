@@ -27,11 +27,18 @@
     margin-bottom: 8px !important;
 }
 
-.profile-field input, select {
+.profile-field input{
     background-color: white;
     border: 1px solid black !important;
     border-radius: 3px;
 }
+
+.profile-field select {
+    background-color: white;
+    border: 1px solid black !important;
+    border-radius: 3px;
+}
+
 .horizontal-line {
     border: none;
     height: 1px;
@@ -86,12 +93,6 @@
     font-weight: bold;
 }
 
-.profile-form input, select {
-    border: none;
-    height: 30px;
-    font-size: larger;
-    padding-left: 5px;
-}
 
 .profile-form select {
     border: none; 

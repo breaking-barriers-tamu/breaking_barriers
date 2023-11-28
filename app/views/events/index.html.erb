@@ -25,17 +25,21 @@
 
     <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
       <div class = "day-cont"> 
-        <%= date.day %>
+        <% if date.to_date == Time.zone.today %>
+          <div class = "calendar-today">
+            <%= date.day %>
+          </div>
+        <% else %>
+          <%= date.day %>
+        <% end %>
         <% events.each do |event| %>
             <%= link_to event_path(event) do %>
-            <div class = "calendar-info">
+            <div class = "calendar-event">
               <%= event.name %> <br>
               <%= event.datetime.strftime("%I:%M %p") %>
             </div>
             <% end %>
         <% end %>
-        <div>
-        </div>
       </div>
     <% end %>
   </div>

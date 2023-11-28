@@ -4,11 +4,6 @@
 
 <div class="footer-container">
     <div class="footer-main">
-        <%# Contact Info %>
-        <div id="contact-section">
-            <h3>Contact US</h3>
-            <p>Feauture Coming Soon</p>
-        </div>
 
         <%# Site Map %>
         <div id="sitemap-section" class="site-map">
@@ -18,10 +13,10 @@
             <ul class="site-map-items">
                 <% if user_signed_in?  && current_user.registration_completed? %>
                     <li><%= link_to "Events", events_path %></li>
-                    <li><%= link_to "Annoucements", announcements_path %></li>
+                    <li><%= link_to "Announcements", announcements_path %></li>
                     
                 <% end %>
-                <li><%= link_to "About", about_path %></li>       
+                <li> <%= link_to "Home/About", root_path%> </li>
                 <li> <%= link_to "Help", help_path %>  </li>
                 <% if current_user&.can_access_admin_dashboard? %>
                     <li><%= link_to "Admin", admin_root_path %></li>
@@ -34,7 +29,7 @@
             <%= image_tag 'EnMed.png', alt: 'EnMed Logo', class: "enmed-logo" %>
             <div>
                 <%= image_tag 'map-solid.svg', class:"small-logo", alt: 'map' %>
-                <p>Texas A&M University</p>
+                <p>Texas A&M University College of Engineering Medicine</p>
             </div>
             <div class="address">
                 <p class="small-logo"></p>
@@ -42,8 +37,8 @@
             </div>
 
             <div>
-                <%= image_tag 'phone-solid.svg', class: "small-logo", alt: 'phone' %>
-                <p>(123) 456-7890</p>
+                <%= image_tag 'envelope-solid.svg', class: "small-logo", alt: 'email' %>
+                <p> breakingbarriers.enmed@gmail.com </p>
             </div>
 
         </div>

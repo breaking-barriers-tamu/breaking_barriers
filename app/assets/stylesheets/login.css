@@ -32,11 +32,9 @@
     width: 30vw;
     border-radius: 10px;
 }
-.welcome p {
-    color: black;
-    background: white;
-    padding: 35vh 9vw ;
-    border-radius: 5px;
+.welcome img {
+    width: 25vw;
+    height: auto;
 }
 
 .login-main {

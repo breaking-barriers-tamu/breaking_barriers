@@ -180,7 +180,6 @@
 }
 
 .comment-options {
-  display: none;
   position: absolute;
   right: 0;
   /* Adjust as needed */
@@ -188,9 +187,6 @@
   /* Adjust as needed */
 }
 
-.comment:hover .comment-options {
-  display: block;
-}
 .dropdown-content {
   display: none;
   position: absolute;

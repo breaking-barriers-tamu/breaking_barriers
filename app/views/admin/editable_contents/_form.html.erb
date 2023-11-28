@@ -1,0 +1,25 @@
+<main class = "event-form-container">
+  <%= form_with(model: [:admin, editable_content], local: true) do |form| %>
+    <% if editable_content.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this content from being saved:</h2>
+
+        <ul>
+          <% event.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class= "description-container">
+      <%= form.rich_text_area :description, placeholder: "Add description", id: "description-input" %>
+      <%= form.label "About Page Current Leadership Description" %>
+    </div>
+
+    <div>
+      <%= form.submit "Confirm", id: "submit-button" %>
+    </div>
+
+  <% end %>
+</main>

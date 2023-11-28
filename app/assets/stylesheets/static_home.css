@@ -46,6 +46,9 @@
     justify-content: space-between;
 }
 
+.about-content-main .trix-content {
+    font-size: 20px;
+  }
 .about-content-main h1 {
     font-size: 40px;
 }
@@ -68,6 +71,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     width: 100%;
     margin-bottom: 100px;
 }
