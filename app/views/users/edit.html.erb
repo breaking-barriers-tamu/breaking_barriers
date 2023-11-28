@@ -39,9 +39,6 @@
           <div class="profile-submit-section">
             <%= f.submit "Update", class: "profile-update-btn" %>
             
-            <div class="temp-selection">
-                <%= f.select :access_level, User.access_levels.keys.map { |key| [key.humanize, key] } %>
-            </div>
           </div>
 
       <% end %>

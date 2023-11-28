@@ -20,7 +20,7 @@ class User < ApplicationRecord
     return nil unless /@tamu.edu\z/.match?(auth.info.email)
 
     if (user = User.where(email: auth.info.email).first)
-      user.update(provider: auth.provider, uid: auth.uid)
+      user.update(provider: auth.provider, uid: auth.uid, avatar_url: auth.info.image)
       return user
     end
 
