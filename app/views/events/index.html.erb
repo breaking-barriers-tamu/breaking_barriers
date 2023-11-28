@@ -25,7 +25,7 @@
 
     <%= month_calendar(events: @calendar_events, attribute: :datetime) do |date, events| %>
       <div class = "day-cont"> 
-        <% if date == Date.today %>
+        <% if date.to_date == Time.zone.today %>
           <div class = "calendar-today">
             <%= date.day %>
           </div>
