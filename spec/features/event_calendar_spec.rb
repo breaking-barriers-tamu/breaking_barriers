@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 describe 'Event Calendar Feature', type: :feature do
-    let!(:event) {create(:event, name:'Sample Event', description: "Event Description", datetime: '2023-11-22 4:30PM', location: 'Somewhere', duration: 1.0) }
+    let!(:event) {create(:event, name:'Sample Event', description: "Event Description", datetime: Time.zone.now, location: 'Somewhere', duration: 1.0) }
     let!(:user) { create(:user, phone_number: '(214) 123 - 4567', first_name: 'first', last_name: 'last', access_level: 0, registration_completed: true) }
     current_month = Date.today
     
@@ -11,7 +11,7 @@ describe 'Event Calendar Feature', type: :feature do
         visit events_path
 
         expect(page).to(have_content('Sample Event'))
-        expect(page).to(have_content('04:30 PM'))
+        expect(page).to(have_content(Time.zone.now.strftime("%I:%M %p")))
     end        
         
     it 'Highlights the current day' do
