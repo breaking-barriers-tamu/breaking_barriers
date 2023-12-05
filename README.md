@@ -194,7 +194,7 @@ The `workflow.yml` file contains the Github Actions workflow. The file does the 
 - Runs the following tests: rspec, brakeman, rubocop.
 - Uploads generated reports from the tests as artifacts for further analysis.
 
-THis helped us automate the testing process throughout our development and deployment process, as it ran our tests on every push or pull request to the Github repository.
+This helped us automate the testing process throughout our development and deployment process, as it ran our test suite on every push or pull request to the Github repository.
 
 ## Support
 
