@@ -83,11 +83,11 @@ The tutorial above will help you understand now we encrypted the admin page's us
 
 (Optional) We used AWS credentials for Rails ActiveStorage in the production environment. You have two options to set up these credentials:
 1. If you're deploying to Heroku, follow these steps:  
-    1a. Log into the Heroku web app using a browser
-    1b. Click on the pipeline/app that you're deploying your website to
-    1c. Go to Settings
-    1d. Go to "Config Vars", and click "Reveal Config Vars"
-    1e. Add the key, value pairs and refer to them as environment variables in `storage.yml`
+    1a. Log into the Heroku web app using a browser \ 
+    1b. Click on the pipeline/app that you're deploying your website on \
+    1c. Go to Settings \
+    1d. Go to "Config Vars", and click "Reveal Config Vars" \ 
+    1e. Add the key, value pairs and refer to them as environment variables in `storage.yml` \
 2. Use the rails built-in encrypted `credentials.yml` file by following the tutorial here: https://medium.com/nerd-for-tech/handling-images-part-1-using-active-storage-in-rails-6-with-amazon-s3-buckets-92b739fa790 
 Note: If you're using a docker container, run `EDITOR=vim rails credentials:edit`. 
 If you're new to vim, refer to the following cheatsheet: https://vim.rtorr.com/
