@@ -1,21 +1,21 @@
 # README
 
-## Introduction ## 
+## Introduction
 
 Our team is building a web application for Breaking Barriers, an organization based out of Houston
 that lets their members sign up for recurring volunteer events. The application will allow users to
 view upcoming/past volunteer events and sign up for them. Members will receive an email confirmation when
-they're confirmed by an officer to attend an event. They can also see the total number of hours they've 
+they're confirmed by an officer to attend an event. They can also see the total number of hours they've
 accumulated from attending events.
-The organization officers will be granted administrator access to the application, which will allow them 
-to create custom events, view the members' hours, and export data associated with users, events, and hours. 
-We've also added an Announcements page that all users can access. Officers can create posts/announcements, 
+The organization officers will be granted administrator access to the application, which will allow them
+to create custom events, view the members' hours, and export data associated with users, events, and hours.
+We've also added an Announcements page that all users can access. Officers can create posts/announcements,
 and members will have the ability to add comments to the announcements. This will allow the organization to
 communicate with one another and keep everyone updated on the latest news.
 
-## Requirements ##
+## Requirements
 
-This code has been run and tested on: 
+This code has been run and tested on:
 
 - Ruby - 3.1.2
 - Rails - 7.0.8
@@ -69,10 +69,8 @@ Install the app
 
 `bundle install && rails webpacker:install && rails db:create && db:migrate`
 
-
 Run the app
 `rails s -b 0.0.0.0`
-
 
 The application can be seen using a browser and navigating to http://localhost:3000/
 
@@ -82,24 +80,57 @@ We have environment variables setup for Authentication. The tutorial can be foun
 
 The tutorial above will help you understand now we encrypted the admin page's username and password!
 
-
 (Optional) We used AWS credentials for Rails ActiveStorage in the production environment. You have two options to set up these credentials:
-1. If you're deploying to Heroku, follow these steps:  
 
-    1a. Log into the Heroku web app using a browser 
+1. If you're deploying to Heroku, follow these steps:
 
-    1b. Click on the pipeline/app that you're deploying your website on 
+   1a. Log into the Heroku web app using a browser
 
-    1c. Go to Settings 
+   1b. Click on the pipeline/app that you're deploying your website on
 
-    1d. Go to "Config Vars", and click "Reveal Config Vars" 
+   1c. Go to Settings
 
-    1e. Add the key, value pairs and refer to them as environment variables in `storage.yml` 
+   1d. Go to "Config Vars", and click "Reveal Config Vars"
 
+   1e. Add the key, value pairs and refer to them as environment variables in `storage.yml`
 
-2. Use the rails built-in encrypted `credentials.yml` file by following the tutorial here: https://medium.com/nerd-for-tech/handling-images-part-1-using-active-storage-in-rails-6-with-amazon-s3-buckets-92b739fa790 
-Note: If you're using a docker container, run `EDITOR=vim rails credentials:edit`. 
-If you're new to vim, refer to the following cheatsheet: https://vim.rtorr.com/
+2. Use the rails built-in encrypted `credentials.yml` file by following the tutorial here: https://medium.com/nerd-for-tech/handling-images-part-1-using-active-storage-in-rails-6-with-amazon-s3-buckets-92b739fa790
+   Note: If you're using a docker container, run `EDITOR=vim rails credentials:edit`.
+   If you're new to vim, refer to the following cheatsheet: https://vim.rtorr.com/
+
+We are using google oauth to login and authorized user on the app. This will require setting up google console
+
+1.  Log into google console website using browser
+2.  Create a new Project
+3.  Go to API & Services using the left side bar
+4.  Go to credentials
+5.  Create OAuth Credential
+
+    5a. Click on "+ Create Credentials" and select OAUTH Client ID,
+
+    5b. Select "Web Application" for Application Type
+
+    5c. Input a name
+
+    5d. Click Create
+
+    5e. Copy and Save Two Important Keys: Client Id and Client Secret
+
+6.  In production.rb and development.rb, paste client id into ENV['GOOGLE_OAUTH_CLIENT_ID'] and client secret ENV['GOOGLE_OAUTH_CLIENT_SECRET'] into the ="", respectively
+7.  Return to Credentials Page and Select the created credential under "OAUTH 2.0 Client IDs"
+    7a. Located Authorized redirect URI Section.
+
+    7b. Visit Breaking Barrier website
+
+    7c. Find redirect URI, First login with google auth on the web app
+
+    7d. You will reach an error message saying "Access Blocked: ......"
+
+    7e. Located "if you are a developer of this app, see error details" and click on "error details"
+
+    7f. Locate the redirect_uri link starting with "https://" and copy the whole link
+
+    7g. On Google Console Website, Authorized redirect URIs click on "Add URI" and paste your link
 
 ## Deployment
 
@@ -188,6 +219,7 @@ The `workflow.yml` file contains the Github Actions workflow. The file does the 
 
 1. Sets environment variables for Ruby version, and PSQL/database credentials.
 2. Specifies a job named 'rspec-test' that runs various steps:
+
 - Sets up the environment (Ruby, PSQL)
 - Installs dependencies
 - Sets up the database and migrates it for testing.
