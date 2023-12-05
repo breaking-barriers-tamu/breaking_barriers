@@ -58,9 +58,11 @@ Run the following code in the terminal using Linux/Mac
 `docker run --rm -it --volume "$(pwd):/csce431" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 paulinewade/csce431:latest`
 
 For Windows users:
+
 `docker run --rm -it --volume "${PWD}:/csce431" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 paulinewade/csce431:latest`
 
 Mac M1 users:
+
 `docker run --rm -it --volume "$(pwd):/csce431" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 --platform linux/amd64 paulinewade/csce431:latest`
 
 Install the app
@@ -83,17 +85,14 @@ The tutorial above will help you understand now we encrypted the admin page's us
 
 (Optional) We used AWS credentials for Rails ActiveStorage in the production environment. You have two options to set up these credentials:
 1. If you're deploying to Heroku, follow these steps:  
-    1a. Log into the Heroku web app using a browser 
 
+    1a. Log into the Heroku web app using a browser 
 
     1b. Click on the pipeline/app that you're deploying your website on 
 
-
     1c. Go to Settings 
 
-
     1d. Go to "Config Vars", and click "Reveal Config Vars" 
-
 
     1e. Add the key, value pairs and refer to them as environment variables in `storage.yml` 
 
