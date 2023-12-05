@@ -134,7 +134,7 @@ We are using google oauth to login and authorized user on the app. This will req
 
 ## Deployment
 
-1. For this assignment you should work with your github repository environment_test that you created previously. It should contain the test_app that we built in lab 1 and 2.
+1. For this assignment you should work with this github repository, or the repository holding your application code.
 2. (Start your docker and work in your terminal) Make sure you have dev, test and main branches. However, since we’re not really going to develop any new features, we won’t be using the dev branch in the assignment. We’ll be using test and main branches.
    First, use $ git status to see if your git is tracking the current dir.
    If you haven’t created dev and test branches, please do it now. For example, commands to create a test branch with git:
@@ -230,7 +230,13 @@ This helped us automate the testing process throughout our development and deplo
 
 ## Support
 
-The support of this app has been officially closed. There is nothing more important left to develop. We can scale this app and make it generic enough for all other student organizations and not just Breaking Barriers. Thats the future goals of this application.
+The support of this app has been officially closed, at least in accordance with the scope of the class. 
+However, there is built-in support into the application and can be found by navigating to the "Help" pages. 
+These cover how to navigate the application, as well as troubleshooting error states if they occur.
+
+In case of a critical, unforeseen error that is not repairable by the user, feel free to contact one of the developers:
+
+Juan Carrasco - juan.carrascoluis@gmail.com
 
 ## Extra Helps
 
